@@ -1,0 +1,1 @@
+export { PixButtonConfig } from './PixButtonConfig'

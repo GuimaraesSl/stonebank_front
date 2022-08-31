@@ -1,0 +1,1 @@
+export { FirstSlide } from "./FirstSlide";

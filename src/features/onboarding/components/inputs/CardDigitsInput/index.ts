@@ -1,0 +1,1 @@
+export { DigitsCardProps } from './CardDigitsInput'

@@ -1,0 +1,1 @@
+export { RecentFavoredCard } from "./RecentFavoredCard";

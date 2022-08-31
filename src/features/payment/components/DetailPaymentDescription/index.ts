@@ -1,0 +1,1 @@
+export { DetailPaymentDescription } from './DetailPaymentDescription'

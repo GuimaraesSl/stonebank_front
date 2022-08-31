@@ -1,0 +1,1 @@
+export { DetailsFgtsDescription } from './DetailsFgtsDescription'

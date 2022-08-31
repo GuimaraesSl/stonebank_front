@@ -1,0 +1,1 @@
+export { DetailSmsTransferDescription } from './DetailSmsTransferDescription'

@@ -1,0 +1,1 @@
+export { ConfirmPasswordCard } from './ConfirmPasswordCard'

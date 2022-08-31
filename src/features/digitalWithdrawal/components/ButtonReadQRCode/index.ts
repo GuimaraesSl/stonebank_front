@@ -1,0 +1,1 @@
+export { ButtonReadQRCode } from './ButtonReadQRCode'

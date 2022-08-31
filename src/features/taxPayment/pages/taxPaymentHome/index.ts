@@ -1,0 +1,1 @@
+export { TaxPaymentHome } from './TaxPaymentHome'

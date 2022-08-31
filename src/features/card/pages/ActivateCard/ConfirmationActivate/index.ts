@@ -1,0 +1,1 @@
+export { ConfirmationActivate } from './ConfirmationActivate'

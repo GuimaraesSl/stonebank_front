@@ -1,0 +1,1 @@
+export { ConfirmRecoverPwd } from './ConfirmRecoverPwd'

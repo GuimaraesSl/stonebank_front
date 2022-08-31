@@ -1,0 +1,1 @@
+export { EnterTaxPayerForCard } from './EnterTaxPayerForCard'

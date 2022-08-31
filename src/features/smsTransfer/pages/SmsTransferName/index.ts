@@ -1,0 +1,1 @@
+export { SmsTransferName } from './SmsTransferName'

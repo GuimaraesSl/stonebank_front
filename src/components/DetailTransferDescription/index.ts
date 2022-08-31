@@ -1,0 +1,1 @@
+export { DetailTransferDescription } from './DetailTransferDescription'

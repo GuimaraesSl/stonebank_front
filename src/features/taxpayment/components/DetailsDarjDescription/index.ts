@@ -1,0 +1,1 @@
+export { DetailsDarjDescription } from './DetailsDarjDescription'

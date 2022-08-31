@@ -1,0 +1,1 @@
+export { PopUpConfirmPassword } from './PopUpConfirmPassword'

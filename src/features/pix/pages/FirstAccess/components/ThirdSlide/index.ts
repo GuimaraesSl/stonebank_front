@@ -1,0 +1,1 @@
+export { ThirdSlide } from "./ThirdSlide";

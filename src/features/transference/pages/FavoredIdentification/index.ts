@@ -1,0 +1,1 @@
+export { FavoredIdentification } from './FavoredIdentification'

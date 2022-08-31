@@ -1,0 +1,1 @@
+export { WelcomePageButton } from './WelcomePageButton'

@@ -1,0 +1,1 @@
+export { BadgeChangeProfileButton } from './BadgeChangeProfileButton'

@@ -1,0 +1,1 @@
+export { CardPhone } from './CardPhone'

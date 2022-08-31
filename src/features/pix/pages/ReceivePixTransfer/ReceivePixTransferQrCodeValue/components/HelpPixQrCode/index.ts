@@ -1,0 +1,1 @@
+export { HelpPixQrCode } from './HelpPixQrCode'

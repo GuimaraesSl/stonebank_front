@@ -1,0 +1,1 @@
+export { AssociateFourDigits } from './AssociateFourDigits'

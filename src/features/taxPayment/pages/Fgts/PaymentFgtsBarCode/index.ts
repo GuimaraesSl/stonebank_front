@@ -1,0 +1,1 @@
+export { PaymentFgtsBarCode } from './PaymentFgtsBarCode'

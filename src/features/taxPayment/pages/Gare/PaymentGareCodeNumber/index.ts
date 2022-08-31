@@ -1,0 +1,1 @@
+export { PaymentGareCodeNumber } from './PaymentGareCodeNumber'

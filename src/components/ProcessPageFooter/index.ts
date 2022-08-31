@@ -1,0 +1,1 @@
+export { ProcessPageFooter } from './ProcessPageFooter'

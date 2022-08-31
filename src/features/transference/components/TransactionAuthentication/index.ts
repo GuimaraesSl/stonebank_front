@@ -1,0 +1,1 @@
+export { TransactionAuthentication } from './TransactionAuthentication'

@@ -1,0 +1,1 @@
+export { AccountActivationCompleted } from './AccountActivationCompleted'

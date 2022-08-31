@@ -1,0 +1,1 @@
+export { LabelWithValueKeyPix } from "./LabelWithValueKeyPix";

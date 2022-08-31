@@ -1,0 +1,28 @@
+.IDButton {
+  width: 100%;
+  max-width: 152px;
+  height: 35px;
+  background-color: white;
+  border: 0.5px solid #e8e8e8;
+  border-radius: 4px;
+}
+
+.IDButton .propButton {
+  font-size: 9px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.IDButton .iconIDButton {
+  display: absolute;
+  width: 23px;
+  height: 24px;
+}
+
+.IDButton .label {
+  width: 100px;
+  text-transform: none;
+  font-weight: 500;
+}

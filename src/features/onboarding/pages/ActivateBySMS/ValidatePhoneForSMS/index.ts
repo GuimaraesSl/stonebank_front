@@ -1,0 +1,1 @@
+export { ValidatePhone } from './ValidatePhoneForSMS'

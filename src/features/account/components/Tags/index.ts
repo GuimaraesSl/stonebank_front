@@ -1,0 +1,1 @@
+export { TagsDescription } from './TagsDescription'

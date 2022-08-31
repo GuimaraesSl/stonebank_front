@@ -1,0 +1,1 @@
+export { ConfirmPasswordFirstAccess } from './ConfirmPasswordFirstAccess'

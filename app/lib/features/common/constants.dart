@@ -1,0 +1,3 @@
+const apiUrl = 'https://osbcore.fitbank.com.br';
+const apiKey =
+    '780567a06437006087074022768d8dd0815d23647cff451d6cd5f80783586854f55e505bc0d349608ac4e01e3ab48227fd7ea722600cd2e90061f6d43de446ca';

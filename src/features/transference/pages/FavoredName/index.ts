@@ -1,0 +1,1 @@
+export { FavoredName } from './FavoredName'

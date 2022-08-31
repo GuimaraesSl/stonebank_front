@@ -1,0 +1,1 @@
+export { EnterMailForCard } from './EnterMailForCard'

@@ -1,0 +1,1 @@
+export { FilterSectionTitleAndDescription } from './FilterSectionTitleAndDescription'

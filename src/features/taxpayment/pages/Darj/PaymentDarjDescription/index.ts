@@ -1,0 +1,1 @@
+export { PaymentDarjDescription } from './PaymentDarjDescription'

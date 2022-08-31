@@ -1,0 +1,1 @@
+export { SecondSlide } from './SecondSlide'

@@ -1,0 +1,1 @@
+export { PaymentFgtsCodeRevenue } from './PaymentFgtsCodeRevenue'

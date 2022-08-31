@@ -1,0 +1,1 @@
+export { ConfirmNewPasswordUserInformation } from './ConfirmNewPassword'

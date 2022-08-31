@@ -1,0 +1,1 @@
+export { AssociateNationalityCard } from './AssociateNationalityCard'

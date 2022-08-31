@@ -1,0 +1,1 @@
+export { ConfirmPassword } from './ConfirmPasswordForSMS'

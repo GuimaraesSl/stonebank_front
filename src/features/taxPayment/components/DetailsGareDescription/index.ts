@@ -1,0 +1,1 @@
+export { DetailsGareDescription } from './DetailsGareDescription'
