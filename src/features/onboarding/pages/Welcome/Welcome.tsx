@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import { Grid, Box } from '@material-ui/core'
+import { Grid, Box, Typography } from '@material-ui/core'
+import { OnboardingSubTitle } from 'features/onboarding/components/texts/OnboardingSubtitle'
 import { OnboardingTitle } from 'features/onboarding/components/texts/OnboardingTitle'
 import { WelcomePageButton } from 'features/onboarding/components/buttons/WelcomePageButton'
 import { AuthenticationRoutes } from 'features/authentication/constants/routes'
@@ -44,7 +45,7 @@ export const Welcome: React.FC = () => {
           </Grid>
 
         </Grid>
-
+      
         <Grid
           container
           direction="column"
@@ -54,16 +55,20 @@ export const Welcome: React.FC = () => {
 
           {/* WELCOME IMAGE concludedImage */}
           <Box
-              className={styles.containerImg}
-              data-test-id="welcomeImage"
-            >
-              <Icon name="welcomeImage" className={styles.img} />
-            </Box>
+            className={styles.containerImg}
+            data-test-id="welcomeImage"
+          >
+            <Icon name="welcomeImage"/>
+          </Box>
 
-          {/* ONBOARDING TITLE */}
-
+          {/* ONBOARDING TITLE  */}
           <Grid item className={styles.title}>
             <OnboardingTitle />
+          </Grid>
+
+          {/* ONBOARDING SUBTITLE */}
+          <Grid item className={styles.subtitle}>
+            <OnboardingSubTitle />
           </Grid>
 
           {/* BOTÃO LOGIN */}
@@ -78,10 +83,9 @@ export const Welcome: React.FC = () => {
               <WelcomePageButton
                 palette="primary"
                 size="large"
-                borderWidth={2}
                 route={AuthenticationRoutes.signIn}
               >
-                Entrar na minha conta
+                Fazer Login
               </WelcomePageButton>
             </Grid>
 

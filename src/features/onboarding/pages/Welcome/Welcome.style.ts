@@ -36,25 +36,25 @@ export const useOnboardingStyles = makeStyles({
 
 
   logo: {
-    padding: '41px 0px',
+    padding: '49px 0 14px 0',
     marginLeft: '0',
-    marginBottom: 72,
   },
 
   containerImg: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '45vh',
-  },
-
-  img:{
-
+    height: '30vh',
   },
 
   title: {
+    color: colors.system.light.onPrimary,
+    textAlign: 'center',
+    padding: '13px 0 10px 0',
+  },
+
+  subtitle: {
     marginBottom: 4,
-    fontFamily: 'Baloo Bhaina',
     color: colors.system.light.onPrimary,
     [theme.breakpoints.down('xs')]: {
       marginBottom: 8,
@@ -65,8 +65,7 @@ export const useOnboardingStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    position: 'absolute',
-    padding: '100px 64px 0',
+    margin: '45px 0 0 0', //cima direita baixo esquerda
     alignContent: 'center',
   },
 
@@ -88,4 +87,5 @@ export const useOnboardingStyles = makeStyles({
       borderWidth: 2,
     },
   },
+
 })

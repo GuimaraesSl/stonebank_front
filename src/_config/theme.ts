@@ -55,6 +55,7 @@ type ReadOnlyColors = {
   surface4: string
   surface5: string
   black: string
+  blackLight: string
   white: string
 }
 
@@ -161,6 +162,7 @@ export const colors: Palette = {
       surface4: '',
       surface5: '#323751',
       black: '#000000',
+      blackLight: '#242424',
       white: '#FFFFFF',
     },
     dark: {
@@ -171,6 +173,7 @@ export const colors: Palette = {
       surface4: '',
       surface5: '',
       black: '',
+      blackLight: '',
       white: '',
     },
   },

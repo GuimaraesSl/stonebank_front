@@ -28,6 +28,7 @@ export const ConfirmRecoverPwd: React.FC = () => {
       <ProcessPageLayout
         main={
           <React.Fragment>
+
             <Box
               display="flex"
               justifyContent="center"
@@ -35,6 +36,7 @@ export const ConfirmRecoverPwd: React.FC = () => {
             >
               <Icon className={styles.img} name="conclude" />
             </Box>
+
             <Typography
               variant="h3"
               className={styles.title}
@@ -42,6 +44,7 @@ export const ConfirmRecoverPwd: React.FC = () => {
             >
               Senha temporária enviada
             </Typography>
+            
           </React.Fragment>
         }
         footer={
