@@ -21,18 +21,27 @@ export const Welcome: React.FC = () => {
 
   return (
     <PageContainer className={styles.container}>
+
+
+      {/* LOGO + TITLE */}
+
       <Grid
         container
         direction="column"
         alignItems="center"
         className={styles.content}
       >
+        
         <Grid item className={styles.logo} data-test-id="logo">
           <Icon name={'logo'} />
         </Grid>
+
         <Grid item className={styles.title}>
           <OnboardingTitle />
         </Grid>
+
+
+        {/* BOTÃO FAZER LOGIN */}
         <Grid
           item
           container
@@ -40,6 +49,7 @@ export const Welcome: React.FC = () => {
           spacing={2}
           className={styles.buttonsSection}
         >
+
           <Grid item className={styles.onboardingButtonWrapper}>
             <WelcomePageButton
               palette="primary"
@@ -50,6 +60,7 @@ export const Welcome: React.FC = () => {
               Entrar na minha conta
             </WelcomePageButton>
           </Grid>
+
         </Grid>
       </Grid>
     </PageContainer>

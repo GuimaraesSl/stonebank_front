@@ -58,14 +58,17 @@ type ReadOnlyColors = {
 }
 
 type Palette = {
+  
   system: {
     light: SystemColors
     dark: SystemColors
   }
+
   readOnly: {
     light: ReadOnlyColors
     dark: ReadOnlyColors
   }
+
   primary: Color
   secondary: Color
   tertiary: Color
@@ -85,6 +88,7 @@ type Palette = {
 
 export const colors: Palette = {
   system: {
+
     light: {
       primary: '#323751',
       onPrimary: '#FFFFFF',
@@ -114,6 +118,7 @@ export const colors: Palette = {
       neutral: '#555555',
       neutralVariant: '#40455F',
     },
+
     dark: {
       primary: '',
       onPrimary: '',
@@ -211,6 +216,7 @@ export const colors: Palette = {
     shade10: '',
     shade0: '',
   },
+
   neutral: {
     shade100: '',
     shade99: '',
@@ -226,6 +232,7 @@ export const colors: Palette = {
     shade10: '#F9F9F9',
     shade0: '#FFFFFF',
   },
+  
   neutralVariant: {
     shade100: '',
     shade99: '',

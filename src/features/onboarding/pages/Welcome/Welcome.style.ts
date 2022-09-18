@@ -3,6 +3,7 @@ import { colors, theme } from '_config/theme'
 import welcomeBackground from '_assets/img/loginBackground.svg'
 
 export const useOnboardingStyles = makeStyles({
+
   container: {
     display: 'flex',
     overflow: 'hidden',
@@ -23,6 +24,7 @@ export const useOnboardingStyles = makeStyles({
       padding: '0 64px',
     },
   },
+  
   content: {
     [theme.breakpoints.down('sm')]: {
       marginTop: '200px',
@@ -33,9 +35,11 @@ export const useOnboardingStyles = makeStyles({
       marginBottom: '64px',
     },
   },
+
   logo: {
     marginBottom: 72,
   },
+
   title: {
     marginBottom: 64,
     color: colors.system.light.onPrimary,
@@ -43,6 +47,7 @@ export const useOnboardingStyles = makeStyles({
       marginBottom: 48,
     },
   },
+
   buttonsSection: {
     display: 'flex',
     flexDirection: 'column',
@@ -51,6 +56,7 @@ export const useOnboardingStyles = makeStyles({
     padding: '230px 64px 0',
     alignContent: 'center',
   },
+
   signInButtonWrapper: {
     display: 'flex',
     alignItems: 'center',
@@ -60,6 +66,7 @@ export const useOnboardingStyles = makeStyles({
       margin: '0 20px',
     },
   },
+
   onboardingButtonWrapper: {
     display: 'flex',
     alignItems: 'center',

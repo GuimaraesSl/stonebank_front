@@ -310,142 +310,142 @@ export const Router: React.FC = () => {
         />
 
         {/* #### QRCODE-TRANSFER ROUTES ##### */}
-        <ProtectedRoute
+        <Route
           exact
           path={QrCodeTransferRoutes.qrCodeTransfer}
           component={QrCodeTransfer}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={QrCodeTransferRoutes.generateQrCodeTransfer}
           component={GenerateQrCodeTransfer}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={QrCodeTransferRoutes.viewQrCodeTransfer}
           component={ShowQrCodeTransfer}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={QrCodeTransferRoutes.readQrCodeTransfer}
           component={ReadQrCodeTransfer}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={QrCodeTransferRoutes.sendQrCodeTransfer}
           component={QrCodeTransferSendingDetails}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={QrCodeTransferRoutes.completedTransfer}
           component={ConclusionFlow}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SchedulePayments.ScheduleTransactions}
           component={ScheduleTransactions}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SchedulePayments.FutureTransactions}
           component={FutureTransactions}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SchedulePayments.ScheduleTransactionsList}
           component={ScheduleTransactionsList}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SmsTransferRoutes.smsTransferNumber}
           component={SmsTransferNumber}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SmsTransferRoutes.smsTransferValue}
           component={SmsTransferValue}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SchedulePayments.ScheduleTransactionsList}
           component={ScheduleTransactionsList}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SchedulePayments.SheduleTransactionsFilter}
           component={SheduleTransactionsFilter}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SmsTransferRoutes.smsTransferSummary}
           component={SmsTransferSummary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SmsTransferRoutes.completedSmsTransfer}
           component={ConclusionFlow}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SmsTransferRoutes.SmsAccountsExibition}
           component={SmsAccountsExibition}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={SmsTransferRoutes.SmsTransferName}
           component={SmsTransferName}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.home}
           component={UserInformation}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.changeEmail}
           component={ChangeEmail}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.changePhone}
           component={ChangePhone}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.changeChangeNickname}
           component={ChangeNickname}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.changeEmail}
           component={ChangeEmail}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.changePassword}
           component={ChangePassword}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.chooseNewPassword}
           component={ChooseNewPassword}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.confirmNewPassword}
           component={ConfirmNewPasswordUserInformation}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.currentAddress}
           component={CurrentAddress}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.changeAddress}
           component={ChangeAddress}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={UserRoutes.changeConclude}
           component={ChangeConclude}
@@ -455,554 +455,554 @@ export const Router: React.FC = () => {
         </Route>
         <Route path={AuthenticationRoutes.signIn} component={SignIn} />
         <Route path={AuthenticationRoutes.signOut} component={SignOut} />
-        <ProtectedRoute
+        <Route
           path={AuthenticationRoutes.temporaryPassword}
           component={TemporaryPassword}
         />
-        <ProtectedRoute
+        <Route
           path={AuthenticationRoutes.changePasswordFirstAccess}
           component={ChangePasswordFirstAccess}
         />
-        <ProtectedRoute
+        <Route
           path={AuthenticationRoutes.confirmPasswordFirstAccess}
           component={ConfirmPasswordFirstAccess}
         />
-        <ProtectedRoute
+        <Route
           path={AuthenticationRoutes.changePasswordCompleted}
           component={ChangePasswordCompleted}
         />
 
-        <ProtectedRoute
+        <Route
           exact
           path={AccountRoutes.filter}
           component={BankStatementFilter}
         />
-        <ProtectedRoute exact path={AccountRoutes.detail} component={Details} />
+        <Route exact path={AccountRoutes.detail} component={Details} />
 
-        <ProtectedRoute exact path={AccountRoutes.home} component={Home} />
+        <Route exact path={AccountRoutes.home} component={Home} />
         
-        <ProtectedRoute
+        <Route
           exact
           path={AccountRoutes.bankStatement}
           component={BankStatement}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={AccountRoutes.settings}
           component={AccountSettings}
         />
-        <ProtectedRoute exact path={AccountRoutes.help} component={Help} />
-        <ProtectedRoute
+        <Route exact path={AccountRoutes.help} component={Help} />
+        <Route
           exact
           path={PaymentRoutes.barcodeScanner}
           component={ScanBarcode}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PaymentRoutes.details}
           component={PaymentData}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PaymentRoutes.changeValue}
           component={ChangeValue}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PaymentRoutes.paymentProcess}
           component={PaymentProcess}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PaymentRoutes.paymentEmptyDescription}
           component={PaymentDescription}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PaymentRoutes.completedPayment}
           component={ConclusionFlow}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PaymentRoutes.paymentReceipt}
           component={PaymentReceipt}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PaymentRoutes.paymentAttach}
           component={PaymentAttach}
         />
 
-        <ProtectedRoute
+        <Route
           exact
           path={PaymentRoutes.summary}
           component={PaymentSummary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={AccountRoutes.allAccounts}
           component={AllAccounts}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={AccountRoutes.receipt}
           component={Receipt}
         />
-        <ProtectedRoute exact path={AccountRoutes.detail} component={Details} />
-        <ProtectedRoute
+        <Route exact path={AccountRoutes.detail} component={Details} />
+        <Route
           exact
           path={AccountRoutes.editAccount}
           component={EditAccount}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PaymentRoutes.barcodePayment}
           component={PaymentHome}
         />
-        <ProtectedRoute exact path={AccountRoutes.home} component={Home} />
-        <ProtectedRoute
+        <Route exact path={AccountRoutes.home} component={Home} />
+        <Route
           exact
           path={TransferenceRoutes.favoredIdentification}
           component={FavoredIdentification}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.favoredName}
           component={FavoredName}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.selectBank}
           component={SelectBank}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.selectAccountType}
           component={SelectAccountType}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.bankBranch}
           component={BankBranch}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.accountNumber}
           component={AccountNumber}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.attachDocuments}
           component={AttachDocuments}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.processTransfer}
           component={TransferProcess}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.favoredAccountSelection}
           component={FavoredAccountSelection}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.schedule}
           component={ScheduleTransfer}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.summary}
           component={Summary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.description}
           component={TransferDescription}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.voucherTransfer}
           component={TransferReceipt}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.value}
           component={TransferValue}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TransferenceRoutes.transference}
           component={Transference}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.cardManagement}
           component={CardManagement}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.cardOption}
           component={CardOption}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.enterCurrentPassword}
           component={EnterCurrentPassword}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.enterNewPassword}
           component={EnterNewPassword}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.confirmNewPassword}
           component={ConfirmNewPassword}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.cancel}
           component={CancellationReplacementCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.cancelReason}
           component={CancelReason}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.cancelWarning}
           component={CancelCardAlert}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.reissueReason}
           component={BlockingReason}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.reissueWarning}
           component={BlockCardAlert}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.address}
           component={AddressConfirmation}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.reissueDetails}
           component={ReplacementDetails}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.updateAddress}
           component={UpdateAddress}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.associateNewCard}
           component={AssociateNewCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.activeFourDigits}
           component={AssociateFourDigits}
         />
-        <ProtectedRoute
+        <Route
           path={CardRoutes.invalidDataForCard}
           component={InvalidDataForAssociateCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.associateNewCardCheck}
           component={AssociateNewCardCheckData}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.associateMotherNameCard}
           component={AssociateMotherNameCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.associateNationalityCard}
           component={AssociateNationalityCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.associateNameUserCard}
           component={AssociateNameUserCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.associateBirthDateCard}
           component={AssociateBirthDateCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.associateGenderUserCard}
           component={AssociateGenderUserCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.associateMaritalStatusCard}
           component={AssociateMaritalStatusCard}
         />
 
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.concludeAssociateCard}
           component={ConcludeAssociateCard}
         />
 
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.otherPayment}
           component={TaxPaymentHome}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentDarj}
           component={PaymentDarj}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentDarjType}
           component={PaymentDarjType}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentDarjCodeNumber}
           component={PaymentDarjCodeNumber}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentDarjValues}
           component={PaymentDarjValues}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentDarjDueDate}
           component={PaymentDarjDueDate}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentDarjDescription}
           component={PaymentDarjDescription}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentDarjSummary}
           component={PaymentDarjSummary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentDarjConclude}
           component={ConclusionFlow}
         />
 
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentGare}
           component={PaymentGare}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentGareType}
           component={PaymentGareDateType}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentGareCodeNumber}
           component={PaymentGareCodeNumber}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentGareValues}
           component={PaymentGareValues}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentGareDueDate}
           component={PaymentGareDueDate}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentGareDescription}
           component={PaymentGareDescription}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentGareSummary}
           component={PaymentGareSummary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentGareConclude}
           component={ConclusionFlow}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentFgts}
           component={PaymentFgts}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentFgtsBarCode}
           component={PaymentFgtsBarCode}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentFgtsCodeRevenue}
           component={PaymentFgtsCodeRevenue}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentFgtsValues}
           component={PaymentFgtsValues}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentFgtsIdentifier}
           component={PaymentFgtsIdentifier}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentFgtsDate}
           component={PaymentFgtsDate}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentFgtsDescription}
           component={PaymentFgtsDescription}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentFgtsSummary}
           component={PaymentFgtsSummary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TaxPaymentRoutes.paymentFgtsConclude}
           component={ConclusionFlow}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TopUpRoutes.topUpSchedule}
           component={TopUpSchedule}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TopUpRoutes.topUpNumber}
           component={TopUpNumber}
         />
-        <ProtectedRoute exact path={TopUpRoutes.topUp} component={TopUp} />
-        <ProtectedRoute
+        <Route exact path={TopUpRoutes.topUp} component={TopUp} />
+        <Route
           exact
           path={TopUpRoutes.periodicRepetition}
           component={PeriodicRepetition}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TopUpRoutes.completeTopUp}
           component={CompleteTopUp}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TopUpRoutes.checkDataTopUp}
           component={CheckDataTopUp}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TopUpRoutes.topUpValue}
           component={TopUpValue}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TopUpRoutes.concludeTopUp}
           component={ConclusionFlow}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.activateCard}
           component={ActivateCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.activateCardConclude}
           component={ActivateCardConclude}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.passwordCard}
           component={PasswordCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.confirmPasswordCard}
           component={ConfirmPasswordCard}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={CardRoutes.confirmationActivate}
           component={ConfirmationActivate}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={DigitalWithdrawalRoutes.digitalWithdrawalStart}
           component={DigitalWithdrawalStart}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={DigitalWithdrawalRoutes.selectValue}
           component={SelectValue}
         />
-        <ProtectedRoute
+        <Route
           path={DigitalWithdrawalRoutes.moneyCount}
           component={MoneyCount}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={DigitalWithdrawalRoutes.digitalWithdrawalSuccess}
           component={DigitalWithdrawalSuccess}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={DigitalWithdrawalRoutes.digitalWithdrawReceipt}
           component={DigitalWithdrawalReceipt}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={DigitalWithdrawalRoutes.digitalWithdrawalSummary}
           component={DigitalWithdrawalSummary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={DigitalWithdrawalRoutes.readQrCodeDigitalWithdrawal}
           component={ReadQrCodeDigitalWithdrawal}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={TopUpRoutes.cancelPeriodicTopUp}
           component={CancelPeriodicRepetition}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.firstAccess}
           component={FirstAccess}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.pixArea}
           component={WithFirstAccessControl(PixArea, PixRoutes.firstAccess)}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.firstAccessMyKeys}
           component={FirstAccessPixKeyList}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.pixKeyList}
           component={WithFirstAccessControl(
@@ -1010,147 +1010,147 @@ export const Router: React.FC = () => {
             PixRoutes.firstAccessMyKeys,
           )}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.confirmEmailPixKeyToken}
           component={ConfirmEmailPixKey}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.confirmPhoneNumberPixKeyToken}
           component={ConfirmPhoneNumberPixKey}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.createTaxIdPixKey}
           component={CreateTaxIdPixKey}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.createEmailPixKey}
           component={CreateEmailPixKey}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.createPhoneNumberPixKey}
           component={CreatePhoneNumberPixKey}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.createRandomPixKey}
           component={CreateRandomPixKey}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.pixTransferHome}
           component={PixTransferHome}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.keyPixTransfer}
           component={KeyPixTransfer}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.keyPixTransferPayeeInfo}
           component={KeyPixTransferPayeeInfo}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.keyPixTransferValue}
           component={KeyPixTransferValue}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.keyPixTransferDescription}
           component={KeyPixTransferDescription}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.keyPixTransferSummary}
           component={KeyPixTransferSummary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.pixTransferProcess}
           component={PixTransferProcess}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.bankPixTransferPayeeName}
           component={BankPixTransferPayeeName}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.bankPixTransferPayeeTaxId}
           component={BankPixTransferPayeeTaxId}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.bankPixTransferSelectBank}
           component={BankPixTransferSelectBank}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.bankPixTransferAccountType}
           component={BankPixTransferAccountType}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.bankDataPixTransferBranch}
           component={BankDataPixTransferBranch}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.bankDataPixTransferAccount}
           component={BankDataPixTransferAccount}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.bankPixTransferValue}
           component={BankPixTransferValue}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.bankPixTransferDescription}
           component={BankPixTransferDescription}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.bankPixTransferSummary}
           component={BankPixTransferSummary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.qrCodePixTransferScanner}
           component={QrCodePixTransferScanner}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.qrCodePixTransferValue}
           component={QrCodePixTransferValue}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.qrCodePixTransferDescription}
           component={QrCodePixTransferDescription}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.qrCodePixTransferSummary}
           component={QrCodePixTransferSummary}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.receivePixTransferQrCode}
           component={ReceivePixTransferQrCode}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.receivePixTransferQrCodeValue}
           component={ReceivePixTransferQrCodeValue}
         />
-        <ProtectedRoute
+        <Route
           exact
           path={PixRoutes.receivePixTransferQrCodeCheck}
           component={ReceivePixTransferQrCodeCheck}
