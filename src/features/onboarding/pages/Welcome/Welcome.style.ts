@@ -1,27 +1,25 @@
 import { makeStyles } from '@material-ui/core'
 import { colors, theme } from '_config/theme'
-import welcomeBackground from '_assets/img/loginBackground.svg'
+import welcomeImg from '_assets/img/welcome-img.svg'
 
 export const useOnboardingStyles = makeStyles({
 
   container: {
     display: 'flex',
     overflow: 'hidden',
-    alignItems: 'center',
     backgroundColor: colors.system.light.primary,
-    backgroundImage: `url(${welcomeBackground})`,
     backgroundPosition: 'top',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '900px',
 
     [theme.breakpoints.up('md')]: {
-      padding: '0 80px',
+      padding: '0 50px',
     },
     [theme.breakpoints.down('md')]: {
-      padding: '0 72px',
+      padding: '0 42px',
     },
     [theme.breakpoints.down('xs')]: {
-      padding: '0 64px',
+      padding: '0 34px',
     },
   },
   
@@ -36,15 +34,30 @@ export const useOnboardingStyles = makeStyles({
     },
   },
 
+
   logo: {
+    padding: '41px 0px',
+    marginLeft: '0',
     marginBottom: 72,
   },
 
+  containerImg: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '45vh',
+  },
+
+  img:{
+
+  },
+
   title: {
-    marginBottom: 64,
+    marginBottom: 4,
+    fontFamily: 'Baloo Bhaina',
     color: colors.system.light.onPrimary,
     [theme.breakpoints.down('xs')]: {
-      marginBottom: 48,
+      marginBottom: 8,
     },
   },
 
@@ -53,7 +66,7 @@ export const useOnboardingStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'space-between',
     position: 'absolute',
-    padding: '230px 64px 0',
+    padding: '100px 64px 0',
     alignContent: 'center',
   },
 

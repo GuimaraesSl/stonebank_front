@@ -17,7 +17,9 @@ export const useStyles = makeStyles({
     alignItems: 'center',
     height: '45vh',
   },
+
   img: {
     height: 200,
   },
+  
 })
