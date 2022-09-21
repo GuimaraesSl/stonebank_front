@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Container, Grid } from '@material-ui/core'
 import { Alert } from 'components/Alert'
@@ -29,7 +29,19 @@ import { SaveTaxId } from 'features/authentication/components/SaveTaxId'
 import { SwitchIOS } from 'components/SwitchIOS'
 import { CookiesProvider, useCookies } from 'react-cookie'
 
+// import useSWR from 'swr'
+// import { fetchAccount } from 'mocks/fetchers'
+
 export const SignIn: React.FC = () => {
+  // const { data, error } = useSWR("/api/accounts", fetchAccount)
+  
+  // useEffect(() => {
+  //   // eslint-disable-next-line no-console
+  //   if (data) console.log("data: " + JSON.stringify(data, null, 2))
+  //   // eslint-disable-next-line no-console
+  //   if (error) console.log("error: " + JSON.stringify(error, null, 2))
+  // }, [data, error])
+
   const [passwordInput, setPasswordInput] = React.useState('')
   const authState = useSelector((state: StoreState) => state.auth)
   const dispatch = useDispatch()

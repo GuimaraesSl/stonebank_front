@@ -7,8 +7,11 @@ import { StoreProvider } from 'redux/StoreProvider'
 import { useStyle } from './App.style'
 import { datePickerLocale } from '_translate'
 import { ConfigContextProvider } from '_config'
+import { makeServer } from 'mocks/mirage'
 
 export const App: React.FC = () => {
+  makeServer({ environment: "development" })
+
   const style = useStyle()
 
   return (
