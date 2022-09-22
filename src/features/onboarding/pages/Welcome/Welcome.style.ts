@@ -8,9 +8,6 @@ export const useOnboardingStyles = makeStyles({
     display: 'flex',
     overflow: 'hidden',
     backgroundColor: colors.system.light.primary,
-    backgroundPosition: 'top',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '900px',
 
     [theme.breakpoints.up('md')]: {
       padding: '0 50px',
@@ -21,6 +18,7 @@ export const useOnboardingStyles = makeStyles({
     [theme.breakpoints.down('xs')]: {
       padding: '0 34px',
     },
+    
   },
   
   content: {
@@ -32,12 +30,6 @@ export const useOnboardingStyles = makeStyles({
       marginTop: '10px',
       marginBottom: '64px',
     },
-  },
-
-
-  logo: {
-    padding: '49px 0 14px 0',
-    marginLeft: '0',
   },
 
   containerImg: {

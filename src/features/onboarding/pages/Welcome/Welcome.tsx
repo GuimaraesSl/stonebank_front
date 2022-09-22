@@ -3,13 +3,14 @@ import { useHistory } from 'react-router'
 import { Grid, Box, Typography } from '@material-ui/core'
 import { OnboardingSubTitle } from 'features/onboarding/components/texts/OnboardingSubtitle'
 import { OnboardingTitle } from 'features/onboarding/components/texts/OnboardingTitle'
-import { WelcomePageButton } from 'features/onboarding/components/buttons/WelcomePageButton'
 import { AuthenticationRoutes } from 'features/authentication/constants/routes'
 import { AccountRoutes } from 'features/account/constants/routes'
 import { useToken } from 'hooks/useToken'
 import { PageContainer } from 'components/PageContainer'
 import { useOnboardingStyles } from './Welcome.style'
 import { Icon } from 'components/Icon'
+import { LogoBar } from 'components/LogoBar'
+import { GreatButton } from 'components/GreatButton'
 
 export const Welcome: React.FC = () => {
   const styles = useOnboardingStyles()
@@ -30,22 +31,8 @@ export const Welcome: React.FC = () => {
         className={styles.content}
       >
 
-        <Grid
-          container
-          direction="row"
-          justifyContent="flex-start"
-        >
+        <LogoBar/>
 
-          <Grid 
-            item
-            className={styles.logo}
-            data-test-id="logo"
-            >
-              <Icon name={'logo'} />
-          </Grid>
-
-        </Grid>
-      
         <Grid
           container
           direction="column"
@@ -80,14 +67,17 @@ export const Welcome: React.FC = () => {
           >
 
             <Grid item className={styles.onboardingButtonWrapper}>
-              <WelcomePageButton
-                palette="primary"
+              <GreatButton
+                palette="secondary"
                 size="large"
                 route={AuthenticationRoutes.signIn}
+                id="welcome-page-button"
               >
                 Fazer Login
-              </WelcomePageButton>
+              </GreatButton>
             </Grid>
+
+
 
           </Grid>
 

@@ -1,13 +1,18 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import { useStyles } from './LoginButton.style'
+import { useStyles, StylesProps } from 'components/GreatButton/GreatButton.style'
 
-interface LoginButtonProps {
+interface LoginButtonProps  extends StylesProps{
   disabled: boolean
 }
 
-export const LoginButton: React.FC<LoginButtonProps> = ({ disabled }) => {
-  const styles = useStyles()
+export const LoginButton: React.FC<LoginButtonProps> = ({ 
+  disabled,
+  size,
+  borderWidth,
+  palette,
+}) => {
+  const styles = useStyles({borderWidth, size, palette})
 
   return (
     <Button
@@ -16,7 +21,7 @@ export const LoginButton: React.FC<LoginButtonProps> = ({ disabled }) => {
       color="primary"
       size="large"
       disableElevation
-      className={styles.loginButton}
+      className={styles.button}
       disabled={disabled}
       type="submit"
       data-test-id="login-button"
