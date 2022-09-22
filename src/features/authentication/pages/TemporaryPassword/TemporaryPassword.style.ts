@@ -10,46 +10,48 @@ export const useOnboardingStyles = makeStyles({
     backgroundColor: colors.system.light.primary,
   },
   content: {
-    marginTop: '150px',
+    marginTop: '40px',
     [theme.breakpoints.down('xs')]: {
-      marginTop: '110px',
+      marginTop: '20px',
     },
   },
+
   logo: {
-    width: '42px',
-    height: 42,
+    width: '210px',
+    height: '260px',
   },
   gridTitle: {
     color: colors.system.light.onPrimary,
     marginTop: 33,
   },
   title: {
-    fontSize: 30,
+    fontSize: 29,
     textAlign: 'center',
     fontWeight: 700,
   },
   subtitle: {
     fontSize: 18,
-    marginTop: 30,
+    marginTop: 8,
     fontWeight: 300,
     textAlign: 'center',
   },
   buttonWrapper: {
-    marginTop: '120px',
+    marginTop: '30px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+
     '&:hover': {
       borderWidth: 2,
     },
     [theme.breakpoints.down('sm')]: {
-      marginTop: '190px',
+      marginTop: '100px',
     },
     [theme.breakpoints.down('md')]: {
-      marginTop: '160px',
+      marginTop: '70px',
     },
     [theme.breakpoints.down('xs')]: {
-      marginTop: '120px',
+      marginTop: '30px',
     },
   },
 })

@@ -178,6 +178,8 @@ import { ReactComponent as PopUpError } from '_assets/img/popUpError.svg'
 import { ReactComponent as IconCodigoQrCode } from '_assets/icons/iconCodigoQrCode.svg'
 import { ReactComponent as IconQrCodeButton } from '_assets/icons/iconQrCodeButton.svg'
 import { ReactComponent as WelcomeImage } from '_assets/img/welcomeImg.svg'
+import { ReactComponent as ForgotPassword } from '_assets/img/forgotPassword.svg'
+
 
 
 
@@ -363,6 +365,7 @@ export const IconTypes = {
   qrCodeCodigo: IconCodigoQrCode,
   qrCodeButton: IconQrCodeButton,
   welcomeImage: WelcomeImage,
+  forgotPassword: ForgotPassword
 }
 
 export interface IconProps {

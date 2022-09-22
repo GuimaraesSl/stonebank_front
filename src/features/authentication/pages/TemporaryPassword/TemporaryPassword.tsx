@@ -6,6 +6,7 @@ import { AuthenticationRoutes } from 'features/authentication/constants/routes'
 import { useOnboardingStyles } from './TemporaryPassword.style'
 import { Button } from 'components/Button'
 import { Icon } from 'components/Icon'
+import { GreatButton } from 'components/GreatButton'
 
 export const TemporaryPassword: React.FC = () => {
   const styles = useOnboardingStyles()
@@ -14,6 +15,7 @@ export const TemporaryPassword: React.FC = () => {
   const createPass = () => {
     history.push(AuthenticationRoutes.changePasswordFirstAccess)
   }
+
   return (
     <PageContainer className={styles.container}>
       <Grid
@@ -23,30 +25,29 @@ export const TemporaryPassword: React.FC = () => {
         className={styles.content}
       >
         <Grid>
-          <Icon name="key" className={styles.logo} />
+          <Icon name="forgotPassword" className={styles.logo} />
         </Grid>
 
         <Grid item className={styles.gridTitle} data-test-id="description-title" >
           <Typography variant="h5" className={styles.title}>
-            Você entrou <br />
-            com uma <br />
+            Você entrou com uma <br />
             senha temporária
           </Typography>
           <Typography variant="h5" className={styles.subtitle} data-test-id="description-subtitle" >
-            Agora você precisa criar <br />
-            uma nova senha
+            Agora você precisa criar uma nova<br />
+            senha
           </Typography>
         </Grid>
 
         <Grid item className={styles.buttonWrapper}>
-          <Button
+          <GreatButton
             size="large"
             palette="secondary"
-            onClick={createPass}
-            data-test-id="create-password"
+            route={AuthenticationRoutes.changePasswordFirstAccess}
+            id="create-password"
           >
-            Criar senha
-          </Button>
+            Nova senha
+          </GreatButton>
         </Grid>
       </Grid>
     </PageContainer>
