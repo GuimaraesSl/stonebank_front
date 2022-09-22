@@ -2,21 +2,24 @@ import React from 'react'
 import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-import { StylesProps, useStyles } from './WelcomePageButton.style'
+import { StylesProps, useStyles } from './GreatButton.style'
 
-interface WelcomePageButtonProps extends StylesProps {
+interface GreatButtonProps extends StylesProps {
   route: string
   disabled?: boolean
+  id: string
 }
 
-export const WelcomePageButton: React.FC<WelcomePageButtonProps> = ({
+export const GreatButton: React.FC<GreatButtonProps> = ({
   route,
   size,
   palette,
   disabled,
   borderWidth,
   children,
+  id,
 }) => {
+  
   const styles = useStyles({ borderWidth, size, palette })
 
   return (
@@ -27,7 +30,7 @@ export const WelcomePageButton: React.FC<WelcomePageButtonProps> = ({
       to={route}
       disabled={disabled}
       fullWidth
-      data-test-id="welcome-page-button"
+      data-test-id={id}
     >
       {children}
     </Button>
