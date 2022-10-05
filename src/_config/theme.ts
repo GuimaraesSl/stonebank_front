@@ -98,7 +98,7 @@ export const colors: Palette = {
       onPrimaryContainer: '',
       secondary: '#5F81A6',
       onSecondary: '#FFFFFF',
-      secondaryContainer: '',
+      secondaryContainer: '#EFFCFF',
       onSecondaryContainer: '',
       tertiary: '',
       onTertiary: '',

@@ -4,6 +4,6 @@ import { colors } from '_config/theme'
 export const useStyle = makeStyles({
   forgotPassword: {
     textAlign: 'center',
-    color: colors.system.light.primary,
+    color: colors.readOnly.light.blackLight,
   },
 })

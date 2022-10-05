@@ -1,53 +1,49 @@
 import { makeStyles } from '@material-ui/core'
-import loginBackground from '_assets/img/loginBackground.svg'
 import { colors, theme } from '_config/theme'
 
 const bottomSpacing = 16
 const screenHeight = window.screen.height
 
-const calculateBackgroundHeight = () => {
-  const baseBackgroundImageHeight = 150
-  return screenHeight / 4 + baseBackgroundImageHeight - bottomSpacing
-}
-const calculateContentTopPadding = (backgroundHeightWeight: number) => {
-  const effectiveBackgroundHeight = backgroundHeight * backgroundHeightWeight
-  let result = screenHeight / 2 - effectiveBackgroundHeight + bottomSpacing
-
-  if (result < 0) result = result * -1
-
-  return result
-}
-
-const backgroundHeight = calculateBackgroundHeight()
-
 export const useStyle = makeStyles({
+  
   container: {
-    minHeight: '100vh',
-    backgroundImage: `url(${loginBackground})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'top',
-    backgroundSize: '900px',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    minHeight: '100vh',    
+    backgroundColor: colors.system.light.secondaryContainer,
   },
+  
+  loginTitle: {
+    color:colors.readOnly.light.blackLight,
+    fontSize: '2.18rem',
+    fontWeight: 700,
+    fontFamily: "'Merriweather Sans', sans-serif",
+    margin: '40px 0 0 0'
+  },
+
   header: {
     color: colors.system.light.primary,
-    marginBottom: 64,
+    marginBottom: 59,
     [theme.breakpoints.down('sm')]: {
-      marginBottom: 48,
+      marginBottom: 39,
     },
   },
+
   forgotPassword: {
-    textAlign: 'center',
+    textAlign: 'right',
+    textDecoration: 'underline',
   },
+
   contentWrapper: {
     paddingBottom: bottomSpacing,
-    [theme.breakpoints.up('sm')]: {
-      paddingTop: calculateContentTopPadding(0.5),
+    [theme.breakpoints.up('md')]: {
+      padding: '0 20px',
     },
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: calculateContentTopPadding(0.5),
+    [theme.breakpoints.down('md')]: {
+      padding: '0 12px',
     },
     [theme.breakpoints.down('xs')]: {
-      paddingTop: calculateContentTopPadding(0.4),
+      padding: '0 4px',
     },
   },
 })

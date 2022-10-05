@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Container, Grid } from '@material-ui/core'
+import { Container, Grid, Typography } from '@material-ui/core'
 import { Alert } from 'components/Alert'
 import { LoginButton } from 'features/authentication/components/LoginButton'
 import { AuthenticationTitle } from 'features/authentication/components/AuthenticationTitle/AuthenticationTitle'
@@ -28,6 +28,8 @@ import { OnboardingRoutes } from 'features/onboarding/constants/routes'
 import { SaveTaxId } from 'features/authentication/components/SaveTaxId'
 import { SwitchIOS } from 'components/SwitchIOS'
 import { CookiesProvider, useCookies } from 'react-cookie'
+import { colors, theme } from '_config/theme'
+import { GreatButton } from 'components/GreatButton'
 
 export const SignIn: React.FC = () => {
   const [passwordInput, setPasswordInput] = React.useState('')
@@ -129,6 +131,8 @@ export const SignIn: React.FC = () => {
   return (
     <CookiesProvider>
       <Container maxWidth="xs" className={style.container}>
+      
+        {/* SESSION EXPIRED ALERT */}
         {validationToken && (
           <Alert
             title="Aviso!"
@@ -136,6 +140,8 @@ export const SignIn: React.FC = () => {
             severity={'error'}
           />
         )}
+
+        {/* ERROR LAYOUT ALERT */}
         {authState.errorMessage && (
           <Alert
             title="Erro"
@@ -143,6 +149,8 @@ export const SignIn: React.FC = () => {
             severity={'error'}
           />
         )}
+
+        {/* LAYOUT SIGNIN PAGE */}
         <Grid
           container
           direction="column"
@@ -150,35 +158,61 @@ export const SignIn: React.FC = () => {
           component="form"
           onSubmit={onSubmit}
         >
+          <Typography 
+            className={style.loginTitle}
+            align="center"
+            data-test-id="authentication-login"
+          >
+            Login
+          </Typography>
+
           <Grid item className={style.header}>
             <AuthenticationTitle />
           </Grid>
+
           <Grid item container direction="column" spacing={3}>
             <Grid item>
               <TextField
-                variant="filled"
+                variant="outlined"
                 value={
                   localStorage.getItem('TaxId')
                     ? localStorage.getItem('TaxId')!
                     : taxIdInput
                 }
                 inputMode="numeric"
-                label="CPF"
-                placeholder="Digite apenas números"
+                label=""
+                placeholder="CPF - Apenas números"
                 onChange={onCpfChange}
                 data-test-id="taxid-field"
                 disabled={onChange}
               />
             </Grid>
+
             <Grid item>
               <PasswordField
-                variant="filled"
-                placeholder="Digite aqui"
-                label="Senha"
+                variant="outlined"
+                placeholder="Senha"
+                label=""
                 value={passwordInput}
                 onChange={onPasswordChange}
               />
             </Grid>
+
+            <Grid item className={style.forgotPassword}>
+              <ForgotPassword />
+            </Grid>
+            
+
+            <Grid item>
+              <LoginButton
+                disabled={!isValid}
+                palette="primary"
+                size="large"
+              >
+                Entrar
+              </LoginButton>
+            </Grid>
+            
             <Grid item>
               <SaveTaxId
                 text={'Lembre de mim'}
@@ -186,12 +220,7 @@ export const SignIn: React.FC = () => {
                 save={<SwitchIOS checked={switchAlternateState} />}
               />
             </Grid>
-            <Grid item>
-              <LoginButton disabled={!isValid} />
-            </Grid>
-            <Grid item className={style.forgotPassword}>
-              <ForgotPassword />
-            </Grid>
+            
           </Grid>
         </Grid>
         <Loader open={authState instanceof LoadingAuthState} />

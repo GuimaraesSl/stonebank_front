@@ -6,6 +6,7 @@ export interface TextFieldStylesProps {
 }
 
 export const useStyles = makeStyles({
+
   textField: {
     '& .MuiInputLabel-formControl': {
       transform: 'none',
@@ -13,27 +14,34 @@ export const useStyles = makeStyles({
       fontWeight: '500',
       fontSize: '12px',
     },
+
     '& .MuiInputBase-root': {
-      borderRadius: '5px',
-      minHeight: 40,
-      fontSize: 18,
+      borderRadius: '100px',
+      backgroundColor: colors.readOnly.light.white,
+      minHeight: 56,
+      fontSize: 16,
+      fontFamily: "'Baloo Bhaina 2', cursive",
       paddingLeft: 12,
       paddingRight: 14,
+
       border: ({ variant }: TextFieldStylesProps) => {
         switch (variant) {
           case 'outlined':
-            return `0.8px solid ${colors.neutral.shade30}`
+            return `1px solid ${colors.readOnly.light.blackLight}60`
         }
       },
-      boxShadow: ({ variant }: TextFieldStylesProps) => {
-        switch (variant) {
-          case 'filled':
-            return '0px 2px 2px rgba(0, 0, 0, 0.15)'
-        }
-      },
+
+      // boxShadow: ({ variant }: TextFieldStylesProps) => {
+      //   switch (variant) {
+      //     case 'filled':
+      //       return '0px 2px 2px rgba(0, 0, 0, 0.15)'
+      //   }
+      // },
+
       '& .MuiInputBase-input': {
-        padding: '6px 0px 7px 0px',
-        textAlign: 'center',
+        padding: '0px 0px 0px 10px',
+        textAlign: 'left',
+        color: colors.readOnly.light.blackLight,
 
         '&.MuiInputBase-inputAdornedStart': {
           marginLeft: -28,
@@ -51,6 +59,7 @@ export const useStyles = makeStyles({
         borderBottom: 'none',
       },
   },
+
   textFieldError: {
     '& .MuiInputBase-root': {
       borderRadius: '5px',
