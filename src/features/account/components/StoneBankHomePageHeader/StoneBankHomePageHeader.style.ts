@@ -3,7 +3,7 @@ import { colors } from "_config/theme";
 
 export const useStyle = makeStyles({
   menuHeader: {
-    padding: '20px 15px 5px 15px'
+    padding: '20px 20px 5px 15px'
   },
   searchBox: {
     backgroundColor: "#FFF",
@@ -23,7 +23,7 @@ export const useStyle = makeStyles({
     position: "relative",
     width: "100%",
     color: colors.readOnly.light.white,
-    backgroundColor: "#117E9B",
+    backgroundColor: "#117E9B", // #117E9B, #DB3E4D, #2CB060
     borderRadius: `0px 0px 12px 12px`,
     boxShadow: `0px 2px 4px rgba(0, 0, 0, 0.25);`,
 

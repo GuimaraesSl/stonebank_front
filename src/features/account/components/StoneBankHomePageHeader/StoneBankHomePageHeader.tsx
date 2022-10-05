@@ -9,7 +9,9 @@ import {
 } from "@material-ui/core";
 import { Person, SearchOutlined, Visibility, VisibilityOff } from "@material-ui/icons";
 import MenuIcon from '@material-ui/icons/Menu';
+import BrightnessMediumIcon from '@material-ui/icons/BrightnessMedium';
 import { Divider } from "components/Divider";
+import { Icon } from "components/Icon";
 import { useState } from "react";
 import { useStyle } from "./StoneBankHomePageHeader.style";
 
@@ -35,7 +37,30 @@ export const StoneBankHomePageHeader: React.FC<HomePageHeaderProps> = ({
     <Box>
       <Box className={_getClassName()}>
         <Box className={styles.menuHeader}>
-          <MenuIcon />
+          <Grid container style={{ justifyContent: 'space-between' }}>
+            <Grid item>
+              <Grid container spacing={2}>
+                <Grid item>
+                  <MenuIcon />
+                </Grid>
+                <Grid item>
+                  <Icon name={'logoSmallStonebank'} />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item>
+              <Grid container spacing={2}>
+                <Grid item>
+                  <BrightnessMediumIcon />
+                </Grid>
+                <Grid item>
+                  <Typography style={{ fontSize: '16px', fontWeight: '500', fontFamily: 'Roboto' }}>
+                    {`A- ‎‎ A+`}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
         </Box>
         <CardContent style={{ paddingBottom: '40px' }}>
           <Box className={styles.greetingsSection}>
