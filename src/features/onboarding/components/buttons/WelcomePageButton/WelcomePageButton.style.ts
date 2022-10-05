@@ -9,13 +9,17 @@ export interface StylesProps {
 
 export const useStyles = makeStyles({
   button: {
+    fontFamily: "'Baloo Bhaina 2', cursiva",
+    fontWeight: 700,
     textTransform: 'none',
     borderStyle: 'solid',
-    height: ({ size }: StylesProps) => (size === 'large' ? 48 : 38),
-    minWidth: ({ size }: StylesProps) => (size === 'large' ? 280 : 170),
+    height: ({ size }: StylesProps) => (size === 'large' ? 56 : 46),
+    minWidth: ({ size }: StylesProps) => (size === 'large' ? 303 : 196),
+    padding: '6px 0 0 0',
 
     fontSize: ({ size }: StylesProps) =>
-      size === 'large' ? '1.25rem' : '0.75rem',
+      size === 'large' ? '1.125rem' : '0.625rem',
+
     backgroundColor: ({ palette }: StylesProps) =>
       palette === 'primary' ? colors.readOnly.light.white : 'transparent',
 
@@ -24,14 +28,16 @@ export const useStyles = makeStyles({
         ? 'none'
         : `1px solid ${colors.readOnly.light.white}`,
 
+    borderRadius: 100,
+
     color: ({ palette }: StylesProps) =>
       palette === 'primary'
-        ? colors.readOnly.light.black
+        ? colors.readOnly.light.blackLight
         : colors.readOnly.light.white,
 
     '&:hover': {
       backgroundColor: theme.palette.secondary.main,
-      color: colors.readOnly.light.black,
+      color: colors.readOnly.light.blackLight,
       border: 'none',
     },
   },

@@ -1,27 +1,25 @@
 import { makeStyles } from '@material-ui/core'
 import { colors, theme } from '_config/theme'
-import welcomeBackground from '_assets/img/loginBackground.svg'
+import welcomeImg from '_assets/img/welcome-img.svg'
 
 export const useOnboardingStyles = makeStyles({
 
   container: {
     display: 'flex',
     overflow: 'hidden',
-    alignItems: 'center',
     backgroundColor: colors.system.light.primary,
-    backgroundImage: `url(${welcomeBackground})`,
     backgroundPosition: 'top',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '900px',
 
     [theme.breakpoints.up('md')]: {
-      padding: '0 80px',
+      padding: '0 50px',
     },
     [theme.breakpoints.down('md')]: {
-      padding: '0 72px',
+      padding: '0 42px',
     },
     [theme.breakpoints.down('xs')]: {
-      padding: '0 64px',
+      padding: '0 34px',
     },
   },
   
@@ -36,15 +34,30 @@ export const useOnboardingStyles = makeStyles({
     },
   },
 
+
   logo: {
-    marginBottom: 72,
+    padding: '49px 0 14px 0',
+    marginLeft: '0',
+  },
+
+  containerImg: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '30vh',
   },
 
   title: {
-    marginBottom: 64,
+    color: colors.system.light.onPrimary,
+    textAlign: 'center',
+    padding: '13px 0 10px 0',
+  },
+
+  subtitle: {
+    marginBottom: 4,
     color: colors.system.light.onPrimary,
     [theme.breakpoints.down('xs')]: {
-      marginBottom: 48,
+      marginBottom: 8,
     },
   },
 
@@ -52,8 +65,7 @@ export const useOnboardingStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    position: 'absolute',
-    padding: '230px 64px 0',
+    margin: '45px 0 0 0', //cima direita baixo esquerda
     alignContent: 'center',
   },
 
@@ -75,4 +87,5 @@ export const useOnboardingStyles = makeStyles({
       borderWidth: 2,
     },
   },
+
 })

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import { Grid } from '@material-ui/core'
+import { Grid, Box, Typography } from '@material-ui/core'
+import { OnboardingSubTitle } from 'features/onboarding/components/texts/OnboardingSubtitle'
 import { OnboardingTitle } from 'features/onboarding/components/texts/OnboardingTitle'
 import { WelcomePageButton } from 'features/onboarding/components/buttons/WelcomePageButton'
 import { AuthenticationRoutes } from 'features/authentication/constants/routes'
@@ -20,49 +21,80 @@ export const Welcome: React.FC = () => {
   }, [history, token])
 
   return (
+
     <PageContainer className={styles.container}>
-
-
-      {/* LOGO + TITLE */}
 
       <Grid
         container
         direction="column"
-        alignItems="center"
         className={styles.content}
       >
-        
-        <Grid item className={styles.logo} data-test-id="logo">
-          <Icon name={'logo'} />
-        </Grid>
 
-        <Grid item className={styles.title}>
-          <OnboardingTitle />
-        </Grid>
-
-
-        {/* BOTÃO FAZER LOGIN */}
         <Grid
-          item
           container
-          direction="column"
-          spacing={2}
-          className={styles.buttonsSection}
+          direction="row"
+          justifyContent="flex-start"
         >
 
-          <Grid item className={styles.onboardingButtonWrapper}>
-            <WelcomePageButton
-              palette="primary"
-              size="large"
-              borderWidth={2}
-              route={AuthenticationRoutes.signIn}
+          <Grid 
+            item
+            className={styles.logo}
+            data-test-id="logo"
             >
-              Entrar na minha conta
-            </WelcomePageButton>
+              <Icon name={'logo'} />
           </Grid>
 
         </Grid>
+      
+        <Grid
+          container
+          direction="column"
+          alignItems="center"
+          alignContent="center"
+        >
+
+          {/* WELCOME IMAGE concludedImage */}
+          <Box
+            className={styles.containerImg}
+            data-test-id="welcomeImage"
+          >
+            <Icon name="welcomeImage"/>
+          </Box>
+
+          {/* ONBOARDING TITLE  */}
+          <Grid item className={styles.title}>
+            <OnboardingTitle />
+          </Grid>
+
+          {/* ONBOARDING SUBTITLE */}
+          <Grid item className={styles.subtitle}>
+            <OnboardingSubTitle />
+          </Grid>
+
+          {/* BOTÃO LOGIN */}
+          <Grid
+            item
+            container
+            direction="column"
+            className={styles.buttonsSection}
+          >
+
+            <Grid item className={styles.onboardingButtonWrapper}>
+              <WelcomePageButton
+                palette="primary"
+                size="large"
+                route={AuthenticationRoutes.signIn}
+              >
+                Fazer Login
+              </WelcomePageButton>
+            </Grid>
+
+          </Grid>
+
+        </Grid>
+
       </Grid>
+
     </PageContainer>
   )
 }

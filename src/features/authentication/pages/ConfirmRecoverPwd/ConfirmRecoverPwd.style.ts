@@ -5,12 +5,14 @@ export const useStyles = makeStyles({
     padding: 16,
     flex: 1,
   },
+
   title: {
     fontSize: '36px',
     fontWeight: 700,
     textAlign: 'center',
     margin: '40px 0',
   },
+  
   img: {
     height: 100,
     marginTop: 100,

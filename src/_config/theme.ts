@@ -44,6 +44,7 @@ type SystemColors = {
   inverseSurface: string
   neutral: string
   neutralVariant: string
+  onBoardingBack: string
 }
 
 type ReadOnlyColors = {
@@ -54,6 +55,7 @@ type ReadOnlyColors = {
   surface4: string
   surface5: string
   black: string
+  blackLight: string
   white: string
 }
 
@@ -90,7 +92,7 @@ export const colors: Palette = {
   system: {
 
     light: {
-      primary: '#323751',
+      primary: '#117E9B',
       onPrimary: '#FFFFFF',
       primaryContainer: '',
       onPrimaryContainer: '',
@@ -117,6 +119,7 @@ export const colors: Palette = {
       inverseSurface: '',
       neutral: '#555555',
       neutralVariant: '#40455F',
+      onBoardingBack: '#EFFCFF',
     },
 
     dark: {
@@ -147,6 +150,7 @@ export const colors: Palette = {
       inverseSurface: '',
       neutral: '',
       neutralVariant: '',
+      onBoardingBack: '',
     },
   },
   readOnly: {
@@ -158,6 +162,7 @@ export const colors: Palette = {
       surface4: '',
       surface5: '#323751',
       black: '#000000',
+      blackLight: '#242424',
       white: '#FFFFFF',
     },
     dark: {
@@ -168,9 +173,11 @@ export const colors: Palette = {
       surface4: '',
       surface5: '',
       black: '',
+      blackLight: '',
       white: '',
     },
   },
+
   primary: {
     shade100: '',
     shade99: '',
@@ -186,6 +193,7 @@ export const colors: Palette = {
     shade10: '',
     shade0: '#656982',
   },
+
   secondary: {
     shade100: '',
     shade99: '',
@@ -201,6 +209,7 @@ export const colors: Palette = {
     shade10: '',
     shade0: '',
   },
+
   tertiary: {
     shade100: '',
     shade99: '',
@@ -263,6 +272,7 @@ export const colors: Palette = {
     shade10: '',
     shade0: '',
   },
+  
   source: {
     seed: '#323751',
     primary: '',
