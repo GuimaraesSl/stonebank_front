@@ -1,2 +1,2 @@
 // export * from './pages'
-export { PixRoutes } from './constants/routes'
+export { PixRoutes } from "./constants/routes";

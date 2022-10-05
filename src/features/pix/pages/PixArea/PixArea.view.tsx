@@ -1,42 +1,42 @@
-import React from 'react'
+import React from "react";
 import {
   Button,
   PageContainer,
   ProcessDescriptionHeader,
   ProcessPageFooterButton,
   ProcessPageLayout,
-} from 'components'
-import { Box, Typography } from '@material-ui/core'
-import { SelectionCard } from 'components/SelectionCard'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { AppBar } from 'components/AppBar'
-import { cancelLabel } from 'constants/buttons/labels'
-import { Close } from '@material-ui/icons'
-import { Icon } from 'components/Icon'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { useStyles } from './PixArea.style'
-import { PixButtonConfig } from './components/PixButtonConfig'
-import { Favored } from 'features/pix/redux/models/favored'
-import { RecentFavoredCard } from 'components/RecentFavoredCard'
-import { maskTaxId } from '_utils/masks/taxId'
+} from "components";
+import { Box, Typography } from "@material-ui/core";
+import { SelectionCard } from "components/SelectionCard";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AccountRoutes } from "features/account/constants/routes";
+import { AppBar } from "components/AppBar";
+import { cancelLabel } from "constants/buttons/labels";
+import { Close } from "@material-ui/icons";
+import { Icon } from "components/Icon";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { useStyles } from "./PixArea.style";
+import { PixButtonConfig } from "./components/PixButtonConfig";
+import { Favored } from "features/pix/redux/models/favored";
+import { RecentFavoredCard } from "components/RecentFavoredCard";
+import { maskTaxId } from "_utils/masks/taxId";
 
 interface PixAreaViewProps {
-  onPixKeyListClick: VoidFunction
-  onReceivePixQRCodeClick: VoidFunction
+  onPixKeyListClick: VoidFunction;
+  onReceivePixQRCodeClick: VoidFunction;
   // onHelpClick: VoidFunction
   // onMyLimitsPix: VoidFunction
-  loading: boolean
-  errorMessage: string | undefined
-  favored?: Favored[]
-  onQrCodeTransferClick: VoidFunction
-  onTransferWithKeyClick: VoidFunction
-  onCopyPasteTransferClick: VoidFunction
-  onSelectFavored: (favored: Favored) => void
-  onCloseAlert: VoidFunction
-  onCancelButton: VoidFunction
-  onBackToHome: VoidFunction
+  loading: boolean;
+  errorMessage: string | undefined;
+  favored?: Favored[];
+  onQrCodeTransferClick: VoidFunction;
+  onTransferWithKeyClick: VoidFunction;
+  onCopyPasteTransferClick: VoidFunction;
+  onSelectFavored: (favored: Favored) => void;
+  onCloseAlert: VoidFunction;
+  onCancelButton: VoidFunction;
+  onBackToHome: VoidFunction;
 }
 
 export const PixAreaView: React.FC<PixAreaViewProps> = ({
@@ -55,7 +55,7 @@ export const PixAreaView: React.FC<PixAreaViewProps> = ({
   onSelectFavored,
   onBackToHome,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <PageContainer className={style.container}>
@@ -92,7 +92,11 @@ export const PixAreaView: React.FC<PixAreaViewProps> = ({
                 </Typography>
               </Box>
               <Box className={style.qrCodeTransfer}>
-                <Box className={style.card} onClick={onQrCodeTransferClick} data-test-id="QRcode-button">
+                <Box
+                  className={style.card}
+                  onClick={onQrCodeTransferClick}
+                  data-test-id="QRcode-button"
+                >
                   <Box className={style.iconWrapper}>
                     <Icon name="pixQrCode" />
                   </Box>
@@ -105,7 +109,7 @@ export const PixAreaView: React.FC<PixAreaViewProps> = ({
                 variant="pix"
                 title="Transferir"
                 subtitle="Usando chave ou dados bancários"
-                startIcon={'pixTransfer'}
+                startIcon={"pixTransfer"}
                 className={style.pixPaymentMethodCard}
                 onClick={onTransferWithKeyClick}
               />
@@ -113,7 +117,7 @@ export const PixAreaView: React.FC<PixAreaViewProps> = ({
                 variant="pix"
                 title="PIX Copia e Cola"
                 subtitle="Cole o código"
-                startIcon={'pixCopyPaste'}
+                startIcon={"pixCopyPaste"}
                 className={style.pixPaymentMethodCard}
                 onClick={onCopyPasteTransferClick}
               />
@@ -126,17 +130,21 @@ export const PixAreaView: React.FC<PixAreaViewProps> = ({
                 variant="pix"
                 title="Cobrar e Receber"
                 subtitle="Cobre com o PIX"
-                startIcon={'pixCharge'}
+                startIcon={"pixCharge"}
                 className={style.collectAndReceipt}
                 onClick={onReceivePixQRCodeClick}
               />
             </Box>
             <Box component="section">
-              <Typography variant="subtitle1" className={style.title} data-test-id="favored-subtitle">
+              <Typography
+                variant="subtitle1"
+                className={style.title}
+                data-test-id="favored-subtitle"
+              >
                 Recentes
               </Typography>
               <Box className={style.favoredList}>
-                {favored?.map(favored => (
+                {favored?.map((favored) => (
                   <RecentFavoredCard
                     name={favored.name!}
                     taxId={maskTaxId(favored.taxId!)}
@@ -151,19 +159,19 @@ export const PixAreaView: React.FC<PixAreaViewProps> = ({
               <PixButtonConfig
                 title="Minhas chaves"
                 subtitle="Gerencie suas chaves registradas no Fitbank"
-                startIcon={'pixKeys'}
+                startIcon={"pixKeys"}
                 onClick={onPixKeyListClick}
               />
               <PixButtonConfig
                 title="Meus limites Pix"
                 subtitle="Consulte e solicite alterações nos seus limites"
-                startIcon={'pixLimits'}
+                startIcon={"pixLimits"}
                 // onClick={onMyLimitsPix}
               />
               <PixButtonConfig
                 title="Precisa de ajuda?"
                 subtitle="Podemos te ajudar"
-                startIcon={'pixHelp'}
+                startIcon={"pixHelp"}
                 // onClick={onHelpClick}
               />
             </Box>
@@ -186,10 +194,10 @@ export const PixAreaView: React.FC<PixAreaViewProps> = ({
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onCloseAlert}
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

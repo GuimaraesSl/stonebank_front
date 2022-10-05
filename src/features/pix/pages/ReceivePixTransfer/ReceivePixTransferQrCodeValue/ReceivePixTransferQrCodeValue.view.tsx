@@ -1,53 +1,53 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { cancelLabel } from 'constants/buttons/labels'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { Box, Grid, MenuItem } from '@material-ui/core'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AccountRoutes } from "features/account/constants/routes";
+import { cancelLabel } from "constants/buttons/labels";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { Box, Grid, MenuItem } from "@material-ui/core";
 import {
   ProcessPageFooterButton,
   TextField,
   TransparentTextField,
-} from 'components'
-import { ErrorMessage } from 'components/ErrorMessage'
-import { ActionListItem } from 'components/ActionListItem'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { useStyles } from './ReceivePixTransferQrCodeValue.style'
-import { SelectionButton } from 'features/pix/components/SelectionButton'
-import { maskCnpj, maskCpf } from '_utils/masks/taxPayer'
-import { PixKeyType } from 'features/pix/redux/models/pixKeyType'
-import { maskPhone } from '_utils/masks/phone'
-import { Icon } from 'components/Icon'
-import { HelpPixQrCode } from './components/HelpPixQrCode'
-import { PixKey } from 'features/pix/redux/models/pixKey'
+} from "components";
+import { ErrorMessage } from "components/ErrorMessage";
+import { ActionListItem } from "components/ActionListItem";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { useStyles } from "./ReceivePixTransferQrCodeValue.style";
+import { SelectionButton } from "features/pix/components/SelectionButton";
+import { maskCnpj, maskCpf } from "_utils/masks/taxPayer";
+import { PixKeyType } from "features/pix/redux/models/pixKeyType";
+import { maskPhone } from "_utils/masks/phone";
+import { Icon } from "components/Icon";
+import { HelpPixQrCode } from "./components/HelpPixQrCode";
+import { PixKey } from "features/pix/redux/models/pixKey";
 
 interface ReceivePixTransferQrCodeValueViewProps {
-  onCancelButtonClick: VoidFunction
-  isValidValue: boolean
-  valueInput: string
-  onSubmit: (e: React.FormEvent) => void
-  onConfirmButtonClick: VoidFunction
-  onValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onDescriptionChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  description: string
-  onIdentifierChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onDoubtClick: VoidFunction
-  onHelpClick: VoidFunction
-  onHelpPixQRCode: boolean
-  onHelpPixQRCodeClose: Function | ((HelpPixQRCodeValid: boolean) => void)
-  loading: boolean
-  errorMessage: string | undefined
-  onAlertClose: VoidFunction
-  Identifier: { id: string; value: string }[]
-  optionalIdentifier: string
-  pixKeyType?: number
-  payeeValue?: string
-  pixKey: PixKey
+  onCancelButtonClick: VoidFunction;
+  isValidValue: boolean;
+  valueInput: string;
+  onSubmit: (e: React.FormEvent) => void;
+  onConfirmButtonClick: VoidFunction;
+  onValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onDescriptionChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  description: string;
+  onIdentifierChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onDoubtClick: VoidFunction;
+  onHelpClick: VoidFunction;
+  onHelpPixQRCode: boolean;
+  onHelpPixQRCodeClose: Function | ((HelpPixQRCodeValid: boolean) => void);
+  loading: boolean;
+  errorMessage: string | undefined;
+  onAlertClose: VoidFunction;
+  Identifier: { id: string; value: string }[];
+  optionalIdentifier: string;
+  pixKeyType?: number;
+  payeeValue?: string;
+  pixKey: PixKey;
 }
 
 export const ReceivePixTransferQrCodeValueView: React.FC<
@@ -72,14 +72,14 @@ export const ReceivePixTransferQrCodeValueView: React.FC<
   optionalIdentifier,
   pixKey,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const applyMaskPixKey = (keyType: number, keyValue: string) =>
     keyType === PixKeyType.CPF
       ? maskCpf(keyValue)
       : keyType === PixKeyType.CNPJ
       ? maskCnpj(keyValue)
-      : maskPhone(keyValue)
+      : maskPhone(keyValue);
 
   return (
     <PageContainer>
@@ -134,7 +134,7 @@ export const ReceivePixTransferQrCodeValueView: React.FC<
                 onChange={onIdentifierChange}
                 select
               >
-                {Identifier.map(option => (
+                {Identifier.map((option) => (
                   <MenuItem key={option.id} value={option.id}>
                     {option.value}
                   </MenuItem>
@@ -175,11 +175,11 @@ export const ReceivePixTransferQrCodeValueView: React.FC<
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
       <HelpPixQrCode open={onHelpPixQRCode} onClose={onHelpPixQRCodeClose} />
     </PageContainer>
-  )
-}
+  );
+};

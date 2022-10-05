@@ -1,1 +1,1 @@
-export { ClickHereLink } from './ClickHereLink'
+export { ClickHereLink } from "./ClickHereLink";

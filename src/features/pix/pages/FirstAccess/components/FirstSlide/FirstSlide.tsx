@@ -1,15 +1,15 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { useStyles } from './FirstSlide.style'
-import { SlideContent } from '../SlideContent'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { useStyles } from "./FirstSlide.style";
+import { SlideContent } from "../SlideContent";
+import { Icon } from "components/Icon";
 
 export const FirstSlide: React.FC = () => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const pixIcon = React.useMemo(() => {
-    return <Icon name={'pixFilled'} className={styles.pixIcon} />
-  }, [])
+    return <Icon name={"pixFilled"} className={styles.pixIcon} />;
+  }, []);
 
   return (
     <SlideContent>
@@ -24,5 +24,5 @@ export const FirstSlide: React.FC = () => {
       pagamentos e recebimentos a qualquer dia e horário, inclusive finais de
       semana.
     </SlideContent>
-  )
-}
+  );
+};

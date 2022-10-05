@@ -1,30 +1,30 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { CreatePhoneNumberPixKeyView } from './CreatePhoneNumberPixKey.view'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { PixRoutes } from 'features/pix/constants/routes'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { CreatePhoneNumberPixKeyView } from "./CreatePhoneNumberPixKey.view";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { PixRoutes } from "features/pix/constants/routes";
 import {
   closeAlert,
   createPixKeyAction,
   resendPixKeyTokenAction,
   updateState,
-} from 'features/pix/redux/actions'
-import { maskPhone } from '_utils/masks/phone'
-import { useMask } from 'hooks/useMask'
-import { PixKeyType } from 'features/pix/redux/models/pixKeyType'
+} from "features/pix/redux/actions";
+import { maskPhone } from "_utils/masks/phone";
+import { useMask } from "hooks/useMask";
+import { PixKeyType } from "features/pix/redux/models/pixKeyType";
 
 export const CreatePhoneNumberPixKey: React.FC = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const [phone, setPhone] = useMask(maskPhone)
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [phone, setPhone] = useMask(maskPhone);
 
-  const [onShowAlert, setShowAlert] = React.useState(false)
+  const [onShowAlert, setShowAlert] = React.useState(false);
   const { loading, errorMessage, createPixKey, resendPixKeyToken } =
-    useSelector((store: StoreState) => store.pix)
-  const { account } = useSelector((store: StoreState) => store.account)
+    useSelector((store: StoreState) => store.pix);
+  const { account } = useSelector((store: StoreState) => store.account);
 
-  const { user } = useSelector((store: StoreState) => store.auth)
+  const { user } = useSelector((store: StoreState) => store.auth);
 
   React.useEffect(() => {
     if (createPixKey !== undefined) {
@@ -32,49 +32,49 @@ export const CreatePhoneNumberPixKey: React.FC = () => {
         resendPixKeyTokenAction({
           pixKeyValue: phone,
           pixKeyType: PixKeyType.PhoneNumber,
-        }),
-      )
+        })
+      );
     }
-  }, [createPixKey])
+  }, [createPixKey]);
 
   React.useEffect(() => {
     if (resendPixKeyToken) {
       history.push(PixRoutes.confirmPhoneNumberPixKeyToken, {
         pixKeyValue: phone,
-      })
+      });
     }
-  }, [resendPixKeyToken])
+  }, [resendPixKeyToken]);
 
   React.useEffect(() => {
-    if (user?.phoneNumber) setPhone(user!.phoneNumber)
-    else setPhone('')
-  }, [])
+    if (user?.phoneNumber) setPhone(user!.phoneNumber);
+    else setPhone("");
+  }, []);
 
   const onPhoneNumberChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPhone(event.target.value)
+    setPhone(event.target.value);
 
   const onCancelButtonClick = () => {
-    history.replace(PixRoutes.pixArea)
-  }
+    history.replace(PixRoutes.pixArea);
+  };
 
   const onBackButtonClick = () => {
-    dispatch(updateState())
-    history.goBack()
-  }
+    dispatch(updateState());
+    history.goBack();
+  };
 
   const onCloseAlert = () => {
-    setShowAlert(false)
-  }
+    setShowAlert(false);
+  };
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
-  const onRedirectAlert = () => history.replace(PixRoutes.pixKeyList)
+  const onRedirectAlert = () => history.replace(PixRoutes.pixKeyList);
 
   const onConfirmButtonClick = () => {
-    dispatch(createPixKeyAction(PixKeyType.PhoneNumber, phone))
-  }
+    dispatch(createPixKeyAction(PixKeyType.PhoneNumber, phone));
+  };
 
   return (
     <CreatePhoneNumberPixKeyView
@@ -91,5 +91,5 @@ export const CreatePhoneNumberPixKey: React.FC = () => {
       onCancelButtonClick={onCancelButtonClick}
       onBackButtonClick={onBackButtonClick}
     />
-  )
-}
+  );
+};

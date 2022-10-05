@@ -1,5 +1,5 @@
-import { Box, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import { Box, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -9,32 +9,32 @@ import {
   ProcessPageLayout,
   SelectionCard,
   TransparentTextField,
-} from 'components'
-import { ErrorMessage } from 'components/ErrorMessage'
-import { SchedulingButton } from 'components/SchedulingButton'
-import { TransparentDateField } from 'components/TransparentDateFild'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { PixTransfer } from 'features/pix/redux/models/pixTransfer'
-import React from 'react'
-import { maskCnpj, maskCpf } from '_utils/masks/taxId'
-import { useStyles } from './BankPixTransferValue.style'
+} from "components";
+import { ErrorMessage } from "components/ErrorMessage";
+import { SchedulingButton } from "components/SchedulingButton";
+import { TransparentDateField } from "components/TransparentDateFild";
+import { cancelLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { PixTransfer } from "features/pix/redux/models/pixTransfer";
+import React from "react";
+import { maskCnpj, maskCpf } from "_utils/masks/taxId";
+import { useStyles } from "./BankPixTransferValue.style";
 
 interface BankPixTransferValueViewProps {
-  openDatePicker: boolean
-  minDate: Date
-  displayDate: string
-  isValidValue: boolean
-  valueInput: string
-  balanceIsValid?: boolean | undefined
-  payeeData?: PixTransfer
-  onDateChange: (date: Date | null) => void
-  onValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onConfirmButtonClick: VoidFunction
-  onBackButtonClick: VoidFunction
-  onDatePickerClose: VoidFunction
-  onSchedulingButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
+  openDatePicker: boolean;
+  minDate: Date;
+  displayDate: string;
+  isValidValue: boolean;
+  valueInput: string;
+  balanceIsValid?: boolean | undefined;
+  payeeData?: PixTransfer;
+  onDateChange: (date: Date | null) => void;
+  onValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onConfirmButtonClick: VoidFunction;
+  onBackButtonClick: VoidFunction;
+  onDatePickerClose: VoidFunction;
+  onSchedulingButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
 }
 
 export const BankPixTransferValueView: React.FC<
@@ -55,7 +55,7 @@ export const BankPixTransferValueView: React.FC<
   onSchedulingButtonClick,
   onCancelButtonClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <PageContainer className={styles.page}>
@@ -89,7 +89,7 @@ export const BankPixTransferValueView: React.FC<
               </Grid>
               <Grid item>
                 {!balanceIsValid && (
-                  <ErrorMessage message={'Saldo insuficiente'} />
+                  <ErrorMessage message={"Saldo insuficiente"} />
                 )}
               </Grid>
             </Grid>
@@ -127,7 +127,7 @@ export const BankPixTransferValueView: React.FC<
               <SelectionCard
                 variant="pix"
                 id="payee-info-card"
-                title={payeeData?.toName ?? '---'}
+                title={payeeData?.toName ?? "---"}
                 subtitle={
                   payeeData?.toTaxId!.length! === 14
                     ? `CNPJ: ${maskCnpj(payeeData?.toTaxId!)}`
@@ -136,11 +136,11 @@ export const BankPixTransferValueView: React.FC<
                 bank={
                   payeeData?.toBankName
                     ? `Banco: ${payeeData.toBankName}`
-                    : '---'
+                    : "---"
                 }
-                bankAccount={`Conta: ${payeeData?.toBankAccount}` ?? '---'}
-                bankAccountDigit={payeeData?.toBankAccountDigit ?? '---'}
-                bankBranch={`Agência: ${payeeData?.toBankBranch}` ?? '---'}
+                bankAccount={`Conta: ${payeeData?.toBankAccount}` ?? "---"}
+                bankAccountDigit={payeeData?.toBankAccountDigit ?? "---"}
+                bankBranch={`Agência: ${payeeData?.toBankBranch}` ?? "---"}
               />
             </Box>
           </>
@@ -157,5 +157,5 @@ export const BankPixTransferValueView: React.FC<
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

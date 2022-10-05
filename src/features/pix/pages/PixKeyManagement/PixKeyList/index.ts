@@ -1,1 +1,1 @@
-export { PixKeyList } from './PixKeyList.controller'
+export { PixKeyList } from "./PixKeyList.controller";

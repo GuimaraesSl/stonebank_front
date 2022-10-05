@@ -1,1 +1,1 @@
-export { KeyPixTransferPayeeInfo } from './KeyPixTransferPayeeInfo.controller'
+export { KeyPixTransferPayeeInfo } from "./KeyPixTransferPayeeInfo.controller";

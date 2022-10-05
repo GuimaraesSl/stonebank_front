@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   main: {
@@ -11,15 +11,15 @@ export const useStyles = makeStyles({
 
     fontWeight: 500,
     fontSize: 13,
-    lineHeight: '16.9px',
+    lineHeight: "16.9px",
     marginTop: 5,
   },
   contentPage: {
-    '& header': {
+    "& header": {
       backgroundColor: colors.system.light.surface,
     },
-    '& footer': {
+    "& footer": {
       backgroundColor: colors.system.light.surface,
     },
   },
-})
+});

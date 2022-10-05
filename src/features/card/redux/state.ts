@@ -1,22 +1,22 @@
-import { Card } from './models/card'
-import { ChangePinCard } from './models/changePinCard'
-import { User } from 'features/authentication/redux/models/user'
-import { ReasonCode } from './models/reasonCodeEnum'
-import { ActivateCard } from './models/activateCard'
-import { BindUnnamedCard } from './models/BindUnnamedCard'
+import { Card } from "./models/card";
+import { ChangePinCard } from "./models/changePinCard";
+import { User } from "features/authentication/redux/models/user";
+import { ReasonCode } from "./models/reasonCodeEnum";
+import { ActivateCard } from "./models/activateCard";
+import { BindUnnamedCard } from "./models/BindUnnamedCard";
 
 export interface CardState {
-  cards?: Card[]
-  card?: Card
-  changePinCard?: ChangePinCard[]
-  activateCard?: ActivateCard
-  loading: boolean
-  errorMessage?: string
-  bindUnnamedCard?: BindUnnamedCard
+  cards?: Card[];
+  card?: Card;
+  changePinCard?: ChangePinCard[];
+  activateCard?: ActivateCard;
+  loading: boolean;
+  errorMessage?: string;
+  bindUnnamedCard?: BindUnnamedCard;
 }
 export class InitialCardState implements CardState {
-  loading: boolean = false
-  errorMessage?: string
+  loading: boolean = false;
+  errorMessage?: string;
 
   constructor(
     public card?: Card,
@@ -25,13 +25,13 @@ export class InitialCardState implements CardState {
     public reasonCode?: ReasonCode,
     public activateCard?: ActivateCard,
     public cancelCard?: Card,
-    public bindUnnamedCard?: BindUnnamedCard,
+    public bindUnnamedCard?: BindUnnamedCard
   ) {}
 }
 
 export class LoadingCardState implements CardState {
-  loading: boolean = true
-  errorMessage?: string
+  loading: boolean = true;
+  errorMessage?: string;
 
   constructor(
     public card?: Card,
@@ -39,13 +39,13 @@ export class LoadingCardState implements CardState {
     public changePinCard?: ChangePinCard[],
     public activateCard?: ActivateCard,
     public cancelCard?: Card,
-    public bindUnnamedCard?: BindUnnamedCard,
+    public bindUnnamedCard?: BindUnnamedCard
   ) {}
 }
 
 export class SuccessCardState implements CardState {
-  loading: boolean = false
-  errorMessage?: string
+  loading: boolean = false;
+  errorMessage?: string;
 
   constructor(
     public cards: Card[],
@@ -54,37 +54,37 @@ export class SuccessCardState implements CardState {
     public activateCard?: ActivateCard | undefined,
     public inactivateCardAndReissue?: Card | undefined,
     public cancelCard?: Card | undefined,
-    public bindUnnamedCard?: BindUnnamedCard,
+    public bindUnnamedCard?: BindUnnamedCard
   ) {}
 }
 
 export class BlockAndUnBlockCardsState implements CardState {
-  loading: boolean = false
-  errorMessage?: string
+  loading: boolean = false;
+  errorMessage?: string;
 
   constructor(public card?: Card) {}
 }
 
 export class InactivateCardAndReissueState implements CardState {
-  loading: boolean = false
-  errorMessage?: string
+  loading: boolean = false;
+  errorMessage?: string;
 
   constructor(public card: Card) {}
 }
 export class SelectedReasonCode implements CardState {
-  loading: boolean = false
-  errorMessage?: string
+  loading: boolean = false;
+  errorMessage?: string;
 
   constructor(public card: Card) {}
 }
 export class UpdateCard implements CardState {
-  loading: boolean = false
-  errorMessage?: string
+  loading: boolean = false;
+  errorMessage?: string;
 
   constructor(public card: Card) {}
 }
 export class FailCardState implements CardState {
-  loading: boolean = false
+  loading: boolean = false;
 
   constructor(
     public errorMessage: string,
@@ -94,6 +94,6 @@ export class FailCardState implements CardState {
     public activateCard?: ActivateCard,
     public inactivateAndReissueCard?: Card | undefined,
     public cancelCard?: Card | undefined,
-    public bindUnnamedCard?: BindUnnamedCard,
+    public bindUnnamedCard?: BindUnnamedCard
   ) {}
 }

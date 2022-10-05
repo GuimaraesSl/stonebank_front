@@ -1,44 +1,46 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { cancelLabel } from 'constants/buttons/labels'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { Box, Grid, Typography } from '@material-ui/core'
-import { ButtonWithFloatingIcon, SelectionCard } from 'components'
-import { useStyles } from './ReceivePixTransferQrCode.style'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AccountRoutes } from "features/account/constants/routes";
+import { cancelLabel } from "constants/buttons/labels";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { Box, Grid, Typography } from "@material-ui/core";
+import { ButtonWithFloatingIcon, SelectionCard } from "components";
+import { useStyles } from "./ReceivePixTransferQrCode.style";
 // import { PixKeySelection } from '../components/PixKeySelection'
 // import { SelectPixKey } from 'features/pix/redux/models/selectPixKey'
 // import { PixKey } from 'features/pix/redux/models/PixKey'
-import { maskCnpj, maskCpf } from '_utils/masks/taxPayer'
-import { maskPhone } from '_utils/masks/phone'
-import { PixKeyType } from 'features/pix/redux/models/pixKeyType'
+import { maskCnpj, maskCpf } from "_utils/masks/taxPayer";
+import { maskPhone } from "_utils/masks/phone";
+import { PixKeyType } from "features/pix/redux/models/pixKeyType";
 // import { ReactComponent as PixKey } from '_assets/icons/pix-key.svg'
 // import { EmptyListMessage } from '../../Keys/components/EmptyListMessage'
-import { PixQrCode } from 'features/pix/redux/models/pixQrCode'
-import { PixKey } from 'features/pix/redux/models/pixKey'
-import { PixKeySelection } from './components/PixKeySelection'
-import { SharePixQrCode } from '../ReceivePixTransferQrCode/components/SharePixQrCode'
+import { PixQrCode } from "features/pix/redux/models/pixQrCode";
+import { PixKey } from "features/pix/redux/models/pixKey";
+import { PixKeySelection } from "./components/PixKeySelection";
+import { SharePixQrCode } from "../ReceivePixTransferQrCode/components/SharePixQrCode";
 // import { PixKeysDetails } from 'features/pix/redux/models/response/pixKeysDetailsResponse'
 
 interface ReceivePixTransferQrCodeViewProps {
-  onBackButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
-  staticPixQrCode?: PixQrCode
-  onSetValue: VoidFunction
-  onSharePixQrCodeClick: VoidFunction
-  onSharePixQrCode: boolean
-  onSharePixQrCodeClose: Function | ((onPixKeySelectionValid: boolean) => void)
-  onPixKeySelectionClick: VoidFunction
-  onPixKeySelection: boolean
-  onPixKeySelectionClose: Function | ((onPixKeySelectionValid: boolean) => void)
+  onBackButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  staticPixQrCode?: PixQrCode;
+  onSetValue: VoidFunction;
+  onSharePixQrCodeClick: VoidFunction;
+  onSharePixQrCode: boolean;
+  onSharePixQrCodeClose: Function | ((onPixKeySelectionValid: boolean) => void);
+  onPixKeySelectionClick: VoidFunction;
+  onPixKeySelection: boolean;
+  onPixKeySelectionClose:
+    | Function
+    | ((onPixKeySelectionValid: boolean) => void);
   // onKeyClick: (pix: SelectPixKey) => void
-  pixKeyList?: PixKey[]
-  pixKey?: PixKey
+  pixKeyList?: PixKey[];
+  pixKey?: PixKey;
 }
 
 export const ReceivePixTransferQrCodeView: React.FC<
@@ -57,32 +59,32 @@ export const ReceivePixTransferQrCodeView: React.FC<
   pixKeyList,
   pixKey,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const applyMaskPixKey = (keyType: number, keyValue: string) =>
     keyType === PixKeyType.CPF
       ? maskCpf(keyValue)
       : keyType === PixKeyType.CNPJ
       ? maskCnpj(keyValue)
-      : maskPhone(keyValue)
+      : maskPhone(keyValue);
 
   const mapPixKeyTypeToIcon = (keyType: number) =>
     PixKeyType.CPF === keyType || PixKeyType.CNPJ === keyType
-      ? 'pixTaxId'
+      ? "pixTaxId"
       : PixKeyType.Email === keyType
-      ? 'pixMail'
+      ? "pixMail"
       : PixKeyType.PhoneNumber === keyType
-      ? 'pixPhone'
-      : 'pixKey'
+      ? "pixPhone"
+      : "pixKey";
 
   const isRegistered = (keyType?: number) => {
-    const verifyIfKeyExist = pixKeyList?.some(pixKey => {
-      if (keyType === 0 && pixKey.pixKeyType === 1) return true
+    const verifyIfKeyExist = pixKeyList?.some((pixKey) => {
+      if (keyType === 0 && pixKey.pixKeyType === 1) return true;
 
-      return pixKey.pixKeyType === keyType
-    })
-    return verifyIfKeyExist
-  }
+      return pixKey.pixKeyType === keyType;
+    });
+    return verifyIfKeyExist;
+  };
 
   return (
     <PageContainer>
@@ -131,7 +133,12 @@ export const ReceivePixTransferQrCodeView: React.FC<
               </Typography>
             </Grid>
             <Box display="Flex" justifyContent="center">
-              <Button onClick={onSharePixQrCodeClick} data-test-id="share-button">Compartilhe</Button>
+              <Button
+                onClick={onSharePixQrCodeClick}
+                data-test-id="share-button"
+              >
+                Compartilhe
+              </Button>
             </Box>
             <Grid item>
               <Typography className={styles.subtitle} align="center">
@@ -146,7 +153,9 @@ export const ReceivePixTransferQrCodeView: React.FC<
                 Definir valor
               </ButtonWithFloatingIcon>
             </Box>
-            <Typography className={styles.text} data-test-id="select-key">Selecione a chave</Typography>
+            <Typography className={styles.text} data-test-id="select-key">
+              Selecione a chave
+            </Typography>
             <Box
               display="grid"
               gridRowGap={1}
@@ -165,14 +174,14 @@ export const ReceivePixTransferQrCodeView: React.FC<
                         pixKey.pixKeyType! === PixKeyType.PhoneNumber
                           ? applyMaskPixKey(
                               pixKey.pixKeyType!,
-                              pixKey.pixKeyValue!,
+                              pixKey.pixKeyValue!
                             )
                           : pixKey.pixKeyValue
                       }
                       startIcon={mapPixKeyTypeToIcon(pixKey.pixKeyType!)}
                       onClick={onPixKeySelectionClick}
                     />
-                  )
+                  );
                 })
               ) : (
                 <SelectionCard
@@ -183,7 +192,7 @@ export const ReceivePixTransferQrCodeView: React.FC<
                     pixKey?.pixKeyType! === PixKeyType.PhoneNumber
                       ? applyMaskPixKey(
                           pixKey?.pixKeyType!,
-                          pixKey?.pixKeyValue!,
+                          pixKey?.pixKeyValue!
                         )
                       : pixKey?.pixKeyValue
                   }
@@ -206,5 +215,5 @@ export const ReceivePixTransferQrCodeView: React.FC<
       />
       <SharePixQrCode open={onSharePixQrCode} onClose={onSharePixQrCodeClose} />
     </PageContainer>
-  )
-}
+  );
+};

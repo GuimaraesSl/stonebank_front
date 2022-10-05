@@ -1,1 +1,1 @@
-export { TagEditPopUp } from './TagEditPopUp'
+export { TagEditPopUp } from "./TagEditPopUp";

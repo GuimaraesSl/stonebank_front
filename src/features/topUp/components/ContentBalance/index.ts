@@ -1,1 +1,1 @@
-export { ContentBalance } from './ContentBalance'
+export { ContentBalance } from "./ContentBalance";

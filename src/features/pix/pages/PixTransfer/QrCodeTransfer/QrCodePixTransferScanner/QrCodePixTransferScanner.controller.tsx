@@ -1,32 +1,32 @@
-import { PixRoutes } from 'features/pix/constants/routes'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { StoreState } from 'redux/state'
+import { PixRoutes } from "features/pix/constants/routes";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { StoreState } from "redux/state";
 import {
   closeAlert,
   findPixQrCodeInfo,
   updatePixTransfer,
-} from 'features/pix/redux/actions'
-import { QrCodePixTransferScannerView } from './QrCodePixTransferScanner.view'
-import { AccountType } from 'features/pix/redux/models/accountType'
+} from "features/pix/redux/actions";
+import { QrCodePixTransferScannerView } from "./QrCodePixTransferScanner.view";
+import { AccountType } from "features/pix/redux/models/accountType";
 
 export const QrCodePixTransferScanner: React.FC = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [sentRequest, setSentRequest] = React.useState(false)
+  const [sentRequest, setSentRequest] = React.useState(false);
 
   const { pixTransfer, pixQrCodeInfo, errorMessage, loading } = useSelector(
-    (state: StoreState) => state.pix,
-  )
+    (state: StoreState) => state.pix
+  );
 
   React.useEffect(() => {
     if (sentRequest && pixTransfer)
       pixTransfer?.value
         ? history.push(PixRoutes.qrCodePixTransferSummary)
-        : history.push(PixRoutes.qrCodePixTransferValue)
-  }, [pixTransfer])
+        : history.push(PixRoutes.qrCodePixTransferValue);
+  }, [pixTransfer]);
 
   React.useEffect(() => {
     if (sentRequest && pixQrCodeInfo)
@@ -43,39 +43,39 @@ export const QrCodePixTransferScanner: React.FC = () => {
           description: pixQrCodeInfo?.description,
           accountType: convertAccountType(pixQrCodeInfo?.receiverAccountType),
           searchProtocol: pixQrCodeInfo?.searchProtocol,
-        }),
-      )
-  }, [pixQrCodeInfo])
+        })
+      );
+  }, [pixQrCodeInfo]);
 
   const convertAccountType = (accountType?: string) => {
     switch (accountType) {
-      case '0':
-        return AccountType.normal
-      case '1':
-        return AccountType.savings
+      case "0":
+        return AccountType.normal;
+      case "1":
+        return AccountType.savings;
     }
-  }
+  };
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
-  const onScanFail = (e: any) => {}
+  const onScanFail = (e: any) => {};
 
   const onScanComplete = (hash: string | null) => {
     if (hash) {
-      dispatch(findPixQrCodeInfo(hash))
-      setSentRequest(true)
+      dispatch(findPixQrCodeInfo(hash));
+      setSentRequest(true);
     }
-  }
+  };
 
   const onCancelButtonClick = () => {
-    history.push(PixRoutes.pixArea)
-  }
+    history.push(PixRoutes.pixArea);
+  };
 
   const onBackButtonClick = () => {
-    history.push(PixRoutes.pixArea)
-  }
+    history.push(PixRoutes.pixArea);
+  };
 
   return (
     <QrCodePixTransferScannerView
@@ -87,5 +87,5 @@ export const QrCodePixTransferScanner: React.FC = () => {
       onCancelButtonClick={onCancelButtonClick}
       onBackButtonClick={onBackButtonClick}
     />
-  )
-}
+  );
+};

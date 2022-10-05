@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   subInformation: {
@@ -14,10 +14,10 @@ export const useStyles = makeStyles({
     color: colors.system.light.primary,
   },
   content: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    textAlign: 'center',
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    textAlign: "center",
   },
   bank: {
     fontSize: 12,
@@ -44,4 +44,4 @@ export const useStyles = makeStyles({
   btnReadQrCode: {
     marginTop: 20,
   },
-})
+});

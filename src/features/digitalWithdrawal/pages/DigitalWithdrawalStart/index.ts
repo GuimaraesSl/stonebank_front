@@ -1,1 +1,1 @@
-export { DigitalWithdrawalStart } from './DigitalWithdrawalStart'
+export { DigitalWithdrawalStart } from "./DigitalWithdrawalStart";

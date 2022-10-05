@@ -1,5 +1,5 @@
-import { Box } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import { Box } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -7,25 +7,25 @@ import {
   ProcessDescriptionHeader,
   ProcessPageFooterButton,
   ProcessPageLayout,
-} from 'components'
-import { Alert } from 'components/Alert'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
-import { LabelWithValueKeyPix } from 'components/LabelWithValueKeyPix'
-import { Loader } from 'components/Loader'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { PixTransfer } from 'features/pix/redux/models/pixTransfer'
-import React from 'react'
-import { useStyles } from './QrCodePixTransferSummary.style'
+} from "components";
+import { Alert } from "components/Alert";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
+import { LabelWithValueKeyPix } from "components/LabelWithValueKeyPix";
+import { Loader } from "components/Loader";
+import { cancelLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { PixTransfer } from "features/pix/redux/models/pixTransfer";
+import React from "react";
+import { useStyles } from "./QrCodePixTransferSummary.style";
 
 interface QrCodePixTransferSummaryViewProps {
-  pixTransfer?: PixTransfer
-  openAuthorizationSheet: any
-  onAuthorizationClose: Function
-  errorMessage?: string
-  loading: boolean
-  onConfirmButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
+  pixTransfer?: PixTransfer;
+  openAuthorizationSheet: any;
+  onAuthorizationClose: Function;
+  errorMessage?: string;
+  loading: boolean;
+  onConfirmButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
 }
 
 export const QrCodePixTransferSummaryView: React.FC<
@@ -39,7 +39,7 @@ export const QrCodePixTransferSummaryView: React.FC<
   onConfirmButtonClick,
   onCancelButtonClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <PageContainer>
@@ -86,5 +86,5 @@ export const QrCodePixTransferSummaryView: React.FC<
         <Alert title="Error" message={errorMessage} severity="error" />
       )}
     </PageContainer>
-  )
-}
+  );
+};

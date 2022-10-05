@@ -1,17 +1,17 @@
-import { Box, Link, Typography } from '@material-ui/core'
-import React from 'react'
-import { useStyles } from './BarcodeHeader.style'
-import { Close } from '@material-ui/icons'
-import { useHistory } from 'react-router-dom'
-import { Icon } from 'components/Icon'
+import { Box, Link, Typography } from "@material-ui/core";
+import React from "react";
+import { useStyles } from "./BarcodeHeader.style";
+import { Close } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { Icon } from "components/Icon";
 
 export const BarcodeHeader: React.FC = () => {
-  const styles = useStyles()
-  const history = useHistory()
+  const styles = useStyles();
+  const history = useHistory();
 
   const onCancelButtonClick = () => {
-    history.goBack()
-  }
+    history.goBack();
+  };
 
   return (
     <Box>
@@ -22,7 +22,7 @@ export const BarcodeHeader: React.FC = () => {
       </Box>
       <Box className={styles.informationReader}>
         <Typography className={styles.textReader}>
-                  <Icon name={'cameraIconRotate'}  className={styles.cameraIcon} />
+          <Icon name={"cameraIconRotate"} className={styles.cameraIcon} />
           Leitor de código de barras
         </Typography>
         <Link
@@ -36,5 +36,5 @@ export const BarcodeHeader: React.FC = () => {
         </Link>
       </Box>
     </Box>
-  )
-}
+  );
+};

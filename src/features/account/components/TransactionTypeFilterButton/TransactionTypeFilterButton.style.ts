@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config'
-import check from '_assets/icons/Check.svg'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config";
+import check from "_assets/icons/Check.svg";
 
 export const useStyles = makeStyles({
   label: {
@@ -9,17 +9,17 @@ export const useStyles = makeStyles({
   },
 
   mainIcon: {
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: colors.system.light.surface,
     borderRadius: 8,
-    boxShadow: '0px 2px 2px 0px #00000026',
-    display: 'flex',
+    boxShadow: "0px 2px 2px 0px #00000026",
+    display: "flex",
     height: 16,
-    justifyContent: 'center',
-    position: 'relative',
+    justifyContent: "center",
+    position: "relative",
     width: 16,
 
-    '& img': {
+    "& img": {
       height: 12,
       width: 12,
     },
@@ -27,14 +27,14 @@ export const useStyles = makeStyles({
 
   selectedIcon: {
     backgroundColor: colors.system.light.secondary,
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '14px',
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "14px",
     borderRadius: 5,
     height: 10,
-    position: 'absolute',
-    right: '-5px',
-    top: '-5px',
+    position: "absolute",
+    right: "-5px",
+    top: "-5px",
     width: 10,
   },
-})
+});

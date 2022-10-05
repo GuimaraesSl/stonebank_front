@@ -180,10 +180,7 @@ import { ReactComponent as IconQrCodeButton } from '_assets/icons/iconQrCodeButt
 import { ReactComponent as WelcomeImage } from '_assets/img/welcomeImg.svg'
 import { ReactComponent as ForgotPassword } from '_assets/img/forgotPassword.svg'
 
-
-
-
-import { useStyles } from './Icon.style'
+import { useStyles } from "./Icon.style";
 
 export const IconTypes = {
   cameraIconRotate: CameraIconRotate,
@@ -369,14 +366,14 @@ export const IconTypes = {
 }
 
 export interface IconProps {
-  name: keyof typeof IconTypes
-  className?: string
+  name: keyof typeof IconTypes;
+  className?: string;
 }
 
 const IconComponent = ({ name, className }: IconProps) => {
-  const Icon = IconTypes[name]
-  const style = useStyles()
-  return <Icon name={name} className={className + ' ' + style.MuiSvgIcon} />
-}
+  const Icon = IconTypes[name];
+  const style = useStyles();
+  return <Icon name={name} className={className + " " + style.MuiSvgIcon} />;
+};
 
-export { IconComponent as Icon }
+export { IconComponent as Icon };

@@ -1,1 +1,1 @@
-export { EnterMailForSms } from './EnterMailForSms'
+export { EnterMailForSms } from "./EnterMailForSms";

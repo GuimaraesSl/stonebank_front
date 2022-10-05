@@ -1,13 +1,13 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   containerCard: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   card: {
     width: 187,
@@ -20,10 +20,10 @@ export const useStyles = makeStyles({
   headerCardText: {
     fontSize: 12,
     fontWeight: 400,
-    color: '#000000',
-    transform: 'scale(0.993200, 1.106798)',
-    width: '147px',
-    display: 'block',
+    color: "#000000",
+    transform: "scale(0.993200, 1.106798)",
+    width: "147px",
+    display: "block",
   },
   cardContent: {
     paddingTop: 7,
@@ -33,28 +33,28 @@ export const useStyles = makeStyles({
   numberCard: {
     fontWeight: 500,
     fontSize: 12,
-    color: '#000000',
+    color: "#000000",
     width: 122,
     height: 27,
   },
   nameCard: {
     fontSize: 12,
     fontWeight: 400,
-    color: '#000000',
-    display: 'block',
+    color: "#000000",
+    display: "block",
     width: 100,
     height: 19,
   },
   contentNumberCard: {
     marginTop: 13,
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
   },
   contentFlag: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
     marginTop: 2,
   },
   prepagText: {
@@ -68,4 +68,4 @@ export const useStyles = makeStyles({
     width: 39.73,
     height: 14.8,
   },
-})
+});

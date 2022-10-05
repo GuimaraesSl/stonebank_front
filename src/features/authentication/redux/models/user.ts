@@ -16,6 +16,6 @@ export class User {
     public country?: string,
     public isFirstAccess?: boolean,
     public acceptedTerms?: boolean,
-    public tokenAccess?: string,
+    public tokenAccess?: string
   ) {}
 }

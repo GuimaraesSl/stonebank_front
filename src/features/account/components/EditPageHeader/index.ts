@@ -1,1 +1,1 @@
-export { EditPageHeader } from './EditPageHeader'
+export { EditPageHeader } from "./EditPageHeader";

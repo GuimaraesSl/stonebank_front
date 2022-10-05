@@ -1,14 +1,14 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
   listItemText: {
-    textAlign: 'center',
-    '& .MuiListItemText-primary': {
+    textAlign: "center",
+    "& .MuiListItemText-primary": {
       fontSize: 12,
       fontWeight: 400,
-      color: '#333333',
+      color: "#333333",
     },
-    '& .MuiList-root': {
+    "& .MuiList-root": {
       paddingBottom: 0,
     },
   },
@@ -22,6 +22,6 @@ export const useStyles = makeStyles({
     paddingTop: 10,
     paddingBottom: 10,
     marginLeft: 10,
-    marginRight: '-8px',
+    marginRight: "-8px",
   },
-})
+});

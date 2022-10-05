@@ -8,9 +8,9 @@ O projeto está configurado para ser possível fazer imports com caminho absolut
 
 ```typescript
 // Import relativo
-import { http } from '../../_config/http'
+import { http } from "../../_config/http";
 // Import absoluto
-import { http } from '_config/http' // Equivalente à src/_config/http
+import { http } from "_config/http"; // Equivalente à src/_config/http
 ```
 
 ### Uso da biblioteca React
@@ -19,12 +19,12 @@ O uso de recursos da biblioteca React deverá ser feito usando `React.` como pre
 
 ```typescript
 // Hooks
-const [myState, setMyState] = React.useState()
+const [myState, setMyState] = React.useState();
 
 // Types
 const MyComponent: React.FC = () => {
   /* ... */
-}
+};
 ```
 
 ### Componentes
@@ -47,7 +47,7 @@ interface MyComponentProps {
   /* ... */
 }
 
-export const MyComponent: React.FC<MyComponentProps> = ({}) => {}
+export const MyComponent: React.FC<MyComponentProps> = ({}) => {};
 ```
 
 ##### Redux
@@ -57,16 +57,16 @@ A conexão dos componentes com o Redux deve ser feita através de hooks.
 ```typescript
 // ...
 export const MyComponent: React.FC<MyComponentProps> = ({}) => {
-  const myState = useSelector((state: RootState) => state.myState)
+  const myState = useSelector((state: RootState) => state.myState);
   // ou
-  const { data1, data2 } = useSelector((state: RootState) => state.myState)
+  const { data1, data2 } = useSelector((state: RootState) => state.myState);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onMyButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch(myActionCreator())
-  }
-}
+    dispatch(myActionCreator());
+  };
+};
 ```
 
 ##### Event Handlers
@@ -79,8 +79,8 @@ export const MyComponent: React.FC<MyComponentProps> = ({}) => {
   // ...
   const onNameInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     /* ... */
-  }
-}
+  };
+};
 ```
 
 ##### Estrutura interna do componente
@@ -104,8 +104,8 @@ export const MyComponent: React.FC<MyComponentProps> = ({}) => {
   // Funções aulixiares, regra de negócio, etc. (Podem ser declarados dentro de hooks)
   // Event handlers. (Podem ser declarados dentro de hooks)
   // --------------------------------
-  return JSX
-}
+  return JSX;
+};
 ```
 
 Exemplo:
@@ -118,31 +118,31 @@ interface MyComponentProps {
 export const MyComponent: React.FC<MyComponentProps> = ({}) => {
   // ---- Estado ----
   // React hooks: useContext, useMemo, useReducer, useRef, useState.
-  const [myState, setMyState] = React.useState()
+  const [myState, setMyState] = React.useState();
   // Hooks de terceiros
-  const myThirdPartyState = useThirdPartyHook()
+  const myThirdPartyState = useThirdPartyHook();
   // Custom hooks
-  const myCustomState = useCustomHook()
+  const myCustomState = useCustomHook();
   const myMemoizedValue = React.useMemo(() => {
     /* ... */
-  }, [])
+  }, []);
   // ----------------
 
   // ---- Funcionalidade/Efeito ----
   // React.useEffect
-  React.useEffect(() => console.log('effect'), [])
+  React.useEffect(() => console.log("effect"), []);
 
   // Funções aulixiares, regra de negócio, etc. (Podem ser declarados dentro de hooks)
-  const doSomething = () => console.log('Did something')
+  const doSomething = () => console.log("Did something");
   const doSomethingElse = React.useCallback(() =>
-    console.log('Did something else'),
-  )
+    console.log("Did something else")
+  );
   // Event handlers. (Podem ser declarados dentro de hooks)
   const onMyInputChange = (event: React.ChangeEnvent<HTMLInputElement>) => {
     /* ... */
-  }
+  };
   // --------------------------------
 
-  return JSX
-}
+  return JSX;
+};
 ```

@@ -1,1 +1,1 @@
-export { InvalidDataForCard } from './InvalidDataForCard'
+export { InvalidDataForCard } from "./InvalidDataForCard";

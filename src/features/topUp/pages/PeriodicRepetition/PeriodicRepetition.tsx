@@ -1,30 +1,30 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Box, Typography } from '@material-ui/core'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { TopUpRoutes } from 'features/topUp/constants/routes'
-import { useStyles } from './PeriodicRepetition.style'
-import { ListButtonRadio } from 'features/topUp/components/ListButton/ListButtonRadio'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateTopUpData } from 'features/topUp/redux/actions'
-import { StoreState } from 'redux/state'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Box, Typography } from "@material-ui/core";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { TopUpRoutes } from "features/topUp/constants/routes";
+import { useStyles } from "./PeriodicRepetition.style";
+import { ListButtonRadio } from "features/topUp/components/ListButton/ListButtonRadio";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTopUpData } from "features/topUp/redux/actions";
+import { StoreState } from "redux/state";
 
 export const PeriodicRepetition: React.FC = () => {
-  const style = useStyles()
-  const [selectedValue, setSelectedValue] = React.useState('')
-  const topUpState = useSelector((store: StoreState) => store.topUp.topUp)
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const style = useStyles();
+  const [selectedValue, setSelectedValue] = React.useState("");
+  const topUpState = useSelector((store: StoreState) => store.topUp.topUp);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const onClickOption = () => {
-    history.push(TopUpRoutes.completeTopUp)
-  }
+    history.push(TopUpRoutes.completeTopUp);
+  };
 
   const onClickValue = (days: number) => {
-    dispatch(updateTopUpData({...topUpState, periodicRepetition: days}))
-  }
+    dispatch(updateTopUpData({ ...topUpState, periodicRepetition: days }));
+  };
 
   return (
     <Box className={style.contentPage}>
@@ -45,10 +45,9 @@ export const PeriodicRepetition: React.FC = () => {
                 setSelectedValue={setSelectedValue}
                 goToRoute={TopUpRoutes.topUpSchedule}
                 onClick={() => {
-                  onClickValue(15)
-                  onClickOption() 
-                  }
-                }
+                  onClickValue(15);
+                  onClickOption();
+                }}
                 data-test-id="top-up-schedule-15"
               ></ListButtonRadio>
               <ListButtonRadio
@@ -57,11 +56,10 @@ export const PeriodicRepetition: React.FC = () => {
                 setSelectedValue={setSelectedValue}
                 goToRoute={TopUpRoutes.topUpSchedule}
                 onClick={() => {
-                  onClickValue(30) 
-                  onClickOption() 
-                  }
-                }
-                  data-test-id="top-up-schedule-30"
+                  onClickValue(30);
+                  onClickOption();
+                }}
+                data-test-id="top-up-schedule-30"
               ></ListButtonRadio>
               <ListButtonRadio
                 title="Repetir a cada 60 dias"
@@ -69,11 +67,10 @@ export const PeriodicRepetition: React.FC = () => {
                 setSelectedValue={setSelectedValue}
                 goToRoute={TopUpRoutes.topUpSchedule}
                 onClick={() => {
-                  onClickValue(60)
-                  onClickOption()
-                  }
-                }
-                 data-test-id="top-up-schedule-60"
+                  onClickValue(60);
+                  onClickOption();
+                }}
+                data-test-id="top-up-schedule-60"
               ></ListButtonRadio>
             </Box>
           }
@@ -81,5 +78,5 @@ export const PeriodicRepetition: React.FC = () => {
         />
       </PageContainer>
     </Box>
-  )
-}
+  );
+};

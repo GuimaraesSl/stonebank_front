@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -10,17 +10,17 @@ import {
   ProcessPageFooterButton,
   ProcessPageLayout,
   TextField,
-} from 'components'
-import { cancelLabel } from 'constants/buttons/labels'
-import { useStyles } from './BankPixTransferPayeeName.style'
-import { AccountRoutes } from 'features/account/constants/routes'
+} from "components";
+import { cancelLabel } from "constants/buttons/labels";
+import { useStyles } from "./BankPixTransferPayeeName.style";
+import { AccountRoutes } from "features/account/constants/routes";
 
 interface BankPixTransferPayeeNameViewProps {
-  toName: string
-  isValidValue: boolean
-  onConfirmButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
-  onToNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  toName: string;
+  isValidValue: boolean;
+  onConfirmButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  onToNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const BankPixTransferPayeeNameView: React.FC<
   BankPixTransferPayeeNameViewProps
@@ -31,7 +31,7 @@ export const BankPixTransferPayeeNameView: React.FC<
   onToNameChange,
   onCancelButtonClick,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <PageContainer>
@@ -81,5 +81,5 @@ export const BankPixTransferPayeeNameView: React.FC<
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

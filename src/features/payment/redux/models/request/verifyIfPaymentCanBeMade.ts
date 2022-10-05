@@ -1,5 +1,5 @@
-import { ApiRequest } from '_config/api'
+import { ApiRequest } from "_config/api";
 
 export interface VerifyIfPaymentCanBeMadeRequest extends ApiRequest {
-  barcode?: string
+  barcode?: string;
 }

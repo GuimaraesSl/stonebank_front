@@ -1,1 +1,1 @@
-export { ShowMoreButton } from './ShowMoreButton'
+export { ShowMoreButton } from "./ShowMoreButton";

@@ -1,11 +1,11 @@
-import React from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { useStyles } from './ProcessDescriptionHeader.style'
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { useStyles } from "./ProcessDescriptionHeader.style";
 
 interface TitleAndDescritionProps {
-  title?: string
-  subtitle?: string
-  description?: string
+  title?: string;
+  subtitle?: string;
+  description?: string;
 }
 
 export const ProcessDescriptionHeader: React.FC<TitleAndDescritionProps> = ({
@@ -14,7 +14,7 @@ export const ProcessDescriptionHeader: React.FC<TitleAndDescritionProps> = ({
   description,
   ...rest
 }: TitleAndDescritionProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Box>
@@ -49,5 +49,5 @@ export const ProcessDescriptionHeader: React.FC<TitleAndDescritionProps> = ({
         </Typography>
       )}
     </Box>
-  )
-}
+  );
+};

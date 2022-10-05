@@ -1,64 +1,64 @@
-import React from 'react'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Button } from 'components/Button'
-import { AppBar } from 'components/AppBar'
-import { Close } from '@material-ui/icons'
-import { KeyboardArrowRight } from '@material-ui/icons'
-import { useHistory } from 'react-router-dom'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { CardRoutes } from 'features/card/constants/routes'
-import { PageContainer } from 'components/PageContainer'
-import { useStyles } from './AssociateNewCardCheck.style'
-import { Box } from '@material-ui/core'
-import { CardData } from 'features/card/components/CardData'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
-import { Loader } from 'components/Loader'
-import { bindUnnamedCard } from 'features/card/redux/actions'
-import { closeAlert, updateCard } from 'features/card/redux/actions'
-import { SuccessCardState } from 'features/card/redux/state'
-import { Alert } from 'components/Alert'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Button } from "components/Button";
+import { AppBar } from "components/AppBar";
+import { Close } from "@material-ui/icons";
+import { KeyboardArrowRight } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { CardRoutes } from "features/card/constants/routes";
+import { PageContainer } from "components/PageContainer";
+import { useStyles } from "./AssociateNewCardCheck.style";
+import { Box } from "@material-ui/core";
+import { CardData } from "features/card/components/CardData";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
+import { Loader } from "components/Loader";
+import { bindUnnamedCard } from "features/card/redux/actions";
+import { closeAlert, updateCard } from "features/card/redux/actions";
+import { SuccessCardState } from "features/card/redux/state";
+import { Alert } from "components/Alert";
+import { Icon } from "components/Icon";
 
 export const AssociateNewCardCheckData: React.FC = () => {
   const [openAuthorizationSheet, setOpenAuthorizationSheet] =
-    React.useState(false)
-  const styles = useStyles()
-  const history = useHistory()
-  const dispatch = useDispatch()
+    React.useState(false);
+  const styles = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-    dispatch(updateCard())
-  }
-  const card = useSelector((store: StoreState) => store.card)
+    history.replace(AccountRoutes.home);
+    dispatch(updateCard());
+  };
+  const card = useSelector((store: StoreState) => store.card);
 
   const onAuthorizationClose = (tokenIsValid: boolean) => {
     if (tokenIsValid) {
-      dispatch(bindUnnamedCard())
+      dispatch(bindUnnamedCard());
     }
-    setOpenAuthorizationSheet(false)
-  }
+    setOpenAuthorizationSheet(false);
+  };
   const onConcludeButtonClick = () => {
-    setOpenAuthorizationSheet(true)
-  }
+    setOpenAuthorizationSheet(true);
+  };
 
-  const { loading, errorMessage } = card
+  const { loading, errorMessage } = card;
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   React.useEffect(() => {
     if (card instanceof SuccessCardState) {
-      history.push(CardRoutes.concludeAssociateCard)
-      dispatch(updateCard())
+      history.push(CardRoutes.concludeAssociateCard);
+      dispatch(updateCard());
     }
-  }, [card, history, dispatch])
+  }, [card, history, dispatch]);
 
   return (
     <PageContainer>
@@ -131,5 +131,5 @@ export const AssociateNewCardCheckData: React.FC = () => {
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

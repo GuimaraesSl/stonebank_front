@@ -1,76 +1,76 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Grid } from '@material-ui/core'
-import { useStyles } from './Summary.style'
-import { AppBar } from 'components/AppBar'
-import { DetailTransferDescription } from 'components/DetailTransferDescription'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, concludeLabel } from 'constants/buttons/labels'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
-import { TransferenceRoutes } from 'features/transference/constants/routes'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Grid } from "@material-ui/core";
+import { useStyles } from "./Summary.style";
+import { AppBar } from "components/AppBar";
+import { DetailTransferDescription } from "components/DetailTransferDescription";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, concludeLabel } from "constants/buttons/labels";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
+import { TransferenceRoutes } from "features/transference/constants/routes";
 import {
   createInternalTransfer,
   createMoneyTransfer,
   updateTransferenceData,
-} from 'features/transference/redux/actions'
-import { SuccessTransferenceState } from 'features/transference/redux/state'
-import { Alert } from 'components/Alert'
-import { Loader } from 'components/Loader'
-import { TransferType } from 'features/transference/redux/models/enum'
-import { TagChip } from 'features/tags/components/TagChip'
+} from "features/transference/redux/actions";
+import { SuccessTransferenceState } from "features/transference/redux/state";
+import { Alert } from "components/Alert";
+import { Loader } from "components/Loader";
+import { TransferType } from "features/transference/redux/models/enum";
+import { TagChip } from "features/tags/components/TagChip";
 
 export const Summary: React.FC = () => {
   const [openAuthorizationSheet, setOpenAuthorizationSheet] =
-    React.useState(false)
+    React.useState(false);
   const { transferType, transferenceState } = useSelector(
     (state: StoreState) => ({
       transferenceTags: state.transference.transference?.tags,
       transferType: state.transference.transference?.transferType,
       transferenceState: state.transference,
-    }),
-  )
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const styles = useStyles()
+    })
+  );
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const styles = useStyles();
 
-  const [validatedToken, setValidatedToken] = React.useState(false)
+  const [validatedToken, setValidatedToken] = React.useState(false);
 
-  const { transference, loading, errorMessage } = transferenceState
+  const { transference, loading, errorMessage } = transferenceState;
 
   React.useEffect(() => {
     if (validatedToken && transferenceState instanceof SuccessTransferenceState)
-      history.replace(TransferenceRoutes.processTransfer)
-  })
+      history.replace(TransferenceRoutes.processTransfer);
+  });
 
   const onConcludeButtonClick = () => {
-    setOpenAuthorizationSheet(true)
-  }
+    setOpenAuthorizationSheet(true);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransferenceData())
-    history.go(transferType === TransferType.InternalTransfer ? -7 : -11)
-  }
+    dispatch(updateTransferenceData());
+    history.go(transferType === TransferType.InternalTransfer ? -7 : -11);
+  };
 
   const onAuthorizationClose = (tokenIsValid: boolean) => {
     if (tokenIsValid) {
-      setValidatedToken(true)
+      setValidatedToken(true);
       dispatch(
         transferenceState.transference?.transferType ===
           TransferType.InternalTransfer
           ? createInternalTransfer()
-          : createMoneyTransfer(),
-      )
+          : createMoneyTransfer()
+      );
     }
-    setOpenAuthorizationSheet(false)
-  }
+    setOpenAuthorizationSheet(false);
+  };
 
   return (
     <PageContainer>
@@ -113,7 +113,7 @@ export const Summary: React.FC = () => {
                 description={transference?.description!}
                 tags={
                   <Grid container justify="space-around" spacing={1}>
-                    {transference?.tags?.map(tags => (
+                    {transference?.tags?.map((tags) => (
                       <Grid item>
                         <TagChip label={tags} />
                       </Grid>
@@ -148,5 +148,5 @@ export const Summary: React.FC = () => {
         <Alert title="Error" message={errorMessage} severity="error" />
       )}
     </PageContainer>
-  )
-}
+  );
+};

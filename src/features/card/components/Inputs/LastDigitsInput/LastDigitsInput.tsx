@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { OtpInput } from 'components/OtpInput/OtpInput'
-import { Box } from '@material-ui/core'
-import { useStyles } from './LastDigitsInput.style'
+import React, { useState } from "react";
+import { OtpInput } from "components/OtpInput/OtpInput";
+import { Box } from "@material-ui/core";
+import { useStyles } from "./LastDigitsInput.style";
 
 interface PasswordValidationInputProps {
-  value: string
-  setValue: (value: string) => void
+  value: string;
+  setValue: (value: string) => void;
 }
 
 export const LastDigitsInput: React.FC<PasswordValidationInputProps> = ({
   value,
   setValue,
 }: PasswordValidationInputProps) => {
-  const style = useStyles()
+  const style = useStyles();
   return (
     <Box className={style.passwordInputBody} data-test-id="password-input">
       <Box className={style.passwordInputContent}>
@@ -26,5 +26,5 @@ export const LastDigitsInput: React.FC<PasswordValidationInputProps> = ({
         />
       </Box>
     </Box>
-  )
-}
+  );
+};

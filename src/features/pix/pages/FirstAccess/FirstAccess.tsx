@@ -1,54 +1,54 @@
-import React from 'react'
-import { Button } from 'components/Button'
+import React from "react";
+import { Button } from "components/Button";
 import {
   PageContainer,
   ProcessPageFooterButton,
   ProcessPageLayout,
-} from 'components'
-import { useStyles } from './FirstAccess.style'
-import { nextLabel, skipLabel } from 'constants/buttons/labels'
-import { Box, Toolbar, Typography } from '@material-ui/core'
+} from "components";
+import { useStyles } from "./FirstAccess.style";
+import { nextLabel, skipLabel } from "constants/buttons/labels";
+import { Box, Toolbar, Typography } from "@material-ui/core";
 import {
   FirstSlide,
   SecondSlide,
   SlideIndicator,
   ThirdSlide,
-} from './components'
-import { Redirect, useHistory } from 'react-router-dom'
-import { PixRoutes } from 'features/pix/constants/routes'
+} from "./components";
+import { Redirect, useHistory } from "react-router-dom";
+import { PixRoutes } from "features/pix/constants/routes";
 
-const localStorageKey = 'firstAccessToPix'
+const localStorageKey = "firstAccessToPix";
 
 export const FirstAccess: React.FC = () => {
-  const history = useHistory()
+  const history = useHistory();
   const slides = React.useMemo(() => {
-    return [<FirstSlide />, <SecondSlide />, <ThirdSlide />]
-  }, [])
-  const [slideIndex, setSlideIndex] = React.useState(0)
-  const styles = useStyles()
-  const isLastIndex = slideIndex === 2
+    return [<FirstSlide />, <SecondSlide />, <ThirdSlide />];
+  }, []);
+  const [slideIndex, setSlideIndex] = React.useState(0);
+  const styles = useStyles();
+  const isLastIndex = slideIndex === 2;
 
   const onSkipClick = () => {
-    setSlideIndex(slides.length - 1)
-  }
+    setSlideIndex(slides.length - 1);
+  };
 
   const onReturnClick = () => {
-    setSlideIndex(slideIndex - 1)
-  }
+    setSlideIndex(slideIndex - 1);
+  };
 
   const onNextClick = () => {
     if (isLastIndex) {
-      localStorage.setItem(localStorageKey, 'false')
-      setSlideIndex(slideIndex)
-      history.push(PixRoutes.pixArea)
-      return
+      localStorage.setItem(localStorageKey, "false");
+      setSlideIndex(slideIndex);
+      history.push(PixRoutes.pixArea);
+      return;
     }
 
-    setSlideIndex(slideIndex + 1)
-  }
+    setSlideIndex(slideIndex + 1);
+  };
 
-  if (localStorage.getItem(localStorageKey) === 'false')
-    return <Redirect to={PixRoutes.pixArea} push={false} />
+  if (localStorage.getItem(localStorageKey) === "false")
+    return <Redirect to={PixRoutes.pixArea} push={false} />;
 
   return (
     <PageContainer className={styles.container}>
@@ -93,12 +93,12 @@ export const FirstAccess: React.FC = () => {
 
             <Box>
               <ProcessPageFooterButton forwardButton onClick={onNextClick}>
-                {isLastIndex ? 'Entendi' : nextLabel}
+                {isLastIndex ? "Entendi" : nextLabel}
               </ProcessPageFooterButton>
             </Box>
           </Box>
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

@@ -1,28 +1,28 @@
-import { CurrencyFormatter, DateFormatter } from '_translate'
-import React from 'react'
-import { useStyles } from 'features/taxpayment/components/DetailsDarjDescription/DetailsDarjDescription.style'
-import { maskTaxPayer } from '_utils/masks/taxPayer'
-import { TransactionDetailName } from 'components/TransactionDetailName'
-import { TransactionDetailValue } from 'components/TransactionDetailValue'
-import { TransactionDetail } from 'components/TransactionDetail'
+import { CurrencyFormatter, DateFormatter } from "_translate";
+import React from "react";
+import { useStyles } from "features/taxpayment/components/DetailsDarjDescription/DetailsDarjDescription.style";
+import { maskTaxPayer } from "_utils/masks/taxPayer";
+import { TransactionDetailName } from "components/TransactionDetailName";
+import { TransactionDetailValue } from "components/TransactionDetailValue";
+import { TransactionDetail } from "components/TransactionDetail";
 
 interface DetailsDarjDescriptionProps {
-  contributorTaxId?: string
-  referenceNumber?: string
-  principalValue?: number
-  fineValue?: number
-  interestValue?: number
-  monetaryValue?: number
-  totalValue?: number
-  rateValue?: number
-  dueDate?: Date | null
-  paymentDate?: Date | null
-  tags?: string[]
-  codeRevenue?: string
-  stateRegistration?: string
-  originDocument?: number
-  rateValueType?: number
-  description?: string
+  contributorTaxId?: string;
+  referenceNumber?: string;
+  principalValue?: number;
+  fineValue?: number;
+  interestValue?: number;
+  monetaryValue?: number;
+  totalValue?: number;
+  rateValue?: number;
+  dueDate?: Date | null;
+  paymentDate?: Date | null;
+  tags?: string[];
+  codeRevenue?: string;
+  stateRegistration?: string;
+  originDocument?: number;
+  rateValueType?: number;
+  description?: string;
 }
 export const DetailsDarjDescription: React.FC<DetailsDarjDescriptionProps> = ({
   contributorTaxId,
@@ -42,7 +42,7 @@ export const DetailsDarjDescription: React.FC<DetailsDarjDescriptionProps> = ({
   rateValueType,
   description,
 }: DetailsDarjDescriptionProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <React.Fragment>
@@ -92,7 +92,7 @@ export const DetailsDarjDescription: React.FC<DetailsDarjDescriptionProps> = ({
         </TransactionDetailValue>
         <TransactionDetailName>Tags</TransactionDetailName>
         <TransactionDetailValue>
-          <strong>{tags?.join(', ')}</strong>
+          <strong>{tags?.join(", ")}</strong>
         </TransactionDetailValue>
         <TransactionDetailName>Código da receita</TransactionDetailName>
         <TransactionDetailValue>
@@ -116,5 +116,5 @@ export const DetailsDarjDescription: React.FC<DetailsDarjDescriptionProps> = ({
         </TransactionDetailValue>
       </TransactionDetail>
     </React.Fragment>
-  )
-}
+  );
+};

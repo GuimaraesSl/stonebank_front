@@ -1,80 +1,80 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config";
 
 export const useStyles = makeStyles({
   page: {
-    '& main': {
-      display: 'grid',
-      gridTemplateRows: 'max-content max-content',
-      padding: '24px 16px',
+    "& main": {
+      display: "grid",
+      gridTemplateRows: "max-content max-content",
+      padding: "24px 16px",
       rowGap: 24,
     },
   },
 
   tagsSection: {
-    '& #title': {
+    "& #title": {
       fontSize: 12,
       fontWeight: 500,
     },
-    '& #description': {
+    "& #description": {
       color: colors.neutral.shade40,
       fontSize: 12,
       fontWeight: 300,
     },
   },
   alingInputTransferDescription: {
-    marginTop: '12%',
+    marginTop: "12%",
   },
 
   divLabel: {
-    marginTop: '25px',
-    width: '80%',
-    display: 'flex',
-    lineHeight: '12px',
+    marginTop: "25px",
+    width: "80%",
+    display: "flex",
+    lineHeight: "12px",
   },
 
   propsCaption: {
-    fontFamily: 'Roboto',
-    fontStyle: 'normal',
+    fontFamily: "Roboto",
+    fontStyle: "normal",
     fontWeight: 300,
-    fontSize: '0.68rem',
+    fontSize: "0.68rem",
   },
 
   badgeId: {
-    marginBottom: '14.5%',
-    display: 'flex',
-    justifyContent: 'center',
+    marginBottom: "14.5%",
+    display: "flex",
+    justifyContent: "center",
   },
 
   alingPopupTop: {
-    marginTop: '10%',
+    marginTop: "10%",
   },
 
   titleAndDescriptionFilter: {
-    marginTop: '10%',
-    fontSize: '12px',
-    lineHeight: '120%',
+    marginTop: "10%",
+    fontSize: "12px",
+    lineHeight: "120%",
   },
 
   tagsFilterStyle: {
-    color: '#010101',
-    border: '#010101',
-    display: 'flex',
+    color: "#010101",
+    border: "#010101",
+    display: "flex",
   },
 
   tagsFilterStyleChildren: {
-    display: 'flex',
-    marginLeft: '5px',
+    display: "flex",
+    marginLeft: "5px",
   },
 
   buttonTagFloating: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '30px',
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "30px",
   },
 
   importantWarning: {
-    marginTop: '30px',
+    marginTop: "30px",
   },
 
   txtalert: {
@@ -82,7 +82,7 @@ export const useStyles = makeStyles({
     marginTop: 10,
     color: colors.source.neutral,
     fontWeight: 300,
-    lineHeight: '130%',
+    lineHeight: "130%",
   },
-  footer: { display: 'flex', justifyContent: 'space-between' },
-})
+  footer: { display: "flex", justifyContent: "space-between" },
+});

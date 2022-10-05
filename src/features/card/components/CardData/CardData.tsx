@@ -1,11 +1,11 @@
-import React from 'react'
-import { useStyles } from './CardData.style'
-import { Box, Card } from '@material-ui/core'
+import React from "react";
+import { useStyles } from "./CardData.style";
+import { Box, Card } from "@material-ui/core";
 
 interface CardUserProps {
-  fullName?: string
-  flagCard?: string | React.ReactNode
-  panLastDigits?: number
+  fullName?: string;
+  flagCard?: string | React.ReactNode;
+  panLastDigits?: number;
 }
 
 export const CardData: React.FC<CardUserProps> = ({
@@ -13,7 +13,7 @@ export const CardData: React.FC<CardUserProps> = ({
   flagCard,
   panLastDigits,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <Box className={styles.containerCard} data-test-id="card-data">
       <Card className={styles.card} data-test-id="card">
@@ -26,7 +26,7 @@ export const CardData: React.FC<CardUserProps> = ({
               xxxx.xxxx.xxxx.{panLastDigits}
             </Box>
             <Box className={styles.contentFlag}>
-              {typeof flagCard === 'string' ? (
+              {typeof flagCard === "string" ? (
                 <img
                   src={flagCard}
                   className={styles.flagStyle}
@@ -42,5 +42,5 @@ export const CardData: React.FC<CardUserProps> = ({
         </Box>
       </Card>
     </Box>
-  )
-}
+  );
+};

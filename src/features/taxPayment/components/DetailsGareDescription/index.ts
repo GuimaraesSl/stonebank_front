@@ -1,1 +1,1 @@
-export { DetailsGareDescription } from './DetailsGareDescription'
+export { DetailsGareDescription } from "./DetailsGareDescription";

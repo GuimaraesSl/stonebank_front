@@ -1,1 +1,1 @@
-export { ChangeValue } from './ChangeValue'
+export { ChangeValue } from "./ChangeValue";

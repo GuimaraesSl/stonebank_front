@@ -1,14 +1,14 @@
-import React from 'react'
-import { useStyle } from './AlertConcluded.style'
-import { Icon } from 'components/Icon'
-import { Drawer, Box, Typography } from '@material-ui/core'
-import { RestaurantSharp } from '@material-ui/icons'
+import React from "react";
+import { useStyle } from "./AlertConcluded.style";
+import { Icon } from "components/Icon";
+import { Drawer, Box, Typography } from "@material-ui/core";
+import { RestaurantSharp } from "@material-ui/icons";
 
 interface AlertProps {
-  open: boolean
-  onClose?: (args: boolean) => void
-  onClick?: React.MouseEventHandler<HTMLElement>
-  title: string
+  open: boolean;
+  onClose?: (args: boolean) => void;
+  onClick?: React.MouseEventHandler<HTMLElement>;
+  title: string;
 }
 
 export const AlertConcluded: React.FC<AlertProps> = ({
@@ -18,7 +18,7 @@ export const AlertConcluded: React.FC<AlertProps> = ({
   title,
   ...rest
 }) => {
-  const styles = useStyle()
+  const styles = useStyle();
   return (
     <Drawer
       className={styles.drawer}
@@ -38,5 +38,5 @@ export const AlertConcluded: React.FC<AlertProps> = ({
         <Typography className={styles.txtalert}>{title}</Typography>
       </Box>
     </Drawer>
-  )
-}
+  );
+};

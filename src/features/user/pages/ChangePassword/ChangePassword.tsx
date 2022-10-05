@@ -1,32 +1,32 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { useHistory } from 'react-router-dom'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { UserRoutes } from 'features/user/constants/routes'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { PasswordField } from 'features/user/components/PasswordField'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { useHistory } from "react-router-dom";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { UserRoutes } from "features/user/constants/routes";
+import { AccountRoutes } from "features/account/constants/routes";
+import { PasswordField } from "features/user/components/PasswordField";
 
 export const ChangePassword: React.FC = () => {
-  const [password, setPassword] = React.useState('')
-  const history = useHistory()
+  const [password, setPassword] = React.useState("");
+  const history = useHistory();
 
   const onPasswordChange = (value: string) => {
-    setPassword(value)
-  }
+    setPassword(value);
+  };
 
   const onCancelButtonClick = () => {
-    history.replace(UserRoutes.home)
-  }
+    history.replace(UserRoutes.home);
+  };
 
   const onNextButtonClick = () => {
-    history.push(UserRoutes.chooseNewPassword)
-  }
+    history.push(UserRoutes.chooseNewPassword);
+  };
 
   return (
     <PageContainer>
@@ -72,5 +72,5 @@ export const ChangePassword: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

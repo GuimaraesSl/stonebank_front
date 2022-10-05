@@ -1,1 +1,1 @@
-export { ReadQrCodeButton } from './ReadQrCodeButton'
+export { ReadQrCodeButton } from "./ReadQrCodeButton";

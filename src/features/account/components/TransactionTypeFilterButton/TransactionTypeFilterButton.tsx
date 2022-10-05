@@ -1,29 +1,29 @@
-import React from 'react'
-import { TransactionType } from 'features/account/redux/models/transactionType'
-import { Box, Typography } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { useStyles } from './TransactionTypeFilterButton.style'
+import React from "react";
+import { TransactionType } from "features/account/redux/models/transactionType";
+import { Box, Typography } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { useStyles } from "./TransactionTypeFilterButton.style";
 import {
   getBankStatement,
   setBankStatementFilters,
-} from 'features/account/redux/actions'
-import { usePrevious } from 'hooks/usePrevious'
-import { Icon } from 'components/Icon'
+} from "features/account/redux/actions";
+import { usePrevious } from "hooks/usePrevious";
+import { Icon } from "components/Icon";
 interface TransactionTypeFilterButtonProps {
-  transactionType: TransactionType
+  transactionType: TransactionType;
 }
 
 export const TransactionTypeFilterButton: React.FC<
   TransactionTypeFilterButtonProps
 > = ({ transactionType }) => {
   const filters = useSelector(
-    (state: StoreState) => state.account.bankStatementFilters,
-  )
-  const selectedTransactionType = filters?.transactionType
-  const dispatch = useDispatch()
-  const styles = useStyles()
-  const previous = usePrevious(selectedTransactionType)
+    (state: StoreState) => state.account.bankStatementFilters
+  );
+  const selectedTransactionType = filters?.transactionType;
+  const dispatch = useDispatch();
+  const styles = useStyles();
+  const previous = usePrevious(selectedTransactionType);
 
   React.useEffect(() => {
     if (
@@ -32,9 +32,9 @@ export const TransactionTypeFilterButton: React.FC<
       (previous !== selectedTransactionType &&
         transactionType === selectedTransactionType)
     ) {
-      dispatch(getBankStatement())
+      dispatch(getBankStatement());
     }
-  }, [selectedTransactionType])
+  }, [selectedTransactionType]);
 
   const onClick = () => {
     dispatch(
@@ -44,22 +44,22 @@ export const TransactionTypeFilterButton: React.FC<
           selectedTransactionType === transactionType
             ? undefined
             : transactionType,
-      }),
-    )
-  }
+      })
+    );
+  };
 
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
       }}
       onClick={onClick}
     >
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
+          justifyContent: "center",
           mb: 0.5,
         }}
       >
@@ -70,20 +70,20 @@ export const TransactionTypeFilterButton: React.FC<
           <Icon
             name={
               transactionType === TransactionType.received
-                ? 'income'
-                : 'expenses'
+                ? "income"
+                : "expenses"
             }
           />
           {transactionType === selectedTransactionType && (
-            <Icon name={'check'} className={styles.selectedIcon} />
+            <Icon name={"check"} className={styles.selectedIcon} />
           )}
         </Box>
       </Box>
       <Typography variant="caption" className={styles.label}>
         {transactionType === TransactionType.received
-          ? 'Recebidos'
-          : 'Enviados'}
+          ? "Recebidos"
+          : "Enviados"}
       </Typography>
     </Box>
-  )
-}
+  );
+};

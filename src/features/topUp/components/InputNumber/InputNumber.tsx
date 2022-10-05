@@ -1,37 +1,37 @@
-import React, { useEffect } from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { TextField } from '@material-ui/core'
-import { maskPhone } from '_utils/masks/phone'
-import { useMask } from 'hooks/useMask'
-import { useStyle } from './InputNumber.style'
+import React, { useEffect } from "react";
+import { Box, Typography } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { maskPhone } from "_utils/masks/phone";
+import { useMask } from "hooks/useMask";
+import { useStyle } from "./InputNumber.style";
 
 interface DescriptionProps {
-  description: string
-  placeholder?: string
-  setValuePhone: React.Dispatch<React.SetStateAction<string>>
-  valueNumberPhone?: string
+  description: string;
+  placeholder?: string;
+  setValuePhone: React.Dispatch<React.SetStateAction<string>>;
+  valueNumberPhone?: string;
 }
 
 export const InputNumber: React.FC<DescriptionProps> = ({
   description,
   placeholder,
   setValuePhone,
-  valueNumberPhone = '',
+  valueNumberPhone = "",
 }) => {
-  const style = useStyle()
-  const [phoneInput, setPhoneInput] = useMask(maskPhone)
+  const style = useStyle();
+  const [phoneInput, setPhoneInput] = useMask(maskPhone);
 
   const onPhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPhoneInput(event.target.value)
-  }
+    setPhoneInput(event.target.value);
+  };
 
   useEffect(() => {
-    setPhoneInput(valueNumberPhone)
-  }, [])
+    setPhoneInput(valueNumberPhone);
+  }, []);
 
   useEffect(() => {
-    setValuePhone(phoneInput)
-  }, [phoneInput])
+    setValuePhone(phoneInput);
+  }, [phoneInput]);
 
   return (
     <React.Fragment>
@@ -51,5 +51,5 @@ export const InputNumber: React.FC<DescriptionProps> = ({
         />
       </Box>
     </React.Fragment>
-  )
-}
+  );
+};

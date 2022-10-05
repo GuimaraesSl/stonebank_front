@@ -1,13 +1,13 @@
-import React from 'react'
-import { Button } from '@material-ui/core'
-import { Redirect } from 'react-router-dom'
+import React from "react";
+import { Button } from "@material-ui/core";
+import { Redirect } from "react-router-dom";
 
-import './BadgeButton.scss'
+import "./BadgeButton.scss";
 
 interface BadgeButtonProps {
-  imagePath: string | React.ReactNode
-  title: string
-  redirectRoute: string
+  imagePath: string | React.ReactNode;
+  title: string;
+  redirectRoute: string;
 }
 
 export const BadgeButton: React.FC<BadgeButtonProps> = ({
@@ -16,11 +16,11 @@ export const BadgeButton: React.FC<BadgeButtonProps> = ({
   redirectRoute,
   ...rest
 }: BadgeButtonProps) => {
-  const [redirect, setRedirect] = React.useState(false)
+  const [redirect, setRedirect] = React.useState(false);
 
   const handleOnClick = () => {
-    setRedirect(true)
-  }
+    setRedirect(true);
+  };
 
   return (
     <>
@@ -35,7 +35,7 @@ export const BadgeButton: React.FC<BadgeButtonProps> = ({
         {...rest}
       >
         <div className="propButton">
-          {typeof imagePath === 'string' ? (
+          {typeof imagePath === "string" ? (
             <img src={imagePath} className="iconBgButton" alt="bgButton" />
           ) : (
             imagePath
@@ -44,5 +44,5 @@ export const BadgeButton: React.FC<BadgeButtonProps> = ({
         </div>
       </Button>
     </>
-  )
-}
+  );
+};

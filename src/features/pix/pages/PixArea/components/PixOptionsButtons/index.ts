@@ -1,1 +1,1 @@
-export { PixOptionsButtons } from './PixOptionsButtons'
+export { PixOptionsButtons } from "./PixOptionsButtons";

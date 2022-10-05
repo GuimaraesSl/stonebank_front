@@ -1,22 +1,22 @@
-import React from 'react'
-import { CurrencyFormatter, DateFormatter } from '_translate'
-import { useStyles } from './DetailSmsTransferDescription.style'
-import { Box, Typography } from '@material-ui/core'
-import { TransactionDetail } from 'components/TransactionDetail'
-import { TransactionDetailName } from 'components/TransactionDetailName'
-import { TransactionDetailValue } from 'components/TransactionDetailValue'
+import React from "react";
+import { CurrencyFormatter, DateFormatter } from "_translate";
+import { useStyles } from "./DetailSmsTransferDescription.style";
+import { Box, Typography } from "@material-ui/core";
+import { TransactionDetail } from "components/TransactionDetail";
+import { TransactionDetailName } from "components/TransactionDetailName";
+import { TransactionDetailValue } from "components/TransactionDetailValue";
 
 interface DetailSmsTransferDescriptionProps {
-  value: number
-  number: string
-  date: Date
-  name?: string
+  value: number;
+  number: string;
+  date: Date;
+  name?: string;
 }
 
 export const DetailSmsTransferDescription: React.FC<
   DetailSmsTransferDescriptionProps
 > = ({ value, number, date, name }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <React.Fragment data-test-id="detail-sms-transfer-description">
       <TransactionDetail className={styles.detailSmsTransferContent}>
@@ -38,5 +38,5 @@ export const DetailSmsTransferDescription: React.FC<
         </TransactionDetailValue>
       </TransactionDetail>
     </React.Fragment>
-  )
-}
+  );
+};

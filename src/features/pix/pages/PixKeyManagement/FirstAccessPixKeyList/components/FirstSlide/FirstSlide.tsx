@@ -1,17 +1,17 @@
-import React from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { useStyles } from './FirstSlide.style'
-import { SlideContent } from '../SlideContent'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { useStyles } from "./FirstSlide.style";
+import { SlideContent } from "../SlideContent";
+import { Icon } from "components/Icon";
 
 export const FirstSlide: React.FC = () => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <SlideContent>
       <>
         <Box display="flex" justifyContent="center">
-          <Icon name={'pixKeysFirsAccess'} className={styles.image} />
+          <Icon name={"pixKeysFirsAccess"} className={styles.image} />
         </Box>
       </>
       <Typography className={styles.text}>
@@ -21,5 +21,5 @@ export const FirstSlide: React.FC = () => {
         celular, CPF/CNPJ, e-mail ou Chave Aleatória.
       </Typography>
     </SlideContent>
-  )
-}
+  );
+};

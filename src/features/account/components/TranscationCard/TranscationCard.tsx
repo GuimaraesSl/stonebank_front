@@ -1,17 +1,17 @@
-import React from 'react'
-import { Grid, Typography } from '@material-ui/core'
-import { Transaction } from 'features/account/redux/models/transaction'
-import { CurrencyFormatter } from '_translate'
-import { useStyle } from './TranscationCard.style'
-import { useHistory } from 'react-router-dom'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { OperationType } from 'features/account/redux/models/operationType'
-import { TransactionCardButton } from 'components/TransactionCardButton'
-import { TagChip } from 'features/tags/components/TagChip'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Grid, Typography } from "@material-ui/core";
+import { Transaction } from "features/account/redux/models/transaction";
+import { CurrencyFormatter } from "_translate";
+import { useStyle } from "./TranscationCard.style";
+import { useHistory } from "react-router-dom";
+import { AccountRoutes } from "features/account/constants/routes";
+import { OperationType } from "features/account/redux/models/operationType";
+import { TransactionCardButton } from "components/TransactionCardButton";
+import { TagChip } from "features/tags/components/TagChip";
+import { Icon } from "components/Icon";
 
 interface TranscationCardProps {
-  transaction: Transaction
+  transaction: Transaction;
 }
 
 export const TranscationCard: React.FC<TranscationCardProps> = ({
@@ -24,13 +24,13 @@ export const TranscationCard: React.FC<TranscationCardProps> = ({
     tags,
     externalIdentifier,
     operationType,
-  } = transaction
-  const history = useHistory()
-  const style = useStyle()
+  } = transaction;
+  const history = useHistory();
+  const style = useStyle();
 
-  const formattedValue = CurrencyFormatter.format(value)
+  const formattedValue = CurrencyFormatter.format(value);
 
-  const isCredit = value >= 0
+  const isCredit = value >= 0;
   const showDetailsAndReceiptButtons =
     (operationType === OperationType.moneyTransfer ||
       operationType === OperationType.internalTransfer ||
@@ -40,25 +40,25 @@ export const TranscationCard: React.FC<TranscationCardProps> = ({
       operationType === OperationType.purchaseTopUp ||
       operationType === OperationType.pixOut ||
       operationType === OperationType.pixIn) &&
-    externalIdentifier
+    externalIdentifier;
 
   const onDetailsButtonClick = () => {
     history.push(AccountRoutes.detail, {
       externalIdentifier: externalIdentifier,
       operationType: operationType,
-    })
-  }
+    });
+  };
 
   const onReceiptButtonClick = () => {
     history.push(AccountRoutes.receipt, {
       externalIdentifier: externalIdentifier,
       operationType: operationType,
-    })
-  }
+    });
+  };
 
   return (
     <div className={style.card}>
-      <Icon className={style.icon} name={isCredit ? 'enter' : 'exit'} />
+      <Icon className={style.icon} name={isCredit ? "enter" : "exit"} />
       {showDetailsAndReceiptButtons && (
         <Grid
           container
@@ -106,10 +106,10 @@ export const TranscationCard: React.FC<TranscationCardProps> = ({
             {stablishment}
           </Typography>
         )}
-        {tags?.map(tag => (
+        {tags?.map((tag) => (
           <TagChip label={tag} />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};

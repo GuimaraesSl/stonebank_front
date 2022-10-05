@@ -1,28 +1,28 @@
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { useHistory } from 'react-router-dom'
-import { Typography } from '@material-ui/core'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { homeLabel, receiptLabel } from 'constants/buttons/labels'
-import { useStyles } from './DigitalWithdrawalSuccess.style'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { DigitalWithdrawalRoutes } from 'features/digitalWithdrawal/constants/routes'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { useHistory } from "react-router-dom";
+import { Typography } from "@material-ui/core";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { homeLabel, receiptLabel } from "constants/buttons/labels";
+import { useStyles } from "./DigitalWithdrawalSuccess.style";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { DigitalWithdrawalRoutes } from "features/digitalWithdrawal/constants/routes";
+import { AccountRoutes } from "features/account/constants/routes";
+import { Icon } from "components/Icon";
 
 export const DigitalWithdrawalSuccess: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
+  const history = useHistory();
+  const styles = useStyles();
 
   const onReceiptButtonClick = () => {
-    history.push(DigitalWithdrawalRoutes.digitalWithdrawReceipt)
-  }
+    history.push(DigitalWithdrawalRoutes.digitalWithdrawReceipt);
+  };
 
   const onHomeButtonClick = () => {
-    history.push(AccountRoutes.home)
-  }
+    history.push(AccountRoutes.home);
+  };
 
   return (
     <PageContainer>
@@ -32,7 +32,7 @@ export const DigitalWithdrawalSuccess: React.FC = () => {
           <Box className={styles.content}>
             <Typography className={styles.title}>Saque </Typography>
             <Typography className={styles.title}>concluído </Typography>
-            <Icon name={'concludedImage'} className={styles.img} />
+            <Icon name={"concludedImage"} className={styles.img} />
           </Box>
         }
         footer={
@@ -55,5 +55,5 @@ export const DigitalWithdrawalSuccess: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

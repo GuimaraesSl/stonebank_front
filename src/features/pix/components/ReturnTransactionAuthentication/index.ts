@@ -1,1 +1,1 @@
-export { ReturnTransactionAuthentication } from './ReturnTransactionAuthentication'
+export { ReturnTransactionAuthentication } from "./ReturnTransactionAuthentication";

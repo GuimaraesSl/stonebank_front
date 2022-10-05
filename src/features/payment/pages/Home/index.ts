@@ -1,1 +1,1 @@
-export { Home as PaymentHome } from './Home'
+export { Home as PaymentHome } from "./Home";

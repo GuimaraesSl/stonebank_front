@@ -1,14 +1,14 @@
-import { Grid, Typography } from '@material-ui/core'
-import { useStyles } from './Account.style'
-import { Icon } from 'components/Icon'
+import { Grid, Typography } from "@material-ui/core";
+import { useStyles } from "./Account.style";
+import { Icon } from "components/Icon";
 
 interface AccountProps {
-  name: string
-  image: string | React.ReactNode
+  name: string;
+  image: string | React.ReactNode;
 }
 
 export const Account: React.FC<AccountProps> = ({ name }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Grid
@@ -20,11 +20,11 @@ export const Account: React.FC<AccountProps> = ({ name }) => {
       className={styles.account}
     >
       <Grid item className={styles.image}>
-        <Icon name={'imageUser'} className={styles.img} />
+        <Icon name={"imageUser"} className={styles.img} />
       </Grid>
       <Grid item className={styles.name}>
         <Typography>{name}</Typography>
       </Grid>
     </Grid>
-  )
-}
+  );
+};

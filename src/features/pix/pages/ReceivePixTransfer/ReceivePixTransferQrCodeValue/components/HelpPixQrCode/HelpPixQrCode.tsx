@@ -1,24 +1,24 @@
-import React from 'react'
-import { Box, Drawer, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
-import { Button } from 'components/Button'
-import { PageContainer } from 'components/PageContainer'
-import { useStyles } from './HelpPixQrCode.style'
+import React from "react";
+import { Box, Drawer, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { Button } from "components/Button";
+import { PageContainer } from "components/PageContainer";
+import { useStyles } from "./HelpPixQrCode.style";
 
 interface HelpPixQrCodeProps {
-  open: boolean
-  onClose: Function | ((HelpPixQRCodeValid: boolean) => void)
+  open: boolean;
+  onClose: Function | ((HelpPixQRCodeValid: boolean) => void);
 }
 
 export const HelpPixQrCode: React.FC<HelpPixQrCodeProps> = ({
   open,
   onClose,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const onCloseButtonClick = () => {
-    onClose(false)
-  }
+    onClose(false);
+  };
 
   return (
     <React.Fragment>
@@ -57,5 +57,5 @@ export const HelpPixQrCode: React.FC<HelpPixQrCodeProps> = ({
         </PageContainer>
       </Drawer>
     </React.Fragment>
-  )
-}
+  );
+};

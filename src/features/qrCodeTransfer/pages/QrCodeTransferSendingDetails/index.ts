@@ -1,1 +1,1 @@
-export { QrCodeTransferSendingDetails } from './QrCodeTransferSendingDetails'
+export { QrCodeTransferSendingDetails } from "./QrCodeTransferSendingDetails";

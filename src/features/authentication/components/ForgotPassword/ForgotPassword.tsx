@@ -1,16 +1,16 @@
-import React from 'react'
-import { Link } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
-import { AuthenticationRoutes } from 'features/authentication/constants/routes'
-import { useStyle } from './ForgotPassword.style'
+import React from "react";
+import { Link } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import { AuthenticationRoutes } from "features/authentication/constants/routes";
+import { useStyle } from "./ForgotPassword.style";
 
 export const ForgotPassword: React.FC = () => {
-  const history = useHistory()
-  const style = useStyle()
+  const history = useHistory();
+  const style = useStyle();
 
   const onForgotPasswordButtonClick = () => {
-    history.push(AuthenticationRoutes.recoverPassword)
-  }
+    history.push(AuthenticationRoutes.recoverPassword);
+  };
   return (
     <Link
       className={style.forgotPassword}
@@ -20,5 +20,5 @@ export const ForgotPassword: React.FC = () => {
     >
       Esqueci minha senha
     </Link>
-  )
-}
+  );
+};

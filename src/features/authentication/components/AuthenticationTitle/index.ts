@@ -1,1 +1,1 @@
-export { AuthenticationTitle } from './AuthenticationTitle'
+export { AuthenticationTitle } from "./AuthenticationTitle";

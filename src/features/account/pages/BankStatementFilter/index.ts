@@ -1,1 +1,1 @@
-export { BankStatementFilter } from './BankStatementFilter'
+export { BankStatementFilter } from "./BankStatementFilter";

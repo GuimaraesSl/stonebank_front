@@ -1,7 +1,7 @@
-import { Typography } from '@material-ui/core'
+import { Typography } from "@material-ui/core";
 
 interface TextProps {
-  text: string
+  text: string;
 }
 
 export const PageTitle = ({ text }: TextProps) => {
@@ -9,5 +9,5 @@ export const PageTitle = ({ text }: TextProps) => {
     <Typography variant="h6" align="left">
       <strong>{text}</strong>
     </Typography>
-  )
-}
+  );
+};

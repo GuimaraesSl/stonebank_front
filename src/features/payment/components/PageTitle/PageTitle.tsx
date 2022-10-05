@@ -1,12 +1,12 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { useStyle } from './PageTitle.style'
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { useStyle } from "./PageTitle.style";
 interface TextProps {
-  text: string
+  text: string;
 }
 
 export const PageTitle = ({ text }: TextProps) => {
-  const stylePageTitle = useStyle()
+  const stylePageTitle = useStyle();
 
   return (
     <div className={stylePageTitle.pageTitle} data-test-id="page-title">
@@ -14,5 +14,5 @@ export const PageTitle = ({ text }: TextProps) => {
         <strong>{text}</strong>
       </Typography>
     </div>
-  )
-}
+  );
+};

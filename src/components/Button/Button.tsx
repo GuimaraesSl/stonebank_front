@@ -1,15 +1,15 @@
-import React from 'react'
-import { Button as MuiButton } from '@material-ui/core'
-import { ButtonStylesProps, useStyles } from './Button.style'
+import React from "react";
+import { Button as MuiButton } from "@material-ui/core";
+import { ButtonStylesProps, useStyles } from "./Button.style";
 
 interface ButtonProps extends ButtonStylesProps {
-  disabled?: boolean
-  startIcon?: React.ReactNode
-  endIcon?: React.ReactNode
-  fullWidth?: boolean
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
-  className?: string
-  id?: string
+  disabled?: boolean;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
+  fullWidth?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
+  id?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -19,13 +19,13 @@ export const Button: React.FC<ButtonProps> = ({
   fullWidth,
   onClick,
   size,
-  variant = 'contained',
-  palette = 'primary',
+  variant = "contained",
+  palette = "primary",
   children,
   className,
   ...rest
 }) => {
-  const styles = useStyles({ size, palette, variant })
+  const styles = useStyles({ size, palette, variant });
 
   return (
     <MuiButton
@@ -42,5 +42,5 @@ export const Button: React.FC<ButtonProps> = ({
     >
       {children}
     </MuiButton>
-  )
-}
+  );
+};

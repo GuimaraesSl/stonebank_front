@@ -1,33 +1,33 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { useHistory } from 'react-router-dom'
-import { cancelLabel } from 'constants/buttons/labels'
-import { Box, Grid, Typography } from '@material-ui/core'
-import { useStyles } from './Help.style'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ConfigContext } from '_config'
-import { ActionList } from 'components/ActionList'
-import { ListItemHelp } from 'features/account/components/ListItemHelp'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { cancelLabel } from "constants/buttons/labels";
+import { Box, Grid, Typography } from "@material-ui/core";
+import { useStyles } from "./Help.style";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ConfigContext } from "_config";
+import { ActionList } from "components/ActionList";
+import { ListItemHelp } from "features/account/components/ListItemHelp";
+import { Icon } from "components/Icon";
 
 export const Help: React.FC = () => {
-  const { company } = React.useContext(ConfigContext)
-  const history = useHistory()
-  const styles = useStyles()
+  const { company } = React.useContext(ConfigContext);
+  const history = useHistory();
+  const styles = useStyles();
 
   const onCancelButtonClick = () => {
-    history.goBack()
-  }
+    history.goBack();
+  };
 
   const zenDeskRedirect = () => {
-    window.open(company.linkHelp)
-  }
+    window.open(company.linkHelp);
+  };
 
   return (
     <PageContainer>
@@ -63,7 +63,7 @@ export const Help: React.FC = () => {
               {company.helpLink && (
                 <Button
                   onClick={() => {
-                    zenDeskRedirect()
+                    zenDeskRedirect();
                   }}
                   palette="secondary"
                   data-test-id="help-button"
@@ -73,8 +73,8 @@ export const Help: React.FC = () => {
                       <Icon name="doubleBalloon" />
                       <Box className="doubtLabelBox">
                         <Typography className="titleLabel">
-                          {' '}
-                          Envie sua dúvida{' '}
+                          {" "}
+                          Envie sua dúvida{" "}
                         </Typography>
                       </Box>
                     </Box>
@@ -86,28 +86,28 @@ export const Help: React.FC = () => {
             <ActionList className={styles.actionList}>
               {company.address && (
                 <ListItemHelp
-                  title={'Endereço'}
+                  title={"Endereço"}
                   details={company.address}
                   icon={<Icon name="address" />}
                 />
               )}
               {company.phone && (
                 <ListItemHelp
-                  title={'Telefone'}
+                  title={"Telefone"}
                   details={company.phone}
                   icon={<Icon name="phoneHelp" />}
                 />
               )}
               {company.email && (
                 <ListItemHelp
-                  title={'E-mail'}
+                  title={"E-mail"}
                   details={company.email}
                   icon={<Icon name="mail" />}
                 />
               )}
               {company.website && (
                 <ListItemHelp
-                  title={'Canal no YouTube ou site'}
+                  title={"Canal no YouTube ou site"}
                   details={company.website}
                   icon={<Icon name="website" />}
                 />
@@ -119,5 +119,5 @@ export const Help: React.FC = () => {
         footerPosition="fixed"
       />
     </PageContainer>
-  )
-}
+  );
+};

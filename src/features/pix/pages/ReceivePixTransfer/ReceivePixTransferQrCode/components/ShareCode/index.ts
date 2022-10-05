@@ -1,1 +1,1 @@
-export { ShareCode } from './ShareCode'
+export { ShareCode } from "./ShareCode";

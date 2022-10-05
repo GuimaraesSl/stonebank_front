@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export interface AccountBalanceStyleProps {
-  size?: 'normal' | 'small'
+  size?: "normal" | "small";
 }
 
 export const useStyles = makeStyles({
@@ -14,11 +14,11 @@ export const useStyles = makeStyles({
   },
   currencySymbol: ({ size }: AccountBalanceStyleProps) => ({
     fontSize: 14,
-    fontWeight: size === 'normal' ? 700 : 500,
-    lineHeight: '16px',
+    fontWeight: size === "normal" ? 700 : 500,
+    lineHeight: "16px",
   }),
   accountBalance: ({ size }: AccountBalanceStyleProps) => ({
-    fontSize: size === 'normal' ? 24 : 14,
-    fontWeight: size === 'normal' ? 700 : 500,
+    fontSize: size === "normal" ? 24 : 14,
+    fontWeight: size === "normal" ? 700 : 500,
   }),
-})
+});

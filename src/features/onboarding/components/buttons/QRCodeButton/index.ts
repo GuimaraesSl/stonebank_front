@@ -1,1 +1,1 @@
-export { QRCodeButton } from './QRCodeButton'
+export { QRCodeButton } from "./QRCodeButton";

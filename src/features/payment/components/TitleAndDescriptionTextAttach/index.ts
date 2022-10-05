@@ -1,1 +1,1 @@
-export { TitleAndDescriptionTextAttach } from './TitleAndDescriptionTextAttach'
+export { TitleAndDescriptionTextAttach } from "./TitleAndDescriptionTextAttach";

@@ -1,16 +1,16 @@
-import React from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { useStyles } from './FilterSectionTitleAndDescription.style'
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { useStyles } from "./FilterSectionTitleAndDescription.style";
 
 interface FilterSectionTitleAndDescriptionProps {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
 export const FilterSectionTitleAndDescription: React.FC<
   FilterSectionTitleAndDescriptionProps
 > = ({ title, description }: FilterSectionTitleAndDescriptionProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Box className={styles.wrapper}>
@@ -29,5 +29,5 @@ export const FilterSectionTitleAndDescription: React.FC<
         {description}
       </Typography>
     </Box>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
 export interface FindPixQrCodeResponse {
-  qrCode?: string
-  hashCode?: string
+  qrCode?: string;
+  hashCode?: string;
 }

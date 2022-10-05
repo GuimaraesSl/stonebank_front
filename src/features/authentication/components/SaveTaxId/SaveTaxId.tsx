@@ -1,20 +1,20 @@
-import { Box, List, ListItemSecondaryAction, ListItemText } from '@material-ui/core'
-import React from 'react'
-import { useStyles } from './SaveTaxId.style'
+import {
+  Box,
+  List,
+  ListItemSecondaryAction,
+  ListItemText,
+} from "@material-ui/core";
+import React from "react";
+import { useStyles } from "./SaveTaxId.style";
 
 interface ButtonProps {
-    text: string
-    onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-    save?: React.ReactNode
+  text: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  save?: React.ReactNode;
 }
 
-export const SaveTaxId: React.FC<ButtonProps> = ({
-    text,
-    onClick,
-    save
-}) => {
-
-  const styles = useStyles()
+export const SaveTaxId: React.FC<ButtonProps> = ({ text, onClick, save }) => {
+  const styles = useStyles();
 
   return (
     <List disablePadding={true}>
@@ -22,11 +22,10 @@ export const SaveTaxId: React.FC<ButtonProps> = ({
         <ListItemText className={styles.ListItemText}>
           {text}
           <ListItemSecondaryAction className={styles.listItemSecondaryAction}>
-              {save}
+            {save}
           </ListItemSecondaryAction>
         </ListItemText>
       </Box>
     </List>
-  )
-}
-
+  );
+};

@@ -1,1 +1,1 @@
-export { EditAccount } from './EditAccount'
+export { EditAccount } from "./EditAccount";

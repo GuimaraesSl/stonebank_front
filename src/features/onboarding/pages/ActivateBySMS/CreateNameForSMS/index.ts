@@ -1,1 +1,1 @@
-export { CreateName } from './CreateNameForSMS'
+export { CreateName } from "./CreateNameForSMS";

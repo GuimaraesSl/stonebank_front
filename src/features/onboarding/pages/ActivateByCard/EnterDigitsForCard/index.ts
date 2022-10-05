@@ -1,1 +1,1 @@
-export { EnterDigitsForCard } from './EnterDigitsForCard'
+export { EnterDigitsForCard } from "./EnterDigitsForCard";

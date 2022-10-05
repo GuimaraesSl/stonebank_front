@@ -1,3 +1,3 @@
 export interface GenerateQrCodeTransferResponse {
-  qrCodeBase64: string
+  qrCodeBase64: string;
 }

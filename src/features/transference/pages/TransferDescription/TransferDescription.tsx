@@ -1,83 +1,85 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { TransferenceRoutes } from '../../constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { PageContainer } from 'components/PageContainer'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { useHistory } from 'react-router-dom'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { TransferenceRoutes } from "../../constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { PageContainer } from "components/PageContainer";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { useHistory } from "react-router-dom";
 
-import { updateTransferenceData } from 'features/transference/redux/actions'
-import { TextField } from 'components/TextField'
+import { updateTransferenceData } from "features/transference/redux/actions";
+import { TextField } from "components/TextField";
 
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon/ButtonWithFloatingIcon'
-import { TagEditPopUp } from 'components/TagEditPopUp'
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon/ButtonWithFloatingIcon";
+import { TagEditPopUp } from "components/TagEditPopUp";
 
-import { useStyles } from './TransferDescription.style'
-import { Box, Grid } from '@material-ui/core'
-import { Loader } from 'components/Loader'
-import { TransferType } from 'features/transference/redux/models/enum'
-import { TagChip } from 'features/tags/components/TagChip'
+import { useStyles } from "./TransferDescription.style";
+import { Box, Grid } from "@material-ui/core";
+import { Loader } from "components/Loader";
+import { TransferType } from "features/transference/redux/models/enum";
+import { TagChip } from "features/tags/components/TagChip";
 
 export const TransferDescription: React.FC = () => {
-  const [description, setDescription] = React.useState('')
-  const [openTagEditPopUp, setOpenTagEditPopUp] = React.useState(false)
+  const [description, setDescription] = React.useState("");
+  const [openTagEditPopUp, setOpenTagEditPopUp] = React.useState(false);
 
-  const loading = useSelector((state: StoreState) => state.tags.loading)
+  const loading = useSelector((state: StoreState) => state.tags.loading);
   const pageTags = useSelector(
-    (state: StoreState) => state.transference.transference?.tags,
-  )
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const styles = useStyles()
+    (state: StoreState) => state.transference.transference?.tags
+  );
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const styles = useStyles();
 
   const { transferenceTags, transferType } = useSelector(
     (state: StoreState) => ({
       transferenceTags: state.transference.transference?.tags,
       transferType: state.transference.transference?.transferType,
-    }),
-  )
+    })
+  );
 
   const onDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setDescription(event.target.value)
+    setDescription(event.target.value);
 
   const onEditTagsButtonClick = () => {
-    setOpenTagEditPopUp(true)
-  }
+    setOpenTagEditPopUp(true);
+  };
 
   const onEditTagsClose = () => {
-    setOpenTagEditPopUp(false)
-  }
+    setOpenTagEditPopUp(false);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransferenceData())
-    history.go(transferType === TransferType.InternalTransfer ? -6 : -10)
-  }
+    dispatch(updateTransferenceData());
+    history.go(transferType === TransferType.InternalTransfer ? -6 : -10);
+  };
   const onTagClick = (tag: string) => {
-    dispatch(updateTransferenceData({ tags: pageTags!.filter(t => t !== tag) }))
-  }
+    dispatch(
+      updateTransferenceData({ tags: pageTags!.filter((t) => t !== tag) })
+    );
+  };
 
   const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
 
     if (openTagEditPopUp) {
-      event.preventDefault()
-      history.replace(TransferenceRoutes.description)
-    } else history.push(TransferenceRoutes.summary)
+      event.preventDefault();
+      history.replace(TransferenceRoutes.description);
+    } else history.push(TransferenceRoutes.summary);
 
     dispatch(
       updateTransferenceData({
         description: description,
         tags: transferenceTags,
-      }),
-    )
-    history.push(TransferenceRoutes.summary)
-  }
+      })
+    );
+    history.push(TransferenceRoutes.summary);
+  };
 
   return (
     <PageContainer>
@@ -123,7 +125,7 @@ export const TransferDescription: React.FC = () => {
                 />
               </Box>
               <Grid container spacing={1}>
-                {pageTags?.map(tag => (
+                {pageTags?.map((tag) => (
                   <Grid item key={tag}>
                     <TagChip label={tag} onClick={onTagClick} />
                   </Grid>
@@ -139,7 +141,7 @@ export const TransferDescription: React.FC = () => {
                 </ButtonWithFloatingIcon>
 
                 <TagEditPopUp
-                  onSaveTags={tags =>
+                  onSaveTags={(tags) =>
                     dispatch(updateTransferenceData({ tags }))
                   }
                   open={openTagEditPopUp}
@@ -165,5 +167,5 @@ export const TransferDescription: React.FC = () => {
       />
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

@@ -1,5 +1,5 @@
 export interface GetAccountDashboardRequest {
-  login: string
-  userId: number
-  accountId: number
+  login: string;
+  userId: number;
+  accountId: number;
 }

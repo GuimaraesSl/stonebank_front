@@ -1,1 +1,1 @@
-export { BankPixTransferAccountType } from './BankPixTransferAccountType.controller'
+export { BankPixTransferAccountType } from "./BankPixTransferAccountType.controller";

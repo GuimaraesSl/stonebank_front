@@ -1,1 +1,1 @@
-export { PopUpTempBlock } from './PopUpTempBlock'
+export { PopUpTempBlock } from "./PopUpTempBlock";

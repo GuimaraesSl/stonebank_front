@@ -1,31 +1,31 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { Box, Grid, Typography } from '@material-ui/core'
-import { AccessAccountButton } from 'features/onboarding/components/buttons/AccessAccountButton'
-import { StoreState } from 'redux/state'
-import { useStyles } from './AccountActivationCompleted.style'
-import { PageContainer } from 'components/PageContainer'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { Box, Grid, Typography } from "@material-ui/core";
+import { AccessAccountButton } from "features/onboarding/components/buttons/AccessAccountButton";
+import { StoreState } from "redux/state";
+import { useStyles } from "./AccountActivationCompleted.style";
+import { PageContainer } from "components/PageContainer";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { Icon } from "components/Icon";
 
 interface AccountActivationCompletedProps {
-  activeTwoButtons: boolean
+  activeTwoButtons: boolean;
 }
 
 export const AccountActivationCompleted: React.FC<
   AccountActivationCompletedProps
 > = ({ activeTwoButtons }) => {
-  const style = useStyles()
-  const history = useHistory()
+  const style = useStyles();
+  const history = useHistory();
 
-  const state = useSelector((s: StoreState) => s.onboarding)
+  const state = useSelector((s: StoreState) => s.onboarding);
 
   React.useEffect(() => {
     return () => {
-      if (history.action === 'POP') history.push(OnboardingRoutes.welcome)
-    }
-  }, [history])
+      if (history.action === "POP") history.push(OnboardingRoutes.welcome);
+    };
+  }, [history]);
 
   return (
     <PageContainer
@@ -48,7 +48,7 @@ export const AccountActivationCompleted: React.FC<
               data-test-id="onboarding-name"
             >
               Seja Bem vindo,&nbsp;
-              <strong>{state.onboardingForm?.name?.split(' ')[0]}!</strong>
+              <strong>{state.onboardingForm?.name?.split(" ")[0]}!</strong>
             </Typography>
             <Typography
               variant="caption"
@@ -73,5 +73,5 @@ export const AccountActivationCompleted: React.FC<
         </Box>
       </Grid>
     </PageContainer>
-  )
-}
+  );
+};

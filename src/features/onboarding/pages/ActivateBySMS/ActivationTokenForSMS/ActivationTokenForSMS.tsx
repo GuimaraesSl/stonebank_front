@@ -1,57 +1,57 @@
-import React from 'react'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { useHistory } from 'react-router-dom'
-import { Grid } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { TokenInput } from 'features/onboarding/components/inputs/TokenInput'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
+import React from "react";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { Grid } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { TokenInput } from "features/onboarding/components/inputs/TokenInput";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
 import {
   closeAlert,
   validateActivationToken,
-} from 'features/onboarding/redux/actions'
-import { StoreState } from 'redux/state'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { PageContainer } from 'components/PageContainer'
-import { Icon } from 'components/Icon'
+} from "features/onboarding/redux/actions";
+import { StoreState } from "redux/state";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { PageContainer } from "components/PageContainer";
+import { Icon } from "components/Icon";
 
 interface ResendTokenProps {
-  tokenRoute: string
+  tokenRoute: string;
 }
 
 export const ActivationToken: React.FC<ResendTokenProps> = ({
   tokenRoute,
 }: ResendTokenProps) => {
-  const [token, setToken] = React.useState('')
+  const [token, setToken] = React.useState("");
   const { onboardingForm, loading, errorMessage } = useSelector(
-    (state: StoreState) => state.onboarding,
-  )
-  const dispatch = useDispatch()
-  const history = useHistory()
+    (state: StoreState) => state.onboarding
+  );
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   React.useEffect(() => {
     if (onboardingForm?.phoneNumber)
-      history.push(OnboardingRoutes.createNameForSMS)
-  }, [history, onboardingForm])
+      history.push(OnboardingRoutes.createNameForSMS);
+  }, [history, onboardingForm]);
 
   const onCancelButtonClick = () => {
-    history.go(-1)
-  }
+    history.go(-1);
+  };
 
   const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (token.length === 6) dispatch(validateActivationToken(token))
-  }
+    e.preventDefault();
+    if (token.length === 6) dispatch(validateActivationToken(token));
+  };
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   return (
     <PageContainer>
@@ -106,10 +106,10 @@ export const ActivationToken: React.FC<ResendTokenProps> = ({
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

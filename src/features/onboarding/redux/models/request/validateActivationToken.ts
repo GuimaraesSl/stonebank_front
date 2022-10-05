@@ -1,3 +1,3 @@
 export interface ValidateTokenRequest {
-  verificationCode: string
+  verificationCode: string;
 }

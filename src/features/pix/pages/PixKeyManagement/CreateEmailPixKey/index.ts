@@ -1,1 +1,1 @@
-export { CreateEmailPixKey } from './CreateEmailPixKey.controller'
+export { CreateEmailPixKey } from "./CreateEmailPixKey.controller";

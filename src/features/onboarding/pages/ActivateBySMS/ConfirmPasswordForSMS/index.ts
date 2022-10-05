@@ -1,1 +1,1 @@
-export { ConfirmPassword } from './ConfirmPasswordForSMS'
+export { ConfirmPassword } from "./ConfirmPasswordForSMS";

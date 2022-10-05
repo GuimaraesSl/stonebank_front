@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Button,
   Dialog,
@@ -6,25 +6,25 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
-import { AuthenticationRoutes } from 'features/authentication/constants/routes'
+} from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import { AuthenticationRoutes } from "features/authentication/constants/routes";
 
 interface ConfirmSignoutDialogProps {
-  open: boolean
-  onClose: VoidFunction
+  open: boolean;
+  onClose: VoidFunction;
 }
 
 export const ConfirmSignoutDialog: React.FC<ConfirmSignoutDialogProps> = ({
   open,
   onClose,
 }) => {
-  const history = useHistory()
+  const history = useHistory();
 
   const onYesButtonClick = () => {
-    history.replace(AuthenticationRoutes.signOut)
-    onClose()
-  }
+    history.replace(AuthenticationRoutes.signOut);
+    onClose();
+  };
 
   return (
     <Dialog open={open}>
@@ -41,5 +41,5 @@ export const ConfirmSignoutDialog: React.FC<ConfirmSignoutDialogProps> = ({
         </Button>
       </DialogActions>
     </Dialog>
-  )
-}
+  );
+};

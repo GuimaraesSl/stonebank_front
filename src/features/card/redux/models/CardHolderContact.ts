@@ -1,4 +1,4 @@
 export interface CardHolderContact {
-  phone: string
-  mail: string
+  phone: string;
+  mail: string;
 }

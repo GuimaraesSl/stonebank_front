@@ -1,5 +1,5 @@
-import { Box, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import { Box, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -8,28 +8,28 @@ import {
   ProcessDescriptionHeader,
   ProcessPageFooterButton,
   ProcessPageLayout,
-} from 'components'
-import { Alert } from 'components/Alert'
-import { Loader } from 'components/Loader'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import React from 'react'
-import OtpInput from 'react-otp-input'
-import { useStyles } from './ConfirmPhoneNumberPixKey.styles'
-import { Icon } from 'components/Icon'
+} from "components";
+import { Alert } from "components/Alert";
+import { Loader } from "components/Loader";
+import { cancelLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import React from "react";
+import OtpInput from "react-otp-input";
+import { useStyles } from "./ConfirmPhoneNumberPixKey.styles";
+import { Icon } from "components/Icon";
 
 interface ConfirmPhoneNumberPixKeyProps {
-  subtitle: string
-  token: string
-  onTokenChange: (event: string) => void
-  message?: string
-  errorMessage?: string
-  loading: boolean
-  onCloseAlert: VoidFunction
-  onResendTokenButtonClick: (event: any) => void
-  onCancelButtonClick: VoidFunction
-  onBackButtonClick: VoidFunction
-  onConfirmButtonClick: VoidFunction
+  subtitle: string;
+  token: string;
+  onTokenChange: (event: string) => void;
+  message?: string;
+  errorMessage?: string;
+  loading: boolean;
+  onCloseAlert: VoidFunction;
+  onResendTokenButtonClick: (event: any) => void;
+  onCancelButtonClick: VoidFunction;
+  onBackButtonClick: VoidFunction;
+  onConfirmButtonClick: VoidFunction;
 }
 
 export const ConfirmPhoneNumberPixKeyView: React.FC<
@@ -47,7 +47,7 @@ export const ConfirmPhoneNumberPixKeyView: React.FC<
   onBackButtonClick,
   onConfirmButtonClick,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
   return (
     <PageContainer>
       <ProcessPageLayout
@@ -111,9 +111,9 @@ export const ConfirmPhoneNumberPixKeyView: React.FC<
       <Loader open={loading} />
       {message && (
         <Alert
-          title={'Sucesso'}
+          title={"Sucesso"}
           message={message}
-          severity={'success'}
+          severity={"success"}
           onClose={undefined}
         />
       )}
@@ -121,10 +121,10 @@ export const ConfirmPhoneNumberPixKeyView: React.FC<
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onCloseAlert}
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

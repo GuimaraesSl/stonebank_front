@@ -1,66 +1,66 @@
-import React from 'react'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Box, Grid } from '@material-ui/core'
-import { TextField } from 'components/TextField'
-import { useHistory } from 'react-router-dom'
-import { TaxPaymentRoutes } from 'features/taxPayment/constants/routes'
-import { maskMoney } from '_utils/masks/money'
-import { useMask } from 'hooks/useMask'
-import { CurrencyFormatter, parseCurrency } from '_translate'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { updateDarjPaymentData } from 'features/taxPayment/redux/actions'
-import { ErrorMessage } from 'components/ErrorMessage'
+import React from "react";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Box, Grid } from "@material-ui/core";
+import { TextField } from "components/TextField";
+import { useHistory } from "react-router-dom";
+import { TaxPaymentRoutes } from "features/taxPayment/constants/routes";
+import { maskMoney } from "_utils/masks/money";
+import { useMask } from "hooks/useMask";
+import { CurrencyFormatter, parseCurrency } from "_translate";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { updateDarjPaymentData } from "features/taxPayment/redux/actions";
+import { ErrorMessage } from "components/ErrorMessage";
 
 export const PaymentDarjValues: React.FC = () => {
-  const [valueInput, setValueInput] = React.useState(Number)
-  const [fineValue, setFineValue] = useMask(maskMoney)
-  const [interestValue, setInterestValue] = useMask(maskMoney)
-  const [principalValue, setPrincipalValue] = useMask(maskMoney)
-  const [rateValue, setRateValue] = useMask(maskMoney)
-  const [isValidTotalValue, setIsValidTotalValue] = React.useState(true)
-  const history = useHistory()
-  const [balanceIsInvalid, setBalanceIsInvalid] = React.useState(false)
+  const [valueInput, setValueInput] = React.useState(Number);
+  const [fineValue, setFineValue] = useMask(maskMoney);
+  const [interestValue, setInterestValue] = useMask(maskMoney);
+  const [principalValue, setPrincipalValue] = useMask(maskMoney);
+  const [rateValue, setRateValue] = useMask(maskMoney);
+  const [isValidTotalValue, setIsValidTotalValue] = React.useState(true);
+  const history = useHistory();
+  const [balanceIsInvalid, setBalanceIsInvalid] = React.useState(false);
   const { balance } = useSelector((store: StoreState) => ({
     balance: store.account.dashboard!.balance,
-  }))
+  }));
 
   const monetaryValue = useSelector((store: StoreState) => ({
     taxPaymentState: store.taxPayment.darj,
-  }))
+  }));
 
-  const { taxPaymentState } = monetaryValue
+  const { taxPaymentState } = monetaryValue;
 
   const onFineValueDarj = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFineValue(event.target.value)
-  }
+    setFineValue(event.target.value);
+  };
 
   const onInterestValueDarj = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInterestValue(event.target.value)
-  }
+    setInterestValue(event.target.value);
+  };
 
   const onPrincipalValueDarj = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrincipalValue(event.target.value)
-  }
+    setPrincipalValue(event.target.value);
+  };
 
   const onRateValueDarj = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRateValue(event.target.value)
-  }
+    setRateValue(event.target.value);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(updateDarjPaymentData())
-    history.replace(AccountRoutes.home)
-  }
+    dispatch(updateDarjPaymentData());
+    history.replace(AccountRoutes.home);
+  };
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     setValueInput(
@@ -73,28 +73,28 @@ export const PaymentDarjValues: React.FC = () => {
             ? 0
             : parseCurrency(interestValue)) +
           (isNaN(parseCurrency(rateValue)) ? 0 : parseCurrency(rateValue)) +
-          taxPaymentState!.monetaryValue!,
-      ),
-    )
+          taxPaymentState!.monetaryValue!
+      )
+    );
     setIsValidTotalValue(
       Number(valueInput) > 0 &&
         Number(valueInput) <= balance &&
-        Number(parseCurrency(principalValue)) > 0,
-    )
-    setBalanceIsInvalid(Number(valueInput) > balance)
-  }, [principalValue, fineValue, interestValue, rateValue, valueInput])
+        Number(parseCurrency(principalValue)) > 0
+    );
+    setBalanceIsInvalid(Number(valueInput) > balance);
+  }, [principalValue, fineValue, interestValue, rateValue, valueInput]);
 
   const onNextButtonClick = () => {
-    history.push(TaxPaymentRoutes.paymentDarjDueDate)
+    history.push(TaxPaymentRoutes.paymentDarjDueDate);
     dispatch(
       updateDarjPaymentData({
         principalValue: parseFloat(parseCurrency(principalValue).toFixed(2)),
         fineValue: parseFloat(parseCurrency(fineValue).toFixed(2)),
         interestValue: parseFloat(parseCurrency(interestValue).toFixed(2)),
         rateValue: parseFloat(parseCurrency(rateValue).toFixed(2)),
-      }),
-    )
-  }
+      })
+    );
+  };
   return (
     <PageContainer>
       <ProcessPageLayout
@@ -170,7 +170,7 @@ export const PaymentDarjValues: React.FC = () => {
               />
               <Box>
                 {balanceIsInvalid && (
-                  <ErrorMessage message={'Saldo insuficiente'} />
+                  <ErrorMessage message={"Saldo insuficiente"} />
                 )}
               </Box>
             </Grid>
@@ -192,5 +192,5 @@ export const PaymentDarjValues: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

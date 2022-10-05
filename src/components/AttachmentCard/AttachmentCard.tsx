@@ -1,12 +1,12 @@
-import React from 'react'
-import { Button } from '@material-ui/core'
+import React from "react";
+import { Button } from "@material-ui/core";
 
-import { useStyles } from './AttachmentCard.style'
+import { useStyles } from "./AttachmentCard.style";
 
 interface AttachmentCardProps {
-  image: string
-  title: string
-  info: string
+  image: string;
+  title: string;
+  info: string;
 }
 
 export const AttachmentCard: React.FC<AttachmentCardProps> = ({
@@ -14,7 +14,7 @@ export const AttachmentCard: React.FC<AttachmentCardProps> = ({
   image,
   info,
 }: AttachmentCardProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Button
@@ -35,5 +35,5 @@ export const AttachmentCard: React.FC<AttachmentCardProps> = ({
         </div>
       </div>
     </Button>
-  )
-}
+  );
+};

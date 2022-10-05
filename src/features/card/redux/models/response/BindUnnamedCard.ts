@@ -1,4 +1,4 @@
 export interface BindUnnamedCardResponse {
-  message?: string
-  status?: boolean
+  message?: string;
+  status?: boolean;
 }

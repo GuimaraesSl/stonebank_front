@@ -1,18 +1,18 @@
-import React from 'react'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { Drawer, Grid } from '@material-ui/core'
-import { Box, Typography } from '@material-ui/core'
-import { PageContainer } from 'components/PageContainer'
-import { Button as ButtonConfirm } from '@material-ui/core'
-import { useStyle } from './PopUpCancelScheduledPayment.style'
-import { useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { CurrencyFormatter } from '_translate'
+import React from "react";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { Drawer, Grid } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
+import { PageContainer } from "components/PageContainer";
+import { Button as ButtonConfirm } from "@material-ui/core";
+import { useStyle } from "./PopUpCancelScheduledPayment.style";
+import { useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { CurrencyFormatter } from "_translate";
 
 interface PopUpBlockProps {
-  open: boolean
-  onClose: (args?: boolean) => void
+  open: boolean;
+  onClose: (args?: boolean) => void;
 }
 
 export const PopUpCancelScheduledPayment: React.FC<PopUpBlockProps> = ({
@@ -20,24 +20,24 @@ export const PopUpCancelScheduledPayment: React.FC<PopUpBlockProps> = ({
   onClose,
 }) => {
   const paymentList = useSelector(
-    (state: StoreState) => state.futureTransactions.futureTransaction!,
-  )
+    (state: StoreState) => state.futureTransactions.futureTransaction!
+  );
 
-  const styles = useStyle()
+  const styles = useStyle();
   const [displayPaymentList, setDisplayPaymentList] =
-    React.useState(paymentList)
+    React.useState(paymentList);
 
   React.useEffect(() => {
-    setDisplayPaymentList(paymentList)
-  }, [paymentList])
+    setDisplayPaymentList(paymentList);
+  }, [paymentList]);
 
   const onCloseButtonClick = () => {
-    onClose(false)
-  }
+    onClose(false);
+  };
 
   const onConfirmButtonClick = () => {
-    onClose(true)
-  }
+    onClose(true);
+  };
 
   return (
     <React.Fragment>
@@ -76,12 +76,14 @@ export const PopUpCancelScheduledPayment: React.FC<PopUpBlockProps> = ({
                     {displayPaymentList?.typeDescription}
                   </Typography>
                   <Typography className={styles.descriptionValue}>
-                    {CurrencyFormatter.format(displayPaymentList?.principalValue!)}
+                    {CurrencyFormatter.format(
+                      displayPaymentList?.principalValue!
+                    )}
                   </Typography>
                   <Typography className={styles.textDescription}>
                     {!displayPaymentList?.name
-                      ? ''
-                      : 'para ' + displayPaymentList?.name}
+                      ? ""
+                      : "para " + displayPaymentList?.name}
                   </Typography>
                 </Grid>
               </Grid>
@@ -103,5 +105,5 @@ export const PopUpCancelScheduledPayment: React.FC<PopUpBlockProps> = ({
         </PageContainer>
       </Drawer>
     </React.Fragment>
-  )
-}
+  );
+};

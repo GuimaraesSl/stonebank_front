@@ -1,9 +1,9 @@
-import { alpha, makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { alpha, makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   attatchmentButton: {
-    width: '100%',
+    width: "100%",
     maxWidth: 136,
     height: 48,
     backgroundColor: colors.system.light.background,
@@ -13,18 +13,18 @@ export const useStyles = makeStyles({
   },
   propButton: {
     fontSize: 10,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   attachmentButtonIcon: {
-    display: 'absolute',
+    display: "absolute",
     width: 10,
     marginRight: 15,
     marginTop: 15,
   },
   attatchmentInfoLabel: {
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
     fontSize: 12,
     color: colors.system.light.neutral,
     marginRight: 30,
@@ -41,4 +41,4 @@ export const useStyles = makeStyles({
     fontWeight: 300,
     marginTop: -5,
   },
-})
+});

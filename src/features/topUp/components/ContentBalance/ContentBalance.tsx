@@ -1,14 +1,14 @@
-import React from 'react'
-import { Card, Box, Typography } from '@material-ui/core'
-import { useStyles } from './ContentBalance.style'
-import { CurrencyFormatter } from '_translate'
+import React from "react";
+import { Card, Box, Typography } from "@material-ui/core";
+import { useStyles } from "./ContentBalance.style";
+import { CurrencyFormatter } from "_translate";
 
 interface ContentBalanceProps {
-  balance: string
+  balance: string;
 }
 
 export const ContentBalance: React.FC<ContentBalanceProps> = ({ balance }) => {
-  const style = useStyles()
+  const style = useStyles();
   return (
     <Card className={style.card}>
       <Box>
@@ -17,5 +17,5 @@ export const ContentBalance: React.FC<ContentBalanceProps> = ({ balance }) => {
         </Typography>
       </Box>
     </Card>
-  )
-}
+  );
+};

@@ -1,71 +1,71 @@
-import React from 'react'
-import { Grid, Typography } from '@material-ui/core'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { useStyles } from './GenerateQrCodeTransfer.style'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { Button } from 'components/Button'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { QrCodeTransferRoutes } from 'features/qrCodeTransfer/constants/routes'
-import { useMask } from 'hooks/useMask'
-import { maskMoney } from '_utils/masks/money'
-import { useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import React from "react";
+import { Grid, Typography } from "@material-ui/core";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { useStyles } from "./GenerateQrCodeTransfer.style";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { Button } from "components/Button";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AccountRoutes } from "features/account/constants/routes";
+import { QrCodeTransferRoutes } from "features/qrCodeTransfer/constants/routes";
+import { useMask } from "hooks/useMask";
+import { maskMoney } from "_utils/masks/money";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   closeAlert,
   generateQrCode,
-} from 'features/qrCodeTransfer/redux/actions'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { cancelLabel } from 'constants/buttons/labels'
-import { StoreState } from 'redux/state'
-import { SuccessQrCodeTransferState } from 'features/qrCodeTransfer/redux/state'
-import { CurrencyFormatter, parseCurrency } from '_translate'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
+} from "features/qrCodeTransfer/redux/actions";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { cancelLabel } from "constants/buttons/labels";
+import { StoreState } from "redux/state";
+import { SuccessQrCodeTransferState } from "features/qrCodeTransfer/redux/state";
+import { CurrencyFormatter, parseCurrency } from "_translate";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
 
 export const GenerateQrCodeTransfer: React.FC = () => {
-  const [nextButtonClicked, setNextButtonClicked] = React.useState(false)
-  const [disableNextButton, setDisableNextButton] = React.useState(true)
-  const [value, setTransferValue] = useMask(maskMoney)
+  const [nextButtonClicked, setNextButtonClicked] = React.useState(false);
+  const [disableNextButton, setDisableNextButton] = React.useState(true);
+  const [value, setTransferValue] = useMask(maskMoney);
   const qrCodeState = useSelector((state: StoreState) => {
-    return state.qrCodeTransfer
-  })
-  const { loading, errorMessage } = qrCodeState
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const styles = useStyles()
+    return state.qrCodeTransfer;
+  });
+  const { loading, errorMessage } = qrCodeState;
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const styles = useStyles();
 
   React.useEffect(() => {
-    const parsedValue = parseCurrency(value)
-    setDisableNextButton(Number.isNaN(parsedValue) || parsedValue <= 0)
-  }, [value])
+    const parsedValue = parseCurrency(value);
+    setDisableNextButton(Number.isNaN(parsedValue) || parsedValue <= 0);
+  }, [value]);
 
   React.useEffect(() => {
     if (
       nextButtonClicked &&
       qrCodeState instanceof SuccessQrCodeTransferState
     ) {
-      history.push(QrCodeTransferRoutes.viewQrCodeTransfer)
+      history.push(QrCodeTransferRoutes.viewQrCodeTransfer);
     }
-  }, [history, nextButtonClicked, qrCodeState])
+  }, [history, nextButtonClicked, qrCodeState]);
 
   const onValueChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setTransferValue(event.target.value)
+    setTransferValue(event.target.value);
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-  }
+    history.replace(AccountRoutes.home);
+  };
 
   const onNextButtonClick = () => {
-    setNextButtonClicked(true)
-    dispatch(generateQrCode(parseCurrency(value)))
-  }
+    setNextButtonClicked(true);
+    dispatch(generateQrCode(parseCurrency(value)));
+  };
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   return (
     <PageContainer>
@@ -91,7 +91,11 @@ export const GenerateQrCodeTransfer: React.FC = () => {
             <ProcessDescriptionHeader title="Receber transferência via QR Code" />
             <Grid container direction="column" spacing={2}>
               <Grid item>
-                <Typography data-test-id="text" className={styles.subtitle} align="center">
+                <Typography
+                  data-test-id="text"
+                  className={styles.subtitle}
+                  align="center"
+                >
                   Quanto você precisa receber?
                 </Typography>
               </Grid>
@@ -133,10 +137,10 @@ export const GenerateQrCodeTransfer: React.FC = () => {
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

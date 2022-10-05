@@ -1,66 +1,66 @@
-import React from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
-import { PixRoutes } from 'features/pix'
-import { ReceivePixTransferQrCodeCheckView } from './ReceivePixTransferQrCodeCheck.view'
-import { useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { PixKeyType } from 'features/pix/redux/models/pixKeyType'
+import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import { PixRoutes } from "features/pix";
+import { ReceivePixTransferQrCodeCheckView } from "./ReceivePixTransferQrCodeCheck.view";
+import { useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { PixKeyType } from "features/pix/redux/models/pixKeyType";
 
 export const ReceivePixTransferQrCodeCheck: React.FC = () => {
-  const history = useHistory()
+  const history = useHistory();
 
-  const { state } = useLocation()
+  const { state } = useLocation();
 
-  const { principalValue } = state as any
+  const { principalValue } = state as any;
 
   const onCancelButtonClick = React.useCallback(() => {
-    history.push(PixRoutes.pixArea)
-  }, [])
+    history.push(PixRoutes.pixArea);
+  }, []);
 
-  const [pixKeyType, setPixKeyType] = React.useState('')
-  const [onSharePixQrCode, setSharePixQrCode] = React.useState(false)
+  const [pixKeyType, setPixKeyType] = React.useState("");
+  const [onSharePixQrCode, setSharePixQrCode] = React.useState(false);
   const [validatedSharePixQrCodeSheet, setSharePixQrCodeSheet] =
-    React.useState(false)
+    React.useState(false);
 
   const { staticPixQrCode, pixKey } = useSelector(
-    (state: StoreState) => state.pix,
-  )
+    (state: StoreState) => state.pix
+  );
 
   React.useEffect(() => {
     switch (pixKey) {
       case PixKeyType.CPF === pixKey?.pixKeyType:
-        setPixKeyType('CPF')
-        break
+        setPixKeyType("CPF");
+        break;
       case PixKeyType.CNPJ === pixKey?.pixKeyType:
-        setPixKeyType('CNPJ')
-        break
+        setPixKeyType("CNPJ");
+        break;
 
       case PixKeyType.Email === pixKey?.pixKeyType:
-        setPixKeyType('Email')
-        break
+        setPixKeyType("Email");
+        break;
 
       case PixKeyType.PhoneNumber === pixKey?.pixKeyType:
-        setPixKeyType('Celular')
-        break
+        setPixKeyType("Celular");
+        break;
     }
-  }, [pixKey])
+  }, [pixKey]);
 
   const onBackButtonClick = () => {
-    history.push(PixRoutes.pixArea)
-  }
+    history.push(PixRoutes.pixArea);
+  };
 
   const onSharePixQrCodeClick = React.useCallback(() => {
-    setSharePixQrCode(true)
-  }, [])
+    setSharePixQrCode(true);
+  }, []);
 
   const onSharePixQrCodeClose = (SharePixQrCodeValid: boolean) => {
-    if (SharePixQrCodeValid) setSharePixQrCodeSheet(true)
-    setSharePixQrCode(false)
-  }
+    if (SharePixQrCodeValid) setSharePixQrCodeSheet(true);
+    setSharePixQrCode(false);
+  };
 
   const onConfirmButtonClick = () => {
-    history.push(PixRoutes.pixArea)
-  }
+    history.push(PixRoutes.pixArea);
+  };
 
   return (
     <ReceivePixTransferQrCodeCheckView
@@ -75,5 +75,5 @@ export const ReceivePixTransferQrCodeCheck: React.FC = () => {
       onSharePixQrCode={onSharePixQrCode}
       onSharePixQrCodeClose={onSharePixQrCodeClose}
     />
-  )
-}
+  );
+};

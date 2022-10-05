@@ -1,5 +1,5 @@
-import { Bank } from '../bank'
+import { Bank } from "../bank";
 
 export interface ListBanksResponse {
-  banks: Bank[]
+  banks: Bank[];
 }

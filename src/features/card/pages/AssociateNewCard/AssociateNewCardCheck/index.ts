@@ -1,1 +1,1 @@
-export { AssociateNewCardCheckData } from './AssociateNewCardCheck'
+export { AssociateNewCardCheckData } from "./AssociateNewCardCheck";

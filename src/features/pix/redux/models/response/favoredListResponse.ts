@@ -1,5 +1,5 @@
-import { Favored } from '../favored'
+import { Favored } from "../favored";
 
 export interface FavoredListResponse {
-  favoredList?: Favored[]
+  favoredList?: Favored[];
 }

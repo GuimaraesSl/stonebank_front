@@ -1,1 +1,1 @@
-export { HelpPixQrCode } from './HelpPixQrCode'
+export { HelpPixQrCode } from "./HelpPixQrCode";

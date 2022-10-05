@@ -1,25 +1,25 @@
-import React from 'react'
-import { useStyles } from './AccountSheet.style'
-import { AccountListPopUp } from 'features/account/components/AccountListPopUp'
-import { ShowMoreButton } from '../ShowMoreButton'
-import { Account } from 'features/account/redux/models/account'
-import { StoreState } from 'redux/state'
-import { useDispatch, useSelector } from 'react-redux'
+import React from "react";
+import { useStyles } from "./AccountSheet.style";
+import { AccountListPopUp } from "features/account/components/AccountListPopUp";
+import { ShowMoreButton } from "../ShowMoreButton";
+import { Account } from "features/account/redux/models/account";
+import { StoreState } from "redux/state";
+import { useDispatch, useSelector } from "react-redux";
 import {
   changeAccount,
   getAccountDashboard,
-} from 'features/account/redux/actions'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { closeLabel } from 'constants/buttons/labels'
-import Drawer from '@material-ui/core/Drawer'
-import { Box } from '@material-ui/core'
-import { Icon } from 'components/Icon'
+} from "features/account/redux/actions";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { closeLabel } from "constants/buttons/labels";
+import Drawer from "@material-ui/core/Drawer";
+import { Box } from "@material-ui/core";
+import { Icon } from "components/Icon";
 
 interface AccountSheetProps {
-  account?: Account
-  open?: boolean
-  onClose: Function | ((setOpen: boolean) => void)
+  account?: Account;
+  open?: boolean;
+  onClose: Function | ((setOpen: boolean) => void);
 }
 
 export const AccountSheet: React.FC<AccountSheetProps> = ({
@@ -28,29 +28,29 @@ export const AccountSheet: React.FC<AccountSheetProps> = ({
 }) => {
   const { dashboard } = useSelector((state: StoreState) => ({
     dashboard: state.account,
-  }))
-  const { accounts } = dashboard.dashboard!
-  const accountId = dashboard.account?.accountId
-  const styles = useStyles()
+  }));
+  const { accounts } = dashboard.dashboard!;
+  const accountId = dashboard.account?.accountId;
+  const styles = useStyles();
 
-  const [expanded, setExpanded] = React.useState(false)
-  const [className, setClassName] = React.useState(styles.accounts)
+  const [expanded, setExpanded] = React.useState(false);
+  const [className, setClassName] = React.useState(styles.accounts);
 
   const onCloseButton = () => {
-    onClose(!open)
-  }
+    onClose(!open);
+  };
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const onAccountClick = (account: Account) => {
-    dispatch(changeAccount(account))
-    dispatch(getAccountDashboard(account.accountId))
-  }
+    dispatch(changeAccount(account));
+    dispatch(getAccountDashboard(account.accountId));
+  };
 
-  const onShowMoreButtonClick = () => setExpanded(!expanded)
+  const onShowMoreButtonClick = () => setExpanded(!expanded);
 
   React.useEffect(() => {
-    setClassName(`${styles.accounts} ${expanded && styles.expanded}`)
-  }, [expanded, styles.accounts, styles.expanded])
+    setClassName(`${styles.accounts} ${expanded && styles.expanded}`);
+  }, [expanded, styles.accounts, styles.expanded]);
 
   return (
     <Drawer
@@ -68,7 +68,7 @@ export const AccountSheet: React.FC<AccountSheetProps> = ({
                 <AccountListPopUp
                   key={account.accountId}
                   account={account}
-                  pathImage={<Icon name={'imageUser'} />}
+                  pathImage={<Icon name={"imageUser"} />}
                   stateImage={
                     account.accountId === accountId ? (
                       <Icon name="accountState" />
@@ -79,7 +79,7 @@ export const AccountSheet: React.FC<AccountSheetProps> = ({
                 />
                 <Box className={styles.divider} />
               </React.Fragment>
-            )
+            );
           })}
         </Box>
         <Box className={styles.buttonShowMore}>
@@ -98,5 +98,5 @@ export const AccountSheet: React.FC<AccountSheetProps> = ({
         </Button>
       </Box>
     </Drawer>
-  )
-}
+  );
+};

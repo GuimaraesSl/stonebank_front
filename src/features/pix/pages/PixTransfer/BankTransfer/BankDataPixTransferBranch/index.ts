@@ -1,1 +1,1 @@
-export { BankDataPixTransferBranch } from './BankDataPixTransferBranch.controller'
+export { BankDataPixTransferBranch } from "./BankDataPixTransferBranch.controller";

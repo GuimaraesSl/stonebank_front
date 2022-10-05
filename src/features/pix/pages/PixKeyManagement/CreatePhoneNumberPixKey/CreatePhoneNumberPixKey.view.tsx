@@ -1,35 +1,35 @@
-import React from 'react'
-import { PageContainer } from 'components/PageContainer'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { cancelLabel } from 'constants/buttons/labels'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { Box, Typography } from '@material-ui/core'
-import { ProcessPageFooterButton, TextField } from 'components'
-import { useStyles } from './CreatePhoneNumberPixKey.styles'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { AlertConcluded } from 'components/AlertConcluded'
-import { maskTaxId } from '_utils/masks/taxId'
-import { Account } from 'features/account/redux/models/account'
+import React from "react";
+import { PageContainer } from "components/PageContainer";
+import { AccountRoutes } from "features/account/constants/routes";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { cancelLabel } from "constants/buttons/labels";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { Box, Typography } from "@material-ui/core";
+import { ProcessPageFooterButton, TextField } from "components";
+import { useStyles } from "./CreatePhoneNumberPixKey.styles";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { AlertConcluded } from "components/AlertConcluded";
+import { maskTaxId } from "_utils/masks/taxId";
+import { Account } from "features/account/redux/models/account";
 
 interface CreatePhoneNumberPixKeyProps {
-  onAlertClose: VoidFunction
-  errorMessage?: string
-  loading: boolean
-  onShowAlert: boolean
-  inputValue: string
-  account: Account
-  onPhoneNumberChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onCloseAlert: VoidFunction
-  onClickAlert: VoidFunction
-  onConfirmButtonClick: VoidFunction
-  onBackButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
+  onAlertClose: VoidFunction;
+  errorMessage?: string;
+  loading: boolean;
+  onShowAlert: boolean;
+  inputValue: string;
+  account: Account;
+  onPhoneNumberChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onCloseAlert: VoidFunction;
+  onClickAlert: VoidFunction;
+  onConfirmButtonClick: VoidFunction;
+  onBackButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
 }
 export const CreatePhoneNumberPixKeyView: React.FC<
   CreatePhoneNumberPixKeyProps
@@ -47,7 +47,7 @@ export const CreatePhoneNumberPixKeyView: React.FC<
   onBackButtonClick,
   onCancelButtonClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <PageContainer>
@@ -82,13 +82,20 @@ export const CreatePhoneNumberPixKeyView: React.FC<
               placeholder="(XX) XXXX.XXXX"
               value={inputValue}
               onChange={onPhoneNumberChange}
-              inputMode={'numeric'}
+              inputMode={"numeric"}
               disabled={inputValue ? true : false}
             />
-            <Typography variant="subtitle1" className={styles.importantWarning} data-test-id="section-description">
+            <Typography
+              variant="subtitle1"
+              className={styles.importantWarning}
+              data-test-id="section-description"
+            >
               <strong>Aviso importante</strong>
             </Typography>
-            <Typography className={styles.txtalert} data-test-id="alert-description">
+            <Typography
+              className={styles.txtalert}
+              data-test-id="alert-description"
+            >
               Todos os demais usuário do Pix poderão saber que você tem uma
               chave Pix de e-mail ou de número de telefone celular registrada,
               porém, sua chave não será exibida. Mesmo usando essa chave para
@@ -96,10 +103,16 @@ export const CreatePhoneNumberPixKeyView: React.FC<
               informações:
             </Typography>
             <Box>
-              <Typography className={styles.componentName} data-test-id="account-name-description">
+              <Typography
+                className={styles.componentName}
+                data-test-id="account-name-description"
+              >
                 {account!.name}
               </Typography>
-              <Typography className={styles.componentCpf_Cnpj} data-test-id="identify-description">
+              <Typography
+                className={styles.componentCpf_Cnpj}
+                data-test-id="identify-description"
+              >
                 CPF/CNPJ:{maskTaxId(account!.taxId)}
               </Typography>
             </Box>
@@ -120,17 +133,17 @@ export const CreatePhoneNumberPixKeyView: React.FC<
         open={onShowAlert}
         onClose={onCloseAlert}
         onClick={onClickAlert}
-        title={'Chave Cadastrada'}
+        title={"Chave Cadastrada"}
       />
       <Loader open={loading} />
       {errorMessage && (
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

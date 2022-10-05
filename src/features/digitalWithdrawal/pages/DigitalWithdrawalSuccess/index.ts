@@ -1,1 +1,1 @@
-export { DigitalWithdrawalSuccess } from './DigitalWithdrawalSuccess'
+export { DigitalWithdrawalSuccess } from "./DigitalWithdrawalSuccess";

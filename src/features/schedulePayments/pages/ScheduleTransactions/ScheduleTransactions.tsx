@@ -1,51 +1,51 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Box } from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { PageContainer } from 'components/PageContainer'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useStyles } from './ScheduleTransactions.style'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { SelectionCard } from 'components/SelectionCard'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { cancelLabel } from 'constants/buttons/labels'
-import { SchedulePayments } from 'features/schedulePayments/constants/routes'
-import { Divider } from 'components/Divider'
-import { useDispatch } from 'react-redux'
-import { updateTransactions } from 'features/schedulePayments/redux/actions'
-import { FutureTransactionType } from 'features/schedulePayments/redux/models/futureTransactions'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Box } from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { PageContainer } from "components/PageContainer";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useStyles } from "./ScheduleTransactions.style";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { SelectionCard } from "components/SelectionCard";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { cancelLabel } from "constants/buttons/labels";
+import { SchedulePayments } from "features/schedulePayments/constants/routes";
+import { Divider } from "components/Divider";
+import { useDispatch } from "react-redux";
+import { updateTransactions } from "features/schedulePayments/redux/actions";
+import { FutureTransactionType } from "features/schedulePayments/redux/models/futureTransactions";
 
 export const ScheduleTransactions: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const styles = useStyles();
+  const dispatch = useDispatch();
 
   const onOutTransactionsClick = () => {
     dispatch(
       updateTransactions({
         futureTransactionType: FutureTransactionType.Pay,
-      }),
-    )
-    history.push(SchedulePayments.ScheduleTransactionsList)
-  }
+      })
+    );
+    history.push(SchedulePayments.ScheduleTransactionsList);
+  };
   const onEntryTransactionsClick = () => {
     dispatch(
       updateTransactions({
         futureTransactionType: FutureTransactionType.Receive,
-      }),
-    )
-    history.push(SchedulePayments.FutureTransactions)
-  }
+      })
+    );
+    history.push(SchedulePayments.FutureTransactions);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransactions())
-    history.replace(AccountRoutes.home)
-  }
+    dispatch(updateTransactions());
+    history.replace(AccountRoutes.home);
+  };
 
-  const onBackButtonClick = () => dispatch(updateTransactions())
+  const onBackButtonClick = () => dispatch(updateTransactions());
 
   return (
     <PageContainer>
@@ -80,7 +80,7 @@ export const ScheduleTransactions: React.FC = () => {
               <SelectionCard
                 title="Entradas"
                 subsubtitle="Acompanhe o status de suas cobranças"
-                endIcon={'moneyEntry'}
+                endIcon={"moneyEntry"}
                 onClick={onEntryTransactionsClick}
                 data-test-id="entry-transactions-button"
               />
@@ -88,7 +88,7 @@ export const ScheduleTransactions: React.FC = () => {
               <SelectionCard
                 title="Saídas"
                 subsubtitle="Pagamentos e transferências agendadas já autorizadas"
-                endIcon={'iconMoneyOut'}
+                endIcon={"iconMoneyOut"}
                 onClick={onOutTransactionsClick}
                 data-test-id="out-transactions-button"
               />
@@ -98,5 +98,5 @@ export const ScheduleTransactions: React.FC = () => {
         footer={<ProcessPageFooter onBackButtonClick={onBackButtonClick} />}
       />
     </PageContainer>
-  )
-}
+  );
+};

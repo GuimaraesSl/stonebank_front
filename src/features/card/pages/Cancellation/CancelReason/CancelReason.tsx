@@ -1,30 +1,30 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { KeyboardArrowRight, Close } from '@material-ui/icons'
-import { Box } from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { ListButtonRadio } from 'features/card/components/ListButton/ListButtonRadio'
-import { useStyles } from './CancelReason.style'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { CardRoutes } from 'features/card/constants/routes'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { KeyboardArrowRight, Close } from "@material-ui/icons";
+import { Box } from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { ListButtonRadio } from "features/card/components/ListButton/ListButtonRadio";
+import { useStyles } from "./CancelReason.style";
+import { AccountRoutes } from "features/account/constants/routes";
+import { CardRoutes } from "features/card/constants/routes";
 
 export const CancelReason: React.FC = () => {
-  const [selectedValue, setSelectedValue] = React.useState('')
-  const history = useHistory()
-  const styles = useStyles()
+  const [selectedValue, setSelectedValue] = React.useState("");
+  const history = useHistory();
+  const styles = useStyles();
 
   const onCancelButtonClick = () => {
-    history.push(CardRoutes.cardOption)
-  }
+    history.push(CardRoutes.cardOption);
+  };
 
   const onNextButtonClick = () => {
-    history.push(CardRoutes.cancelWarning)
-  }
+    history.push(CardRoutes.cancelWarning);
+  };
 
   return (
     <ProcessPageLayout
@@ -92,5 +92,5 @@ export const CancelReason: React.FC = () => {
         />
       }
     />
-  )
-}
+  );
+};

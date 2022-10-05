@@ -1,1 +1,1 @@
-export { PaymentGare } from './PaymentGare'
+export { PaymentGare } from "./PaymentGare";

@@ -1,14 +1,14 @@
-import React from 'react'
-import { Button, Typography, Box } from '@material-ui/core'
-import { useStyles } from './Option.style'
+import React from "react";
+import { Button, Typography, Box } from "@material-ui/core";
+import { useStyles } from "./Option.style";
 
 type OptionProps = {
-  title: string
-  icon: React.ReactNode
-  type: 'standard'
-  description: string
-  onClick: React.MouseEventHandler<HTMLElement>
-}
+  title: string;
+  icon: React.ReactNode;
+  type: "standard";
+  description: string;
+  onClick: React.MouseEventHandler<HTMLElement>;
+};
 
 export const Option: React.FC<OptionProps> = ({
   title,
@@ -16,7 +16,7 @@ export const Option: React.FC<OptionProps> = ({
   icon,
   onClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <React.Fragment>
       <Button
@@ -37,5 +37,5 @@ export const Option: React.FC<OptionProps> = ({
         </Box>
       </Button>
     </React.Fragment>
-  )
-}
+  );
+};

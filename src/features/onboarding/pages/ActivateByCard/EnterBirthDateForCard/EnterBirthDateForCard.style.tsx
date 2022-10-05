@@ -1,11 +1,11 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
   scheduleButton: {
     marginTop: 64,
-    justifyContent: 'center',
-    '& .MuiFormControl-root': {
-      display: 'none',
+    justifyContent: "center",
+    "& .MuiFormControl-root": {
+      display: "none",
     },
   },
   schedulingMessage: {
@@ -13,7 +13,7 @@ export const useStyles = makeStyles({
   },
 
   grid: {
-    marginLeft: '30px',
-    marginTop: '20px',
+    marginLeft: "30px",
+    marginTop: "20px",
   },
-})
+});

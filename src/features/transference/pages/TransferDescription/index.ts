@@ -1,1 +1,1 @@
-export { TransferDescription } from './TransferDescription'
+export { TransferDescription } from "./TransferDescription";

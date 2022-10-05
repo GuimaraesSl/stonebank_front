@@ -1,1 +1,1 @@
-export { WithUserAuthentication } from './WithUserAuthentication'
+export { WithUserAuthentication } from "./WithUserAuthentication";

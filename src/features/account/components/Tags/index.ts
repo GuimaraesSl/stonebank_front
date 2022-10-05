@@ -1,1 +1,1 @@
-export { TagsDescription } from './TagsDescription'
+export { TagsDescription } from "./TagsDescription";

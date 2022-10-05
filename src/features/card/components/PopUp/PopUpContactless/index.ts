@@ -1,1 +1,1 @@
-export { PopUpContactless } from './PopUpContactless'
+export { PopUpContactless } from "./PopUpContactless";

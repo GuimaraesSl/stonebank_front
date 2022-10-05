@@ -1,18 +1,18 @@
-import React from 'react'
-import { Box, ListItem, Typography } from '@material-ui/core'
-import { useStyles } from './ListItemHelp.style'
+import React from "react";
+import { Box, ListItem, Typography } from "@material-ui/core";
+import { useStyles } from "./ListItemHelp.style";
 
 interface ListItemHelpProps {
-  title: string
-  details: string
-  icon: string | React.ReactNode
+  title: string;
+  details: string;
+  icon: string | React.ReactNode;
 }
 export const ListItemHelp: React.FC<ListItemHelpProps> = ({
   title,
   details,
   icon,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <ListItem component="li" className={styles.actionListItem}>
       <Box className={styles.content}>
@@ -24,5 +24,5 @@ export const ListItemHelp: React.FC<ListItemHelpProps> = ({
         <Typography className={styles.details}>{details}</Typography>
       </Box>
     </ListItem>
-  )
-}
+  );
+};

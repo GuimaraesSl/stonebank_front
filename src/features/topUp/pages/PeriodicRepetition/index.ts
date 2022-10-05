@@ -1,1 +1,1 @@
-export { PeriodicRepetition } from './PeriodicRepetition'
+export { PeriodicRepetition } from "./PeriodicRepetition";

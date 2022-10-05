@@ -13,13 +13,13 @@ import { LogoBar } from 'components/LogoBar'
 import { GreatButton } from 'components/GreatButton'
 
 export const Welcome: React.FC = () => {
-  const styles = useOnboardingStyles()
-  const history = useHistory()
-  const token = useToken()
+  const styles = useOnboardingStyles();
+  const history = useHistory();
+  const token = useToken();
 
   React.useEffect(() => {
-    if (token) history.replace(AccountRoutes.home)
-  }, [history, token])
+    if (token) history.replace(AccountRoutes.home);
+  }, [history, token]);
 
   return (
 
@@ -80,11 +80,10 @@ export const Welcome: React.FC = () => {
 
 
           </Grid>
-
         </Grid>
 
       </Grid>
 
     </PageContainer>
-  )
-}
+  );
+};

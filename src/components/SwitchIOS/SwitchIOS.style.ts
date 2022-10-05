@@ -1,4 +1,4 @@
-import { withStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { withStyles, Theme, createStyles } from "@material-ui/core/styles";
 
 export const AntSwitch = withStyles((theme: Theme) =>
   createStyles({
@@ -6,15 +6,15 @@ export const AntSwitch = withStyles((theme: Theme) =>
       width: 33,
       height: 16,
       padding: 0,
-      display: 'flex',
+      display: "flex",
     },
     switchBase: {
       padding: 2,
-      color: '#FFFFFF',
-      '&$checked': {
-        transform: 'translateX(17px)',
-        color: '#FFFFFF',
-        '& + $track': {
+      color: "#FFFFFF",
+      "&$checked": {
+        transform: "translateX(17px)",
+        color: "#FFFFFF",
+        "& + $track": {
           opacity: 1,
           backgroundColor: theme.palette.primary.main,
           borderColor: theme.palette.primary.main,
@@ -24,14 +24,14 @@ export const AntSwitch = withStyles((theme: Theme) =>
     thumb: {
       width: 11,
       height: 11,
-      boxShadow: 'none',
+      boxShadow: "none",
     },
     checked: {},
     track: {
       border: `1px solid ${theme.palette.grey[500]}`,
       borderRadius: 16 / 2,
       opacity: 1,
-      backgroundColor: '#C4C4C4',
+      backgroundColor: "#C4C4C4",
     },
-  }),
-)
+  })
+);

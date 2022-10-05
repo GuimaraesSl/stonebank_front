@@ -1,21 +1,21 @@
-import React from 'react'
-import { Box, Drawer, Grid, Snackbar } from '@material-ui/core'
-import { useStyle } from './TagEditPopUp.style'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { TextField } from 'components/TextField'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon/ButtonWithFloatingIcon'
-import { Button } from 'components/Button'
-import { finishLabel } from 'constants/buttons/labels'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { TagChip } from 'features/tags/components/TagChip'
-import Alert from '@material-ui/lab/Alert'
-import { getTags } from 'features/tags/redux/actions'
+import React from "react";
+import { Box, Drawer, Grid, Snackbar } from "@material-ui/core";
+import { useStyle } from "./TagEditPopUp.style";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { TextField } from "components/TextField";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon/ButtonWithFloatingIcon";
+import { Button } from "components/Button";
+import { finishLabel } from "constants/buttons/labels";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { TagChip } from "features/tags/components/TagChip";
+import Alert from "@material-ui/lab/Alert";
+import { getTags } from "features/tags/redux/actions";
 
 interface TagEditPopUpProps {
-  open: boolean
-  onClose: Function | ((setOpen: boolean) => void)
-  onSaveTags: (tags: string[]) => void
+  open: boolean;
+  onClose: Function | ((setOpen: boolean) => void);
+  onSaveTags: (tags: string[]) => void;
 }
 
 export const TagEditPopUp: React.FC<TagEditPopUpProps> = ({
@@ -23,60 +23,60 @@ export const TagEditPopUp: React.FC<TagEditPopUpProps> = ({
   onSaveTags,
   onClose,
 }) => {
-  const style = useStyle()
-  const dispatch = useDispatch()
-  const [descriptionTags, setDescriptionTags] = React.useState('')
-  const sugestTags = useSelector((state: StoreState) => state.tags.tags)
-  const [tags, setTags] = React.useState(sugestTags)
-  const [errorMessageTags, setErrorMessageTags] = React.useState(false)
+  const style = useStyle();
+  const dispatch = useDispatch();
+  const [descriptionTags, setDescriptionTags] = React.useState("");
+  const sugestTags = useSelector((state: StoreState) => state.tags.tags);
+  const [tags, setTags] = React.useState(sugestTags);
+  const [errorMessageTags, setErrorMessageTags] = React.useState(false);
 
   React.useEffect(() => {
-    dispatch(getTags())
-  }, [])
+    dispatch(getTags());
+  }, []);
 
   React.useEffect(() => {
-    setTags(sugestTags)
-  }, [sugestTags])
+    setTags(sugestTags);
+  }, [sugestTags]);
 
   const onDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDescriptionTags(event.target.value.toUpperCase())
-  }
+    setDescriptionTags(event.target.value.toUpperCase());
+  };
 
   const onAddTagsButtonClick = () => {
-    if (typeof tags === 'undefined' && descriptionTags.length >= 2) {
-      setTags([descriptionTags])
-    } else if (typeof tags === 'undefined' && descriptionTags.length < 2) {
-      setErrorMessageTags(true)
+    if (typeof tags === "undefined" && descriptionTags.length >= 2) {
+      setTags([descriptionTags]);
+    } else if (typeof tags === "undefined" && descriptionTags.length < 2) {
+      setErrorMessageTags(true);
     } else if (
       !tags?.includes(descriptionTags) &&
       descriptionTags.length >= 2
     ) {
-      setTags([...(tags ?? []), descriptionTags])
-      setErrorMessageTags(false)
+      setTags([...(tags ?? []), descriptionTags]);
+      setErrorMessageTags(false);
     } else if (descriptionTags.length < 2) {
-      setErrorMessageTags(true)
+      setErrorMessageTags(true);
     } else {
-      setErrorMessageTags(false)
+      setErrorMessageTags(false);
     }
-    setDescriptionTags('')
-  }
+    setDescriptionTags("");
+  };
 
   const onTagsRemoveClick = (tagToDelete: string) => {
-    setTags(tags?.filter((tag: string) => tag !== tagToDelete))
-  }
+    setTags(tags?.filter((tag: string) => tag !== tagToDelete));
+  };
 
   const onPushTags = () => {
-    onClose(!open)
-  }
+    onClose(!open);
+  };
 
   const onCloseTagsEditPopUp = () => {
-    onClose(!open)
-    onSaveTags(tags ?? [])
-  }
+    onClose(!open);
+    onSaveTags(tags ?? []);
+  };
 
   const onMessageClose = () => {
-    setErrorMessageTags(false)
-  }
+    setErrorMessageTags(false);
+  };
 
   return (
     <React.Fragment>
@@ -112,7 +112,7 @@ export const TagEditPopUp: React.FC<TagEditPopUpProps> = ({
                         onClick={() => onTagsRemoveClick(tagValue!)}
                       />
                     </text>
-                  )
+                  );
                 })}
             </Box>
             <Box className={style.elementsFormTags}>
@@ -150,7 +150,7 @@ export const TagEditPopUp: React.FC<TagEditPopUpProps> = ({
               </Box>
               <Box className={style.finishTagButtonStyle}>
                 <Button
-                  size={'large'}
+                  size={"large"}
                   onClick={onCloseTagsEditPopUp}
                   data-test-id="close-tags-button"
                 >
@@ -162,5 +162,5 @@ export const TagEditPopUp: React.FC<TagEditPopUpProps> = ({
         </Grid>
       </Drawer>
     </React.Fragment>
-  )
-}
+  );
+};

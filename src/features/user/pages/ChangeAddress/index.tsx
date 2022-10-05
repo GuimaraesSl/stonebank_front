@@ -1,1 +1,1 @@
-export { ChangeAddress } from './ChangeAddress'
+export { ChangeAddress } from "./ChangeAddress";

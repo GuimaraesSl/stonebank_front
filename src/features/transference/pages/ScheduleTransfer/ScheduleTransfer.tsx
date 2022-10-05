@@ -1,38 +1,38 @@
-import React from 'react'
-import { Grid } from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useDispatch, useSelector } from 'react-redux'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { useHistory } from 'react-router-dom'
-import { TextField } from 'components/TextField'
-import { SchedulingButton } from 'components/SchedulingButton'
-import { ShortDateFormatter } from '_translate'
-import { PageContainer } from 'components/PageContainer'
-import { useStyles } from './ScheduleTransfer.style'
-import { TransferenceRoutes } from 'features/transference/constants/routes'
+import React from "react";
+import { Grid } from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { useHistory } from "react-router-dom";
+import { TextField } from "components/TextField";
+import { SchedulingButton } from "components/SchedulingButton";
+import { ShortDateFormatter } from "_translate";
+import { PageContainer } from "components/PageContainer";
+import { useStyles } from "./ScheduleTransfer.style";
+import { TransferenceRoutes } from "features/transference/constants/routes";
 import {
   getExpectedTransferDate,
   updateTransferenceData,
-} from 'features/transference/redux/actions'
-import { StoreState } from 'redux/state'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { TransferType } from 'features/transference/redux/models/enum'
-import { compareTransferDates } from 'features/transference/_utils'
-import { ConfirmSchedulingDialog } from 'features/transference/components/ConfirmSchedulingDialog'
+} from "features/transference/redux/actions";
+import { StoreState } from "redux/state";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { TransferType } from "features/transference/redux/models/enum";
+import { compareTransferDates } from "features/transference/_utils";
+import { ConfirmSchedulingDialog } from "features/transference/components/ConfirmSchedulingDialog";
 
 export const ScheduleTransfer: React.FC = () => {
-  const [transferDate, setTransferDate] = React.useState<Date | null>(null)
-  const [displayDate, setDisplayDate] = React.useState('')
-  const [minDate, setMinDate] = React.useState(new Date())
-  const [choseDate, setChoseDate] = React.useState(false)
-  const [openDatePicker, setOpenDatePicker] = React.useState(false)
+  const [transferDate, setTransferDate] = React.useState<Date | null>(null);
+  const [displayDate, setDisplayDate] = React.useState("");
+  const [minDate, setMinDate] = React.useState(new Date());
+  const [choseDate, setChoseDate] = React.useState(false);
+  const [openDatePicker, setOpenDatePicker] = React.useState(false);
   const { expectedTransferDate, transferType, toName, loading, errorMessage } =
     useSelector((state: StoreState) => ({
       expectedTransferDate:
@@ -41,84 +41,84 @@ export const ScheduleTransfer: React.FC = () => {
       toName: state.transference.transference?.toName,
       loading: state.transference.loading,
       errorMessage: state.transference.errorMessage,
-    }))
+    }));
 
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const styles = useStyles()
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const styles = useStyles();
 
   React.useEffect(() => {
     if (expectedTransferDate && !transferDate) {
-      setMinDate(new Date())
-      setTransferDate(expectedTransferDate)
+      setMinDate(new Date());
+      setTransferDate(expectedTransferDate);
     }
-  }, [expectedTransferDate, transferDate])
+  }, [expectedTransferDate, transferDate]);
 
   React.useEffect(() => {
     if (expectedTransferDate && transferDate !== expectedTransferDate)
-      setTransferDate(expectedTransferDate)
-  }, [expectedTransferDate])
+      setTransferDate(expectedTransferDate);
+  }, [expectedTransferDate]);
 
   React.useEffect(() => {
-    setDisplayDate(_getDisplayDate())
-  }, [transferDate])
+    setDisplayDate(_getDisplayDate());
+  }, [transferDate]);
 
   const _getDisplayDate = () => {
-    const today = 'Hoje'
+    const today = "Hoje";
 
     if (!transferDate || compareTransferDates(transferDate, new Date()) === 0)
-      return today
-    else return ShortDateFormatter.format(transferDate)
-  }
+      return today;
+    else return ShortDateFormatter.format(transferDate);
+  };
 
   const _transferDateIsValid = () => {
     return (
       transferDate &&
       expectedTransferDate &&
       compareTransferDates(transferDate, expectedTransferDate) === 0
-    )
-  }
+    );
+  };
 
   const onSchedulingButtonClick = () => {
-    setOpenDatePicker(true)
-  }
+    setOpenDatePicker(true);
+  };
 
   const onDatePickerClose = () => {
-    setOpenDatePicker(false)
-  }
+    setOpenDatePicker(false);
+  };
 
   const onDateChange = (date: Date | null) => {
-    setTransferDate(date)
-  }
+    setTransferDate(date);
+  };
 
   const onConfirmSchedulingDialogClose = (confirmedScheduling: boolean) => {
     if (confirmedScheduling) {
-      dispatch(updateTransferenceData({ transferDate }))
-      history.push(TransferenceRoutes.description)
-      return
+      dispatch(updateTransferenceData({ transferDate }));
+      history.push(TransferenceRoutes.description);
+      return;
     }
 
-    setChoseDate(false)
-  }
+    setChoseDate(false);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransferenceData())
-    history.go(transferType === TransferType.InternalTransfer ? -5 : -9)
-  }
+    dispatch(updateTransferenceData());
+    history.go(transferType === TransferType.InternalTransfer ? -5 : -9);
+  };
 
   const onNextButtonClick = async (event: React.FormEvent) => {
-    event.preventDefault()
-    setChoseDate(true)
+    event.preventDefault();
+    setChoseDate(true);
 
     if (transferType === TransferType.MoneyTransfer)
-      dispatch(getExpectedTransferDate(transferDate))
+      dispatch(getExpectedTransferDate(transferDate));
 
     dispatch(
-      updateTransferenceData({ transferDate: transferDate ?? new Date() }),
-    )
+      updateTransferenceData({ transferDate: transferDate ?? new Date() })
+    );
 
-    history.push(TransferenceRoutes.description)
-  }
+    history.push(TransferenceRoutes.description);
+  };
 
   return (
     <PageContainer>
@@ -200,5 +200,5 @@ export const ScheduleTransfer: React.FC = () => {
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

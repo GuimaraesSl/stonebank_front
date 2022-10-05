@@ -1,61 +1,61 @@
-import React from 'react'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { cancelLabel, returnLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useHistory } from 'react-router-dom'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AccountBalance } from 'features/account/components/AccountBalance'
-import { ShowBalanceButton } from 'features/payment/components/ShowBalanceButton'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Box, Grid, Typography } from '@material-ui/core'
-import Drawer from '@material-ui/core/Drawer'
-import { AccountSheet } from 'features/account/components/AccountSheet'
-import { useStyles } from 'features/taxPayment/pages/Gare/PaymentGare/PaymentGare.style'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { SelectionCard } from 'components/SelectionCard'
-import { KeyboardArrowLeft } from '@material-ui/icons'
-import { TaxPaymentRoutes } from 'features/taxPayment/constants/routes'
-import { updateGarePaymentData } from 'features/taxPayment/redux/actions'
+import React from "react";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { cancelLabel, returnLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useHistory } from "react-router-dom";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AccountBalance } from "features/account/components/AccountBalance";
+import { ShowBalanceButton } from "features/payment/components/ShowBalanceButton";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Box, Grid, Typography } from "@material-ui/core";
+import Drawer from "@material-ui/core/Drawer";
+import { AccountSheet } from "features/account/components/AccountSheet";
+import { useStyles } from "features/taxPayment/pages/Gare/PaymentGare/PaymentGare.style";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { SelectionCard } from "components/SelectionCard";
+import { KeyboardArrowLeft } from "@material-ui/icons";
+import { TaxPaymentRoutes } from "features/taxPayment/constants/routes";
+import { updateGarePaymentData } from "features/taxPayment/redux/actions";
 
 export const PaymentGare: React.FC = () => {
-  const [bottom, setBottom] = React.useState(false)
+  const [bottom, setBottom] = React.useState(false);
   const { Account } = useSelector((state: StoreState) => ({
     Account: state.account.account,
-  }))
+  }));
 
-  let displayValue = JSON.parse(localStorage.getItem('showBalance')!)
-  const [showBalance, setShowBalance] = React.useState<boolean>(displayValue)
+  let displayValue = JSON.parse(localStorage.getItem("showBalance")!);
+  const [showBalance, setShowBalance] = React.useState<boolean>(displayValue);
 
   React.useEffect(() => {
-    localStorage.setItem('showBalance', JSON.stringify(showBalance))
-    if (showBalance === null) setShowBalance(true)
-  }, [showBalance])
+    localStorage.setItem("showBalance", JSON.stringify(showBalance));
+    if (showBalance === null) setShowBalance(true);
+  }, [showBalance]);
 
-  const history = useHistory()
-  const styles = useStyles()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const styles = useStyles();
+  const dispatch = useDispatch();
 
-  const onShowBalanceButtonClick = () => setShowBalance(!showBalance)
+  const onShowBalanceButtonClick = () => setShowBalance(!showBalance);
 
   const toggleDrawer = () => {
-    setBottom(!bottom)
-  }
+    setBottom(!bottom);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(updateGarePaymentData())
-    history.replace(AccountRoutes.home)
-  }
+    dispatch(updateGarePaymentData());
+    history.replace(AccountRoutes.home);
+  };
 
   const onNextButtonClick = () => {
-    history.push(TaxPaymentRoutes.paymentGareType)
-  }
+    history.push(TaxPaymentRoutes.paymentGareType);
+  };
 
-  const onBackButtonClick = () => dispatch(updateGarePaymentData())
+  const onBackButtonClick = () => dispatch(updateGarePaymentData());
 
   return (
     <PageContainer>
@@ -126,5 +126,5 @@ export const PaymentGare: React.FC = () => {
         footer={<ProcessPageFooter onBackButtonClick={onBackButtonClick} />}
       />
     </PageContainer>
-  )
-}
+  );
+};

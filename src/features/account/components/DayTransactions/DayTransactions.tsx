@@ -1,20 +1,20 @@
-import React from 'react'
-import { useStyle } from './DayTransactions.style'
-import { Typography } from '@material-ui/core'
-import { TranscationCard } from 'features/account/components/TranscationCard'
-import { DayTransactions as DayTransactionsModel } from 'features/account/redux/models/dayTransactions'
+import React from "react";
+import { useStyle } from "./DayTransactions.style";
+import { Typography } from "@material-ui/core";
+import { TranscationCard } from "features/account/components/TranscationCard";
+import { DayTransactions as DayTransactionsModel } from "features/account/redux/models/dayTransactions";
 
-import { CurrencyFormatter } from '_translate'
+import { CurrencyFormatter } from "_translate";
 
 interface DayTransactionsProps {
-  dayTransactions: DayTransactionsModel
+  dayTransactions: DayTransactionsModel;
 }
 
 export const DayTransactions: React.FC<DayTransactionsProps> = ({
   dayTransactions,
 }: DayTransactionsProps) => {
-  const { day, month, transactions, balance } = dayTransactions
-  const style = useStyle()
+  const { day, month, transactions, balance } = dayTransactions;
+  const style = useStyle();
 
   return (
     <section className={style.transactionsContent} data-test-id="transactions">
@@ -56,5 +56,5 @@ export const DayTransactions: React.FC<DayTransactionsProps> = ({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

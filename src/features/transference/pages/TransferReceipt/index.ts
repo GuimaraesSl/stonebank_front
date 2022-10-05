@@ -1,1 +1,1 @@
-export { TransferReceipt } from './TransferReceipt'
+export { TransferReceipt } from "./TransferReceipt";

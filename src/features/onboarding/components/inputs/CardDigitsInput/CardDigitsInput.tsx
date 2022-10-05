@@ -1,16 +1,16 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { useStyles } from './CardDigitsInput.style'
-import { Box } from '@material-ui/core'
-import { OtpInput } from 'components/OtpInput'
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { useStyles } from "./CardDigitsInput.style";
+import { Box } from "@material-ui/core";
+import { OtpInput } from "components/OtpInput";
 
 interface DigitsCardPropsProps {
-  value: string
-  onChange: React.Dispatch<React.SetStateAction<any>>
+  value: string;
+  onChange: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export const DigitsCardProps = ({ value, onChange }: DigitsCardPropsProps) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <Box>
@@ -34,5 +34,5 @@ export const DigitsCardProps = ({ value, onChange }: DigitsCardPropsProps) => {
         />
       </Box>
     </Box>
-  )
-}
+  );
+};

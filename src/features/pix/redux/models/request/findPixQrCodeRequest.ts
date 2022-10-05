@@ -1,6 +1,6 @@
-import { ApiRequest } from '_config/api'
+import { ApiRequest } from "_config/api";
 
 export interface FindPixQrCodeRequest extends ApiRequest {
-  taxId?: string
-  externalIdentifier?: number
+  taxId?: string;
+  externalIdentifier?: number;
 }

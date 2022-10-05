@@ -1,50 +1,50 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { TextField } from 'components/TextField'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PageContainer } from 'components/PageContainer'
-import { Box, Grid } from '@material-ui/core'
-import { updateOnboardingForm } from 'features/onboarding/redux/actions'
-import { useDispatch } from 'react-redux'
-import { useStyles } from './EnterMailForCard.style'
-import { validateEmail } from '_utils/validate'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { TextField } from "components/TextField";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PageContainer } from "components/PageContainer";
+import { Box, Grid } from "@material-ui/core";
+import { updateOnboardingForm } from "features/onboarding/redux/actions";
+import { useDispatch } from "react-redux";
+import { useStyles } from "./EnterMailForCard.style";
+import { validateEmail } from "_utils/validate";
 
 export const EnterMailForCard: React.FC = () => {
-  const style = useStyles()
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const style = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [mail, setMail] = React.useState('')
-  const [invalidMail, setInvalidMail] = React.useState(false)
+  const [mail, setMail] = React.useState("");
+  const [invalidMail, setInvalidMail] = React.useState(false);
 
   React.useEffect(() => {
-    validateError()
-  }, [mail])
+    validateError();
+  }, [mail]);
 
   const onTaxIdChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setMail(event.target.value)
+    setMail(event.target.value);
 
   const onCancelButtonClick = () => {
-    history.replace(OnboardingRoutes.activateAccount)
-  }
+    history.replace(OnboardingRoutes.activateAccount);
+  };
 
   const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    dispatch(updateOnboardingForm({ mail }))
-    history.push(OnboardingRoutes.enterBirthdayForCard)
-  }
+    dispatch(updateOnboardingForm({ mail }));
+    history.push(OnboardingRoutes.enterBirthdayForCard);
+  };
 
   const validateError = () => {
-    validateEmail(mail) ? setInvalidMail(false) : setInvalidMail(true)
-  }
+    validateEmail(mail) ? setInvalidMail(false) : setInvalidMail(true);
+  };
 
   return (
     <PageContainer>
@@ -109,5 +109,5 @@ export const EnterMailForCard: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

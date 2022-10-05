@@ -1,17 +1,17 @@
-import React from 'react'
-import { Button } from '@material-ui/core'
-import { useStyles } from './ButtonAttachDocuments.style'
+import React from "react";
+import { Button } from "@material-ui/core";
+import { useStyles } from "./ButtonAttachDocuments.style";
 
 interface ButtonAttachDocumentsProps {
-  title: string
-  imagePath: string | React.ReactNode
+  title: string;
+  imagePath: string | React.ReactNode;
 }
 
 export const ButtonAttachDocuments: React.FC<ButtonAttachDocumentsProps> = ({
   title,
   imagePath,
 }) => {
-  const styleButtonAttachDocuments = useStyles()
+  const styleButtonAttachDocuments = useStyles();
 
   return (
     <Button
@@ -25,7 +25,7 @@ export const ButtonAttachDocuments: React.FC<ButtonAttachDocumentsProps> = ({
         className={styleButtonAttachDocuments.contentAttachDocuments}
       >
         <div className="propButton">
-          {typeof imagePath === 'string' ? (
+          {typeof imagePath === "string" ? (
             <img
               src={imagePath}
               className={styleButtonAttachDocuments.iconAttachDocuments}
@@ -36,11 +36,11 @@ export const ButtonAttachDocuments: React.FC<ButtonAttachDocumentsProps> = ({
           )}
 
           <div className={styleButtonAttachDocuments.labelAttachDocuments}>
-            {' '}
-            {title}{' '}
+            {" "}
+            {title}{" "}
           </div>
         </div>
       </label>
     </Button>
-  )
-}
+  );
+};

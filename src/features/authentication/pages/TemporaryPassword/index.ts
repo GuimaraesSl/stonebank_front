@@ -1,1 +1,1 @@
-export { TemporaryPassword } from './TemporaryPassword'
+export { TemporaryPassword } from "./TemporaryPassword";

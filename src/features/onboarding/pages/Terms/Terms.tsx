@@ -1,41 +1,41 @@
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { TermsText } from 'features/onboarding/components/texts/TermsText'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { Button } from 'components/Button'
-import { nextLabel, returnLabel } from 'constants/buttons/labels'
-import { KeyboardArrowRight } from '@material-ui/icons'
-import { useHistory } from 'react-router-dom'
-import { ConfigContext } from '_config'
-import { useStyles } from './Terms.style'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { AuthenticationRoutes } from 'features/authentication/constants/routes'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { TermsText } from "features/onboarding/components/texts/TermsText";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { Button } from "components/Button";
+import { nextLabel, returnLabel } from "constants/buttons/labels";
+import { KeyboardArrowRight } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { ConfigContext } from "_config";
+import { useStyles } from "./Terms.style";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { AuthenticationRoutes } from "features/authentication/constants/routes";
 import {
   updateUserTerms,
   logout as signOut,
-} from 'features/authentication/redux/actions'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { KeyboardArrowLeft } from '@material-ui/icons'
-import { Loader } from 'components/Loader'
+} from "features/authentication/redux/actions";
+import { AccountRoutes } from "features/account/constants/routes";
+import { KeyboardArrowLeft } from "@material-ui/icons";
+import { Loader } from "components/Loader";
 import {
   UpdateTermsSuccessState,
   UpdateTermsLoadingState,
-} from 'features/authentication/redux/state'
-import { closeAlert } from 'features/card/redux/actions'
-import { Alert } from 'components/Alert'
+} from "features/authentication/redux/state";
+import { closeAlert } from "features/card/redux/actions";
+import { Alert } from "components/Alert";
 
 export const Terms: React.FC = () => {
-  const [actTerms, setActTerms] = React.useState(false)
-  const [disableNextButton, setDisableNextButton] = React.useState(false)
-  const { company } = React.useContext(ConfigContext)
-  const history = useHistory()
-  const styles = useStyles()
-  const dispatch = useDispatch()
+  const [actTerms, setActTerms] = React.useState(false);
+  const [disableNextButton, setDisableNextButton] = React.useState(false);
+  const { company } = React.useContext(ConfigContext);
+  const history = useHistory();
+  const styles = useStyles();
+  const dispatch = useDispatch();
   //Testando GitHub Actions
 
   const { acceptedTerms, FirstAccess, login, authState } = useSelector(
@@ -44,40 +44,40 @@ export const Terms: React.FC = () => {
       FirstAccess: store.auth.user?.isFirstAccess,
       login: store.auth.user?.taxId,
       authState: store.auth,
-    }),
-  )
+    })
+  );
 
   React.useEffect(() => {
-    setDisableNextButton(!actTerms)
-  }, [actTerms])
+    setDisableNextButton(!actTerms);
+  }, [actTerms]);
 
   const onBackToLogin = () => {
-    dispatch(signOut())
-    history.replace(AuthenticationRoutes.signIn)
-  }
+    dispatch(signOut());
+    history.replace(AuthenticationRoutes.signIn);
+  };
 
   const handleTermsAccept = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setActTerms(event.target.checked)
-  }
+    setActTerms(event.target.checked);
+  };
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   const onNextButtonClick = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!login) history.push(OnboardingRoutes.activateAccount)
-    else if (FirstAccess && !acceptedTerms) dispatch(updateUserTerms(login!))
-    else if (!acceptedTerms) dispatch(updateUserTerms(login!))
-  }
+    e.preventDefault();
+    if (!login) history.push(OnboardingRoutes.activateAccount);
+    else if (FirstAccess && !acceptedTerms) dispatch(updateUserTerms(login!));
+    else if (!acceptedTerms) dispatch(updateUserTerms(login!));
+  };
 
   React.useEffect(() => {
     if (authState instanceof UpdateTermsSuccessState) {
       if (FirstAccess && !acceptedTerms)
-        history.replace(AuthenticationRoutes.temporaryPassword)
-      else if (!acceptedTerms) history.replace(AccountRoutes.home)
+        history.replace(AuthenticationRoutes.temporaryPassword);
+      else if (!acceptedTerms) history.replace(AccountRoutes.home);
     }
-  }, [authState, FirstAccess, history, acceptedTerms])
+  }, [authState, FirstAccess, history, acceptedTerms]);
 
   return (
     <React.Fragment>
@@ -86,7 +86,7 @@ export const Terms: React.FC = () => {
         <Alert
           title="Erro"
           message={authState.errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
@@ -134,5 +134,5 @@ export const Terms: React.FC = () => {
         footerPosition="fixed"
       />
     </React.Fragment>
-  )
-}
+  );
+};

@@ -1,1 +1,1 @@
-export { ChangeEmail } from './ChangeEmail'
+export { ChangeEmail } from "./ChangeEmail";

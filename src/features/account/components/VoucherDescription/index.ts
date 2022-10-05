@@ -1,1 +1,1 @@
-export { ReceiptSummary } from './ReceiptSummary'
+export { ReceiptSummary } from "./ReceiptSummary";

@@ -1,55 +1,55 @@
-import React from 'react'
-import { Box, Drawer, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
-import { Button } from 'components/Button'
-import { PageContainer } from 'components/PageContainer'
-import { useStyles } from './SharePixQrCode.style'
-import qrCode from '_assets/icons/iconQrCodeButton.svg'
-import { ShareCode } from '../ShareCode'
-import { ShareImagePixQrCode } from '../ShareImagePixQrCode'
-import { Icon } from 'components/Icon'
-import { SelectionButton } from 'features/pix/components/SelectionButton'
+import React from "react";
+import { Box, Drawer, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { Button } from "components/Button";
+import { PageContainer } from "components/PageContainer";
+import { useStyles } from "./SharePixQrCode.style";
+import qrCode from "_assets/icons/iconQrCodeButton.svg";
+import { ShareCode } from "../ShareCode";
+import { ShareImagePixQrCode } from "../ShareImagePixQrCode";
+import { Icon } from "components/Icon";
+import { SelectionButton } from "features/pix/components/SelectionButton";
 
 interface SharePixQrCodeProps {
-  open: boolean
-  onClose: Function | ((SharePixQrCodeValid: boolean) => void)
+  open: boolean;
+  onClose: Function | ((SharePixQrCodeValid: boolean) => void);
 }
 
 export const SharePixQrCode: React.FC<SharePixQrCodeProps> = ({
   open,
   onClose,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const onCloseButtonClick = () => {
-    onClose(false)
-  }
+    onClose(false);
+  };
 
-  const [onShareCodePixQRCode, setShareCodePixQRCode] = React.useState(false)
+  const [onShareCodePixQRCode, setShareCodePixQRCode] = React.useState(false);
   const [validatedShareCodePixQRCodeSheet, setShareCodePixQRCodeSheet] =
-    React.useState(false)
+    React.useState(false);
 
   const onShareCodePixQRCodeClick = React.useCallback(() => {
-    setShareCodePixQRCode(true)
-  }, [])
+    setShareCodePixQRCode(true);
+  }, []);
 
   const onShareCodePixQRCodeClose = (ShareCodePixQRCodeValid: boolean) => {
-    if (ShareCodePixQRCodeValid) setShareCodePixQRCodeSheet(true)
-    setShareCodePixQRCode(false)
-  }
+    if (ShareCodePixQRCodeValid) setShareCodePixQRCodeSheet(true);
+    setShareCodePixQRCode(false);
+  };
 
-  const [onShareImagePixQrCode, setShareImagePixQrCode] = React.useState(false)
+  const [onShareImagePixQrCode, setShareImagePixQrCode] = React.useState(false);
   const [validatedShareImagePixQrCodeSheet, setShareImagePixQrCodeSheet] =
-    React.useState(false)
+    React.useState(false);
 
   const onShareImagePixQrCodeClick = React.useCallback(() => {
-    setShareImagePixQrCode(true)
-  }, [])
+    setShareImagePixQrCode(true);
+  }, []);
 
   const onShareImagePixQrCodeClose = (ShareImagePixQrCodeValid: boolean) => {
-    if (ShareImagePixQrCodeValid) setShareImagePixQrCodeSheet(true)
-    setShareImagePixQrCode(false)
-  }
+    if (ShareImagePixQrCodeValid) setShareImagePixQrCodeSheet(true);
+    setShareImagePixQrCode(false);
+  };
 
   return (
     <React.Fragment>
@@ -105,5 +105,5 @@ export const SharePixQrCode: React.FC<SharePixQrCodeProps> = ({
         </PageContainer>
       </Drawer>
     </React.Fragment>
-  )
-}
+  );
+};

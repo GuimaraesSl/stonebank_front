@@ -1,1 +1,1 @@
-export { PopUpConfirmPassword } from './PopUpConfirmPassword'
+export { PopUpConfirmPassword } from "./PopUpConfirmPassword";

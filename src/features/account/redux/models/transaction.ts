@@ -1,10 +1,10 @@
-import { OperationType } from './operationType'
+import { OperationType } from "./operationType";
 
 export interface Transaction {
-  title: string
-  value: number
-  stablishment: string
-  externalIdentifier: string
-  operationType: OperationType
-  tags?: string[]
+  title: string;
+  value: number;
+  stablishment: string;
+  externalIdentifier: string;
+  operationType: OperationType;
+  tags?: string[];
 }

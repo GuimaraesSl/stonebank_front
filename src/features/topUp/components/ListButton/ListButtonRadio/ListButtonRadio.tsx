@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   List,
   ListItem,
@@ -6,17 +6,17 @@ import {
   ListItemIcon,
   Radio,
   Box,
-} from '@material-ui/core'
-import { useStyles } from './ListButtonRadio.style'
-import { useHistory } from 'react-router-dom'
+} from "@material-ui/core";
+import { useStyles } from "./ListButtonRadio.style";
+import { useHistory } from "react-router-dom";
 
 interface ListOptionsProps {
-  title: string
-  description?: string
-  selectedValue?: string
-  setSelectedValue?: Function
-  goToRoute: string
-  onClick?: React.MouseEventHandler<HTMLElement>
+  title: string;
+  description?: string;
+  selectedValue?: string;
+  setSelectedValue?: Function;
+  goToRoute: string;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
 export const ListButtonRadio: React.FC<ListOptionsProps> = ({
@@ -27,8 +27,8 @@ export const ListButtonRadio: React.FC<ListOptionsProps> = ({
   goToRoute,
   onClick,
 }) => {
-  const history = useHistory()
-  const styles = useStyles()
+  const history = useHistory();
+  const styles = useStyles();
 
   return (
     <List disablePadding>
@@ -45,5 +45,5 @@ export const ListButtonRadio: React.FC<ListOptionsProps> = ({
         </ListItem>
       </Box>
     </List>
-  )
-}
+  );
+};

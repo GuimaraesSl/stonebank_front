@@ -1,3 +1,3 @@
 export interface RecoverPasswordRequest {
-  login: string
+  login: string;
 }

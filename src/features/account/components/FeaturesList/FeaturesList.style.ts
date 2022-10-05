@@ -1,9 +1,9 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
   featureItem: {
-    display: 'flex',
-    justifyContent: 'center',
-    minWidth: '100%',
+    display: "flex",
+    justifyContent: "center",
+    minWidth: "100%",
   },
-})
+});

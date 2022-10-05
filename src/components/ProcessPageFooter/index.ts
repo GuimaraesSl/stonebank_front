@@ -1,1 +1,1 @@
-export { ProcessPageFooter } from './ProcessPageFooter'
+export { ProcessPageFooter } from "./ProcessPageFooter";

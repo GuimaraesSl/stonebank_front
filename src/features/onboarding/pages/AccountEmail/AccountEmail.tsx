@@ -1,49 +1,49 @@
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { TextField } from 'components/TextField'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { updateOnboardingForm } from 'features/onboarding/redux/actions'
-import { Fragment, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { validateEmail } from '_utils/validate'
-import { useStyles } from './AccountEmail.style'
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { PageContainer } from "components/PageContainer";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { TextField } from "components/TextField";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { updateOnboardingForm } from "features/onboarding/redux/actions";
+import { Fragment, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { validateEmail } from "_utils/validate";
+import { useStyles } from "./AccountEmail.style";
 
 export const AccountEmail: React.FC = () => {
-  const [emailValue, setEmailValue] = useState('')
-  const [error, setError] = useState(false)
+  const [emailValue, setEmailValue] = useState("");
+  const [error, setError] = useState(false);
 
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const style = useStyles()
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const style = useStyles();
 
   const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmailValue(event.target.value)
-  }
+    setEmailValue(event.target.value);
+  };
 
   const onNextButtonClick = (e: React.FormEvent) => {
-    e.preventDefault()
-    dispatch(updateOnboardingForm({ mail: emailValue }))
-    history.push(OnboardingRoutes.createPasswordForSMS)
-  }
+    e.preventDefault();
+    dispatch(updateOnboardingForm({ mail: emailValue }));
+    history.push(OnboardingRoutes.createPasswordForSMS);
+  };
 
   const onCancelButtonClick = () => {
-    history.go(-7)
-  }
+    history.go(-7);
+  };
 
   const validateError = () => {
-    setError(!validateEmail(emailValue))
-  }
+    setError(!validateEmail(emailValue));
+  };
 
   useEffect(() => {
-    validateError()
-  }, [emailValue])
+    validateError();
+  }, [emailValue]);
 
   return (
     <PageContainer>
@@ -102,5 +102,5 @@ export const AccountEmail: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

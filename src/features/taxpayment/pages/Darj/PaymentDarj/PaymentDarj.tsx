@@ -1,59 +1,59 @@
-import React from 'react'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { cancelLabel, returnLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useHistory } from 'react-router-dom'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AccountBalance } from 'features/account/components/AccountBalance'
-import { ShowBalanceButton } from 'features/payment/components/ShowBalanceButton'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Box, Grid, Typography } from '@material-ui/core'
-import Drawer from '@material-ui/core/Drawer'
-import { AccountSheet } from 'features/account/components/AccountSheet'
-import { useStyles } from 'features/taxpayment/pages/Darj/PaymentDarj/PaymentDarj.style'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { SelectionCard } from 'components/SelectionCard'
-import { TaxPaymentRoutes } from 'features/taxPayment/constants/routes'
-import { updateDarjPaymentData } from 'features/taxPayment/redux/actions'
+import React from "react";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { cancelLabel, returnLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useHistory } from "react-router-dom";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AccountBalance } from "features/account/components/AccountBalance";
+import { ShowBalanceButton } from "features/payment/components/ShowBalanceButton";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Box, Grid, Typography } from "@material-ui/core";
+import Drawer from "@material-ui/core/Drawer";
+import { AccountSheet } from "features/account/components/AccountSheet";
+import { useStyles } from "features/taxpayment/pages/Darj/PaymentDarj/PaymentDarj.style";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { SelectionCard } from "components/SelectionCard";
+import { TaxPaymentRoutes } from "features/taxPayment/constants/routes";
+import { updateDarjPaymentData } from "features/taxPayment/redux/actions";
 
 export const PaymentDarj: React.FC = () => {
-  const [bottom, setBottom] = React.useState(false)
+  const [bottom, setBottom] = React.useState(false);
   const { Account } = useSelector((state: StoreState) => ({
     Account: state.account.account,
-  }))
+  }));
 
-  let displayValue = JSON.parse(localStorage.getItem('showBalance')!)
-  const [showBalance, setShowBalance] = React.useState<boolean>(displayValue)
+  let displayValue = JSON.parse(localStorage.getItem("showBalance")!);
+  const [showBalance, setShowBalance] = React.useState<boolean>(displayValue);
 
   React.useEffect(() => {
-    localStorage.setItem('showBalance', JSON.stringify(showBalance))
-    if (showBalance === null) setShowBalance(true)
-  }, [showBalance])
+    localStorage.setItem("showBalance", JSON.stringify(showBalance));
+    if (showBalance === null) setShowBalance(true);
+  }, [showBalance]);
 
-  const history = useHistory()
-  const styles = useStyles()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const styles = useStyles();
+  const dispatch = useDispatch();
 
-  const onShowBalanceButtonClick = () => setShowBalance(!showBalance)
+  const onShowBalanceButtonClick = () => setShowBalance(!showBalance);
 
   const toggleDrawer = () => {
-    setBottom(!bottom)
-  }
+    setBottom(!bottom);
+  };
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-  }
+    history.replace(AccountRoutes.home);
+  };
 
   const onNextButtonClick = () => {
-    history.push(TaxPaymentRoutes.paymentDarjType)
-  }
+    history.push(TaxPaymentRoutes.paymentDarjType);
+  };
 
-  const onBackButtonClick = () => dispatch(updateDarjPaymentData())
+  const onBackButtonClick = () => dispatch(updateDarjPaymentData());
 
   return (
     <PageContainer>
@@ -131,5 +131,5 @@ export const PaymentDarj: React.FC = () => {
         footer={<ProcessPageFooter onBackButtonClick={onBackButtonClick} />}
       />
     </PageContainer>
-  )
-}
+  );
+};

@@ -1,53 +1,53 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Grid, Typography, Box } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
-import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { DateInput } from 'components/DateInput'
-import { Divider } from 'components/Divider'
-import { FilterSectionTitleAndDescription } from 'features/account/components/FilterSectionTitleAndDescription'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon/ButtonWithFloatingIcon'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { cancelLabel } from 'constants/buttons/labels'
-import { useStyles } from './SheduleTransactionsFilter.style'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateTransactions } from 'features/schedulePayments/redux/actions'
-import { StoreState } from 'redux/state'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Grid, Typography, Box } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
+import { AccountRoutes } from "features/account/constants/routes";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { DateInput } from "components/DateInput";
+import { Divider } from "components/Divider";
+import { FilterSectionTitleAndDescription } from "features/account/components/FilterSectionTitleAndDescription";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon/ButtonWithFloatingIcon";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { cancelLabel } from "constants/buttons/labels";
+import { useStyles } from "./SheduleTransactionsFilter.style";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTransactions } from "features/schedulePayments/redux/actions";
+import { StoreState } from "redux/state";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { Icon } from "components/Icon";
 
-const defaultStartDate = new Date()
-defaultStartDate.setDate(defaultStartDate.getDate() + 30)
+const defaultStartDate = new Date();
+defaultStartDate.setDate(defaultStartDate.getDate() + 30);
 
 export const SheduleTransactionsFilter: React.FC = () => {
   const { futureTransaction, loading, errorMessage } = useSelector(
-    (state: StoreState) => state.futureTransactions,
-  )
+    (state: StoreState) => state.futureTransactions
+  );
 
-  const history = useHistory()
-  const styles = useStyles()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const styles = useStyles();
+  const dispatch = useDispatch();
 
-  const [disableNextButton, setDisableNextButton] = React.useState(false)
+  const [disableNextButton, setDisableNextButton] = React.useState(false);
 
   const [startDate, setStartDate] = React.useState<
     MaterialUiPickersDate | undefined
-  >(futureTransaction?.initialDate! ?? new Date())
+  >(futureTransaction?.initialDate! ?? new Date());
 
   const [endDate, setEndDate] = React.useState<
     MaterialUiPickersDate | undefined
-  >(futureTransaction?.finalDate! ?? defaultStartDate)
+  >(futureTransaction?.finalDate! ?? defaultStartDate);
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransactions())
-    history.go(-1)
-  }
+    dispatch(updateTransactions());
+    history.go(-1);
+  };
 
   const onApplyButtonClick = () => {
     dispatch(
@@ -55,35 +55,35 @@ export const SheduleTransactionsFilter: React.FC = () => {
         ...futureTransaction,
         initialDate: startDate as Date,
         finalDate: endDate as Date,
-      }),
-    )
-    history.goBack()
-  }
+      })
+    );
+    history.goBack();
+  };
 
   const onResetDateChange = () => {
-    const date = new Date()
-    const endDate = new Date()
-    endDate.setDate(date.getDate() + 30)
+    const date = new Date();
+    const endDate = new Date();
+    endDate.setDate(date.getDate() + 30);
 
-    setStartDate(date)
-    setEndDate(endDate)
-  }
+    setStartDate(date);
+    setEndDate(endDate);
+  };
 
   const onStartDateChange = (date: MaterialUiPickersDate) => {
-    if (date === undefined) date = new Date()
+    if (date === undefined) date = new Date();
 
-    setStartDate(date)
-  }
+    setStartDate(date);
+  };
 
   const onEndDateChange = (date: MaterialUiPickersDate) => {
-    if (date === undefined) date = new Date()
+    if (date === undefined) date = new Date();
 
-    setEndDate(date)
-  }
+    setEndDate(date);
+  };
 
   React.useEffect(() => {
-    setDisableNextButton(startDate!.getTime() <= endDate!.getTime())
-  }, [startDate, endDate])
+    setDisableNextButton(startDate!.getTime() <= endDate!.getTime());
+  }, [startDate, endDate]);
 
   return (
     <PageContainer>
@@ -161,7 +161,7 @@ export const SheduleTransactionsFilter: React.FC = () => {
                   data-test-id="error-message"
                 >
                   <Grid>
-                    <Icon name={'alert'} className={styles.img} />
+                    <Icon name={"alert"} className={styles.img} />
                   </Grid>
                   <Grid>As datas estão inválidas</Grid>
                 </Grid>
@@ -169,9 +169,9 @@ export const SheduleTransactionsFilter: React.FC = () => {
             </Box>
             <Box className={styles.clearButton}>
               <ButtonWithFloatingIcon
-                icon={<Icon name={'buttonBg'} />}
+                icon={<Icon name={"buttonBg"} />}
                 onClick={() => {
-                  onResetDateChange()
+                  onResetDateChange();
                 }}
                 size="small"
                 data-test-id="clean"
@@ -187,7 +187,7 @@ export const SheduleTransactionsFilter: React.FC = () => {
             <Divider spacing={2} />
             <Box className={styles.applyButton}>
               <ButtonWithFloatingIcon
-                icon={<Icon name={'filter'} />}
+                icon={<Icon name={"filter"} />}
                 size="large"
                 disabled={!disableNextButton}
                 onClick={onApplyButtonClick}
@@ -204,5 +204,5 @@ export const SheduleTransactionsFilter: React.FC = () => {
         <Alert message={errorMessage} title="Erro" severity="error" />
       )}
     </PageContainer>
-  )
-}
+  );
+};

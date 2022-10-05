@@ -1,13 +1,13 @@
-import React from 'react'
-import { Box, Button, Typography } from '@material-ui/core'
-import { useStyle } from './SquareButtonWithIcon.style'
-import { Icon } from 'components/Icon'
-import { IconTypes } from 'components/Icon/Icon'
+import React from "react";
+import { Box, Button, Typography } from "@material-ui/core";
+import { useStyle } from "./SquareButtonWithIcon.style";
+import { Icon } from "components/Icon";
+import { IconTypes } from "components/Icon/Icon";
 
 interface SquareButtonWithIconProps {
-  icon: keyof typeof IconTypes
-  label: string
-  onClick: VoidFunction
+  icon: keyof typeof IconTypes;
+  label: string;
+  onClick: VoidFunction;
 }
 
 export const SquareButtonWithIcon: React.FC<SquareButtonWithIconProps> = ({
@@ -16,7 +16,7 @@ export const SquareButtonWithIcon: React.FC<SquareButtonWithIconProps> = ({
   onClick,
   ...rest
 }) => {
-  const style = useStyle()
+  const style = useStyle();
 
   return (
     <Button className={style.button} onClick={onClick}>
@@ -34,5 +34,5 @@ export const SquareButtonWithIcon: React.FC<SquareButtonWithIconProps> = ({
         <Typography className={style.label}>{label}</Typography>
       </Box>
     </Button>
-  )
-}
+  );
+};

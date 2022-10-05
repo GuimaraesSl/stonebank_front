@@ -1,5 +1,5 @@
-import { PixKey } from '../pixKey'
+import { PixKey } from "../pixKey";
 
 export interface FindPixKeyListResponse {
-  pixKeyList?: PixKey[]
+  pixKeyList?: PixKey[];
 }

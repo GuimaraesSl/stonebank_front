@@ -1,5 +1,5 @@
-import { Box, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import { Box, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -7,27 +7,27 @@ import {
   ProcessDescriptionHeader,
   ProcessPageFooterButton,
   ProcessPageLayout,
-} from 'components'
-import { LabelWithValueKeyPix } from 'components/LabelWithValueKeyPix'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { TagChip } from 'features/tags/components/TagChip'
-import React from 'react'
-import { useStyles } from './KeyPixTransferSummary.style'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { PixKeyType } from 'features/pix/redux/models/pixKeyType'
-import { PixTransfer } from 'features/pix/redux/models/pixTransfer'
+} from "components";
+import { LabelWithValueKeyPix } from "components/LabelWithValueKeyPix";
+import { cancelLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { TagChip } from "features/tags/components/TagChip";
+import React from "react";
+import { useStyles } from "./KeyPixTransferSummary.style";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { PixKeyType } from "features/pix/redux/models/pixKeyType";
+import { PixTransfer } from "features/pix/redux/models/pixTransfer";
 
 interface KeyPixTransferSummaryViewProps {
-  pixTransfer?: PixTransfer
-  openAuthorizationSheet?: any
-  onAuthorizationClose?: Function
-  errorMessage?: string
-  loading: boolean
-  onConfirmButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
+  pixTransfer?: PixTransfer;
+  openAuthorizationSheet?: any;
+  onAuthorizationClose?: Function;
+  errorMessage?: string;
+  loading: boolean;
+  onConfirmButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
 }
 
 export const KeyPixTransferSummaryView: React.FC<
@@ -41,7 +41,7 @@ export const KeyPixTransferSummaryView: React.FC<
   onConfirmButtonClick,
   onCancelButtonClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   // const tagsView = React.useMemo(() => {
   //   return tags?.map(t => <TagChip label={t} key={t} />)
@@ -108,5 +108,5 @@ export const KeyPixTransferSummaryView: React.FC<
         <Alert title="Error" message={errorMessage} severity="error" />
       )}
     </PageContainer>
-  )
-}
+  );
+};

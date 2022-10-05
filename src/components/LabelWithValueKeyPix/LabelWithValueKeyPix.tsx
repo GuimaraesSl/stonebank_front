@@ -1,18 +1,18 @@
-import { CurrencyFormatter, DateFormatter } from '_translate'
-import React from 'react'
-import { useStyles } from 'components/LabelWithValueKeyPix/LabelWithValueKeyPix.style'
-import { PixKeyType } from 'features/pix/redux/models/pixKeyType'
-import { PixTransfer } from 'features/pix/redux/models/pixTransfer'
-import { maskTaxId } from '_utils/masks/taxId'
+import { CurrencyFormatter, DateFormatter } from "_translate";
+import React from "react";
+import { useStyles } from "components/LabelWithValueKeyPix/LabelWithValueKeyPix.style";
+import { PixKeyType } from "features/pix/redux/models/pixKeyType";
+import { PixTransfer } from "features/pix/redux/models/pixTransfer";
+import { maskTaxId } from "_utils/masks/taxId";
 
 interface LabelWithValueKeyPixProps {
-  pixTransfer?: PixTransfer
+  pixTransfer?: PixTransfer;
 }
 
 export const LabelWithValueKeyPix: React.FC<LabelWithValueKeyPixProps> = ({
   pixTransfer,
 }: LabelWithValueKeyPixProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <div className={styles.summaryContent}>
       <div>PIX no valor de</div>
@@ -38,13 +38,13 @@ export const LabelWithValueKeyPix: React.FC<LabelWithValueKeyPixProps> = ({
         <>
           <div>Chave PIX</div>
           <strong>
-            {(pixTransfer?.pixKeyType === PixKeyType.CNPJ && 'CNPJ') ||
-              (pixTransfer?.pixKeyType === PixKeyType.CPF && 'CPF') ||
-              (pixTransfer?.pixKeyType === PixKeyType.Email && 'E-mail') ||
+            {(pixTransfer?.pixKeyType === PixKeyType.CNPJ && "CNPJ") ||
+              (pixTransfer?.pixKeyType === PixKeyType.CPF && "CPF") ||
+              (pixTransfer?.pixKeyType === PixKeyType.Email && "E-mail") ||
               (pixTransfer?.pixKeyType === PixKeyType.PhoneNumber &&
-                'Telefone') ||
+                "Telefone") ||
               (pixTransfer?.pixKeyType === PixKeyType.RandomKeyCode &&
-                'Randômica')}
+                "Randômica")}
             : {pixTransfer?.pixKeyValue}
           </strong>
         </>
@@ -54,5 +54,5 @@ export const LabelWithValueKeyPix: React.FC<LabelWithValueKeyPixProps> = ({
       {pixTransfer?.description && <div>descrição da transferência</div>}
       <strong>{pixTransfer?.description}</strong>
     </div>
-  )
-}
+  );
+};

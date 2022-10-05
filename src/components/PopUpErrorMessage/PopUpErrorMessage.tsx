@@ -1,15 +1,15 @@
-import React from 'react'
-import { useStyle } from './PopUpErrorMessage.style'
-import { Drawer, Box, Typography } from '@material-ui/core'
-import { Button } from 'components/Button'
-import { PageContainer } from 'components/PageContainer'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { useStyle } from "./PopUpErrorMessage.style";
+import { Drawer, Box, Typography } from "@material-ui/core";
+import { Button } from "components/Button";
+import { PageContainer } from "components/PageContainer";
+import { Icon } from "components/Icon";
 
 interface AlertProps {
-  open: boolean
-  onClose?: (args: boolean) => void
-  onClick?: React.MouseEventHandler<HTMLElement>
-  title?: string | undefined
+  open: boolean;
+  onClose?: (args: boolean) => void;
+  onClick?: React.MouseEventHandler<HTMLElement>;
+  title?: string | undefined;
 }
 
 export const PopUpErrorMessage: React.FC<AlertProps> = ({
@@ -18,11 +18,11 @@ export const PopUpErrorMessage: React.FC<AlertProps> = ({
   onClick,
   title,
 }) => {
-  const styles = useStyle()
+  const styles = useStyle();
 
   const onCloseButtonClick = () => {
-    onClose(true)
-  }
+    onClose(true);
+  };
 
   return (
     <React.Fragment>
@@ -35,17 +35,17 @@ export const PopUpErrorMessage: React.FC<AlertProps> = ({
         onClick={onClick}
       >
         <PageContainer>
-          <Box className={styles.alertContainer} data-test-id="popUp-error" >
+          <Box className={styles.alertContainer} data-test-id="popUp-error">
             <Icon name="popUpError" className={styles.imgAlert} />
             <Box className={styles.textContainer}>
               <Typography className={styles.textError}>
                 Calma, algo não está certo...
               </Typography>
               <Typography className={styles.textAlert}>
-                {title || 'Foi encontrado um erro. Tente novamente!'}
+                {title || "Foi encontrado um erro. Tente novamente!"}
               </Typography>
             </Box>
-            <Box className={styles.buttonRow} data-test-id="understood-button" >
+            <Box className={styles.buttonRow} data-test-id="understood-button">
               <Button size="large" onClick={onCloseButtonClick} fullWidth>
                 Entendi
               </Button>
@@ -54,5 +54,5 @@ export const PopUpErrorMessage: React.FC<AlertProps> = ({
         </PageContainer>
       </Drawer>
     </React.Fragment>
-  )
-}
+  );
+};

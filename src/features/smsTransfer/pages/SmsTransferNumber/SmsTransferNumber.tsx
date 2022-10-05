@@ -1,64 +1,64 @@
-import React from 'react'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { useHistory } from 'react-router-dom'
-import { TextField } from 'components/TextField'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { SmsTransferRoutes } from 'features/smsTransfer/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { Box } from '@material-ui/core'
-import { useMask } from 'hooks/useMask'
-import { maskPhone } from '_utils/masks/phone'
-import { useDispatch } from 'react-redux'
+import React from "react";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { AccountRoutes } from "features/account/constants/routes";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { useHistory } from "react-router-dom";
+import { TextField } from "components/TextField";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { SmsTransferRoutes } from "features/smsTransfer/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { Box } from "@material-ui/core";
+import { useMask } from "hooks/useMask";
+import { maskPhone } from "_utils/masks/phone";
+import { useDispatch } from "react-redux";
 import {
   getAccountsByPhone,
   updateSmsTransferData,
-} from 'features/smsTransfer/redux/actions'
-import { useSelector } from 'react-redux'
-import { closeAlert } from 'features/transference/redux/actions'
-import { StoreState } from 'redux/state'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { SuccessSmsTransferState } from 'features/smsTransfer/redux/state'
+} from "features/smsTransfer/redux/actions";
+import { useSelector } from "react-redux";
+import { closeAlert } from "features/transference/redux/actions";
+import { StoreState } from "redux/state";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { SuccessSmsTransferState } from "features/smsTransfer/redux/state";
 
 export const SmsTransferNumber: React.FC = () => {
-  const [submitted, setSubmitted] = React.useState(false)
-  const [phoneNumber, setPhoneNumber] = useMask(maskPhone)
+  const [submitted, setSubmitted] = React.useState(false);
+  const [phoneNumber, setPhoneNumber] = useMask(maskPhone);
 
-  const history = useHistory()
+  const history = useHistory();
   const transferType = useSelector(
-    (state: StoreState) => state.smsTransfer.smsTransfer?.transferType,
-  )
-  const smsTransference = useSelector((state: StoreState) => state.smsTransfer)
-  const dispatch = useDispatch()
+    (state: StoreState) => state.smsTransfer.smsTransfer?.transferType
+  );
+  const smsTransference = useSelector((state: StoreState) => state.smsTransfer);
+  const dispatch = useDispatch();
 
-  const { loading, favoredAccount, errorMessage } = smsTransference
-  const isValid = phoneNumber.length === 16
+  const { loading, favoredAccount, errorMessage } = smsTransference;
+  const isValid = phoneNumber.length === 16;
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-  }
+    history.replace(AccountRoutes.home);
+  };
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   React.useEffect(() => {
-    dispatch(updateSmsTransferData())
-  }, [])
+    dispatch(updateSmsTransferData());
+  }, []);
 
   React.useEffect(() => {
     if (submitted && smsTransference instanceof SuccessSmsTransferState) {
       history.push(
         favoredAccount
           ? SmsTransferRoutes.SmsAccountsExibition
-          : SmsTransferRoutes.SmsTransferName,
-      )
+          : SmsTransferRoutes.SmsTransferName
+      );
     }
   }, [
     favoredAccount,
@@ -68,17 +68,17 @@ export const SmsTransferNumber: React.FC = () => {
     history,
     transferType,
     smsTransference,
-  ])
+  ]);
 
   const onSmsNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPhoneNumber(event.target.value)
-  }
+    setPhoneNumber(event.target.value);
+  };
   const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-    if (!isValid) return
-    dispatch(getAccountsByPhone(phoneNumber))
-    setSubmitted(true)
-  }
+    event.preventDefault();
+    if (!isValid) return;
+    dispatch(getAccountsByPhone(phoneNumber));
+    setSubmitted(true);
+  };
 
   return (
     <PageContainer>
@@ -112,7 +112,7 @@ export const SmsTransferNumber: React.FC = () => {
               label="Celular com DDD"
               placeholder="(XX) X XXXX.XXXX"
               value={phoneNumber}
-              inputMode={'numeric'}
+              inputMode={"numeric"}
               onChange={onSmsNumberChange}
               data-test-id="change-sms-number"
             />
@@ -138,11 +138,11 @@ export const SmsTransferNumber: React.FC = () => {
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

@@ -1,33 +1,33 @@
-import { Bank } from './models/bank'
-import { PixKey } from './models/pixKey'
-import { PixKeyInfo } from './models/pixKeyInfo'
-import { PixQrCodeInfo } from './models/pixQrCodeInfo'
-import { PixTransfer } from './models/pixTransfer'
-import { PixQrCode } from './models/pixQrCode'
-import { Favored } from './models/favored'
+import { Bank } from "./models/bank";
+import { PixKey } from "./models/pixKey";
+import { PixKeyInfo } from "./models/pixKeyInfo";
+import { PixQrCodeInfo } from "./models/pixQrCodeInfo";
+import { PixTransfer } from "./models/pixTransfer";
+import { PixQrCode } from "./models/pixQrCode";
+import { Favored } from "./models/favored";
 
 export interface PixState {
-  pixKey?: PixKey
-  pixKeyList?: PixKey[]
-  createPixKey?: string
-  cancelPixKey?: boolean
-  resendPixKeyToken?: boolean
-  confirmPixKeyHold?: boolean
-  pixKeyInfo?: PixKeyInfo
-  pixQrCodeInfo?: PixQrCodeInfo
-  pixTransfer?: PixTransfer
-  createPixTransfer?: boolean
-  bankList?: Bank[]
-  staticPixQrCode?: PixQrCode
-  createStaticPixQrCode?: number
-  favored?: Favored[]
-  loading: boolean
-  errorMessage?: string
+  pixKey?: PixKey;
+  pixKeyList?: PixKey[];
+  createPixKey?: string;
+  cancelPixKey?: boolean;
+  resendPixKeyToken?: boolean;
+  confirmPixKeyHold?: boolean;
+  pixKeyInfo?: PixKeyInfo;
+  pixQrCodeInfo?: PixQrCodeInfo;
+  pixTransfer?: PixTransfer;
+  createPixTransfer?: boolean;
+  bankList?: Bank[];
+  staticPixQrCode?: PixQrCode;
+  createStaticPixQrCode?: number;
+  favored?: Favored[];
+  loading: boolean;
+  errorMessage?: string;
 }
 
 export class InitialPixState implements PixState {
-  public errorMessage?: string
-  public loading: boolean = false
+  public errorMessage?: string;
+  public loading: boolean = false;
 
   constructor(
     public pixKey?: PixKey,
@@ -43,13 +43,13 @@ export class InitialPixState implements PixState {
     public bankList?: Bank[],
     public staticPixQrCode?: PixQrCode,
     public createStaticPixQrCode?: number,
-    public favored?: Favored[],
+    public favored?: Favored[]
   ) {}
 }
 
 export class LoadingPixState implements PixState {
-  loading: boolean = true
-  errorMessage?: string
+  loading: boolean = true;
+  errorMessage?: string;
 
   constructor(
     public pixKey?: PixKey,
@@ -65,13 +65,13 @@ export class LoadingPixState implements PixState {
     public bankList?: Bank[],
     public staticPixQrCode?: PixQrCode,
     public createStaticPixQrCode?: number,
-    public favored?: Favored[],
+    public favored?: Favored[]
   ) {}
 }
 
 export class SuccessPixState implements PixState {
-  loading: boolean = false
-  errorMessage?: string
+  loading: boolean = false;
+  errorMessage?: string;
 
   constructor(
     public pixKey?: PixKey,
@@ -87,12 +87,12 @@ export class SuccessPixState implements PixState {
     public bankList?: Bank[],
     public staticPixQrCode?: PixQrCode,
     public createStaticPixQrCode?: number,
-    public favored?: Favored[],
+    public favored?: Favored[]
   ) {}
 }
 
 export class FailPixState implements PixState {
-  loading: boolean = false
+  loading: boolean = false;
 
   constructor(
     public errorMessage: string,
@@ -109,6 +109,6 @@ export class FailPixState implements PixState {
     public bankList?: Bank[],
     public staticPixQrCode?: PixQrCode,
     public createStaticPixQrCode?: number,
-    public favored?: Favored[],
+    public favored?: Favored[]
   ) {}
 }

@@ -1,6 +1,6 @@
 export interface ChangePinCard {
-  identifierCard?: string
-  currentPin: string
-  pin: string
-  confirmationPin: string
+  identifierCard?: string;
+  currentPin: string;
+  pin: string;
+  confirmationPin: string;
 }

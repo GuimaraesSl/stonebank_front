@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -10,22 +10,22 @@ import {
   ProcessPageFooterButton,
   ProcessPageLayout,
   TextField,
-} from 'components'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useStyles } from './BankPixTransferPayeeTaxId.style'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
+} from "components";
+import { cancelLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useStyles } from "./BankPixTransferPayeeTaxId.style";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
 
 interface BankPixTransferPayeeTaxIdViewProps {
-  toTaxId: string
-  isValidValue: boolean
-  loading: boolean
-  errorMessage?: string
-  onConfirmButtonClick: VoidFunction
-  onBackButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
-  onTaxIdChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  toTaxId: string;
+  isValidValue: boolean;
+  loading: boolean;
+  errorMessage?: string;
+  onConfirmButtonClick: VoidFunction;
+  onBackButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  onTaxIdChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const BankPixTransferPayeeTaxIdView: React.FC<
   BankPixTransferPayeeTaxIdViewProps
@@ -39,7 +39,7 @@ export const BankPixTransferPayeeTaxIdView: React.FC<
   onCancelButtonClick,
   onTaxIdChange,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <PageContainer>
@@ -93,5 +93,5 @@ export const BankPixTransferPayeeTaxIdView: React.FC<
         <Alert title="Erro" message={errorMessage} severity="error" />
       )}
     </PageContainer>
-  )
-}
+  );
+};

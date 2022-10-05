@@ -1,1 +1,1 @@
-export { ProcessDescriptionHeader } from './ProcessDescriptionHeader'
+export { ProcessDescriptionHeader } from "./ProcessDescriptionHeader";

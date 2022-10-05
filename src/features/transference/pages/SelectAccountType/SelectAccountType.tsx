@@ -1,54 +1,54 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Box, Typography } from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { PageContainer } from 'components/PageContainer'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useStyles } from './SelectAccountType.style'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { SelectionCard } from 'components/SelectionCard'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { cancelLabel } from 'constants/buttons/labels'
-import { TransferenceRoutes } from 'features/transference/constants/routes'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateTransferenceData } from 'features/transference/redux/actions'
-import { AccountType } from 'features/transference/redux/models/enum'
-import { StoreState } from 'redux/state'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Box, Typography } from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { PageContainer } from "components/PageContainer";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useStyles } from "./SelectAccountType.style";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { SelectionCard } from "components/SelectionCard";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { cancelLabel } from "constants/buttons/labels";
+import { TransferenceRoutes } from "features/transference/constants/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTransferenceData } from "features/transference/redux/actions";
+import { AccountType } from "features/transference/redux/models/enum";
+import { StoreState } from "redux/state";
 
 export const SelectAccountType: React.FC = () => {
   const [accountType, setAccountType] = React.useState<
     AccountType | undefined
-  >()
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const styles = useStyles()
+  >();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const styles = useStyles();
 
   const transference = useSelector(
-    (state: StoreState) => state.transference.transference,
-  )
+    (state: StoreState) => state.transference.transference
+  );
 
   React.useEffect(() => {
     if (accountType !== undefined) {
-      dispatch(updateTransferenceData({ accountType }))
-      history.push(TransferenceRoutes.bankBranch)
+      dispatch(updateTransferenceData({ accountType }));
+      history.push(TransferenceRoutes.bankBranch);
     }
-  }, [accountType, dispatch, history])
+  }, [accountType, dispatch, history]);
 
   const onCheckingAccountClick = () => {
-    setAccountType(AccountType.checking)
-  }
+    setAccountType(AccountType.checking);
+  };
 
   const onSavingsAccountClick = () => {
-    setAccountType(AccountType.savings)
-  }
+    setAccountType(AccountType.savings);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransferenceData())
-    history.go(-5)
-  }
+    dispatch(updateTransferenceData());
+    history.go(-5);
+  };
 
   return (
     <PageContainer>
@@ -87,13 +87,13 @@ export const SelectAccountType: React.FC = () => {
             <Box className={styles.selectionCards}>
               <SelectionCard
                 title="Conta Corrente"
-                endIcon={'next'}
+                endIcon={"next"}
                 onClick={onCheckingAccountClick}
                 data-test-id="checking-account-button"
               />
               <SelectionCard
                 title="Conta Poupança"
-                endIcon={'next'}
+                endIcon={"next"}
                 onClick={onSavingsAccountClick}
                 data-test-id="saving-account-button"
               />
@@ -103,5 +103,5 @@ export const SelectAccountType: React.FC = () => {
         footer={<ProcessPageFooter />}
       />
     </PageContainer>
-  )
-}
+  );
+};

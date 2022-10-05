@@ -1,7 +1,7 @@
 export interface CreatePendingSmsTransferResponse {
-  message: string
+  message: string;
 }
 
 export interface CreateSmsTransferResponse {
-  message: string
+  message: string;
 }

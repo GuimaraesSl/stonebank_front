@@ -1,14 +1,14 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Card, Typography } from '@material-ui/core'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Card, Typography } from "@material-ui/core";
 
-import './OptionsCard.scss'
+import "./OptionsCard.scss";
 
 interface OptionCardProps {
-  title: string
-  subtitle: string
-  pathImage: string | React.ReactNode
-  goToRoute: string
+  title: string;
+  subtitle: string;
+  pathImage: string | React.ReactNode;
+  goToRoute: string;
 }
 
 export const OptionCard = ({
@@ -18,11 +18,11 @@ export const OptionCard = ({
   goToRoute,
   ...rest
 }: OptionCardProps) => {
-  const historyRoutes = useHistory()
+  const historyRoutes = useHistory();
 
   const handleClick = () => {
-    historyRoutes.push(goToRoute)
-  }
+    historyRoutes.push(goToRoute);
+  };
 
   return (
     <Card
@@ -39,11 +39,11 @@ export const OptionCard = ({
           {subtitle}
         </Typography>
       </div>
-      {typeof pathImage === 'string' ? (
+      {typeof pathImage === "string" ? (
         <img src={pathImage} alt="" />
       ) : (
         pathImage
       )}
     </Card>
-  )
-}
+  );
+};

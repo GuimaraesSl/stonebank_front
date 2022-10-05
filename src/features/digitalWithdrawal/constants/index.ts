@@ -1,1 +1,1 @@
-export { DigitalWithdrawalRoutes } from './routes'
+export { DigitalWithdrawalRoutes } from "./routes";

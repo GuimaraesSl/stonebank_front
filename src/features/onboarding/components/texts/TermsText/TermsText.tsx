@@ -1,22 +1,22 @@
-import React from 'react'
-import { Typography, FormControlLabel, Checkbox, Box } from '@material-ui/core'
-import { useStyles } from './TermsText.style'
+import React from "react";
+import { Typography, FormControlLabel, Checkbox, Box } from "@material-ui/core";
+import { useStyles } from "./TermsText.style";
 
 interface TermsTextProps {
-  termsAcceptCheckBox: (event: any) => void
-  valueCheckBox: boolean
+  termsAcceptCheckBox: (event: any) => void;
+  valueCheckBox: boolean;
 }
 
 export const TermsText = ({
   valueCheckBox,
   termsAcceptCheckBox,
 }: TermsTextProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Box
       className={styles.wrapper}
-      flexDirection={'column'}
+      flexDirection={"column"}
       alignItems="center"
     >
       <Box>
@@ -41,8 +41,8 @@ export const TermsText = ({
         label="Concordo com os termos"
       />
     </Box>
-  )
-}
+  );
+};
 
 const terms = `Pelo presente Termo de Adesão, o Titular, devidamente identificado conforme descrito neste instrumento, ao realizar e enviar seu cadastro para abertura da Conta de Pagamentos, por meio eletrônico, adere, aceita e se obriga, de forma expressa e irrevogável a observar e submeter-se os termos e condições deste instrumento relativos ao uso da Conta de Pagamentos e da Plataforma Fitbank.
 
@@ -184,4 +184,4 @@ Resgate de Recursos e Encerramento da Conta de Pagamento
 
 15.1 O resgate de recursos será realizado a pedido do Titular, mediante o repasse do valor líquido e em moeda nacional, de acordo com as formas estabelecidas para utilização dos recursos mantidos em Conta de Pagamento.
 
-16.1 O Fitbank procederá o encerramento, em até 3 dias úteis do pedido, retendo saldo suficiente para honrar as despesas já contraídas até o efetivo cancelamento da conta.`
+16.1 O Fitbank procederá o encerramento, em até 3 dias úteis do pedido, retendo saldo suficiente para honrar as despesas já contraídas até o efetivo cancelamento da conta.`;

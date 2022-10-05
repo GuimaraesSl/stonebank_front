@@ -1,1 +1,1 @@
-export { TagChip } from './TagChip'
+export { TagChip } from "./TagChip";

@@ -1,3 +1,3 @@
 export interface ActivateCard {
-  identifierCard: string
+  identifierCard: string;
 }

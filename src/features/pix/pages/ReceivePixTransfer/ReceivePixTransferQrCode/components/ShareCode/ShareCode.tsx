@@ -1,39 +1,39 @@
-import React, { useEffect, useState } from 'react'
-import { Box, Drawer, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
-import { Button } from 'components/Button'
-import { PageContainer } from 'components/PageContainer'
-import { useStyles } from './ShareCode.style'
-import { useSelector } from 'react-redux'
-import { Clipboard } from 'ts-clipboard'
-import { StoreState } from 'redux/state'
-import { Alert } from 'components/Alert'
+import React, { useEffect, useState } from "react";
+import { Box, Drawer, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { Button } from "components/Button";
+import { PageContainer } from "components/PageContainer";
+import { useStyles } from "./ShareCode.style";
+import { useSelector } from "react-redux";
+import { Clipboard } from "ts-clipboard";
+import { StoreState } from "redux/state";
+import { Alert } from "components/Alert";
 
 interface ShareCodeProps {
-  open: boolean
-  onClose: Function | ((ShareCodeValid: boolean) => void)
+  open: boolean;
+  onClose: Function | ((ShareCodeValid: boolean) => void);
 }
 
 export const ShareCode: React.FC<ShareCodeProps> = ({ open, onClose }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
-  const [alertMessage, setAlertMessage] = useState('')
-  const { staticPixQrCode } = useSelector((state: StoreState) => state.pix)
+  const [alertMessage, setAlertMessage] = useState("");
+  const { staticPixQrCode } = useSelector((state: StoreState) => state.pix);
 
   const shareData = () => {
-    let data = staticPixQrCode?.hashCode!
+    let data = staticPixQrCode?.hashCode!;
 
-    Clipboard.copy(data)
-    setAlertMessage('Copiado para área de transferência')
-  }
+    Clipboard.copy(data);
+    setAlertMessage("Copiado para área de transferência");
+  };
 
   const onCloseAlert = () => {
-    setAlertMessage('')
-  }
+    setAlertMessage("");
+  };
 
   const onCloseButtonClick = () => {
-    onClose(false)
-  }
+    onClose(false);
+  };
 
   return (
     <React.Fragment>
@@ -83,5 +83,5 @@ export const ShareCode: React.FC<ShareCodeProps> = ({ open, onClose }) => {
         )}
       </Drawer>
     </React.Fragment>
-  )
-}
+  );
+};

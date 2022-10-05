@@ -1,51 +1,51 @@
-import React from 'react'
-import { Box, Drawer, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
-import { Button } from 'components/Button'
-import { PageContainer } from 'components/PageContainer'
-import { useStyles } from './ShareImagePixQrCode.style'
-import { useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { ButtonWithFloatingIcon } from 'components'
+import React from "react";
+import { Box, Drawer, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { Button } from "components/Button";
+import { PageContainer } from "components/PageContainer";
+import { useStyles } from "./ShareImagePixQrCode.style";
+import { useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { ButtonWithFloatingIcon } from "components";
 
 interface ShareImagePixQrCodeProps {
-  open: boolean
-  onClose: Function | ((ShareImagePixQrCodeValid: boolean) => void)
+  open: boolean;
+  onClose: Function | ((ShareImagePixQrCodeValid: boolean) => void);
 }
 
 export const ShareImagePixQrCode: React.FC<ShareImagePixQrCodeProps> = ({
   open,
   onClose,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
-  const { staticPixQrCode } = useSelector((state: StoreState) => state.pix)
+  const { staticPixQrCode } = useSelector((state: StoreState) => state.pix);
 
   const accountName = useSelector(
-    (store: StoreState) => store.account.account?.name,
-  )
+    (store: StoreState) => store.account.account?.name
+  );
 
   const onCloseButtonClick = () => {
-    onClose(false)
-  }
+    onClose(false);
+  };
 
   const showShareButton =
-    (window as any).flutter_inappwebview || navigator.share
+    (window as any).flutter_inappwebview || navigator.share;
 
   const onShareQrCode = async () => {
-    const webview = (window as any).flutter_inappwebview
-    const base64url = `data:image/png;base64,${staticPixQrCode?.qrCode}`
-    const blob = await (await fetch(base64url)).blob()
-    const file = new File([blob], 'qrCode.png', { type: blob.type })
+    const webview = (window as any).flutter_inappwebview;
+    const base64url = `data:image/png;base64,${staticPixQrCode?.qrCode}`;
+    const blob = await (await fetch(base64url)).blob();
+    const file = new File([blob], "qrCode.png", { type: blob.type });
 
     if (webview)
-      return webview.callHandler('onShareTransactionReceipt', base64url)
+      return webview.callHandler("onShareTransactionReceipt", base64url);
 
     navigator.share({
-      title: 'Compartilhar QrCode',
+      title: "Compartilhar QrCode",
       files: [file],
-    })
-  }
+    });
+  };
 
   return (
     <React.Fragment>
@@ -100,5 +100,5 @@ export const ShareImagePixQrCode: React.FC<ShareImagePixQrCodeProps> = ({
         </PageContainer>
       </Drawer>
     </React.Fragment>
-  )
-}
+  );
+};

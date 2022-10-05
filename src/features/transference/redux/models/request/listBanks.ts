@@ -1,2 +1,2 @@
-import { ApiRequest } from '_config/api'
+import { ApiRequest } from "_config/api";
 export interface ListBanksRequest extends ApiRequest {}

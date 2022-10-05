@@ -1,18 +1,18 @@
-import React from 'react'
+import React from "react";
 import {
   List,
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
   Radio,
-} from '@material-ui/core'
+} from "@material-ui/core";
 
-import { useStyles } from './ListButtonRadio.style'
+import { useStyles } from "./ListButtonRadio.style";
 
 interface ListOptionsProps {
-  title: string
-  selectedValue: string
-  setSelectedValue: Function
+  title: string;
+  selectedValue: string;
+  setSelectedValue: Function;
 }
 
 export const ListButtonRadio: React.FC<ListOptionsProps> = ({
@@ -20,11 +20,11 @@ export const ListButtonRadio: React.FC<ListOptionsProps> = ({
   selectedValue,
   setSelectedValue,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const handleClick = () => {
-    setSelectedValue(title)
-  }
+    setSelectedValue(title);
+  };
 
   return (
     <List disablePadding>
@@ -46,5 +46,5 @@ export const ListButtonRadio: React.FC<ListOptionsProps> = ({
         </ListItemSecondaryAction>
       </ListItem>
     </List>
-  )
-}
+  );
+};

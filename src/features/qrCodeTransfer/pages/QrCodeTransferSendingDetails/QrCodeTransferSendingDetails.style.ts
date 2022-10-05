@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   value: {
@@ -8,8 +8,8 @@ export const useStyles = makeStyles({
     color: colors.system.light.neutral,
   },
   box: {
-    '& .MuiTypography-root': {
-      textAlign: 'center',
+    "& .MuiTypography-root": {
+      textAlign: "center",
       color: colors.system.light.neutral,
     },
   },
@@ -17,8 +17,8 @@ export const useStyles = makeStyles({
     marginTop: 24,
   },
   errorMessage: {
-    display: 'flex',
-    width: '100%',
+    display: "flex",
+    width: "100%",
     color: colors.source.error,
   },
-})
+});

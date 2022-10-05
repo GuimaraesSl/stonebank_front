@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
 interface TagsDetailProps {
-  tag: string
+  tag: string;
 }
 
 export const TagsDescription: React.FC<TagsDetailProps> = ({
@@ -12,5 +12,5 @@ export const TagsDescription: React.FC<TagsDetailProps> = ({
       <div> Suas TAGs </div>
       <strong> {tag} </strong>
     </div>
-  )
-}
+  );
+};

@@ -1,14 +1,14 @@
-import { Grid } from '@material-ui/core'
-import { useStyles } from './CheckData.style'
+import { Grid } from "@material-ui/core";
+import { useStyles } from "./CheckData.style";
 
 interface CheckDataProps {
-  description: string | undefined
-  receiver: string | undefined
-  value: number | undefined
+  description: string | undefined;
+  receiver: string | undefined;
+  value: number | undefined;
 }
 
 export const CheckData = ({ receiver, value, description }: CheckDataProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Grid item>
@@ -24,5 +24,5 @@ export const CheckData = ({ receiver, value, description }: CheckDataProps) => {
         </Grid>
       </Grid>
     </Grid>
-  )
-}
+  );
+};

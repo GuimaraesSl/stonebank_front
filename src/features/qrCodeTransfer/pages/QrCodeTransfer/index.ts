@@ -1,1 +1,1 @@
-import { QrCodeTransfer } from './QrCodeTransfer'
+import { QrCodeTransfer } from "./QrCodeTransfer";

@@ -1,1 +1,1 @@
-export { EnterIdentifierForCard } from './EnterIdentifierForCard'
+export { EnterIdentifierForCard } from "./EnterIdentifierForCard";

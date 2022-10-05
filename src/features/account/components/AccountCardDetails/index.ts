@@ -1,1 +1,1 @@
-export { AccountCardDetails } from './AccountCardDetails'
+export { AccountCardDetails } from "./AccountCardDetails";

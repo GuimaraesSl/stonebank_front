@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   wrapper: {
@@ -7,6 +7,6 @@ export const useStyles = makeStyles({
     backgroundColor: colors.readOnly.light.white,
   },
   text: {
-    whiteSpace: 'pre-line',
+    whiteSpace: "pre-line",
   },
-})
+});

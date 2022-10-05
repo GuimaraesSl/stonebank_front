@@ -1,1 +1,1 @@
-export { BlockCardAlert } from './BlockCardAlert'
+export { BlockCardAlert } from "./BlockCardAlert";

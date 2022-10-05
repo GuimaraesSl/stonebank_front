@@ -17,8 +17,8 @@ import { StoreState } from 'redux/state'
 import {
   changePasswordFirstAccess,
   logout,
-} from 'features/authentication/redux/actions'
-import { Loader } from 'components/Loader'
+} from "features/authentication/redux/actions";
+import { Loader } from "components/Loader";
 import {
   ChangePasswordLoadingState,
   ChangePasswordSuccessState,
@@ -28,49 +28,51 @@ import { ErrorMessage } from 'components/ErrorMessage'
 import { GreatButton } from 'components/GreatButton'
 
 export const ConfirmPasswordFirstAccess: React.FC = () => {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const style = useStyles()
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const style = useStyles();
 
-  const [rePasswordInput, setRePasswordInput] = React.useState('')
+  const [rePasswordInput, setRePasswordInput] = React.useState("");
 
   const onCancelButtonClick = () => {
-    dispatch(logout())
-    history.go(-3)
-  }
+    dispatch(logout());
+    history.go(-3);
+  };
 
-  const { userFirstAccessForm } = useSelector((store: StoreState) => store.auth)
+  const { userFirstAccessForm } = useSelector(
+    (store: StoreState) => store.auth
+  );
 
   const onNextButtonClick = (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
     dispatch(
       changePasswordFirstAccess({
         ...userFirstAccessForm,
         confirmationNewPassword: rePasswordInput,
-      }),
-    )
-  }
+      })
+    );
+  };
 
   const onRePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setRePasswordInput(event.target.value)
+    setRePasswordInput(event.target.value);
 
   const onSamePassword = (password: string, rePassword: string) => {
-    if (!(password === rePassword)) return true
-  }
+    if (!(password === rePassword)) return true;
+  };
 
   const condition = onSamePassword(
     userFirstAccessForm?.newPassword!,
-    rePasswordInput,
-  )
+    rePasswordInput
+  );
 
-  const authState = useSelector((state: StoreState) => state.auth)
+  const authState = useSelector((state: StoreState) => state.auth);
 
   React.useEffect(() => {
     if (authState instanceof ChangePasswordSuccessState)
-      history.push(AuthenticationRoutes.changePasswordCompleted)
+      history.push(AuthenticationRoutes.changePasswordCompleted);
 
-    if (authState instanceof ChangePasswordErrorState) history.goBack()
-  }, [authState, history])
+    if (authState instanceof ChangePasswordErrorState) history.goBack();
+  }, [authState, history]);
 
   return (
     <Container maxWidth="xs" className={style.container}>

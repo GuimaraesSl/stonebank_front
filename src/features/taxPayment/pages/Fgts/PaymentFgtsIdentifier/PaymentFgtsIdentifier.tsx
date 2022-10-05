@@ -1,38 +1,38 @@
-import React, { useEffect } from 'react'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useHistory } from 'react-router-dom'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Grid } from '@material-ui/core'
-import { TaxPaymentRoutes } from 'features/taxPayment/constants/routes'
-import { TextField } from 'components/TextField'
-import { useStyles } from 'features/taxPayment/pages/Fgts/PaymentFgtsIdentifier/PaymentFgtsIdentifier.style'
-import { useDispatch } from 'react-redux'
-import { updateFgtsPaymentData } from 'features/taxPayment/redux/actions'
-import { useMask } from 'hooks/useMask'
-import { numericOnly } from '_utils/masks/generics'
-import { useState } from 'react'
+import React, { useEffect } from "react";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useHistory } from "react-router-dom";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Grid } from "@material-ui/core";
+import { TaxPaymentRoutes } from "features/taxPayment/constants/routes";
+import { TextField } from "components/TextField";
+import { useStyles } from "features/taxPayment/pages/Fgts/PaymentFgtsIdentifier/PaymentFgtsIdentifier.style";
+import { useDispatch } from "react-redux";
+import { updateFgtsPaymentData } from "features/taxPayment/redux/actions";
+import { useMask } from "hooks/useMask";
+import { numericOnly } from "_utils/masks/generics";
+import { useState } from "react";
 
 export const PaymentFgtsIdentifier: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
-  const [fgtsIdentifier, setFgtsIdentifier] = useState('')
+  const history = useHistory();
+  const styles = useStyles();
+  const [fgtsIdentifier, setFgtsIdentifier] = useState("");
   const [socialConnectivityCode, setSocialConnectivityCode] =
-    useMask(numericOnly)
+    useMask(numericOnly);
   const [socialConnectivityDigit, setSocialConnectivityDigit] =
-    useMask(numericOnly)
-  const [isValidValue, setIsValidValue] = useState(true)
+    useMask(numericOnly);
+  const [isValidValue, setIsValidValue] = useState(true);
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-    dispatch(updateFgtsPaymentData())
-  }
+    history.replace(AccountRoutes.home);
+    dispatch(updateFgtsPaymentData());
+  };
 
   const onNextButtonClick = () => {
     dispatch(
@@ -40,26 +40,26 @@ export const PaymentFgtsIdentifier: React.FC = () => {
         fgtsIdentifier: fgtsIdentifier,
         socialConnectivityCode: Number(socialConnectivityCode),
         socialConnectivityDigit: Number(socialConnectivityDigit),
-      }),
-    )
-    history.push(TaxPaymentRoutes.paymentFgtsValues)
-  }
+      })
+    );
+    history.push(TaxPaymentRoutes.paymentFgtsValues);
+  };
 
   const onFgtsIdentifier = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFgtsIdentifier(event.target.value)
-  }
+    setFgtsIdentifier(event.target.value);
+  };
 
   const onSocialConnectivityCode = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setSocialConnectivityCode(event.target.value)
-  }
+    setSocialConnectivityCode(event.target.value);
+  };
 
   const onSocialConnectivityDigit = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setSocialConnectivityDigit(event.target.value)
-  }
+    setSocialConnectivityDigit(event.target.value);
+  };
 
   useEffect(() => {
     setIsValidValue(
@@ -67,11 +67,11 @@ export const PaymentFgtsIdentifier: React.FC = () => {
         fgtsIdentifier &&
         socialConnectivityDigit.length === 1 &&
         socialConnectivityCode
-      ),
-    )
-  }, [fgtsIdentifier, socialConnectivityCode, socialConnectivityDigit])
+      )
+    );
+  }, [fgtsIdentifier, socialConnectivityCode, socialConnectivityDigit]);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <PageContainer>
@@ -141,5 +141,5 @@ export const PaymentFgtsIdentifier: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

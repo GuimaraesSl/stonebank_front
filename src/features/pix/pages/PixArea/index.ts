@@ -1,1 +1,1 @@
-export { PixArea } from './PixArea.controller'
+export { PixArea } from "./PixArea.controller";

@@ -1,1 +1,1 @@
-export { PaymentAttach } from './PaymentAttach'
+export { PaymentAttach } from "./PaymentAttach";

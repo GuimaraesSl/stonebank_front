@@ -1,3 +1,3 @@
 export interface CreateStaticPixQrCodeResponse {
-  externalIdentifier?: number
+  externalIdentifier?: number;
 }

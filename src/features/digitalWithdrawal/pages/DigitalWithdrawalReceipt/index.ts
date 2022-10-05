@@ -1,1 +1,1 @@
-export { DigitalWithdrawalReceipt } from './DigitalWithdrawalReceipt'
+export { DigitalWithdrawalReceipt } from "./DigitalWithdrawalReceipt";

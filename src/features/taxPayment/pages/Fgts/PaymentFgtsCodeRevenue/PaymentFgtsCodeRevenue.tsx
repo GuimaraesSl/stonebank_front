@@ -1,62 +1,62 @@
-import React, { useEffect, useState } from 'react'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useHistory } from 'react-router-dom'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Grid } from '@material-ui/core'
-import { TaxPaymentRoutes } from 'features/taxPayment/constants/routes'
-import { TextField } from 'components/TextField'
-import { numericOnly } from '_utils/masks/generics'
-import { useMask } from 'hooks/useMask'
-import { useDispatch } from 'react-redux'
-import { updateFgtsPaymentData } from 'features/taxPayment/redux/actions'
-import { maskTaxPayer } from '_utils/masks/taxPayer'
+import React, { useEffect, useState } from "react";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useHistory } from "react-router-dom";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Grid } from "@material-ui/core";
+import { TaxPaymentRoutes } from "features/taxPayment/constants/routes";
+import { TextField } from "components/TextField";
+import { numericOnly } from "_utils/masks/generics";
+import { useMask } from "hooks/useMask";
+import { useDispatch } from "react-redux";
+import { updateFgtsPaymentData } from "features/taxPayment/redux/actions";
+import { maskTaxPayer } from "_utils/masks/taxPayer";
 
 export const PaymentFgtsCodeRevenue: React.FC = () => {
-  const [codeRevenue, setCodeRevenue] = useMask(numericOnly)
-  const [contributorTaxId, setContributorTaxId] = useMask(maskTaxPayer)
-  const [isValidValue, setIsValidValue] = useState(true)
-  const history = useHistory()
+  const [codeRevenue, setCodeRevenue] = useMask(numericOnly);
+  const [contributorTaxId, setContributorTaxId] = useMask(maskTaxPayer);
+  const [isValidValue, setIsValidValue] = useState(true);
+  const history = useHistory();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-    dispatch(updateFgtsPaymentData())
-  }
+    history.replace(AccountRoutes.home);
+    dispatch(updateFgtsPaymentData());
+  };
 
   const onNextButtonClick = () => {
     dispatch(
       updateFgtsPaymentData({
         codeRevenue: codeRevenue,
         contributorTaxId: contributorTaxId,
-      }),
-    )
-    history.push(TaxPaymentRoutes.paymentFgtsIdentifier)
-  }
+      })
+    );
+    history.push(TaxPaymentRoutes.paymentFgtsIdentifier);
+  };
 
   const onCodeRevenue = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCodeRevenue(event.target.value)
-  }
+    setCodeRevenue(event.target.value);
+  };
 
   const onContributorTaxId = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setContributorTaxId(event.target.value)
-  }
+    setContributorTaxId(event.target.value);
+  };
 
   useEffect(() => {
     setIsValidValue(
       !(
         codeRevenue &&
         (contributorTaxId.length === 14 || contributorTaxId.length === 18)
-      ),
-    )
-  }, [codeRevenue, contributorTaxId])
+      )
+    );
+  }, [codeRevenue, contributorTaxId]);
 
   return (
     <PageContainer>
@@ -118,5 +118,5 @@ export const PaymentFgtsCodeRevenue: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

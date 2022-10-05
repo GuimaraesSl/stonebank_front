@@ -1,41 +1,41 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useStyles } from './ShowQrCodeTransfer.style'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { cancelLabel } from 'constants/buttons/labels'
-import { useHistory } from 'react-router-dom'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { Grid, Typography } from '@material-ui/core'
-import { CurrencyFormatter } from '_translate'
-import { updateQrCodeTransferState } from 'features/qrCodeTransfer/redux/actions'
-import { InitialQrCodeTransferState } from 'features/qrCodeTransfer/redux/state'
-import { QrCodeTransferRoutes } from 'features/qrCodeTransfer/constants/routes'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useStyles } from "./ShowQrCodeTransfer.style";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { cancelLabel } from "constants/buttons/labels";
+import { useHistory } from "react-router-dom";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { Grid, Typography } from "@material-ui/core";
+import { CurrencyFormatter } from "_translate";
+import { updateQrCodeTransferState } from "features/qrCodeTransfer/redux/actions";
+import { InitialQrCodeTransferState } from "features/qrCodeTransfer/redux/state";
+import { QrCodeTransferRoutes } from "features/qrCodeTransfer/constants/routes";
 
 export const ShowQrCodeTransfer: React.FC = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const styles = useStyles()
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const styles = useStyles();
 
   const { qrCodeBase64, value } = useSelector((state: StoreState) => ({
     qrCodeBase64: state.qrCodeTransfer.qrCodeBase64,
     value: state.qrCodeTransfer.valueToReceive!,
-  }))
+  }));
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-  }
+    history.replace(AccountRoutes.home);
+  };
 
   const onBackButtonClick = () => {
-    dispatch(updateQrCodeTransferState(new InitialQrCodeTransferState()))
-    history.replace(QrCodeTransferRoutes.generateQrCodeTransfer)
-  }
+    dispatch(updateQrCodeTransferState(new InitialQrCodeTransferState()));
+    history.replace(QrCodeTransferRoutes.generateQrCodeTransfer);
+  };
 
   return (
     <PageContainer>
@@ -108,5 +108,5 @@ export const ShowQrCodeTransfer: React.FC = () => {
         footer={<ProcessPageFooter onBackButtonClick={onBackButtonClick} />}
       />
     </PageContainer>
-  )
-}
+  );
+};

@@ -1,1 +1,1 @@
-export { QrCodePixTransferSummary } from './QrCodePixTransferSummary.controller'
+export { QrCodePixTransferSummary } from "./QrCodePixTransferSummary.controller";

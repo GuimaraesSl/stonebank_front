@@ -1,53 +1,53 @@
-import React from 'react'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { useStyles } from './AllAccounts.style'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { Divider } from 'components/Divider'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { changeAccount } from 'features/account/redux/actions'
-import { Account } from 'features/account/redux/models/account'
-import { AccountCard } from 'features/account/components/AccountCard'
-import { Grid } from '@material-ui/core'
-import { SearchField } from 'components/SearchField'
-import { SuccessAccountState } from 'features/account/redux/state'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { PageContainer } from "components/PageContainer";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { useStyles } from "./AllAccounts.style";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { Divider } from "components/Divider";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { changeAccount } from "features/account/redux/actions";
+import { Account } from "features/account/redux/models/account";
+import { AccountCard } from "features/account/components/AccountCard";
+import { Grid } from "@material-ui/core";
+import { SearchField } from "components/SearchField";
+import { SuccessAccountState } from "features/account/redux/state";
+import { Icon } from "components/Icon";
 
 export const AllAccounts: React.FC = () => {
   const { dashboard, account, errorMessage } = useSelector(
-    (state: StoreState) => state.account,
-  )
-  const [displayAccounts, setAccounts] = React.useState(dashboard!.accounts)
-  const style = useStyles()
-  const { accounts } = dashboard!
-  const dispatch = useDispatch()
+    (state: StoreState) => state.account
+  );
+  const [displayAccounts, setAccounts] = React.useState(dashboard!.accounts);
+  const style = useStyles();
+  const { accounts } = dashboard!;
+  const dispatch = useDispatch();
 
   const _search = (value: string) => {
-    value = value.replace(/^\s+|\s+$/, '')
-    const result = dashboard!.accounts.filter(account =>
-      account.name.toLowerCase().includes(value.toLowerCase()),
-    )
-    setAccounts(result)
-  }
+    value = value.replace(/^\s+|\s+$/, "");
+    const result = dashboard!.accounts.filter((account) =>
+      account.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setAccounts(result);
+  };
 
   const onSearchFieldChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    _search(event.target.value)
-  }
+    _search(event.target.value);
+  };
 
   const onAccountClick = (account: Account) => {
-    dispatch(changeAccount(account))
-  }
+    dispatch(changeAccount(account));
+  };
 
   return (
     <PageContainer>
       <ProcessPageLayout
         header={
           <React.Fragment>
-            <ProcessDescriptionHeader title={'Todas as Contas'} />
+            <ProcessDescriptionHeader title={"Todas as Contas"} />
             <AccountCard
               account={account!}
               endIcon={<Icon name="check" />}
@@ -82,14 +82,14 @@ export const AllAccounts: React.FC = () => {
                       btnStar
                       data-test-id="account-card-container"
                     />
-                  )
+                  );
                   if (index < displayAccounts.length - 1)
                     return (
                       <Grid item>
                         {accountComponent}
                         <Divider spacing={1} />
                       </Grid>
-                    )
+                    );
 
                   return (
                     <Grid item>
@@ -98,7 +98,7 @@ export const AllAccounts: React.FC = () => {
                         <Divider spacing={0} />
                       )}
                     </Grid>
-                  )
+                  );
                 })}
               </Grid>
             </Grid>
@@ -116,5 +116,5 @@ export const AllAccounts: React.FC = () => {
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

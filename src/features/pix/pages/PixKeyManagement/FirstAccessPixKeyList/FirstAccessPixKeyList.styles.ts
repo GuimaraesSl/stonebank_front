@@ -1,25 +1,25 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
   container: {
-    '& main': {
-      backgroundColor: 'inherit',
-      display: 'flex',
-      padding: '0 32px',
+    "& main": {
+      backgroundColor: "inherit",
+      display: "flex",
+      padding: "0 32px",
     },
   },
 
   toolbar: {
-    alignItems: 'center',
-    display: 'flex',
+    alignItems: "center",
+    display: "flex",
 
-    '& #title': {
+    "& #title": {
       fontSize: 20,
       fontWeight: 700,
     },
 
-    '& #skip-button': {
-      marginLeft: 'auto',
+    "& #skip-button": {
+      marginLeft: "auto",
       width: 80,
     },
   },
@@ -31,4 +31,4 @@ export const useStyles = makeStyles({
   footerButton: {
     borderRadius: 8,
   },
-})
+});

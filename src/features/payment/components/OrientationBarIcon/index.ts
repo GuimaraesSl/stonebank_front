@@ -1,1 +1,1 @@
-export { OrientationBarIcon } from './OrientationBarIcon'
+export { OrientationBarIcon } from "./OrientationBarIcon";

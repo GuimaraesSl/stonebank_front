@@ -20,9 +20,9 @@ export const AccessAccountButton: React.FC<AccessAccountButtonProps> = (
   const history = useHistory()
   const dispatch = useDispatch()
   const onAccessAccountClick = () => {
-    history.replace(AuthenticationRoutes.signIn)
-    dispatch(logout())
-  }
+    history.replace(AuthenticationRoutes.signIn);
+    dispatch(logout());
+  };
 
   return (
     <Button
@@ -36,5 +36,5 @@ export const AccessAccountButton: React.FC<AccessAccountButtonProps> = (
     >
       {accessAccountLabel}
     </Button>
-  )
-}
+  );
+};

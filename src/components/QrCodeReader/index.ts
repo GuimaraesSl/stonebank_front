@@ -1,1 +1,1 @@
-export { QrCodeReader } from './QrCodeReader'
+export { QrCodeReader } from "./QrCodeReader";

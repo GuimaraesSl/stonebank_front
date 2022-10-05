@@ -1,67 +1,67 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { Box, Grid, Typography } from '@material-ui/core'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { useStyles } from './Summary.style'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { DetailPaymentDescription } from 'features/payment/components/DetailPaymentDescription'
-import { PaymentRoutes } from 'features/payment/constants/routes'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { PageContainer } from 'components/PageContainer'
-import { cancelLabel, concludeLabel } from 'constants/buttons/labels'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { Box, Grid, Typography } from "@material-ui/core";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { useStyles } from "./Summary.style";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { DetailPaymentDescription } from "features/payment/components/DetailPaymentDescription";
+import { PaymentRoutes } from "features/payment/constants/routes";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { PageContainer } from "components/PageContainer";
+import { cancelLabel, concludeLabel } from "constants/buttons/labels";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
 import {
   closeAlert,
   createPayment,
   updatePaymentData,
-} from 'features/payment/redux/actions'
-import { SuccessPaymentState } from 'features/payment/redux/state'
-import { Alert } from 'components/Alert'
-import { Loader } from 'components/Loader'
-import { TagChip } from 'features/tags/components/TagChip'
-import { OperationType } from 'features/account/redux/models/operationType'
-import { ShortDateFormatter } from '_translate'
+} from "features/payment/redux/actions";
+import { SuccessPaymentState } from "features/payment/redux/state";
+import { Alert } from "components/Alert";
+import { Loader } from "components/Loader";
+import { TagChip } from "features/tags/components/TagChip";
+import { OperationType } from "features/account/redux/models/operationType";
+import { ShortDateFormatter } from "_translate";
 
 export const Summary: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const styles = useStyles();
+  const dispatch = useDispatch();
   const [openAuthorizationSheet, setOpenAuthorizationSheet] =
-    React.useState(false)
-  const payment = useSelector((store: StoreState) => store.payment)
-  const { errorMessage, loading, paymentData } = payment
+    React.useState(false);
+  const payment = useSelector((store: StoreState) => store.payment);
+  const { errorMessage, loading, paymentData } = payment;
 
   const toggleDrawer = (open: boolean) => {
-    setOpenAuthorizationSheet(open)
-  }
+    setOpenAuthorizationSheet(open);
+  };
 
   React.useEffect(() => {
     if (payment instanceof SuccessPaymentState)
-      history.replace(PaymentRoutes.paymentProcess)
-  })
+      history.replace(PaymentRoutes.paymentProcess);
+  });
 
   const onConcludeButtonClick = () => {
-    setOpenAuthorizationSheet(true)
-  }
+    setOpenAuthorizationSheet(true);
+  };
 
-  const onCancelButtonClick = () => dispatch(updatePaymentData())
+  const onCancelButtonClick = () => dispatch(updatePaymentData());
 
   const onAuthorizationClose = (tokenIsValid: boolean) => {
     if (tokenIsValid) {
-      dispatch(createPayment())
+      dispatch(createPayment());
     }
-    setOpenAuthorizationSheet(false)
-  }
+    setOpenAuthorizationSheet(false);
+  };
 
   const onBackButtonClick = () =>
-    dispatch(updatePaymentData({ paymentValue: paymentData?.paymentValue }))
-  const onAlertClose = () => dispatch(closeAlert())
+    dispatch(updatePaymentData({ paymentValue: paymentData?.paymentValue }));
+  const onAlertClose = () => dispatch(closeAlert());
 
   return (
     <PageContainer>
@@ -107,7 +107,7 @@ export const Summary: React.FC = () => {
                   paymentDate={payment.paymentData?.paymentDate!}
                   description={payment.paymentData?.description!}
                   bankName={payment.paymentData?.bankName!}
-                  tags={payment.paymentData?.tags?.join('\n')}
+                  tags={payment.paymentData?.tags?.join("\n")}
                 />
                 {/* <Grid className={styles.buttonDetailsPayment}>
                   <AttachmentCard
@@ -164,5 +164,5 @@ export const Summary: React.FC = () => {
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

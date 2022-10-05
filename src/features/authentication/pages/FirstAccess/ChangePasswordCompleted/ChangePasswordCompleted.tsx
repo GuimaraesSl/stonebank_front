@@ -11,8 +11,8 @@ import { PageContainer } from 'components'
 import { GreatButton } from 'components/GreatButton'
 
 export const ChangePasswordCompleted: React.FC = () => {
-  const style = useStyles()
-  const userName = useSelector((store: StoreState) => store.auth.user?.name)
+  const style = useStyles();
+  const userName = useSelector((store: StoreState) => store.auth.user?.name);
 
   return (
     <PageContainer className={style.container}>

@@ -1,1 +1,1 @@
-export { OptionCard } from './OptionsCard'
+export { OptionCard } from "./OptionsCard";

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -10,16 +10,16 @@ import {
   ProcessPageFooterButton,
   ProcessPageLayout,
   SelectionCard,
-} from 'components'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useStyles } from './BankPixTransferAccountType.style'
+} from "components";
+import { cancelLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useStyles } from "./BankPixTransferAccountType.style";
 
 interface BankPixTransferAccountTypeViewProps {
-  payeeName?: string
-  onCancelButtonClick: VoidFunction
-  onSavingsAccountClick: VoidFunction
-  onCheckingAccountClick: VoidFunction
+  payeeName?: string;
+  onCancelButtonClick: VoidFunction;
+  onSavingsAccountClick: VoidFunction;
+  onCheckingAccountClick: VoidFunction;
 }
 export const BankPixTransferAccountTypeView: React.FC<
   BankPixTransferAccountTypeViewProps
@@ -29,7 +29,7 @@ export const BankPixTransferAccountTypeView: React.FC<
   onCancelButtonClick,
   onCheckingAccountClick,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <PageContainer>
@@ -65,12 +65,12 @@ export const BankPixTransferAccountTypeView: React.FC<
             <Box className={style.selectionCards}>
               <SelectionCard
                 title="Conta Corrente"
-                endIcon={'next'}
+                endIcon={"next"}
                 onClick={onCheckingAccountClick}
               />
               <SelectionCard
                 title="Conta Poupança"
-                endIcon={'next'}
+                endIcon={"next"}
                 onClick={onSavingsAccountClick}
               />
             </Box>
@@ -83,5 +83,5 @@ export const BankPixTransferAccountTypeView: React.FC<
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

@@ -1,12 +1,12 @@
-import { makeStyles } from '@material-ui/core'
-import { theme } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { theme } from "_config/theme";
 
 export const useStyles = makeStyles({
   container: {
-    margin: 'auto',
+    margin: "auto",
   },
   scannerArea: {
     margin: -theme.spacing(2),
-    marginBottom: '-23px',
+    marginBottom: "-23px",
   },
-})
+});

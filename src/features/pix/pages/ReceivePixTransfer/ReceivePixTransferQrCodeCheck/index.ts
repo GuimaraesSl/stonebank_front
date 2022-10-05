@@ -1,1 +1,1 @@
-export { ReceivePixTransferQrCodeCheck } from './ReceivePixTransferQrCodeCheck.controller'
+export { ReceivePixTransferQrCodeCheck } from "./ReceivePixTransferQrCodeCheck.controller";

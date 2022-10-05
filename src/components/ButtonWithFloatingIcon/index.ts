@@ -1,1 +1,1 @@
-export { ButtonWithFloatingIcon } from './ButtonWithFloatingIcon'
+export { ButtonWithFloatingIcon } from "./ButtonWithFloatingIcon";

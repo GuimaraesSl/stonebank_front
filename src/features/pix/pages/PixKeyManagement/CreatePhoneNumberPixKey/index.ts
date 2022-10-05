@@ -1,1 +1,1 @@
-export { CreatePhoneNumberPixKey } from './CreatePhoneNumberPixKey.controller'
+export { CreatePhoneNumberPixKey } from "./CreatePhoneNumberPixKey.controller";

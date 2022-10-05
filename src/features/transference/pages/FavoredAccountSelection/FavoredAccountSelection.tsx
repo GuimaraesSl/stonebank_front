@@ -1,54 +1,54 @@
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { useHistory } from 'react-router-dom'
-import { cancelLabel } from 'constants/buttons/labels'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { SelectionCard } from 'components/SelectionCard'
-import { useStyles } from './FavoredAccountSelection.style'
-import { TransferenceRoutes } from 'features/transference/constants/routes'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { updateTransferenceData } from 'features/transference/redux/actions'
-import { Alert } from 'components/Alert'
-import { Loader } from 'components/Loader'
-import { closeAlert } from 'features/account/redux/actions'
-import { TransferType } from 'features/transference/redux/models/enum'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { cancelLabel } from "constants/buttons/labels";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { SelectionCard } from "components/SelectionCard";
+import { useStyles } from "./FavoredAccountSelection.style";
+import { TransferenceRoutes } from "features/transference/constants/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { updateTransferenceData } from "features/transference/redux/actions";
+import { Alert } from "components/Alert";
+import { Loader } from "components/Loader";
+import { closeAlert } from "features/account/redux/actions";
+import { TransferType } from "features/transference/redux/models/enum";
+import { Icon } from "components/Icon";
 
 export const FavoredAccountSelection: React.FC = () => {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const styles = useStyles()
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const styles = useStyles();
   const transferenceState = useSelector(
-    (store: StoreState) => store.transference,
-  )
+    (store: StoreState) => store.transference
+  );
 
   React.useEffect(() => {
     dispatch(
       updateTransferenceData({
         transferType: TransferType.InternalTransfer,
-      }),
-    )
-  }, [])
+      })
+    );
+  }, []);
 
-  const { loading, favoredAccounts, errorMessage } = transferenceState
+  const { loading, favoredAccounts, errorMessage } = transferenceState;
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransferenceData())
-    history.go(-3)
-  }
+    dispatch(updateTransferenceData());
+    history.go(-3);
+  };
 
   const onAccountCardClick = (i: number) => {
     const { name, bank, bankBranch, bankAccount, bankAccountDigit } =
-      favoredAccounts![i]
+      favoredAccounts![i];
 
     dispatch(
       updateTransferenceData({
@@ -57,18 +57,18 @@ export const FavoredAccountSelection: React.FC = () => {
         bankBranch: bankBranch,
         bankAccount: bankAccount,
         bankAccountDigit: bankAccountDigit,
-      }),
-    )
-    history.push(TransferenceRoutes.value)
-  }
+      })
+    );
+    history.push(TransferenceRoutes.value);
+  };
 
   const onOtherAccountClick = () => {
-    history.replace(TransferenceRoutes.favoredName)
-  }
+    history.replace(TransferenceRoutes.favoredName);
+  };
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   return (
     <PageContainer>
@@ -105,10 +105,10 @@ export const FavoredAccountSelection: React.FC = () => {
                 bankAccount={
                   account.bankAccount
                     ? `Conta ${account.bankAccount}-${account.bankAccountDigit}`
-                    : ''
+                    : ""
                 }
-                bank={account.bank ? `Bank ${account.bank}` : ''}
-                endIcon={'next'}
+                bank={account.bank ? `Bank ${account.bank}` : ""}
+                endIcon={"next"}
                 onClick={() => onAccountCardClick(i)}
               />
             ))}
@@ -131,11 +131,11 @@ export const FavoredAccountSelection: React.FC = () => {
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

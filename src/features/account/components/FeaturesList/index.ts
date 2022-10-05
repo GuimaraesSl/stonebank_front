@@ -1,1 +1,1 @@
-export { FeaturesList } from './FeaturesList'
+export { FeaturesList } from "./FeaturesList";

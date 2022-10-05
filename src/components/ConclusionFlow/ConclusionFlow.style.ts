@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
   content: {
@@ -6,16 +6,16 @@ export const useStyles = makeStyles({
     flex: 1,
   },
   title: {
-    fontSize: '36px',
+    fontSize: "36px",
     fontWeight: 700,
-    textAlign: 'center',
-    margin: '40px 0',
+    textAlign: "center",
+    margin: "40px 0",
   },
   containerImg: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '45vh',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "45vh",
   },
 
   img: {

@@ -1,1 +1,1 @@
-export { CheckDataTopUp } from './CheckDataTopUp'
+export { CheckDataTopUp } from "./CheckDataTopUp";

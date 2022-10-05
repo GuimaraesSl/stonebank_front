@@ -1,1 +1,1 @@
-export { PixTransferProcess } from './PixTransferProcess.controller'
+export { PixTransferProcess } from "./PixTransferProcess.controller";

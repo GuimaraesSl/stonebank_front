@@ -1,1 +1,1 @@
-export { EnterCurrentPassword } from './EnterCurrentPassword'
+export { EnterCurrentPassword } from "./EnterCurrentPassword";

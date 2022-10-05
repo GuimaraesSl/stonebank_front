@@ -1,1 +1,1 @@
-export { CreateTaxIdPixKey } from './CreateTaxIdPixKey.controller'
+export { CreateTaxIdPixKey } from "./CreateTaxIdPixKey.controller";

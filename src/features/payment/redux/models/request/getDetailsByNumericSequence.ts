@@ -1,6 +1,6 @@
-import { ApiRequest } from '_config/api'
+import { ApiRequest } from "_config/api";
 
 export interface GetDetailsByNumericSequenceRequest extends ApiRequest {
-  numericSequence: string
-  taxId?: string
+  numericSequence: string;
+  taxId?: string;
 }

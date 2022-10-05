@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -10,17 +10,17 @@ import {
   ProcessPageFooterButton,
   ProcessPageLayout,
   TextField,
-} from 'components'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useStyles } from './BankDataPixTransferBranch.style'
+} from "components";
+import { cancelLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useStyles } from "./BankDataPixTransferBranch.style";
 
 interface BankDataPixTransferBranchViewProps {
-  toBankBranch: string
-  isValidValue: boolean
-  onConfirmButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
-  onToBankBranchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  toBankBranch: string;
+  isValidValue: boolean;
+  onConfirmButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  onToBankBranchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const BankDataPixTransferBranchView: React.FC<
   BankDataPixTransferBranchViewProps
@@ -31,7 +31,7 @@ export const BankDataPixTransferBranchView: React.FC<
   onToBankBranchChange,
   onCancelButtonClick,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <PageContainer>
@@ -82,5 +82,5 @@ export const BankDataPixTransferBranchView: React.FC<
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

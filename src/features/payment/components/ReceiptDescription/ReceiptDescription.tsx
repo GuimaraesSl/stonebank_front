@@ -1,17 +1,17 @@
-import { TransactionDetail } from 'components/TransactionDetail'
-import { TransactionDetailName } from 'components/TransactionDetailName'
-import { TransactionDetailValue } from 'components/TransactionDetailValue'
-import React from 'react'
-import { CurrencyFormatter, ShortDateFormatter } from '_translate'
-import { maskBarcode } from '_utils/masks/barCode'
-import { useStyles } from './ReceiptDescription.style'
+import { TransactionDetail } from "components/TransactionDetail";
+import { TransactionDetailName } from "components/TransactionDetailName";
+import { TransactionDetailValue } from "components/TransactionDetailValue";
+import React from "react";
+import { CurrencyFormatter, ShortDateFormatter } from "_translate";
+import { maskBarcode } from "_utils/masks/barCode";
+import { useStyles } from "./ReceiptDescription.style";
 
 interface VoucherDescriptionProps {
-  paymentValue: number
-  receiverName: string
-  bank: string
-  paymentDate: Date
-  barcode: string
+  paymentValue: number;
+  receiverName: string;
+  bank: string;
+  paymentDate: Date;
+  barcode: string;
 }
 
 export const ReceiptDescription: React.FC<VoucherDescriptionProps> = ({
@@ -21,7 +21,7 @@ export const ReceiptDescription: React.FC<VoucherDescriptionProps> = ({
   paymentDate,
   barcode,
 }: VoucherDescriptionProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <React.Fragment data-test-id="voucher-content">
       <TransactionDetail className={styles.voucherContent}>
@@ -47,5 +47,5 @@ export const ReceiptDescription: React.FC<VoucherDescriptionProps> = ({
         </TransactionDetailValue>
       </TransactionDetail>
     </React.Fragment>
-  )
-}
+  );
+};

@@ -24,7 +24,7 @@ export const LabelWithValue: React.FC<LabelWithValueProps> = ({
   return (
     <div className={styles.summaryContent}>
       <div>PIX no valor de</div>
-      <strong>{CurrencyFormatter.format(totalValue)}</strong> 
+      <strong>{CurrencyFormatter.format(totalValue)}</strong>
       <div>Para a conta de</div>
       <strong>{name}</strong>
       <div>com CPF</div>

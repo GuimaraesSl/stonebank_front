@@ -1,1 +1,1 @@
-export { TokenInput } from './TokenInput'
+export { TokenInput } from "./TokenInput";

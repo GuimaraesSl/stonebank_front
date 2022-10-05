@@ -1,64 +1,64 @@
-import React from 'react'
-import { Grid } from '@material-ui/core'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { AppBar } from 'components/AppBar'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
-import { Button } from 'components/Button'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { cancelLabel, concludeLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { DetailsFgtsDescription } from 'features/taxPayment/components/DetailsFgtsDescription'
-import { TaxPaymentRoutes } from 'features/taxPayment/constants/routes'
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { StoreState } from 'redux/state'
+import React from "react";
+import { Grid } from "@material-ui/core";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { AppBar } from "components/AppBar";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
+import { Button } from "components/Button";
+import { PageContainer } from "components/PageContainer";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { cancelLabel, concludeLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { DetailsFgtsDescription } from "features/taxPayment/components/DetailsFgtsDescription";
+import { TaxPaymentRoutes } from "features/taxPayment/constants/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { StoreState } from "redux/state";
 import {
   createFgtsPayment,
   updateFgtsPaymentData,
-} from 'features/taxPayment/redux/actions'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { SuccessTaxPaymentState } from 'features/taxPayment/redux/state'
-import { OperationType } from 'features/account/redux/models/operationType'
+} from "features/taxPayment/redux/actions";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { SuccessTaxPaymentState } from "features/taxPayment/redux/state";
+import { OperationType } from "features/account/redux/models/operationType";
 
 export const PaymentFgtsSummary: React.FC = () => {
   const [openAuthorizationSheet, setOpenAuthorizationSheet] =
-    React.useState(false)
+    React.useState(false);
 
-  const history = useHistory()
-  const fgts = useSelector((state: StoreState) => state.taxPayment.fgts)
-  const taxPayment = useSelector((state: StoreState) => state.taxPayment)
-  const dispatch = useDispatch()
-  const { loading, errorMessage } = taxPayment
+  const history = useHistory();
+  const fgts = useSelector((state: StoreState) => state.taxPayment.fgts);
+  const taxPayment = useSelector((state: StoreState) => state.taxPayment);
+  const dispatch = useDispatch();
+  const { loading, errorMessage } = taxPayment;
 
   const onAuthorizationClose = (tokenIsValid: boolean) => {
     if (tokenIsValid) {
-      dispatch(createFgtsPayment())
+      dispatch(createFgtsPayment());
     }
-    setOpenAuthorizationSheet(false)
-  }
+    setOpenAuthorizationSheet(false);
+  };
 
   const onConcludeButtonClick = () => {
-    setOpenAuthorizationSheet(true)
-  }
+    setOpenAuthorizationSheet(true);
+  };
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-    dispatch(updateFgtsPaymentData())
-  }
+    history.replace(AccountRoutes.home);
+    dispatch(updateFgtsPaymentData());
+  };
 
   React.useEffect(() => {
     if (taxPayment instanceof SuccessTaxPaymentState) {
       history.push({
         pathname: TaxPaymentRoutes.paymentFgtsConclude,
         state: OperationType.fgtsPayment,
-      })
-      dispatch(updateFgtsPaymentData())
+      });
+      dispatch(updateFgtsPaymentData());
     }
-  }, [taxPayment])
+  }, [taxPayment]);
 
   return (
     <PageContainer>
@@ -125,5 +125,5 @@ export const PaymentFgtsSummary: React.FC = () => {
         <Alert title="Error" message={errorMessage} severity="error" />
       )}
     </PageContainer>
-  )
-}
+  );
+};

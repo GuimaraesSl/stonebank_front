@@ -1,5 +1,5 @@
-import { Box, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import { Box, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -9,32 +9,32 @@ import {
   ProcessPageLayout,
   SelectionCard,
   TransparentTextField,
-} from 'components'
-import { ErrorMessage } from 'components/ErrorMessage'
-import { SchedulingButton } from 'components/SchedulingButton'
-import { TransparentDateField } from 'components/TransparentDateFild'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import React from 'react'
-import { useStyles } from './KeyPixTransferValue.style'
+} from "components";
+import { ErrorMessage } from "components/ErrorMessage";
+import { SchedulingButton } from "components/SchedulingButton";
+import { TransparentDateField } from "components/TransparentDateFild";
+import { cancelLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import React from "react";
+import { useStyles } from "./KeyPixTransferValue.style";
 
 interface KeyPixTransferValueViewProps {
-  openDatePicker: boolean
-  onDateChange: (date: Date | null) => void
-  minDate: Date
-  displayDate: string
-  isValidValue: boolean
-  valueInput: string
-  _getDisplayDate: VoidFunction
-  balanceIsValid?: boolean | undefined
-  payeeName?: string
-  payeePixKeyValue?: string
-  onValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onConfirmButtonClick: VoidFunction
-  onBackButtonClick: VoidFunction
-  onDatePickerClose: VoidFunction
-  onSchedulingButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
+  openDatePicker: boolean;
+  onDateChange: (date: Date | null) => void;
+  minDate: Date;
+  displayDate: string;
+  isValidValue: boolean;
+  valueInput: string;
+  _getDisplayDate: VoidFunction;
+  balanceIsValid?: boolean | undefined;
+  payeeName?: string;
+  payeePixKeyValue?: string;
+  onValueChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onConfirmButtonClick: VoidFunction;
+  onBackButtonClick: VoidFunction;
+  onDatePickerClose: VoidFunction;
+  onSchedulingButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
 }
 
 export const KeyPixTransferValueView: React.FC<
@@ -57,7 +57,7 @@ export const KeyPixTransferValueView: React.FC<
   onSchedulingButtonClick,
   onCancelButtonClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <PageContainer className={styles.page}>
@@ -95,7 +95,7 @@ export const KeyPixTransferValueView: React.FC<
               </Grid>
               <Grid item>
                 {!balanceIsValid && (
-                  <ErrorMessage message={'Saldo insuficiente'} />
+                  <ErrorMessage message={"Saldo insuficiente"} />
                 )}
               </Grid>
             </Grid>
@@ -133,8 +133,8 @@ export const KeyPixTransferValueView: React.FC<
               <SelectionCard
                 variant="pix"
                 id="payee-info-card"
-                title={payeeName ?? '---'}
-                subtitle={payeePixKeyValue ?? '---'}
+                title={payeeName ?? "---"}
+                subtitle={payeePixKeyValue ?? "---"}
               />
             </Box>
           </>
@@ -151,5 +151,5 @@ export const KeyPixTransferValueView: React.FC<
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

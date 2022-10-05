@@ -1,13 +1,13 @@
-import React from 'react'
-import { Card, Typography } from '@material-ui/core'
-import { useStyle } from './AccountListPopUp.style'
-import { Account } from 'features/account/redux/models/account'
+import React from "react";
+import { Card, Typography } from "@material-ui/core";
+import { useStyle } from "./AccountListPopUp.style";
+import { Account } from "features/account/redux/models/account";
 
 interface AccountListPopUpProps {
-  account: Account
-  pathImage: string | React.ReactNode
-  stateImage?: string | React.ReactNode
-  onClick?: React.MouseEventHandler<HTMLDivElement>
+  account: Account;
+  pathImage: string | React.ReactNode;
+  stateImage?: string | React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 export const AccountListPopUp: React.FC<AccountListPopUpProps> = ({
@@ -17,7 +17,7 @@ export const AccountListPopUp: React.FC<AccountListPopUpProps> = ({
   onClick,
   ...rest
 }: AccountListPopUpProps) => {
-  const style = useStyle()
+  const style = useStyle();
 
   return (
     <Card
@@ -28,7 +28,7 @@ export const AccountListPopUp: React.FC<AccountListPopUpProps> = ({
       {...rest}
     >
       <div>
-        {typeof pathImage === 'string' ? (
+        {typeof pathImage === "string" ? (
           <img src={pathImage} alt="Fechar" />
         ) : (
           pathImage
@@ -46,7 +46,7 @@ export const AccountListPopUp: React.FC<AccountListPopUpProps> = ({
             >
               {account!.spbBankBranch && (
                 <span>
-                  Conta {account!.spbBankAccount}-{account!.spbBankAccountDigit}{' '}
+                  Conta {account!.spbBankAccount}-{account!.spbBankAccountDigit}{" "}
                 </span>
               )}
               <br />
@@ -56,12 +56,12 @@ export const AccountListPopUp: React.FC<AccountListPopUpProps> = ({
         </Typography>
       </div>
       <div data-test-id="account-selection" className={style.imageAccunt}>
-        {typeof stateImage === 'string' ? (
+        {typeof stateImage === "string" ? (
           <img src={stateImage} alt="" />
         ) : (
           stateImage
         )}
       </div>
     </Card>
-  )
-}
+  );
+};

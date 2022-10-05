@@ -1,1 +1,1 @@
-export { FilterSectionTitleAndDescription } from './FilterSectionTitleAndDescription'
+export { FilterSectionTitleAndDescription } from "./FilterSectionTitleAndDescription";

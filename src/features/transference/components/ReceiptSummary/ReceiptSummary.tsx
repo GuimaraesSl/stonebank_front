@@ -1,17 +1,17 @@
-import { TransactionDetail } from 'components/TransactionDetail'
-import { TransactionDetailName } from 'components/TransactionDetailName'
-import { TransactionDetailValue } from 'components/TransactionDetailValue'
-import React from 'react'
-import { ConfigContext } from '_config'
+import { TransactionDetail } from "components/TransactionDetail";
+import { TransactionDetailName } from "components/TransactionDetailName";
+import { TransactionDetailValue } from "components/TransactionDetailValue";
+import React from "react";
+import { ConfigContext } from "_config";
 
-import { useStyles } from './ReceiptSummary.style'
+import { useStyles } from "./ReceiptSummary.style";
 
 interface ReceiptSummaryProps {
-  value: string
-  account: string
-  taxId: string
-  data: string
-  description: string
+  value: string;
+  account: string;
+  taxId: string;
+  data: string;
+  description: string;
 }
 
 export const ReceiptSummary: React.FC<ReceiptSummaryProps> = ({
@@ -21,8 +21,8 @@ export const ReceiptSummary: React.FC<ReceiptSummaryProps> = ({
   data,
   description,
 }) => {
-  const { company } = React.useContext(ConfigContext)
-  const styles = useStyles()
+  const { company } = React.useContext(ConfigContext);
+  const styles = useStyles();
 
   return (
     <React.Fragment data-test-id="receipt=summary">
@@ -59,5 +59,5 @@ export const ReceiptSummary: React.FC<ReceiptSummaryProps> = ({
         </TransactionDetailValue>
       </TransactionDetail>
     </React.Fragment>
-  )
-}
+  );
+};

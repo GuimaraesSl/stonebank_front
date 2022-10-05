@@ -1,15 +1,15 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export interface TextFieldStylesProps {
-  variant: 'outlined' | 'filled'
+  variant: "outlined" | "filled";
 }
 
 export const useStyles = makeStyles({
 
   textField: {
-    '& .MuiInputLabel-formControl': {
-      transform: 'none',
+    "& .MuiInputLabel-formControl": {
+      transform: "none",
       color: colors.system.light.neutral,
       fontWeight: '400',
       fontSize: '12px',
@@ -36,46 +36,46 @@ export const useStyles = makeStyles({
         textAlign: 'left',
         color: colors.readOnly.light.blackLight,
 
-        '&.MuiInputBase-inputAdornedStart': {
+        "&.MuiInputBase-inputAdornedStart": {
           marginLeft: -28,
         },
-        '&.MuiInputBase-inputAdornedEnd': {
+        "&.MuiInputBase-inputAdornedEnd": {
           marginRight: -28,
         },
       },
-      '& .MuiSelect-select:focus': {
-        background: 'none',
+      "& .MuiSelect-select:focus": {
+        background: "none",
       },
     },
-    '& .MuiInput-underline:before, & .MuiInput-underline:hover:before, & .MuiInput-underline:after':
+    "& .MuiInput-underline:before, & .MuiInput-underline:hover:before, & .MuiInput-underline:after":
       {
-        borderBottom: 'none',
+        borderBottom: "none",
       },
   },
 
   textFieldError: {
-    '& .MuiInputBase-root': {
-      borderRadius: '5px',
+    "& .MuiInputBase-root": {
+      borderRadius: "5px",
       minHeight: 40,
       fontSize: 18,
       paddingLeft: 12,
       paddingRight: 14,
       border: ({ variant }: TextFieldStylesProps) => {
         switch (variant) {
-          case 'outlined':
-            return `0.8px solid ${colors.system.light.error}`
+          case "outlined":
+            return `0.8px solid ${colors.system.light.error}`;
         }
       },
-      '&.MuiInputBase-inputAdornedStart': {
+      "&.MuiInputBase-inputAdornedStart": {
         marginLeft: -28,
       },
-      '&.MuiInputBase-inputAdornedEnd': {
+      "&.MuiInputBase-inputAdornedEnd": {
         marginRight: -28,
       },
-      '& .MuiInput-underline:before, & .MuiInput-underline:hover:before, & .MuiInput-underline:after':
+      "& .MuiInput-underline:before, & .MuiInput-underline:hover:before, & .MuiInput-underline:after":
         {
-          borderBottom: 'none',
+          borderBottom: "none",
         },
     },
   },
-})
+});

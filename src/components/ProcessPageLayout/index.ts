@@ -1,1 +1,1 @@
-export { ProcessPageLayout } from './ProcessPageLayout'
+export { ProcessPageLayout } from "./ProcessPageLayout";

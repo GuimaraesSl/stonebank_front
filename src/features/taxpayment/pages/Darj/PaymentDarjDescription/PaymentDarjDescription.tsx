@@ -1,71 +1,71 @@
-import React from 'react'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Grid } from '@material-ui/core'
-import { useStyles } from 'features/taxPayment/pages/Darj/PaymentDarjDescription/PaymentDarjDescription.style'
-import { TextField } from 'components/TextField'
-import { TaxPaymentRoutes } from 'features/taxPayment/constants/routes'
-import { useHistory } from 'react-router-dom'
-import { updateDarjPaymentData } from 'features/taxPayment/redux/actions'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { TagEditPopUp } from 'components/TagEditPopUp'
-import { TagChip } from 'features/tags/components/TagChip'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
+import React from "react";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Grid } from "@material-ui/core";
+import { useStyles } from "features/taxPayment/pages/Darj/PaymentDarjDescription/PaymentDarjDescription.style";
+import { TextField } from "components/TextField";
+import { TaxPaymentRoutes } from "features/taxPayment/constants/routes";
+import { useHistory } from "react-router-dom";
+import { updateDarjPaymentData } from "features/taxPayment/redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { TagEditPopUp } from "components/TagEditPopUp";
+import { TagChip } from "features/tags/components/TagChip";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
 
 export const PaymentDarjDescription: React.FC = () => {
-  const tags = useSelector((store: StoreState) => store.taxPayment.darj?.tags)
+  const tags = useSelector((store: StoreState) => store.taxPayment.darj?.tags);
   const { loading, errorMessage } = useSelector(
-    (state: StoreState) => state.tags,
-  )
-  const [toDescriptionDarj, setToDescriptionDarj] = React.useState('')
-  const [openTagEditPopUp, setOpenTagEditPopUp] = React.useState(false)
-  const [pageTags, setPageTags] = React.useState<string[]>(tags || [])
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const styles = useStyles()
+    (state: StoreState) => state.tags
+  );
+  const [toDescriptionDarj, setToDescriptionDarj] = React.useState("");
+  const [openTagEditPopUp, setOpenTagEditPopUp] = React.useState(false);
+  const [pageTags, setPageTags] = React.useState<string[]>(tags || []);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const styles = useStyles();
 
   const onNextButtonClick = () => {
-    history.push(TaxPaymentRoutes.paymentDarjSummary)
+    history.push(TaxPaymentRoutes.paymentDarjSummary);
     dispatch(
       updateDarjPaymentData({
         description: toDescriptionDarj,
         tags: pageTags,
-      }),
-    )
-  }
+      })
+    );
+  };
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-  }
+    history.replace(AccountRoutes.home);
+  };
   const onDescriptionDarj = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setToDescriptionDarj(event.target.value)
-  }
+    setToDescriptionDarj(event.target.value);
+  };
   const onEditTagsButtonClick = () => {
-    setOpenTagEditPopUp(true)
-  }
+    setOpenTagEditPopUp(true);
+  };
   const onEditTagsClose = () => {
-    setOpenTagEditPopUp(false)
-  }
+    setOpenTagEditPopUp(false);
+  };
   const onTagClick = (tag: string) => {
-    let newTags = [...pageTags]
-    if (pageTags.includes(tag)) newTags = newTags.filter(x => x !== tag)
-    else newTags.push(tag)
-    setPageTags(newTags)
-  }
+    let newTags = [...pageTags];
+    if (pageTags.includes(tag)) newTags = newTags.filter((x) => x !== tag);
+    else newTags.push(tag);
+    setPageTags(newTags);
+  };
 
   const onSaveTags = (tags: string[]) => {
-    dispatch(updateDarjPaymentData({ tags }))
-    setPageTags(tags)
-  }
+    dispatch(updateDarjPaymentData({ tags }));
+    setPageTags(tags);
+  };
 
   return (
     <PageContainer>
@@ -110,7 +110,7 @@ export const PaymentDarjDescription: React.FC = () => {
                              Use nossa sugestão ou personalize as tags."
               />
               <Grid container spacing={1}>
-                {pageTags?.map(tag => (
+                {pageTags?.map((tag) => (
                   <Grid item key={tag}>
                     <TagChip label={tag} onClick={onTagClick} />
                   </Grid>
@@ -132,7 +132,7 @@ export const PaymentDarjDescription: React.FC = () => {
                 <TagEditPopUp
                   open={openTagEditPopUp}
                   onClose={onEditTagsClose}
-                  onSaveTags={tags => onSaveTags(tags)}
+                  onSaveTags={(tags) => onSaveTags(tags)}
                 />
               </Grid>
             </Grid>
@@ -154,8 +154,8 @@ export const PaymentDarjDescription: React.FC = () => {
       />
       <Loader open={loading} />
       {errorMessage && (
-        <Alert title="Erro" message={errorMessage} severity={'error'} />
+        <Alert title="Erro" message={errorMessage} severity={"error"} />
       )}
     </PageContainer>
-  )
-}
+  );
+};

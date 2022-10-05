@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -9,24 +9,24 @@ import {
   ProcessDescriptionHeader,
   ProcessPageFooterButton,
   ProcessPageLayout,
-} from 'components'
-import { cancelLabel } from 'constants/buttons/labels'
-import { useStyles } from './BankPixTransferSelectBank.style'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { SearchField } from 'components/SearchField'
-import { BankCard } from 'features/transference/components/BankCard'
-import { Bank } from 'features/pix/redux/models/bank'
+} from "components";
+import { cancelLabel } from "constants/buttons/labels";
+import { useStyles } from "./BankPixTransferSelectBank.style";
+import { AccountRoutes } from "features/account/constants/routes";
+import { SearchField } from "components/SearchField";
+import { BankCard } from "features/transference/components/BankCard";
+import { Bank } from "features/pix/redux/models/bank";
 
 interface BankPixTransferSelectBankViewProps {
-  toBank: string
-  name?: string
-  displayBanks?: any
-  onBankClick?: any
-  selectedBank: boolean
-  _search: (value: string) => void
-  onCancelButtonClick: VoidFunction
-  onConfirmButtonClick: VoidFunction
-  onBackButtonClick: VoidFunction
+  toBank: string;
+  name?: string;
+  displayBanks?: any;
+  onBankClick?: any;
+  selectedBank: boolean;
+  _search: (value: string) => void;
+  onCancelButtonClick: VoidFunction;
+  onConfirmButtonClick: VoidFunction;
+  onBackButtonClick: VoidFunction;
 }
 export const BankPixTransferSelectBankView: React.FC<
   BankPixTransferSelectBankViewProps
@@ -41,7 +41,7 @@ export const BankPixTransferSelectBankView: React.FC<
   onConfirmButtonClick,
   onBackButtonClick,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <PageContainer>
@@ -74,7 +74,7 @@ export const BankPixTransferSelectBankView: React.FC<
             <Box className={style.searchField}>
               <SearchField
                 placeholder="Busque por nome ou código"
-                onChange={e => _search(e.target.value)}
+                onChange={(e) => _search(e.target.value)}
               />
             </Box>
             <Box>
@@ -102,5 +102,5 @@ export const BankPixTransferSelectBankView: React.FC<
         footerPosition="fixed"
       />
     </PageContainer>
-  )
-}
+  );
+};

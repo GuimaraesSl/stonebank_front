@@ -1,20 +1,20 @@
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { Divider } from 'components/Divider'
-import { useStyles } from './ActionList.style'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { Divider } from "components/Divider";
+import { useStyles } from "./ActionList.style";
 
 interface ActionListProps {
-  className?: string
+  className?: string;
 }
 
 export const ActionList: React.FC<ActionListProps> = ({
   className,
   children,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
-  className = `${styles.actionList} ${className}`
-  const childrenArray = React.Children.toArray(children)
+  className = `${styles.actionList} ${className}`;
+  const childrenArray = React.Children.toArray(children);
 
   return (
     <Box
@@ -26,7 +26,7 @@ export const ActionList: React.FC<ActionListProps> = ({
     >
       {children && (
         <React.Fragment>
-          {childrenArray.map(child => (
+          {childrenArray.map((child) => (
             <React.Fragment>
               {child}
               {childrenArray.indexOf(child) !== childrenArray.length - 1 && (
@@ -37,5 +37,5 @@ export const ActionList: React.FC<ActionListProps> = ({
         </React.Fragment>
       )}
     </Box>
-  )
-}
+  );
+};

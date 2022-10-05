@@ -1,1 +1,1 @@
-export { BankCard } from './BankCard'
+export { BankCard } from "./BankCard";

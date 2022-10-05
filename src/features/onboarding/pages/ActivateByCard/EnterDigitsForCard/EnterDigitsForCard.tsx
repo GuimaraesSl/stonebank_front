@@ -1,89 +1,89 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PageContainer } from 'components/PageContainer'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { Box, Grid } from '@material-ui/core'
-import { DigitsCardProps } from 'features/onboarding/components/inputs/CardDigitsInput'
-import { StoreState } from 'redux/state'
-import { Loader } from 'components/Loader'
-import { ValidateCard } from 'features/onboarding/redux/models/validateCard'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PageContainer } from "components/PageContainer";
+import { AccountRoutes } from "features/account/constants/routes";
+import { Box, Grid } from "@material-ui/core";
+import { DigitsCardProps } from "features/onboarding/components/inputs/CardDigitsInput";
+import { StoreState } from "redux/state";
+import { Loader } from "components/Loader";
+import { ValidateCard } from "features/onboarding/redux/models/validateCard";
 import {
   updateOnboardingForm,
   updateValidateCardForm,
   validateCardOnboarding,
-} from 'features/onboarding/redux/actions'
+} from "features/onboarding/redux/actions";
 import {
   SuccessVerifyCardState,
   InitialValidateCardState,
   OnboardingState,
-} from 'features/onboarding/redux/state'
+} from "features/onboarding/redux/state";
 
 export const EnterDigitsForCard: React.FC = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [panLastDigits, setPanLastDigits] = React.useState('')
-  const [sentTaxId, setSentTaxId] = React.useState(false)
-  const [sentValidation, setSentValidation] = React.useState(false)
-  const [disableNextButton, setDisableNextButton] = React.useState(false)
+  const [panLastDigits, setPanLastDigits] = React.useState("");
+  const [sentTaxId, setSentTaxId] = React.useState(false);
+  const [sentValidation, setSentValidation] = React.useState(false);
+  const [disableNextButton, setDisableNextButton] = React.useState(false);
   const [cardState, validateCard, loading, taxId] = useSelector<
     StoreState,
     [
       OnboardingState | undefined,
       ValidateCard | undefined,
       boolean,
-      string | undefined,
+      string | undefined
     ]
-  >(state => [
+  >((state) => [
     state.onboarding,
     state.onboarding.validateCard,
     state.onboarding.loading,
     state.onboarding.validateCard?.taxId,
-  ])
+  ]);
 
   React.useEffect(() => {
     panLastDigits.length !== 4
       ? setDisableNextButton(true)
-      : setDisableNextButton(false)
-  }, [panLastDigits.length])
+      : setDisableNextButton(false);
+  }, [panLastDigits.length]);
 
   React.useEffect(() => {
     if (sentValidation && cardState instanceof SuccessVerifyCardState) {
       if (!validateCard?.isValid)
-        history.push(OnboardingRoutes.invalidDataForCard)
+        history.push(OnboardingRoutes.invalidDataForCard);
       else {
-        dispatch(updateOnboardingForm({ taxId }))
-        history.push(OnboardingRoutes.enterNameForCard)
+        dispatch(updateOnboardingForm({ taxId }));
+        history.push(OnboardingRoutes.enterNameForCard);
       }
     }
-  }, [cardState])
+  }, [cardState]);
 
   React.useEffect(() => {
     if (sentTaxId && cardState instanceof InitialValidateCardState)
-      dispatch(validateCardOnboarding())
+      dispatch(validateCardOnboarding());
 
-    setSentValidation(true)
-  }, [cardState])
+    setSentValidation(true);
+  }, [cardState]);
 
   const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    dispatch(updateValidateCardForm({ panLastDigits }))
-    setSentTaxId(true)
-  }
+    dispatch(updateValidateCardForm({ panLastDigits }));
+    setSentTaxId(true);
+  };
 
   const onCancelButtonClick = () => {
-    history.replace(OnboardingRoutes.activateAccount)
-  }
+    history.replace(OnboardingRoutes.activateAccount);
+  };
 
   return (
     <PageContainer>
@@ -140,5 +140,5 @@ export const EnterDigitsForCard: React.FC = () => {
       />
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

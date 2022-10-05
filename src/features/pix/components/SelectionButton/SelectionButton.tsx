@@ -1,21 +1,21 @@
-import React from 'react'
-import { Box, Card, Typography } from '@material-ui/core'
-import { useStyles } from './SelectionButton.style'
+import React from "react";
+import { Box, Card, Typography } from "@material-ui/core";
+import { useStyles } from "./SelectionButton.style";
 
 interface SelectionButtonProps {
-  title?: string
-  bank?: React.ReactNode | string
-  bankAccount?: React.ReactNode | string
-  bankBranch?: React.ReactNode | string
-  subtitle?: React.ReactNode | string
-  subsubtitle?: React.ReactNode | string
-  startIcon?: React.ReactNode
-  endIcon?: React.ReactNode | string
-  id?: string
-  className?: string
-  qrCodeButton?: string
-  onClick?: VoidFunction
-  onClose?: VoidFunction
+  title?: string;
+  bank?: React.ReactNode | string;
+  bankAccount?: React.ReactNode | string;
+  bankBranch?: React.ReactNode | string;
+  subtitle?: React.ReactNode | string;
+  subsubtitle?: React.ReactNode | string;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode | string;
+  id?: string;
+  className?: string;
+  qrCodeButton?: string;
+  onClick?: VoidFunction;
+  onClose?: VoidFunction;
 }
 
 export const SelectionButton: React.FC<SelectionButtonProps> = ({
@@ -33,14 +33,20 @@ export const SelectionButton: React.FC<SelectionButtonProps> = ({
   onClick,
   onClose,
 }: SelectionButtonProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const _className = (() => {
-    return className ? `${styles.Button} ${className}` : styles.Button
-  })()
+    return className ? `${styles.Button} ${className}` : styles.Button;
+  })();
 
   return (
-    <Card id={id} className={_className} elevation={0} onClick={onClick} data-test-id="selection-button">
+    <Card
+      id={id}
+      className={_className}
+      elevation={0}
+      onClick={onClick}
+      data-test-id="selection-button"
+    >
       {startIcon && (
         <Box
           id="start-icon-column"
@@ -48,17 +54,17 @@ export const SelectionButton: React.FC<SelectionButtonProps> = ({
           alignItems="center"
           justifyContent="center"
         >
-          {typeof startIcon === 'string' ? (
+          {typeof startIcon === "string" ? (
             <img
               id="start-icon"
               src={startIcon}
-              alt={title + ' icon'}
+              alt={title + " icon"}
               className={styles.icon}
             />
           ) : (
             React.cloneElement(startIcon as any, {
               className: styles.icon,
-              id: 'start-icon',
+              id: "start-icon",
             })
           )}
         </Box>
@@ -96,12 +102,12 @@ export const SelectionButton: React.FC<SelectionButtonProps> = ({
         </Typography>
       </Box>
       <Box display="flex" alignItems="center" justifyContent="center">
-        {typeof endIcon === 'string' ? (
-          <img src={endIcon} alt={title + ' icon'} className={styles.endIcon} />
+        {typeof endIcon === "string" ? (
+          <img src={endIcon} alt={title + " icon"} className={styles.endIcon} />
         ) : (
           endIcon
         )}
       </Box>
     </Card>
-  )
-}
+  );
+};

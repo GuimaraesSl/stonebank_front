@@ -1,1 +1,1 @@
-export { DetailsFgtsDescription } from './DetailsFgtsDescription'
+export { DetailsFgtsDescription } from "./DetailsFgtsDescription";

@@ -57,38 +57,42 @@ export const TransparentDateField: React.FC<TransparentDateFieldProps> = ({
   return (
     <React.Fragment>
       <Typography className={styles.label}>{label}</Typography>
-    <MuiTextField
-      multiline={multiline}
-      rows={rows}
-      type={type}
-      error={error}
-      color="primary"
-      placeholder={placeholder}
-      disabled={disabled}
-      value={value}
-      select={select}
-      helperText={helperText}
-      inputMode={inputMode}
-      className={error === true ? styles.TransparentDateFieldError : styles.TransparentDateField}
-      InputProps={{
-        startAdornment,
-        endAdornment,
-      }}
-      InputLabelProps={{
-        shrink: true,
-      }}
-      inputProps={{
-        step: type === "number" ? 0.1 : undefined,
-        min: minValue,
-        max: maxValue,
-        inputMode,
-      }}
-      fullWidth
-      required={required}
-      onChange={onChange}
-    >
-      {children}
-    </MuiTextField>
+      <MuiTextField
+        multiline={multiline}
+        rows={rows}
+        type={type}
+        error={error}
+        color="primary"
+        placeholder={placeholder}
+        disabled={disabled}
+        value={value}
+        select={select}
+        helperText={helperText}
+        inputMode={inputMode}
+        className={
+          error === true
+            ? styles.TransparentDateFieldError
+            : styles.TransparentDateField
+        }
+        InputProps={{
+          startAdornment,
+          endAdornment,
+        }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        inputProps={{
+          step: type === "number" ? 0.1 : undefined,
+          min: minValue,
+          max: maxValue,
+          inputMode,
+        }}
+        fullWidth
+        required={required}
+        onChange={onChange}
+      >
+        {children}
+      </MuiTextField>
     </React.Fragment>
   );
 };

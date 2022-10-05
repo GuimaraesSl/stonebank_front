@@ -1,13 +1,13 @@
-import React from 'react'
-import { TextField as MuiTextField, Typography } from '@material-ui/core'
-import { useStyles } from './TransparentTextField.style'
-import { CurrencyFormatter, parseCurrency } from '_translate'
+import React from "react";
+import { TextField as MuiTextField, Typography } from "@material-ui/core";
+import { useStyles } from "./TransparentTextField.style";
+import { CurrencyFormatter, parseCurrency } from "_translate";
 
 interface TransparentTextFieldProps {
-  label?: string
-  value: string
-  disabled?: boolean
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  label?: string;
+  value: string;
+  disabled?: boolean;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const TransparentTextField: React.FC<TransparentTextFieldProps> = ({
@@ -16,7 +16,7 @@ export const TransparentTextField: React.FC<TransparentTextFieldProps> = ({
   disabled,
   onChange,
 }) => {
-  const styles = useStyles({ value })
+  const styles = useStyles({ value });
 
   return (
     <React.Fragment>
@@ -36,5 +36,5 @@ export const TransparentTextField: React.FC<TransparentTextFieldProps> = ({
         data-test-id="transparent-text-field"
       ></MuiTextField>
     </React.Fragment>
-  )
-}
+  );
+};

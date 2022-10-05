@@ -1,1 +1,1 @@
-export { AssociateBirthDateCard } from './AssociateBirthDateCard'
+export { AssociateBirthDateCard } from "./AssociateBirthDateCard";

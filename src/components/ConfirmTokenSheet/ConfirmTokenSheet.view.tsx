@@ -1,24 +1,24 @@
-import React from 'react'
-import { Box, Drawer, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
-import { Alert } from 'components/Alert'
-import { Button } from 'components/Button'
-import { Loader } from 'components/Loader'
-import { PageContainer } from 'components/PageContainer'
-import { useStyles } from './ConfirmTokenSheet.style'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import OtpInput from 'react-otp-input'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box, Drawer, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { Alert } from "components/Alert";
+import { Button } from "components/Button";
+import { Loader } from "components/Loader";
+import { PageContainer } from "components/PageContainer";
+import { useStyles } from "./ConfirmTokenSheet.style";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import OtpInput from "react-otp-input";
+import { Icon } from "components/Icon";
 interface ConfirmTokenSheetProps {
-  open: boolean
-  onClose: VoidFunction
-  token: string
-  onTokenChange: any
-  onResendTokenClick: VoidFunction
-  disableConfirmButton: boolean
-  onConfirmClick: VoidFunction
-  state: { loading: boolean; message?: string; success?: boolean }
-  onCloseMessage: VoidFunction
+  open: boolean;
+  onClose: VoidFunction;
+  token: string;
+  onTokenChange: any;
+  onResendTokenClick: VoidFunction;
+  disableConfirmButton: boolean;
+  onConfirmClick: VoidFunction;
+  state: { loading: boolean; message?: string; success?: boolean };
+  onCloseMessage: VoidFunction;
 }
 
 export const ConfirmTokenSheetView: React.FC<ConfirmTokenSheetProps> = ({
@@ -32,8 +32,8 @@ export const ConfirmTokenSheetView: React.FC<ConfirmTokenSheetProps> = ({
   state,
   onCloseMessage,
 }) => {
-  const styles = useStyles()
-  const { loading, message, success } = state
+  const styles = useStyles();
+  const { loading, message, success } = state;
   return (
     <React.Fragment>
       <Drawer
@@ -105,13 +105,13 @@ export const ConfirmTokenSheetView: React.FC<ConfirmTokenSheetProps> = ({
       <Loader open={loading} />
       {message && (
         <Alert
-          title={success ? 'Sucesso' : 'Erro'}
+          title={success ? "Sucesso" : "Erro"}
           message={message}
-          severity={success ? 'success' : 'error'}
+          severity={success ? "success" : "error"}
           onClose={onCloseMessage}
           data-test-id="message-alert"
         />
       )}
     </React.Fragment>
-  )
-}
+  );
+};

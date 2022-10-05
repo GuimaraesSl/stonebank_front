@@ -1,1 +1,1 @@
-export { BirthDate } from './BirthDateForSMS'
+export { BirthDate } from "./BirthDateForSMS";

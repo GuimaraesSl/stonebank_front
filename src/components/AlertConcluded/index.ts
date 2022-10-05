@@ -1,1 +1,1 @@
-export { AlertConcluded } from './AlertConcluded'
+export { AlertConcluded } from "./AlertConcluded";

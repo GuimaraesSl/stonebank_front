@@ -1,1 +1,1 @@
-export { LastDigitsInput } from './LastDigitsInput'
+export { LastDigitsInput } from "./LastDigitsInput";

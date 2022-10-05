@@ -1,6 +1,6 @@
-import { TopUpProduct } from './topUpProduct'
+import { TopUpProduct } from "./topUpProduct";
 
 export interface Product {
-  originNSU: string
-  topUpPhoneNumberList: TopUpProduct[]
+  originNSU: string;
+  topUpPhoneNumberList: TopUpProduct[];
 }

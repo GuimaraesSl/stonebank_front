@@ -1,16 +1,16 @@
-import React from 'react'
-import { dateLabel } from 'constants/buttons/labels'
-import { DatePicker } from '@material-ui/pickers'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { dateLabel } from "constants/buttons/labels";
+import { DatePicker } from "@material-ui/pickers";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { Icon } from "components/Icon";
 
 interface DateButtonProps {
-  open?: boolean
-  value: Date | null
-  maxDate: Date
-  onClick?: VoidFunction
-  onDateSelection?: (date: Date | null) => void
-  onClose?: VoidFunction
+  open?: boolean;
+  value: Date | null;
+  maxDate: Date;
+  onClick?: VoidFunction;
+  onDateSelection?: (date: Date | null) => void;
+  onClose?: VoidFunction;
 }
 
 export const DateButton: React.FC<DateButtonProps> = ({
@@ -40,5 +40,5 @@ export const DateButton: React.FC<DateButtonProps> = ({
         />
       )}
     </React.Fragment>
-  )
-}
+  );
+};

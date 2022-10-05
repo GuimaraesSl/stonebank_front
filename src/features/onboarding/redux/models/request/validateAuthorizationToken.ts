@@ -1,4 +1,4 @@
 export interface ValidateAuthorizationTokenRequest {
-  code: string
-  phoneNumber: string
+  code: string;
+  phoneNumber: string;
 }

@@ -1,1 +1,1 @@
-export { ReadQrCodeDigitalWithdrawal } from './ReadQrCodeDigitalWithdrawal'
+export { ReadQrCodeDigitalWithdrawal } from "./ReadQrCodeDigitalWithdrawal";

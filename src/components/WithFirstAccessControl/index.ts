@@ -1,1 +1,1 @@
-export {WithFirstAccessControl} from './WithFirstAccessControl'
+export { WithFirstAccessControl } from "./WithFirstAccessControl";

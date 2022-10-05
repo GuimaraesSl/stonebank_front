@@ -1,12 +1,12 @@
-import React from 'react'
-import { Button as MuiButton } from '@material-ui/core'
-import { useStyles } from './ButtonReadQRCode.style'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Button as MuiButton } from "@material-ui/core";
+import { useStyles } from "./ButtonReadQRCode.style";
+import { Icon } from "components/Icon";
 
 interface ButtonReadQRCodeProps {
-  disabled?: boolean
-  className?: string
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  disabled?: boolean;
+  className?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export const ButtonReadQRCode: React.FC<ButtonReadQRCodeProps> = ({
@@ -15,7 +15,7 @@ export const ButtonReadQRCode: React.FC<ButtonReadQRCodeProps> = ({
   onClick,
   children,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <MuiButton
@@ -27,5 +27,5 @@ export const ButtonReadQRCode: React.FC<ButtonReadQRCodeProps> = ({
       {children}
       <Icon className={styles.img} name="qrCodeDigitalWithdrawal" />
     </MuiButton>
-  )
-}
+  );
+};

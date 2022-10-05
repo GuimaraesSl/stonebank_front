@@ -1,12 +1,12 @@
-import React from 'react'
-import { Box, Button } from '@material-ui/core'
-import { useStyles } from './TransactionCardButton.style'
+import React from "react";
+import { Box, Button } from "@material-ui/core";
+import { useStyles } from "./TransactionCardButton.style";
 interface TransactionCardButtonProps {
-  icon: string | React.ReactNode
-  iconAlt?: string
-  disabled?: boolean
-  className?: string
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  icon: string | React.ReactNode;
+  iconAlt?: string;
+  disabled?: boolean;
+  className?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export const TransactionCardButton: React.FC<TransactionCardButtonProps> = ({
@@ -18,7 +18,7 @@ export const TransactionCardButton: React.FC<TransactionCardButtonProps> = ({
   children,
   ...rest
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Button
@@ -30,9 +30,9 @@ export const TransactionCardButton: React.FC<TransactionCardButtonProps> = ({
       {...rest}
     >
       <Box className={styles.icon}>
-        {typeof icon === 'string' ? <img src={icon} alt={iconAlt} /> : icon}
+        {typeof icon === "string" ? <img src={icon} alt={iconAlt} /> : icon}
       </Box>
       {children}
     </Button>
-  )
-}
+  );
+};

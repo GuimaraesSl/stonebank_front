@@ -1,22 +1,22 @@
-import React from 'react'
-import { Button as MuiButton } from '@material-ui/core'
-import { ButtonStylesProps, useStyles } from './CancelTransferButton.style'
-import { Close } from '@material-ui/icons'
-import { cancelMoneyLabel } from 'constants/buttons/labels'
+import React from "react";
+import { Button as MuiButton } from "@material-ui/core";
+import { ButtonStylesProps, useStyles } from "./CancelTransferButton.style";
+import { Close } from "@material-ui/icons";
+import { cancelMoneyLabel } from "constants/buttons/labels";
 
 interface ButtonProps extends ButtonStylesProps {
-  startIcon?: React.ReactNode
-  endIcon?: React.ReactNode
-  onClick: React.MouseEventHandler<HTMLButtonElement>
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const CancelTransferButton: React.FC<ButtonProps> = ({
   onClick,
-  size = 'medium',
-  variant = 'contained',
-  palette = 'secondary',
+  size = "medium",
+  variant = "contained",
+  palette = "secondary",
 }) => {
-  const styles = useStyles({ size, palette, variant })
+  const styles = useStyles({ size, palette, variant });
 
   return (
     <MuiButton
@@ -30,5 +30,5 @@ export const CancelTransferButton: React.FC<ButtonProps> = ({
     >
       {cancelMoneyLabel}
     </MuiButton>
-  )
-}
+  );
+};

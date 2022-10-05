@@ -1,1 +1,1 @@
-export { PixTransferHome } from './PixTransferHome.controller'
+export { PixTransferHome } from "./PixTransferHome.controller";

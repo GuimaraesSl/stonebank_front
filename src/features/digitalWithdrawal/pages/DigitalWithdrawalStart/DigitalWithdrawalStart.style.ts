@@ -1,21 +1,21 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   title: {
-    fontSize: '20px',
+    fontSize: "20px",
     fontWeight: 700,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 50,
   },
   description: {
-    fontSize: '12px',
+    fontSize: "12px",
     fontWeight: 400,
     color: colors.neutral.shade40,
-    textAlign: 'center',
+    textAlign: "center",
   },
   descriptionWrapper: {
-    margin: '9px 56px 0px 56px',
+    margin: "9px 56px 0px 56px",
   },
   descriptionFooter: {
     fontSize: 12,
@@ -24,11 +24,11 @@ export const useStyles = makeStyles({
     marginTop: 42,
   },
   content: {
-    marginTop: '10%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: "10%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   frameDigitalWithdrawal: {
     width: 150,
@@ -42,4 +42,4 @@ export const useStyles = makeStyles({
     width: 135,
     marginTop: 9,
   },
-})
+});

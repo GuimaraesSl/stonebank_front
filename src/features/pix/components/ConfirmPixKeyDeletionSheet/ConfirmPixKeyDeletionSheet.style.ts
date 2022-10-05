@@ -1,10 +1,10 @@
-import { makeStyles } from '@material-ui/core'
-import { colors, theme } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors, theme } from "_config/theme";
 
 export const useStyles = makeStyles({
   drawer: {
-    '& .MuiDrawer-paper': {
-      background: 'transparent',
+    "& .MuiDrawer-paper": {
+      background: "transparent",
     },
   },
   content: {
@@ -13,17 +13,17 @@ export const useStyles = makeStyles({
     color: colors.readOnly.light.white,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
-    position: 'relative',
+    position: "relative",
     marginTop: 12,
     minHeight: 212,
   },
   closeButton: {
-    position: 'absolute',
+    position: "absolute",
     right: 16,
     top: -12,
   },
   text: {
-    color: '#333750',
+    color: "#333750",
     fontWeight: 500,
   },
   subtitle: {
@@ -33,34 +33,34 @@ export const useStyles = makeStyles({
     marginBottom: 24,
   },
   buttonCancel: {
-    padding: '2px',
-    position: 'relative',
+    padding: "2px",
+    position: "relative",
     backgroundColor: colors.readOnly.light.white,
     color: theme.palette.primary.main,
     height: 24,
     border: `${colors.system.light.background}`,
-    minWidth: '100px',
+    minWidth: "100px",
     fontSize: 9,
     borderRadius: 4,
-    '& .MuiButton-label': {
-      textTransform: 'none',
-      textAlign: 'center',
+    "& .MuiButton-label": {
+      textTransform: "none",
+      textAlign: "center",
     },
-    '&.MuiButton-sizeSmall': {
-      minWidth: '70px',
-      fontSize: '9px',
-      height: '20px',
+    "&.MuiButton-sizeSmall": {
+      minWidth: "70px",
+      fontSize: "9px",
+      height: "20px",
     },
 
-    '&.MuiButton-sizeLarge': {
-      minWidth: '120px',
-      fontSize: '12px',
-      height: '40px',
+    "&.MuiButton-sizeLarge": {
+      minWidth: "120px",
+      fontSize: "12px",
+      height: "40px",
     },
-    '&.Mui-disabled': {
+    "&.Mui-disabled": {
       borderColor: theme.palette.action.disabledBackground,
     },
-    '&:hover': {
+    "&:hover": {
       backgroundColor: colors.readOnly.light.surface5,
     },
   },
@@ -68,4 +68,4 @@ export const useStyles = makeStyles({
     color: colors.system.light.onPrimary,
     backgroundColor: colors.system.light.primary,
   },
-})
+});

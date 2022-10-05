@@ -1,11 +1,11 @@
-import React from 'react'
-import { Button } from '@material-ui/core'
+import React from "react";
+import { Button } from "@material-ui/core";
 
-import './QRCodeButton.scss'
+import "./QRCodeButton.scss";
 
 interface QRCodeButtonProps {
-  imagePath?: string | React.ReactNode
-  title: string
+  imagePath?: string | React.ReactNode;
+  title: string;
 }
 
 export const QRCodeButton = ({ title, imagePath }: QRCodeButtonProps) => {
@@ -18,7 +18,7 @@ export const QRCodeButton = ({ title, imagePath }: QRCodeButtonProps) => {
       fullWidth
     >
       <div className="propButton">
-        {typeof imagePath === 'string' ? (
+        {typeof imagePath === "string" ? (
           <img src={imagePath} className="iconIDButton" alt="bgButton" />
         ) : (
           imagePath
@@ -26,5 +26,5 @@ export const QRCodeButton = ({ title, imagePath }: QRCodeButtonProps) => {
         <div className="label">{title}</div>
       </div>
     </Button>
-  )
-}
+  );
+};

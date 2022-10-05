@@ -1,1 +1,1 @@
-export { AddressConfirmation } from './AddressConfirmation'
+export { AddressConfirmation } from "./AddressConfirmation";

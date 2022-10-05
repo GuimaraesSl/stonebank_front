@@ -1,9 +1,9 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { useStyles } from './PaymentError.style'
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { useStyles } from "./PaymentError.style";
 
 export const PaymentError: React.FC = () => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Typography className={styles.errorPayment} data-test-id="payment-error">
@@ -11,5 +11,5 @@ export const PaymentError: React.FC = () => {
         Pagamento não reconhecido, tente afastar ou aproximar o dispositivo
       </Typography>
     </Typography>
-  )
-}
+  );
+};

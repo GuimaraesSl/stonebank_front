@@ -1,17 +1,17 @@
-import React from 'react'
-import { Button } from '@material-ui/core'
-import { accessAccountLabel } from 'constants/buttons/labels'
-import { useStyles } from './AccessAccountButton.style'
-import { useHistory } from 'react-router-dom'
-import { AuthenticationRoutes } from 'features/authentication/constants/routes'
+import React from "react";
+import { Button } from "@material-ui/core";
+import { accessAccountLabel } from "constants/buttons/labels";
+import { useStyles } from "./AccessAccountButton.style";
+import { useHistory } from "react-router-dom";
+import { AuthenticationRoutes } from "features/authentication/constants/routes";
 
 export const AccessAccountButton: React.FC = () => {
-  const style = useStyles()
-  const history = useHistory()
+  const style = useStyles();
+  const history = useHistory();
 
   const onAccessAccountClick = () => {
-    history.replace(AuthenticationRoutes.signIn)
-  }
+    history.replace(AuthenticationRoutes.signIn);
+  };
 
   return (
     <Button
@@ -23,5 +23,5 @@ export const AccessAccountButton: React.FC = () => {
     >
       {accessAccountLabel}
     </Button>
-  )
-}
+  );
+};

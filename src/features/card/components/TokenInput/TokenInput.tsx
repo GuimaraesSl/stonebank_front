@@ -1,16 +1,16 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { Box } from '@material-ui/core'
-import { OtpInput } from 'components/OtpInput/OtpInput'
-import { useStyles } from './TokenInput.style'
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { Box } from "@material-ui/core";
+import { OtpInput } from "components/OtpInput/OtpInput";
+import { useStyles } from "./TokenInput.style";
 
 interface TokenInputProps {
-  value: string
-  onChange: React.Dispatch<React.SetStateAction<any>>
+  value: string;
+  onChange: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export const TokenInput = ({ value, onChange }: TokenInputProps) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <Box className={style.cardTokenContext}>
@@ -34,5 +34,5 @@ export const TokenInput = ({ value, onChange }: TokenInputProps) => {
         />
       </Box>
     </Box>
-  )
-}
+  );
+};

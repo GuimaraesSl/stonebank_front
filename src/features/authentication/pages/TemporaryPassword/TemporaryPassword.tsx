@@ -9,8 +9,8 @@ import { Icon } from 'components/Icon'
 import { GreatButton } from 'components/GreatButton'
 
 export const TemporaryPassword: React.FC = () => {
-  const styles = useOnboardingStyles()
-  const history = useHistory()
+  const styles = useOnboardingStyles();
+  const history = useHistory();
 
   const createPass = () => {
     history.push(AuthenticationRoutes.changePasswordFirstAccess)
@@ -28,7 +28,11 @@ export const TemporaryPassword: React.FC = () => {
           <Icon name="forgotPassword" className={styles.logo} />
         </Grid>
 
-        <Grid item className={styles.gridTitle} data-test-id="description-title" >
+        <Grid
+          item
+          className={styles.gridTitle}
+          data-test-id="description-title"
+        >
           <Typography variant="h5" className={styles.title}>
             Você entrou com uma <br />
             senha temporária
@@ -51,5 +55,5 @@ export const TemporaryPassword: React.FC = () => {
         </Grid>
       </Grid>
     </PageContainer>
-  )
-}
+  );
+};
