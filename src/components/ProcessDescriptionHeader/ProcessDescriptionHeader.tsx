@@ -20,7 +20,7 @@ export const ProcessDescriptionHeader: React.FC<TitleAndDescritionProps> = ({
     <Box>
       <Typography
         id="pd-title"
-        variant="h6"
+        align="center"
         className={styles.title}
         data-test-id="description-title"
         {...rest}
@@ -40,7 +40,8 @@ export const ProcessDescriptionHeader: React.FC<TitleAndDescritionProps> = ({
       {description && (
         <Typography
           id="pd-description"
-          variant="body1"
+          variant="h5"
+          align="center"
           className={styles.description}
           data-test-id="description"
         >

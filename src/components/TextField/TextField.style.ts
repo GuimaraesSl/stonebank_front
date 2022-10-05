@@ -11,7 +11,7 @@ export const useStyles = makeStyles({
     '& .MuiInputLabel-formControl': {
       transform: 'none',
       color: colors.system.light.neutral,
-      fontWeight: '500',
+      fontWeight: '400',
       fontSize: '12px',
     },
 
@@ -30,13 +30,6 @@ export const useStyles = makeStyles({
             return `1px solid ${colors.readOnly.light.blackLight}60`
         }
       },
-
-      // boxShadow: ({ variant }: TextFieldStylesProps) => {
-      //   switch (variant) {
-      //     case 'filled':
-      //       return '0px 2px 2px rgba(0, 0, 0, 0.15)'
-      //   }
-      // },
 
       '& .MuiInputBase-input': {
         padding: '0px 0px 0px 10px',
