@@ -27,6 +27,7 @@ export const useStyles = makeStyles<typeof theme, StylesProps>({
         ? `${padding}px ${padding}px ${padding + 48}px ${padding}px`
         : padding,
   },
+  
   footer: {
     width: '100%',
     padding: padding,
