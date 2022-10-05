@@ -28,7 +28,7 @@ export const AuthenticationTitle: React.FC = () => {
     >
       Seja bem-vindo ao
       <br />
-      <strong> {company.name}</strong>
+      <strong>StoneBank</strong>
     </Typography>
   )
 }
