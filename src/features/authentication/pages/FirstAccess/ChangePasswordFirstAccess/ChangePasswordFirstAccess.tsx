@@ -9,7 +9,7 @@ import { cancelLabel, nextLabel, returnLabel } from 'constants/buttons/labels'
 import { AuthenticationRoutes } from 'features/authentication/constants/routes'
 import { ProcessPageLayout } from 'components/ProcessPageLayout'
 import { PasswordField } from 'components/PasswordField'
-import { Grid, Typography } from '@material-ui/core'
+import { Container, Grid, Typography } from '@material-ui/core'
 import { useStyles } from './ChangePasswordFirstAccess.style'
 import { Validator } from 'components/Validator'
 import {
@@ -85,126 +85,107 @@ export const ChangePasswordFirstAccess: React.FC = () => {
   const authState = useSelector((state: StoreState) => state.auth)
 
   return (
-    <ProcessPageLayout
-      appBar={
-        <AppBar
-          homeRoute={AuthenticationRoutes.changePasswordFirstAccess}
-          action={
-            <Button
-              palette="secondary"
-              size="small"
-              startIcon={<Close color="primary" />}
-              onClick={onCancelButtonClick}
-              data-test-id="cancel-button"
-            >
-              {cancelLabel}
-            </Button>
-          }
-        />
-      }
-      header={
-        <ProcessDescriptionHeader
-          title={'Criar senha'}
-          subtitle="Crie uma senha para sua conta"
-          description="Essa é sua senha de acesso ao APLICATIVO e deve seguir os critérios abaixo."
-        />
-      }
-      main={
-        <Grid
-          container
-          direction="column"
-          spacing={3}
-          onSubmit={onNextButtonClick}
-        >
-          {authState.errorMessage && (
-            <Alert
-              title="Erro"
-              message={authState.errorMessage}
-              severity={'error'}
-            />
-          )}
-          <Grid item component="form" className={styles.input}>
-            <PasswordField
-              label="Senha"
-              value={newPassword}
-              placeholder="Digite a senha..."
-              onChange={onPasswordChange}
-            />
-          </Grid>
+    <Container  maxWidth="xs" className={styles.container}>  
 
-          <Grid item>
-            <Typography
-              className={styles.description}
-              data-test-id="description-text"
-            >
-              Sua senha deve atender os critérios a baixo:
-            </Typography>
-          </Grid>
+      <ProcessDescriptionHeader
+        title={'Criar Senha'}
+        description="Para utilizar  nossos serviços , você deve estar de acordo com os termos de uso"
+      />
+  
+      <Grid
+        container
+        direction="column"
+        spacing={3}
+        onSubmit={onNextButtonClick}
+      >
+        {authState.errorMessage && (
+          <Alert
+            title="Erro"
+            message={authState.errorMessage}
+            severity={'error'}
+          />
+        )}
 
-          <Grid item>
-            <Grid container direction="column" spacing={1}>
-              <Grid item>
-                <Validator
-                  value={newPassword}
-                  description={'Ao menos um caractere especial'}
-                  isValid={passwordSpecialIsValid}
-                  validation={validateSpecial}
-                  onValidate={setPasswordSpecialIsValid}
-                  strictValidation={false}
-                />
-              </Grid>
-              <Grid item>
-                <Validator
-                  value={newPassword}
-                  description={'No mínimo 8 caracteres e no máximo 16'}
-                  isValid={passwordLengthIsValid}
-                  validation={validateLength}
-                  onValidate={onValidateLength}
-                  strictValidation={false}
-                />
-              </Grid>
-              <Grid item>
-                <Validator
-                  value={newPassword}
-                  description={'Letras maiúsculas, minúsculas e números'}
-                  isValid={
-                    passwordUpperIsValid &&
-                    passwordLowerIsValid &&
-                    passwordValidateNumber
-                  }
-                  validation={() => validateLowerUpperNumber(newPassword)}
-                  onValidate={onValidateLowerUpperNumber}
-                  strictValidation={false}
-                />
-              </Grid>
+        <Grid item component="form" className={styles.input}>
+          <PasswordField
+            label="Nova Senha"
+            value={newPassword}
+            placeholder="Digite sua nova senha"
+            onChange={onPasswordChange}
+          />
+        </Grid>
+
+        <Grid item>
+          <Typography
+            className={styles.description}
+            data-test-id="description-text"
+          >
+            Sua senha deve atender os critérios a baixo:
+          </Typography>
+        </Grid>
+
+        <Grid item>
+          <Grid container direction="column" spacing={1}>
+            <Grid item>
+              <Validator
+                value={newPassword}
+                description={'Ao menos um caractere especial'}
+                isValid={passwordSpecialIsValid}
+                validation={validateSpecial}
+                onValidate={setPasswordSpecialIsValid}
+                strictValidation={false}
+              />
+            </Grid>
+            <Grid item>
+              <Validator
+                value={newPassword}
+                description={'No mínimo 8 caracteres e no máximo 16'}
+                isValid={passwordLengthIsValid}
+                validation={validateLength}
+                onValidate={onValidateLength}
+                strictValidation={false}
+              />
+            </Grid>
+            <Grid item>
+              <Validator
+                value={newPassword}
+                description={'Letras maiúsculas, minúsculas e números'}
+                isValid={
+                  passwordUpperIsValid &&
+                  passwordLowerIsValid &&
+                  passwordValidateNumber
+                }
+                validation={() => validateLowerUpperNumber(newPassword)}
+                onValidate={onValidateLowerUpperNumber}
+                strictValidation={false}
+              />
             </Grid>
           </Grid>
         </Grid>
-      }
-      footer={
-        <ProcessPageFooter
-          primaryButton={
-            <Button
-              disabled={disableNextButton}
-              endIcon={<KeyboardArrowRight color="secondary" />}
-              onClick={onNextButtonClick}
-              data-test-id="next-button"
-            >
-              {nextLabel}
-            </Button>
-          }
-          secondaryButton={
-            <Button
-              palette="secondary"
-              startIcon={<KeyboardArrowLeft color="secondary" />}
-              onClick={onCancelButtonClick}
-              data-test-id="cancel-button"
-            >
-              {returnLabel}
-            </Button>
-          }
-        />
-      }
-    />
+      </Grid>
+      
+      <ProcessPageFooter
+        primaryButton={
+          <Button
+            disabled={disableNextButton}
+            endIcon={<KeyboardArrowRight color="secondary" />}
+            onClick={onNextButtonClick}
+            data-test-id="next-button"
+          >
+            {nextLabel}
+          </Button>
+        }
+        secondaryButton={
+          <Button
+            palette="secondary"
+            startIcon={<KeyboardArrowLeft color="secondary" />}
+            onClick={onCancelButtonClick}
+            data-test-id="cancel-button"
+          >
+            {returnLabel}
+          </Button>
+        }
+      />
+    </Container>
   )
 }
