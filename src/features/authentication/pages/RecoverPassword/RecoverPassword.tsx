@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
+import { Container, Grid } from '@material-ui/core'
 import { AppBar } from 'components/AppBar'
 import { Button } from 'components/Button'
 import { StoreState } from 'redux/state'
@@ -28,8 +28,10 @@ import { TextField } from 'components/TextField'
 import { Loader } from 'components/Loader'
 import { Alert } from 'components/Alert'
 import { ConfirmTokenSheet } from 'components/ConfirmTokenSheet'
+import { useStyles } from './RecoverPassword.style'
 
 export const RecoverPassword: React.FC = () => {
+  const styles = useStyles()
   const history = useHistory()
   const dispatch = useDispatch()
   const [taxIdInput, setCpfInput] = useMask(maskCpf)
@@ -73,7 +75,7 @@ export const RecoverPassword: React.FC = () => {
   }
 
   return (
-    <PageContainer>
+    <Container maxWidth="xs" className={styles.container}>
       {authState.errorMessage && (
         <Alert
           title="Erro"
@@ -81,49 +83,46 @@ export const RecoverPassword: React.FC = () => {
           severity={'error'}
         />
       )}
-      <ProcessPageLayout
-        appBar={<AppBar homeRoute={AccountRoutes.home} />}
-        header={
-          <ProcessDescriptionHeader
-            title="Recuperar senha"
-            subtitle="Informe seu CPF"
-            description="Você receberá uma senha temporária para acessar o aplicativo, essa senha deve ser mudada após o primeiro acesso."
-          />
-        }
-        main={
-          <Grid item>
-            <TextField
-              variant="filled"
-              value={taxIdInput}
-              inputMode="numeric"
-              label="CPF"
-              placeholder="Digite apenas números"
-              onChange={onCpfChange}
-            />
-          </Grid>
-        }
-        footer={
-          <ProcessPageFooter
-            primaryButton={
-              <Button
-                endIcon={<KeyboardArrowRight color="secondary" />}
-                onClick={onSubmit}
-                disabled={!isValid}
-                data-test-id="next-button"
-              >
-                {nextLabel}
-              </Button>
-            }
-            onBackButtonClick={_resetState}
-          />
-        }
+      
+    
+      <ProcessDescriptionHeader
+        title="Recuperar senha"
+        description="Você receberá uma senha temporária para acessar o aplicativo, essa senha deve ser mudada após o primeiro acesso."
       />
+    
+  
+      <Grid item component="form" className={styles.input}>
+        <TextField
+          variant="outlined"
+          value={taxIdInput}
+          inputMode="numeric"
+          label="CPF"
+          placeholder="Digite apenas números"
+          onChange={onCpfChange}
+        />
+      </Grid>
+    
+    
+      <ProcessPageFooter
+        primaryButton={
+          <Button
+            endIcon={<KeyboardArrowRight color="secondary" />}
+            onClick={onSubmit}
+            disabled={!isValid}
+            data-test-id="next-button"
+          >
+            {nextLabel}
+          </Button>
+        }
+        onBackButtonClick={_resetState}
+      />
+        
       <Loader open={loading} />
       <ConfirmTokenSheet
         open={openAuthorizationSheet}
         onClose={onAuthorizationClose}
         taxId={taxIdInput}
       />
-    </PageContainer>
+    </Container>
   )
 }
