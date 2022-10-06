@@ -85,7 +85,7 @@ export const ChangePasswordFirstAccess: React.FC = () => {
   const authState = useSelector((state: StoreState) => state.auth)
 
   return (
-    <Container  maxWidth="xs" className={styles.container}>  
+    <Container maxWidth="xs" className={styles.container}>  
 
       <ProcessDescriptionHeader
         title={'Criar Senha'}
