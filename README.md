@@ -46,3 +46,6 @@ Adicionando recursos de acessibilidade para pessoas com deficiência visual no A
 8. Front-end da tela "Home"
     - Foi feito o front-end da tela;
     - **Rota:** '/account/home'
+9. Mock das chamdas à API (Mirage JS):
+    - Mock da requisição '/auth'
+    - Mock da reuquisição '/Auth/Login'
