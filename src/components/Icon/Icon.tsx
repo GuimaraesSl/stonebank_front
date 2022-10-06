@@ -180,6 +180,12 @@ import { ReactComponent as IconCodigoQrCode } from "_assets/icons/iconCodigoQrCo
 import { ReactComponent as IconQrCodeButton } from "_assets/icons/iconQrCodeButton.svg";
 import { ReactComponent as WelcomeImage } from '_assets/img/welcomeImg.svg'
 import { ReactComponent as ForgotPassword } from '_assets/img/forgotPassword.svg'
+import { ReactComponent as PixImage } from '_assets/img/pix.svg'
+import { ReactComponent as Invest } from '_assets/img/invest.svg'
+import { ReactComponent as Smartphone } from '_assets/img/smartphone.svg'
+import { ReactComponent as Card } from '_assets/img/card.svg'
+import { ReactComponent as Transf } from '_assets/img/transf.svg'
+import { ReactComponent as ArrowRight2 } from '_assets/img/arrowRight.svg'
 
 import { useStyles } from "./Icon.style";
 
@@ -364,7 +370,13 @@ export const IconTypes = {
   qrCodeCodigo: IconCodigoQrCode,
   qrCodeButton: IconQrCodeButton,
   welcomeImage: WelcomeImage,
-  forgotPassword: ForgotPassword
+  forgotPassword: ForgotPassword,
+  pixImage: PixImage,
+  invest: Invest,
+  smartphone: Smartphone,
+  card: Card,
+  transf: Transf,
+  arrowRight2: ArrowRight2,
 }
 
 export interface IconProps {

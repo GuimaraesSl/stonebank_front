@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { colors } from "_config/theme";
+import { colors, theme } from "_config/theme";
 
 export const useStyle = makeStyles({
   menuHeader: {
@@ -16,14 +16,15 @@ export const useStyle = makeStyles({
   },
   searchField: {
     '& > *': {
-      borderRadius: '16px'
+      borderRadius: '16px',
+      color: '#000'
     },
   },
   mainHeader: {
     position: "relative",
     width: "100%",
     color: colors.readOnly.light.white,
-    backgroundColor: "#117E9B", // #117E9B, #DB3E4D, #2CB060
+    backgroundColor: colors.system.light.primary, // #117E9B, #DB3E4D, #2CB060
     borderRadius: `0px 0px 12px 12px`,
     boxShadow: `0px 2px 4px rgba(0, 0, 0, 0.25);`,
 
