@@ -8,22 +8,23 @@ Adicionando recursos de acessibilidade para pessoas com deficiência visual no A
 
 ## Features lançadas e refatoramentos de código feitos até o **Demodey Ômega**
 1. Front-end da tela welcome, de boas vindas da aplicação
-  - **Rota:** '/'
+    - **Rota:** '/'
 2. Front-end da teal de SignIn, de Login da aplicação
-  - Foi adicionado um novo componente chamado "*GreatButton*" (<GreatButton/>) com a ideia de substituir tando o LoginButton da tela de Login, quanto o Button da tela de Welcome. O objetivo é de deixar o código o mais limpo possível e ter componentes globais que fossem bem reutilizáveis tendo em vista o design definido nas entregas anteriores. Como é possível observar na Prototipação, o modelo de botão utilizado na tela Welcome é replicado em diversas partes do projeto;
-  - Foi criado um Componente público para alocação da Logo do StoneBank (<LogoBar/>), para seu reaproveitamento futuro;
-  - Foi modificado o Layout do componente <PasswordField/>;
-  - Foi modificado o Layout do componente global <TextField/>;
-  - **Rota:** '/signin'
+    - Foi adicionado um novo componente chamado "*GreatButton*" <GreatButton/> com a ideia de substituir tando o LoginButton da tela de Login, quanto o Button da tela de Welcome. O objetivo é de deixar o código o mais limpo possível e ter componentes globais que fossem bem reutilizáveis tendo em vista o design definido nas entregas anteriores. Como é possível observar na Prototipação, o modelo de botão utilizado na tela Welcome é replicado em diversas partes do projeto;
+    - Foi criado um Componente público para alocação da Logo do StoneBank <LogoBar/>, para seu reaproveitamento futuro;
+    - Foi modificado o Layout do componente <PasswordField/>;
+    - Foi modificado o Layout do componente global <TextField/>;
+    - **Rota:** '/signin'
 3. Front-end da tela de "TemporaryPassword", para aviso de necessidade de troca da senha temporária utilizada
-  - Feito todo o front-end da tela além da troca das imagens .svg;
-  - Implementado o "*GreatButton*" para subtituição do antigo botão;
-  - **Rota:** '/temporary-password'
+    - Feito todo o front-end da tela além da troca das imagens .svg;
+    - Implementado o "*GreatButton*" para subtituição do antigo botão;
+    - **Rota:** '/temporary-password'
 4. Front-end da tela de "ChangePasswordFirstAcess", para a definição de uma nova senha no primeiro acesso
- - Feito todo o front-end da tela;
- - Retirado o uso do componente <ProcessPageLayout/> para criação de um Layout Próprio;
- - Novas modificações de design no componente <TextField/>;
- - Modificado o ícone Exclude.svg para confirmação de senha;
- - Modificado o componente <ProcessDescriptionHeader/> para seu reaproveitamento;
+    - Feito todo o front-end da tela;
+    - Retirado o uso do componente <ProcessPageLayout/> para criação de um Layout Próprio;
+    - Novas modificações de design no componente <TextField/>;
+    - Modificado o ícone Exclude.svg para confirmação de senha;
+    - Modificado o componente <ProcessDescriptionHeader/> para seu reaproveitamento;
+    - **Rota:** '/first-access/change-password'
 
 
