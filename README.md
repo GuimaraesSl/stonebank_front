@@ -43,5 +43,6 @@ Adicionando recursos de acessibilidade para pessoas com deficiência visual no A
     - Aproveitado a interface da tela "ChangePasswordFirstAcess";
     - Criado o arquivo de estilização do RecoverPassword: "RecoverPassword.style.ts";
     - **Rota:** '/recover-password'.
-
-
+8. Front-end da tela "Home"
+    - Foi feito o front-end da tela;
+    - **Rota:** '/account/home'
