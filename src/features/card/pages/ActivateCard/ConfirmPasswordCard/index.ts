@@ -1,1 +1,1 @@
-export { ConfirmPasswordCard } from './ConfirmPasswordCard'
+export { ConfirmPasswordCard } from "./ConfirmPasswordCard";

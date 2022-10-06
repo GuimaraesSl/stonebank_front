@@ -1,10 +1,10 @@
-import React from 'react'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { useStyles } from './CheckDataTopUp.style'
+import React from "react";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { useStyles } from "./CheckDataTopUp.style";
 import {
   Box,
   Typography,
@@ -12,57 +12,57 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-} from '@material-ui/core'
-import { ContentBalance } from 'features/topUp/components/ContentBalance'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
-import { nextLabel } from 'constants/buttons/labels'
-import { Button } from 'components/Button'
-import { TopUpRoutes } from 'features/topUp/constants/routes'
-import { useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { updateTopUpData } from 'features/topUp/redux/actions'
-import { CurrencyFormatter } from '_translate'
-import { ErrorMessage } from 'components/ErrorMessage'
+} from "@material-ui/core";
+import { ContentBalance } from "features/topUp/components/ContentBalance";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import { nextLabel } from "constants/buttons/labels";
+import { Button } from "components/Button";
+import { TopUpRoutes } from "features/topUp/constants/routes";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { updateTopUpData } from "features/topUp/redux/actions";
+import { CurrencyFormatter } from "_translate";
+import { ErrorMessage } from "components/ErrorMessage";
 
 export const CheckDataTopUp: React.FC = () => {
-  const style = useStyles()
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const topUpState = useSelector((store: StoreState) => store.topUp)
+  const style = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const topUpState = useSelector((store: StoreState) => store.topUp);
   const balance: number = useSelector(
-    (store: StoreState) => store.account.dashboard?.balance!,
-  )
+    (store: StoreState) => store.account.dashboard?.balance!
+  );
 
-  const { topUpPhoneNumberList, topUp } = topUpState
+  const { topUpPhoneNumberList, topUp } = topUpState;
   const product =
-    topUp?.topUpProduct ?? topUpPhoneNumberList?.topUpPhoneNumberList[0]
+    topUp?.topUpProduct ?? topUpPhoneNumberList?.topUpPhoneNumberList[0];
 
-  const [isValidValue, setIsValidValue] = React.useState(false)
+  const [isValidValue, setIsValidValue] = React.useState(false);
   const [balanceIsValid, setBalanceIsValid] = React.useState<
     boolean | undefined
-  >()
+  >();
   React.useEffect(() => {
     dispatch(
       updateTopUpData({
         originNSU: topUpPhoneNumberList?.originNSU,
         topUpProduct: product,
-      }),
-    )
-  }, [])
+      })
+    );
+  }, []);
 
   React.useEffect(() => {
-    const convertedValue = product?.productValue!
-    setIsValidValue(convertedValue > 0 && convertedValue <= balance)
-    setBalanceIsValid(convertedValue <= balance)
-  }, [product])
+    const convertedValue = product?.productValue!;
+    setIsValidValue(convertedValue > 0 && convertedValue <= balance);
+    setBalanceIsValid(convertedValue <= balance);
+  }, [product]);
 
-  const onNextButtonClick = () => history.push(TopUpRoutes.topUpSchedule)
-  const onListCharge = () => history.push(TopUpRoutes.topUpValue)
+  const onNextButtonClick = () => history.push(TopUpRoutes.topUpSchedule);
+  const onListCharge = () => history.push(TopUpRoutes.topUpValue);
   const onBack = () => {
-    history.push(TopUpRoutes.topUp)
-  }
+    history.push(TopUpRoutes.topUp);
+  };
 
   return (
     <PageContainer>
@@ -103,7 +103,7 @@ export const CheckDataTopUp: React.FC = () => {
                           <Box className={style.spantext}>Qual o valor?</Box>
                           <Typography className={style.valueTopUp}>
                             {CurrencyFormatter.format(product?.productValue!) +
-                              ' ' +
+                              " " +
                               product?.description}
                           </Typography>
                         </Box>
@@ -128,7 +128,7 @@ export const CheckDataTopUp: React.FC = () => {
             </Box>
             <Box className={style.validator}>
               {!balanceIsValid && (
-                <ErrorMessage message={'Saldo insuficiente'} />
+                <ErrorMessage message={"Saldo insuficiente"} />
               )}
             </Box>
           </React.Fragment>
@@ -158,5 +158,5 @@ export const CheckDataTopUp: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

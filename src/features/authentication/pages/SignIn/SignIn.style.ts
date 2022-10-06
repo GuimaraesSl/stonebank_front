@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core'
 import { colors, theme } from '_config/theme'
 
-const bottomSpacing = 16
-const screenHeight = window.screen.height
+const bottomSpacing = 16;
+const screenHeight = window.screen.height;
 
 export const useStyle = makeStyles({
   
@@ -46,4 +46,4 @@ export const useStyle = makeStyles({
       padding: '0 4px',
     },
   },
-})
+});

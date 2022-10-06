@@ -1,13 +1,13 @@
-import React from 'react'
-import { AppBar as MuiAppBar, Box, Toolbar } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
-import companyLogo from '_assets/img/logo-small.svg'
+import React from "react";
+import { AppBar as MuiAppBar, Box, Toolbar } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import companyLogo from "_assets/img/logo-small.svg";
 
-import { useStyles } from './AppBar.style'
+import { useStyles } from "./AppBar.style";
 
 interface AppBarProps {
-  homeRoute: string
-  action?: React.ReactNode
+  homeRoute: string;
+  action?: React.ReactNode;
 }
 
 export const AppBar: React.FC<AppBarProps> = ({
@@ -15,10 +15,10 @@ export const AppBar: React.FC<AppBarProps> = ({
   action,
   ...rest
 }: AppBarProps) => {
-  const style = useStyles()
-  const history = useHistory()
+  const style = useStyles();
+  const history = useHistory();
 
-  const onLogoClick = () => history.push(homeRoute)
+  const onLogoClick = () => history.push(homeRoute);
 
   return (
     <MuiAppBar
@@ -40,5 +40,5 @@ export const AppBar: React.FC<AppBarProps> = ({
         {action}
       </Toolbar>
     </MuiAppBar>
-  )
-}
+  );
+};

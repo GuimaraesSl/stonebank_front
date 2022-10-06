@@ -9,4 +9,4 @@ export interface Favored {
   bankBranch?: string;
   bankAccount?: string;
   bankAccountDigit?: string;
-} 
+}

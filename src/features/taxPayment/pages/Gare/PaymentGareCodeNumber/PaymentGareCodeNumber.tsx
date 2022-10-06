@@ -1,65 +1,65 @@
-import React, { useEffect, useState, FormEvent } from 'react'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useHistory } from 'react-router-dom'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Grid } from '@material-ui/core'
-import { TaxPaymentRoutes } from 'features/taxPayment/constants/routes'
-import { TextField } from 'components/TextField'
-import { numericOnly } from '_utils/masks/generics'
-import { useMask } from 'hooks/useMask'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateGarePaymentData } from 'features/taxPayment/redux/actions'
-import { maskTaxPayer } from '_utils/masks/taxPayer'
+import React, { useEffect, useState, FormEvent } from "react";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useHistory } from "react-router-dom";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Grid } from "@material-ui/core";
+import { TaxPaymentRoutes } from "features/taxPayment/constants/routes";
+import { TextField } from "components/TextField";
+import { numericOnly } from "_utils/masks/generics";
+import { useMask } from "hooks/useMask";
+import { useDispatch, useSelector } from "react-redux";
+import { updateGarePaymentData } from "features/taxPayment/redux/actions";
+import { maskTaxPayer } from "_utils/masks/taxPayer";
 
 export const PaymentGareCodeNumber: React.FC = () => {
-  const [codeRevenue, setCodeRevenue] = useMask(numericOnly)
-  const [taxIdContributor, setTaxIdContributor] = useMask(maskTaxPayer)
-  const [stateRegistration, setstateRegistration] = useMask(numericOnly)
-  const [quotationNumber, setQuotationNumber] = useMask(numericOnly)
-  const [isValidValue, setIsValidValue] = useState(true)
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const [codeRevenue, setCodeRevenue] = useMask(numericOnly);
+  const [taxIdContributor, setTaxIdContributor] = useMask(maskTaxPayer);
+  const [stateRegistration, setstateRegistration] = useMask(numericOnly);
+  const [quotationNumber, setQuotationNumber] = useMask(numericOnly);
+  const [isValidValue, setIsValidValue] = useState(true);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const onCancelButtonClick = () => {
-    dispatch(updateGarePaymentData())
-    history.replace(AccountRoutes.home)
-  }
+    dispatch(updateGarePaymentData());
+    history.replace(AccountRoutes.home);
+  };
 
   const onNextButtonClick = (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
     dispatch(
       updateGarePaymentData({
         contributorTaxId: taxIdContributor,
         codeRevenue: codeRevenue,
         quoteNumberNotification: quotationNumber,
         stateRegistration: stateRegistration,
-      }),
-    )
-    history.push(TaxPaymentRoutes.paymentGareValues)
-  }
+      })
+    );
+    history.push(TaxPaymentRoutes.paymentGareValues);
+  };
 
   const onTaxIdContributor = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTaxIdContributor(event.target.value)
-  }
+    setTaxIdContributor(event.target.value);
+  };
 
   const onCodeRevenue = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCodeRevenue(event.target.value)
-  }
+    setCodeRevenue(event.target.value);
+  };
 
   const onstateRegistration = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setstateRegistration(event.target.value)
-  }
+    setstateRegistration(event.target.value);
+  };
 
   const onQuotationNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuotationNumber(event.target.value)
-  }
+    setQuotationNumber(event.target.value);
+  };
 
   React.useEffect(() => {
     setIsValidValue(
@@ -68,9 +68,9 @@ export const PaymentGareCodeNumber: React.FC = () => {
         quotationNumber &&
         stateRegistration &&
         (taxIdContributor.length === 14 || taxIdContributor.length === 18)
-      ),
-    )
-  }, [codeRevenue, quotationNumber, stateRegistration, taxIdContributor])
+      )
+    );
+  }, [codeRevenue, quotationNumber, stateRegistration, taxIdContributor]);
 
   return (
     <PageContainer>
@@ -148,5 +148,5 @@ export const PaymentGareCodeNumber: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

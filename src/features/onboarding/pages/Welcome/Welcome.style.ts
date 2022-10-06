@@ -3,7 +3,6 @@ import { colors, theme } from '_config/theme'
 import welcomeImg from '_assets/img/welcome-img.svg'
 
 export const useOnboardingStyles = makeStyles({
-
   container: {
     display: 'flex',
     overflow: 'hidden',
@@ -20,15 +19,15 @@ export const useOnboardingStyles = makeStyles({
     },
     
   },
-  
+
   content: {
-    [theme.breakpoints.down('sm')]: {
-      marginTop: '200px',
-      marginBottom: '96px',
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "200px",
+      marginBottom: "96px",
     },
-    [theme.breakpoints.down('xs')]: {
-      marginTop: '10px',
-      marginBottom: '64px',
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "10px",
+      marginBottom: "64px",
     },
   },
 
@@ -62,20 +61,20 @@ export const useOnboardingStyles = makeStyles({
   },
 
   signInButtonWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '0 40px',
-    [theme.breakpoints.down('xs')]: {
-      margin: '0 20px',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "0 40px",
+    [theme.breakpoints.down("xs")]: {
+      margin: "0 20px",
     },
   },
 
   onboardingButtonWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    '&:hover': {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    "&:hover": {
       borderWidth: 2,
     },
   },

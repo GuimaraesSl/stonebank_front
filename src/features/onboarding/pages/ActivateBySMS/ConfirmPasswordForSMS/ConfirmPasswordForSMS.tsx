@@ -1,65 +1,65 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PasswordField } from 'components/PasswordField'
-import { Grid } from '@material-ui/core'
-import { useStyles } from './ConfirmPasswordForSMS.style'
-import { useSelector, useDispatch } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { closeAlert } from 'features/card/redux/actions'
-import { createAccount } from 'features/onboarding/redux/actions'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PasswordField } from "components/PasswordField";
+import { Grid } from "@material-ui/core";
+import { useStyles } from "./ConfirmPasswordForSMS.style";
+import { useSelector, useDispatch } from "react-redux";
+import { StoreState } from "redux/state";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { closeAlert } from "features/card/redux/actions";
+import { createAccount } from "features/onboarding/redux/actions";
 import {
   SuccessOnboardingState,
   LoadingOnboardingState,
-} from 'features/onboarding/redux/state'
+} from "features/onboarding/redux/state";
 
 export const ConfirmPassword: React.FC = () => {
-  const history = useHistory()
-  const style = useStyles()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const style = useStyles();
+  const dispatch = useDispatch();
 
-  const [rePasswordInput, setRePasswordInput] = React.useState('')
+  const [rePasswordInput, setRePasswordInput] = React.useState("");
 
   const password = useSelector(
-    (state: StoreState) => state.onboarding.onboardingForm?.password,
-  )
-  const onboardingState = useSelector((state: StoreState) => state.onboarding)
+    (state: StoreState) => state.onboarding.onboardingForm?.password
+  );
+  const onboardingState = useSelector((state: StoreState) => state.onboarding);
 
   const onCancelButtonClick = () => {
-    history.go(-9)
-  }
+    history.go(-9);
+  };
 
   React.useEffect(() => {
     if (onboardingState instanceof SuccessOnboardingState)
-      history.push(OnboardingRoutes.accountActivationCompletedForSMS)
-  }, [onboardingState, history])
+      history.push(OnboardingRoutes.accountActivationCompletedForSMS);
+  }, [onboardingState, history]);
 
   const onNextButtonClick = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (onboardingState) dispatch(createAccount())
-  }
+    e.preventDefault();
+    if (onboardingState) dispatch(createAccount());
+  };
 
   const onRePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setRePasswordInput(event.target.value)
+    setRePasswordInput(event.target.value);
 
   const onSamePassword = (password: string, rePassword: string) => {
-    if (!(password === rePassword)) return true
-  }
+    if (!(password === rePassword)) return true;
+  };
 
-  const condition = onSamePassword(password!, rePasswordInput)
+  const condition = onSamePassword(password!, rePasswordInput);
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   return (
     <React.Fragment>
@@ -68,7 +68,7 @@ export const ConfirmPassword: React.FC = () => {
         <Alert
           title="Erro"
           message={onboardingState.errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
@@ -136,5 +136,5 @@ export const ConfirmPassword: React.FC = () => {
         }
       />
     </React.Fragment>
-  )
-}
+  );
+};

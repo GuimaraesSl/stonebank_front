@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export interface BankCardStyleProps {
-  selected?: boolean
+  selected?: boolean;
 }
 
 export const useStyles = makeStyles({
@@ -11,18 +11,18 @@ export const useStyles = makeStyles({
     background: ({ selected }: BankCardStyleProps) =>
       selected ? colors.system.light.primary : colors.readOnly.light.white,
 
-    '& .MuiTypography-root': {
+    "& .MuiTypography-root": {
       color: ({ selected }: BankCardStyleProps) =>
         selected ? colors.readOnly.light.white : colors.system.light.neutral,
     },
 
-    '& .MuiListItemText-primary': {
+    "& .MuiListItemText-primary": {
       fontSize: 12,
       fontWeight: 500,
     },
-    '& .MuiListItemText-secondary': {
+    "& .MuiListItemText-secondary": {
       fontSize: 10,
       fontWeight: 300,
     },
   },
-})
+});

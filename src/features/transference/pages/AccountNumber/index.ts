@@ -1,1 +1,1 @@
-export { AccountNumber } from './AccountNumber'
+export { AccountNumber } from "./AccountNumber";

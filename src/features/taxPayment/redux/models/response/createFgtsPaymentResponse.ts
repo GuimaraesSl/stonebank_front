@@ -1,3 +1,3 @@
 export interface CreateFgtsPaymentResponse {
-  mensage: string
+  mensage: string;
 }

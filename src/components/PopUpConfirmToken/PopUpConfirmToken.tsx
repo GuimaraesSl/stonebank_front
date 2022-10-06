@@ -1,35 +1,35 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { Box, Drawer, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
-import { Alert } from 'components/Alert'
-import { Button } from 'components/Button'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { Loader } from 'components/Loader'
-import { PageContainer } from 'components/PageContainer'
-import { getBaseRequestData } from '_utils/http'
-import { StoreState } from 'redux/state'
-import { HttpClient } from '_config/http'
-import { ApiResponse } from '_config/api'
-import { useStyles } from './PopUpConfirmToken.style'
-import { OtpInput } from 'components/OtpInput'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { Box, Drawer, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { Alert } from "components/Alert";
+import { Button } from "components/Button";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { Loader } from "components/Loader";
+import { PageContainer } from "components/PageContainer";
+import { getBaseRequestData } from "_utils/http";
+import { StoreState } from "redux/state";
+import { HttpClient } from "_config/http";
+import { ApiResponse } from "_config/api";
+import { useStyles } from "./PopUpConfirmToken.style";
+import { OtpInput } from "components/OtpInput";
+import { Icon } from "components/Icon";
 
 interface PopUpConfirmTokenSheetState {
-  loading: boolean
-  message?: string
-  success?: boolean
-  validatedToken?: boolean
+  loading: boolean;
+  message?: string;
+  success?: boolean;
+  validatedToken?: boolean;
 }
 
 interface PopUpConfirmTokenSheetProps {
-  nextRoute?: string
-  phoneNumber?: string
-  mail?: string
-  taxId?: string
-  open: boolean
-  onClose: Function | ((tokenIsValid: boolean) => void)
+  nextRoute?: string;
+  phoneNumber?: string;
+  mail?: string;
+  taxId?: string;
+  open: boolean;
+  onClose: Function | ((tokenIsValid: boolean) => void);
 }
 
 export const PopUpConfirmToken: React.FC<PopUpConfirmTokenSheetProps> = ({
@@ -43,107 +43,107 @@ export const PopUpConfirmToken: React.FC<PopUpConfirmTokenSheetProps> = ({
   const [{ loading, success, validatedToken, message }, setState] =
     React.useState<PopUpConfirmTokenSheetState>({
       loading: false,
-    })
-  const [token, setToken] = React.useState('')
-  const [disableConfirmButton, setDisableConfirmButton] = React.useState(true)
+    });
+  const [token, setToken] = React.useState("");
+  const [disableConfirmButton, setDisableConfirmButton] = React.useState(true);
   const [requestToken] = useSelector((state: StoreState) => {
-    return [state.auth.token]
-  })
-  const history = useHistory()
-  const styles = useStyles()
+    return [state.auth.token];
+  });
+  const history = useHistory();
+  const styles = useStyles();
 
   React.useEffect(() => {
-    if (open) generateToken()
-  }, [open])
+    if (open) generateToken();
+  }, [open]);
 
   React.useEffect(() => {
-    if (loading) setDisableConfirmButton(true)
-    if (token.length === 6 && !loading) setDisableConfirmButton(false)
-    else setDisableConfirmButton(true)
-  }, [history, loading, nextRoute, token.length])
+    if (loading) setDisableConfirmButton(true);
+    if (token.length === 6 && !loading) setDisableConfirmButton(false);
+    else setDisableConfirmButton(true);
+  }, [history, loading, nextRoute, token.length]);
 
   React.useEffect(() => {
-    if (validatedToken) onClose(validatedToken)
-  }, [validatedToken])
+    if (validatedToken) onClose(validatedToken);
+  }, [validatedToken]);
 
   const generateToken = async () => {
-    setState({ loading: true })
+    setState({ loading: true });
 
     try {
       const { url, defaultHeaders } = await getBaseRequestData(
-        '/authorizationToken/GenerateUnauthenticatedAuthorizationToken',
-      )
-      const data = { phoneNumber, taxId, mail }
+        "/authorizationToken/GenerateUnauthenticatedAuthorizationToken"
+      );
+      const data = { phoneNumber, taxId, mail };
 
       await HttpClient.post(url, data, {
         headers: {
           ...defaultHeaders,
           Authorization: `Bearer ${requestToken}`,
         },
-      })
+      });
       setState({
         loading: false,
         success: true,
-        message: 'Token gerado com sucesso, por favor aguarde o envio.',
-      })
+        message: "Token gerado com sucesso, por favor aguarde o envio.",
+      });
     } catch (error: any) {
-      let response: ApiResponse | undefined
-      if (error.response) response = error.response?.data
+      let response: ApiResponse | undefined;
+      if (error.response) response = error.response?.data;
       setState({
         loading: false,
         message: response?.message ?? error.message,
-      })
+      });
     }
-  }
+  };
 
   const onTokenChange = (newValue: string) => {
-    setToken(newValue)
-  }
+    setToken(newValue);
+  };
 
   const onCloseButtonClick = () => {
-    onClose(validatedToken ?? false)
-  }
+    onClose(validatedToken ?? false);
+  };
 
   const onResendTokenButtonClick = () => {
-    generateToken()
-  }
+    generateToken();
+  };
 
   const onConfirmButtonClick = async () => {
-    setState({ loading: true })
+    setState({ loading: true });
     try {
       const { url, defaultHeaders } = await getBaseRequestData(
-        '/authorizationToken/ValidateUnauthenticatedAuthorizationToken',
-      )
+        "/authorizationToken/ValidateUnauthenticatedAuthorizationToken"
+      );
       const data = {
         code: token,
         taxId,
-      }
+      };
       await HttpClient.post(url, data, {
         headers: {
           ...defaultHeaders,
           Authorization: `Bearer ${requestToken}`,
         },
-      })
+      });
       setState({
         loading: false,
         success: true,
         validatedToken: true,
         message: undefined,
-      })
+      });
     } catch (error: any) {
-      let response: ApiResponse | undefined
-      if (error.response) response = error.response?.data
+      let response: ApiResponse | undefined;
+      if (error.response) response = error.response?.data;
       setState({
         loading: false,
         validatedToken: false,
-        message: 'Não foi possível validar seu token.',
-      })
+        message: "Não foi possível validar seu token.",
+      });
     }
-  }
+  };
 
   const onShowSucessMessageClose = () => {
-    if (nextRoute) history.push(nextRoute)
-  }
+    if (nextRoute) history.push(nextRoute);
+  };
 
   return (
     <React.Fragment>
@@ -200,7 +200,7 @@ export const PopUpConfirmToken: React.FC<PopUpConfirmTokenSheetProps> = ({
                   </Grid>
                   <Grid item>
                     <ButtonWithFloatingIcon
-                      icon={<Icon name={'confirm'} />}
+                      icon={<Icon name={"confirm"} />}
                       disabled={disableConfirmButton}
                       onClick={onConfirmButtonClick}
                       data-test-id="confirm-button"
@@ -217,12 +217,12 @@ export const PopUpConfirmToken: React.FC<PopUpConfirmTokenSheetProps> = ({
       <Loader open={loading} />
       {message && (
         <Alert
-          title={success ? 'Sucesso' : 'Erro'}
+          title={success ? "Sucesso" : "Erro"}
           message={message}
-          severity={success ? 'success' : 'error'}
+          severity={success ? "success" : "error"}
           onClose={validatedToken ? onShowSucessMessageClose : undefined}
         />
       )}
     </React.Fragment>
-  )
-}
+  );
+};

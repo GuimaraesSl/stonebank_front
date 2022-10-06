@@ -1,23 +1,23 @@
-import React from 'react'
-import { Card, Grid, Typography } from '@material-ui/core'
-import { useStyle } from './AccountCard.style'
-import { Account } from 'features/account/redux/models/account'
+import React from "react";
+import { Card, Grid, Typography } from "@material-ui/core";
+import { useStyle } from "./AccountCard.style";
+import { Account } from "features/account/redux/models/account";
 
-import { DetailsButton } from 'features/account/components/DetailsButton'
-import { AccountCardDetails } from 'features/account/components/AccountCardDetails'
-import Button from '@material-ui/core/Button'
+import { DetailsButton } from "features/account/components/DetailsButton";
+import { AccountCardDetails } from "features/account/components/AccountCardDetails";
+import Button from "@material-ui/core/Button";
 
-import { useDispatch } from 'react-redux'
-import { getFixedAccounts } from 'features/account/redux/actions'
-import { Icon } from 'components/Icon'
+import { useDispatch } from "react-redux";
+import { getFixedAccounts } from "features/account/redux/actions";
+import { Icon } from "components/Icon";
 interface AccountCardProps {
-  account: Account
-  endIcon?: string | React.ReactNode
-  onClick?: VoidFunction
-  className?: string
-  starIcon?: boolean
-  btnStar?: boolean
-  favorite?: boolean
+  account: Account;
+  endIcon?: string | React.ReactNode;
+  onClick?: VoidFunction;
+  className?: string;
+  starIcon?: boolean;
+  btnStar?: boolean;
+  favorite?: boolean;
 }
 export const AccountCard: React.FC<AccountCardProps> = ({
   account,
@@ -28,22 +28,22 @@ export const AccountCard: React.FC<AccountCardProps> = ({
   btnStar,
   favorite,
 }) => {
-  const styles = useStyle()
-  const effectiveCardClassName = `${styles.accountCard} ${className ?? ''}`
-  const dispatch = useDispatch()
-  const [bottom, setBottom] = React.useState(false)
+  const styles = useStyle();
+  const effectiveCardClassName = `${styles.accountCard} ${className ?? ""}`;
+  const dispatch = useDispatch();
+  const [bottom, setBottom] = React.useState(false);
 
-  const [btnFavorite, setBtnFavorite] = React.useState(starIcon)
+  const [btnFavorite, setBtnFavorite] = React.useState(starIcon);
 
   const toggleDrawer = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.stopPropagation()
-    setBottom(!bottom)
-  }
+    e.stopPropagation();
+    setBottom(!bottom);
+  };
   const onBtnClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.stopPropagation()
-    setBtnFavorite(!btnFavorite)
-    dispatch(getFixedAccounts(account.accountId, !btnFavorite))
-  }
+    e.stopPropagation();
+    setBtnFavorite(!btnFavorite);
+    dispatch(getFixedAccounts(account.accountId, !btnFavorite));
+  };
 
   return (
     <React.Fragment>
@@ -66,8 +66,8 @@ export const AccountCard: React.FC<AccountCardProps> = ({
                     className={styles.description}
                     data-test-id="bank-branch"
                   >
-                    {' '}
-                    <strong> Agência: {account!.spbBankBranch} </strong>{' '}
+                    {" "}
+                    <strong> Agência: {account!.spbBankBranch} </strong>{" "}
                   </text>
                 )}
                 {account!.spbBankAccount && account!.spbBankAccountDigit && (
@@ -77,10 +77,10 @@ export const AccountCard: React.FC<AccountCardProps> = ({
                   >
                     <strong>
                       Conta: {account!.spbBankAccount}-
-                      {account!.spbBankAccountDigit}{' '}
-                    </strong>{' '}
+                      {account!.spbBankAccountDigit}{" "}
+                    </strong>{" "}
                   </text>
-                )}{' '}
+                )}{" "}
                 <br />
                 {account!.spbBank && (
                   <text
@@ -101,13 +101,13 @@ export const AccountCard: React.FC<AccountCardProps> = ({
           {btnStar && (
             <Grid item className={styles.starIcon} data-test-id="star-icon">
               <Button onClick={onBtnClick}>
-                <Icon name={btnFavorite ? 'star' : 'starEmpty'} />
+                <Icon name={btnFavorite ? "star" : "starEmpty"} />
               </Button>
             </Grid>
           )}
           {favorite && (
             <Grid item className={styles.starIcon} data-test-id="star-icon">
-              <Icon name={'star'} />
+              <Icon name={"star"} />
             </Grid>
           )}
         </Grid>
@@ -122,5 +122,5 @@ export const AccountCard: React.FC<AccountCardProps> = ({
         />
       )}
     </React.Fragment>
-  )
-}
+  );
+};

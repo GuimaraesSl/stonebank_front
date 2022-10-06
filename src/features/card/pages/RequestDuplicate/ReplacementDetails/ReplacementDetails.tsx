@@ -1,50 +1,50 @@
-import React from 'react'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ReplacementData } from 'features/card/components/ReplacementData'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { Button } from 'components/Button'
-import { useStyles } from './ReplacementDetails.style'
-import { AppBar } from 'components/AppBar'
-import { Box } from '@material-ui/core'
-import { cancelLabel, concludeLabel } from 'constants/buttons/labels'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { useHistory } from 'react-router-dom'
-import { PopUpConfirmPassword } from 'features/card/components/PopUp/PopUpConfirmPassword'
-import { CardRoutes } from 'features/card/constants/routes'
-import { useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { Card } from 'features/card/redux/models/card'
+import React from "react";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ReplacementData } from "features/card/components/ReplacementData";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { Button } from "components/Button";
+import { useStyles } from "./ReplacementDetails.style";
+import { AppBar } from "components/AppBar";
+import { Box } from "@material-ui/core";
+import { cancelLabel, concludeLabel } from "constants/buttons/labels";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { PopUpConfirmPassword } from "features/card/components/PopUp/PopUpConfirmPassword";
+import { CardRoutes } from "features/card/constants/routes";
+import { useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { Card } from "features/card/redux/models/card";
 
 export const ReplacementDetails: React.FC = () => {
-  const styles = useStyles()
-  const history = useHistory()
-  const [openPasswordPopUp, setOpenPasswordPopUp] = React.useState(false)
-  const [openFinishedPopUp, setOpenFinishedPopUp] = React.useState(false)
-  const [card] = useSelector<StoreState, [Card | undefined]>(state => [
+  const styles = useStyles();
+  const history = useHistory();
+  const [openPasswordPopUp, setOpenPasswordPopUp] = React.useState(false);
+  const [openFinishedPopUp, setOpenFinishedPopUp] = React.useState(false);
+  const [card] = useSelector<StoreState, [Card | undefined]>((state) => [
     state.card.card,
-  ])
-  const { user } = useSelector((store: StoreState) => store.auth)
+  ]);
+  const { user } = useSelector((store: StoreState) => store.auth);
 
   const onConcludeButtonClick = () => {
-    setOpenPasswordPopUp(true)
-  }
+    setOpenPasswordPopUp(true);
+  };
   const onPasswordCloseButtonClick = () => {
-    setOpenPasswordPopUp(false)
-  }
+    setOpenPasswordPopUp(false);
+  };
   const onPasswordConfirmButtonClick = () => {
-    setOpenFinishedPopUp(true)
-  }
+    setOpenFinishedPopUp(true);
+  };
 
   const onAlertClick = () => {
-    history.push(CardRoutes.cardManagement)
-  }
+    history.push(CardRoutes.cardManagement);
+  };
 
   const onCancelButtonClick = () => {
-    history.replace(CardRoutes.cardManagement)
-  }
+    history.replace(CardRoutes.cardManagement);
+  };
 
   return (
     <PageContainer>
@@ -77,7 +77,9 @@ export const ReplacementDetails: React.FC = () => {
         main={
           <Box className="main">
             <ReplacementData
-              address={`${user?.street ?? ''}, nª ${user?.number ?? ''} - ${user?.district ?? ''} ${user?.city ?? ''}-${user?.state ?? ''}`}
+              address={`${user?.street ?? ""}, nª ${user?.number ?? ""} - ${
+                user?.district ?? ""
+              } ${user?.city ?? ""}-${user?.state ?? ""}`}
               card={`ELO - Final ${card?.panLastDigits}`}
               deadline="14 dias úteis"
               value={15}
@@ -109,5 +111,5 @@ export const ReplacementDetails: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

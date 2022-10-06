@@ -1,1 +1,1 @@
-export { UpdateAddress } from './UpdateAddress'
+export { UpdateAddress } from "./UpdateAddress";

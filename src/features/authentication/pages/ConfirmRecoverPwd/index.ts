@@ -1,1 +1,1 @@
-export { ConfirmRecoverPwd } from './ConfirmRecoverPwd'
+export { ConfirmRecoverPwd } from "./ConfirmRecoverPwd";

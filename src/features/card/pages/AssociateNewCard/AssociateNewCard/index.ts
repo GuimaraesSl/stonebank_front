@@ -1,1 +1,1 @@
-export { AssociateNewCard } from './AssociateNewCard'
+export { AssociateNewCard } from "./AssociateNewCard";

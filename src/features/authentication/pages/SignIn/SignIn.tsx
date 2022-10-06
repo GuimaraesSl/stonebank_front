@@ -10,7 +10,7 @@ import { Loader } from 'components/Loader'
 import {
   LoadingAuthState,
   SuccessAuthState,
-} from 'features/authentication/redux/state'
+} from "features/authentication/redux/state";
 
 import { useMask } from 'hooks/useMask'
 import { maskCpf } from '_utils/masks/taxPayer'
@@ -32,101 +32,102 @@ import { colors, theme } from '_config/theme'
 import { GreatButton } from 'components/GreatButton'
 
 export const SignIn: React.FC = () => {
-  const [passwordInput, setPasswordInput] = React.useState('')
-  const authState = useSelector((state: StoreState) => state.auth)
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const [taxIdInput, setCpfInput] = useMask(maskCpf)
-  const style = useStyle()
+  const [passwordInput, setPasswordInput] = React.useState("");
+  const authState = useSelector((state: StoreState) => state.auth);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [taxIdInput, setCpfInput] = useMask(maskCpf);
+  const style = useStyle();
   const { acceptedTerms, firstAccess } = useSelector((store: StoreState) => ({
     acceptedTerms: store.auth.user?.acceptedTerms,
     firstAccess: store.auth.user?.isFirstAccess,
-  }))
-  const [validationToken, setTokenIsValid] = React.useState(Boolean)
-  const token = useToken()
+  }));
+  const [validationToken, setTokenIsValid] = React.useState(Boolean);
+  const token = useToken();
   const [switchAlternateState, setSwitchAlternateState] =
-    React.useState(Boolean)
-  const [onChange, setOnChange] = React.useState(Boolean)
-  const [cookies, setCookie, removeCookie] = useCookies(['login-token'])
+    React.useState(Boolean);
+  const [onChange, setOnChange] = React.useState(Boolean);
+  const [cookies, setCookie, removeCookie] = useCookies(["login-token"]);
 
   React.useEffect(() => {
     if (token && !validateToken(token)) {
-      setTokenIsValid(true)
-      dispatch(signOut())
+      setTokenIsValid(true);
+      dispatch(signOut());
     } else if (authState instanceof SuccessAuthState) {
-      if (!acceptedTerms) history.push(OnboardingRoutes.terms)
-      else if (firstAccess) history.push(AuthenticationRoutes.temporaryPassword)
-      else history.push(AccountRoutes.home)
+      if (!acceptedTerms) history.push(OnboardingRoutes.terms);
+      else if (firstAccess)
+        history.push(AuthenticationRoutes.temporaryPassword);
+      else history.push(AccountRoutes.home);
     }
-  }, [token, authState])
+  }, [token, authState]);
 
   React.useEffect(() => {
-    dispatch(signOut())
-  }, [history])
+    dispatch(signOut());
+  }, [history]);
 
   React.useEffect(() => {
-    if (localStorage.getItem('TaxId')) {
-      setSwitchAlternateState(true)
-      setOnChange(true)
+    if (localStorage.getItem("TaxId")) {
+      setSwitchAlternateState(true);
+      setOnChange(true);
     } else {
-      setSwitchAlternateState(false)
-      localStorage.removeItem('TaxId')
-      removeCookie('login-token')
+      setSwitchAlternateState(false);
+      localStorage.removeItem("TaxId");
+      removeCookie("login-token");
     }
-  }, [localStorage])
+  }, [localStorage]);
 
   const onCpfChange = (event: any) => {
-    setCpfInput(event.target.value)
-  }
+    setCpfInput(event.target.value);
+  };
 
   const onPasswordChange = (event: any) => {
-    setPasswordInput(event.target.value)
-  }
+    setPasswordInput(event.target.value);
+  };
 
   const storageTaxId = () => {
     if (switchAlternateState === false) {
-      setSwitchAlternateState(true)
+      setSwitchAlternateState(true);
 
-      localStorage.setItem('TaxIdLogin', taxIdInput)
+      localStorage.setItem("TaxIdLogin", taxIdInput);
 
-      const taxId = localStorage.getItem('TaxIdLogin')
+      const taxId = localStorage.getItem("TaxIdLogin");
 
-      setCpfInput(taxId!)
+      setCpfInput(taxId!);
       const maskCpfDigits = taxIdInput
-        .replace(/\D/g, '')
-        .replace(/(\d{3})(\d)/, '$1.$2')
-        .replace(/(\d{3})(\d)/, '***.$2')
-        .replace(/(\d{3})(\d{1,2})/, '***-$2')
-        .replace(/(-\d{2})\d+?$/, '$1')
+        .replace(/\D/g, "")
+        .replace(/(\d{3})(\d)/, "$1.$2")
+        .replace(/(\d{3})(\d)/, "***.$2")
+        .replace(/(\d{3})(\d{1,2})/, "***-$2")
+        .replace(/(-\d{2})\d+?$/, "$1");
 
-      localStorage.setItem('TaxId', maskCpfDigits)
-      setOnChange(true)
+      localStorage.setItem("TaxId", maskCpfDigits);
+      setOnChange(true);
     } else {
-      setSwitchAlternateState(false)
-      setOnChange(false)
-      localStorage.removeItem('TaxId')
-      localStorage.removeItem('TaxIdLogin')
+      setSwitchAlternateState(false);
+      setOnChange(false);
+      localStorage.removeItem("TaxId");
+      localStorage.removeItem("TaxIdLogin");
     }
-  }
+  };
 
   const onSubmit = async (event: any) => {
-    event.preventDefault()
+    event.preventDefault();
 
     dispatch(
       login(
         taxIdInput,
         passwordInput,
         switchAlternateState,
-        cookies['login-token'],
-      ),
-    )
-    localStorage.removeItem('TaxIdLogin')
-  }
+        cookies["login-token"]
+      )
+    );
+    localStorage.removeItem("TaxIdLogin");
+  };
 
   const passwordIsValid =
-    passwordInput.length >= 8 && passwordInput.length <= 16
+    passwordInput.length >= 8 && passwordInput.length <= 16;
   const isValid =
-    (taxIdInput.length === 14 || cookies['login-token']) && passwordIsValid
+    (taxIdInput.length === 14 || cookies["login-token"]) && passwordIsValid;
 
   return (
     <CookiesProvider>
@@ -137,7 +138,7 @@ export const SignIn: React.FC = () => {
           <Alert
             title="Aviso!"
             message="Sua sessão expirou."
-            severity={'error'}
+            severity={"error"}
           />
         )}
 
@@ -146,7 +147,7 @@ export const SignIn: React.FC = () => {
           <Alert
             title="Erro"
             message={authState.errorMessage}
-            severity={'error'}
+            severity={"error"}
           />
         )}
 
@@ -175,8 +176,8 @@ export const SignIn: React.FC = () => {
               <TextField
                 variant="outlined"
                 value={
-                  localStorage.getItem('TaxId')
-                    ? localStorage.getItem('TaxId')!
+                  localStorage.getItem("TaxId")
+                    ? localStorage.getItem("TaxId")!
                     : taxIdInput
                 }
                 inputMode="numeric"
@@ -215,7 +216,7 @@ export const SignIn: React.FC = () => {
             
             <Grid item>
               <SaveTaxId
-                text={'Lembre de mim'}
+                text={"Lembre de mim"}
                 onClick={storageTaxId}
                 save={<SwitchIOS checked={switchAlternateState} />}
               />
@@ -226,5 +227,5 @@ export const SignIn: React.FC = () => {
         <Loader open={authState instanceof LoadingAuthState} />
       </Container>
     </CookiesProvider>
-  )
-}
+  );
+};

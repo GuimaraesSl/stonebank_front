@@ -1,3 +1,3 @@
 export interface createDarjPaymentResponse {
-  success: boolean
+  success: boolean;
 }

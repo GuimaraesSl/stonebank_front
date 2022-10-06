@@ -1,13 +1,13 @@
-import React from 'react'
-import { CurrencyFormatter } from '_translate'
-import { Box } from '@material-ui/core'
-import { useStyle } from './ReplacementData.style'
+import React from "react";
+import { CurrencyFormatter } from "_translate";
+import { Box } from "@material-ui/core";
+import { useStyle } from "./ReplacementData.style";
 
 interface ReplacementDetailsProps {
-  card: string
-  address: string
-  value: number
-  deadline: string
+  card: string;
+  address: string;
+  value: number;
+  deadline: string;
 }
 
 export const ReplacementData: React.FC<ReplacementDetailsProps> = ({
@@ -16,7 +16,7 @@ export const ReplacementData: React.FC<ReplacementDetailsProps> = ({
   value,
   deadline,
 }) => {
-  const style = useStyle()
+  const style = useStyle();
   return (
     <Box
       className={style.detailReplacement_content}
@@ -26,8 +26,8 @@ export const ReplacementData: React.FC<ReplacementDetailsProps> = ({
         <Box> O cartão </Box>
         <Box className={style.transfer_detail}>{card}</Box>
         <Box className={style.cancel_detail}>
-          {' '}
-          será cancelado definitivamente.{' '}
+          {" "}
+          será cancelado definitivamente.{" "}
         </Box>
         <Box className={style.address_detail}>
           O novo cartão será enviado para o endereço
@@ -45,5 +45,5 @@ export const ReplacementData: React.FC<ReplacementDetailsProps> = ({
         <Box className={style.transfer_detail}> {deadline} </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};

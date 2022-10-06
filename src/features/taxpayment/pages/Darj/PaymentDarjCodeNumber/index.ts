@@ -1,1 +1,1 @@
-export { PaymentDarjCodeNumber } from './PaymentDarjCodeNumber'
+export { PaymentDarjCodeNumber } from "./PaymentDarjCodeNumber";

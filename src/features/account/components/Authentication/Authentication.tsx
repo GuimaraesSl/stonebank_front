@@ -1,17 +1,17 @@
-import { Box, Typography } from '@material-ui/core'
-import React from 'react'
-import { useStyle } from './Authentication.style'
+import { Box, Typography } from "@material-ui/core";
+import React from "react";
+import { useStyle } from "./Authentication.style";
 
 interface AuthenticationProps {
-  controlProtocol?: string
-  internalProtocol?: string
+  controlProtocol?: string;
+  internalProtocol?: string;
 }
 
 export const Authentication: React.FC<AuthenticationProps> = ({
   controlProtocol,
   internalProtocol,
 }) => {
-  const style = useStyle()
+  const style = useStyle();
   return (
     <Box
       className={style.autenticationContent}
@@ -23,12 +23,12 @@ export const Authentication: React.FC<AuthenticationProps> = ({
       </Typography>
       <Typography>
         Controle/Protocolo:&nbsp;
-        {controlProtocol ?? '---'}
+        {controlProtocol ?? "---"}
       </Typography>
       <Typography variant="subtitle2">Protocolo Interno:</Typography>
       <Typography variant="body2" className={style.wordBreak}>
-        {internalProtocol ?? '---'}
+        {internalProtocol ?? "---"}
       </Typography>
     </Box>
-  )
-}
+  );
+};

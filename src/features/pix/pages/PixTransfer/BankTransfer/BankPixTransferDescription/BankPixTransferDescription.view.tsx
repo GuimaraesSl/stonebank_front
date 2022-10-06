@@ -1,28 +1,28 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { cancelLabel } from 'constants/buttons/labels'
-import { PageContainer } from 'components/PageContainer'
-import { TextField } from 'components/TextField'
-import { Box } from '@material-ui/core'
-import { ProcessPageFooterButton } from 'components'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useStyles } from './BankPixTransferDescription.style'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { cancelLabel } from "constants/buttons/labels";
+import { PageContainer } from "components/PageContainer";
+import { TextField } from "components/TextField";
+import { Box } from "@material-ui/core";
+import { ProcessPageFooterButton } from "components";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useStyles } from "./BankPixTransferDescription.style";
 
 interface BankPixTransferDescriptionViewProps {
-  transferenceTags?: string[]
-  description: string
-  openTagEditPopUp: boolean
-  loading?: boolean
-  onDescriptionChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onEditTagsClose: VoidFunction
-  onEditTagsButtonClick: VoidFunction
-  onConfirmButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
-  onTagClick: (event: string) => void
+  transferenceTags?: string[];
+  description: string;
+  openTagEditPopUp: boolean;
+  loading?: boolean;
+  onDescriptionChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onEditTagsClose: VoidFunction;
+  onEditTagsButtonClick: VoidFunction;
+  onConfirmButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  onTagClick: (event: string) => void;
 }
 
 export const BankPixTransferDescriptionView: React.FC<
@@ -39,7 +39,7 @@ export const BankPixTransferDescriptionView: React.FC<
   onCancelButtonClick,
   onTagClick,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <PageContainer>
@@ -120,5 +120,5 @@ export const BankPixTransferDescriptionView: React.FC<
       />
       {/* <Loader open={loading!} /> */}
     </PageContainer>
-  )
-}
+  );
+};

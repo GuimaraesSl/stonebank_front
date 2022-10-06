@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   account: {
@@ -7,18 +7,18 @@ export const useStyles = makeStyles({
     color: colors.readOnly.light.white,
   },
   name: {
-    wordBreak: 'break-word',
-    '& .MuiTypography-root': {
+    wordBreak: "break-word",
+    "& .MuiTypography-root": {
       fontSize: 18,
       fontWeight: 700,
     },
   },
   image: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
   },
   img: {
     height: 80,
     width: 80,
   },
-})
+});

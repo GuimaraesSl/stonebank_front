@@ -1,25 +1,25 @@
-import React from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { useStyle } from './PopUpContactless.style'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { Drawer, Grid } from '@material-ui/core'
-import { Alert } from 'components/Alert'
-import { Loader } from 'components/Loader'
-import { PageContainer } from 'components/PageContainer'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { useStyle } from "./PopUpContactless.style";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { Drawer, Grid } from "@material-ui/core";
+import { Alert } from "components/Alert";
+import { Loader } from "components/Loader";
+import { PageContainer } from "components/PageContainer";
+import { Icon } from "components/Icon";
 
 interface PopUpBlockPropsState {
-  loading: boolean
-  message?: string
-  success?: boolean
-  validatedToken?: boolean
+  loading: boolean;
+  message?: string;
+  success?: boolean;
+  validatedToken?: boolean;
 }
 
 interface PopUpBlockProps {
-  open: boolean
-  onClose: Function | ((contactIsValid: boolean) => void)
+  open: boolean;
+  onClose: Function | ((contactIsValid: boolean) => void);
 }
 
 export const PopUpContactless: React.FC<PopUpBlockProps> = ({
@@ -29,38 +29,38 @@ export const PopUpContactless: React.FC<PopUpBlockProps> = ({
   const [{ loading, success, validatedToken, message }, setState] =
     React.useState<PopUpBlockPropsState>({
       loading: false,
-    })
+    });
 
   React.useEffect(() => {
-    if (validatedToken) onClose(validatedToken)
-  }, [validatedToken])
+    if (validatedToken) onClose(validatedToken);
+  }, [validatedToken]);
 
-  const styles = useStyle()
+  const styles = useStyle();
 
   const onShowSucessMessageClose = () => {
-    onClose(false)
-  }
+    onClose(false);
+  };
 
   const onConfirmButtonClick = async () => {
-    setState({ loading: true })
+    setState({ loading: true });
     if (validatedToken === true) {
       setState({
         loading: false,
         success: true,
         validatedToken: true,
-        message: 'Contactless ativo',
-      })
+        message: "Contactless ativo",
+      });
     } else {
       setState({
         loading: false,
         success: true,
         validatedToken: false,
-        message: 'Contactless desativado',
-      })
+        message: "Contactless desativado",
+      });
     }
 
-    onShowSucessMessageClose()
-  }
+    onShowSucessMessageClose();
+  };
 
   return (
     <React.Fragment>
@@ -115,12 +115,12 @@ export const PopUpContactless: React.FC<PopUpBlockProps> = ({
       <Loader open={loading} />
       {message && (
         <Alert
-          title={success ? 'Sucesso' : 'Erro'}
+          title={success ? "Sucesso" : "Erro"}
           message={message}
-          severity={success ? 'success' : 'error'}
+          severity={success ? "success" : "error"}
           onClose={validatedToken ? onShowSucessMessageClose : undefined}
         />
       )}
     </React.Fragment>
-  )
-}
+  );
+};

@@ -1,16 +1,16 @@
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { OptionCard } from 'features/onboarding/components/cards/OptionsCard'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { useStyles } from './ActivateAccount.style'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { OptionCard } from "features/onboarding/components/cards/OptionsCard";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { useStyles } from "./ActivateAccount.style";
+import { Icon } from "components/Icon";
 
 export const ActivateAccount: React.FC = () => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <ProcessPageLayout
@@ -42,5 +42,5 @@ export const ActivateAccount: React.FC = () => {
       }
       footer={<ProcessPageFooter />}
     />
-  )
-}
+  );
+};

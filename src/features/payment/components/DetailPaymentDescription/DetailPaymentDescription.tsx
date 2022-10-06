@@ -1,18 +1,18 @@
-import { CurrencyFormatter } from '_translate'
-import React, { ReactElement } from 'react'
-import { useStyles } from './DetailPaymentDescription.style'
-import { ShortDateFormatter } from '_translate'
-import { TransactionDetail } from 'components/TransactionDetail'
-import { TransactionDetailName } from 'components/TransactionDetailName'
-import { TransactionDetailValue } from 'components/TransactionDetailValue'
+import { CurrencyFormatter } from "_translate";
+import React, { ReactElement } from "react";
+import { useStyles } from "./DetailPaymentDescription.style";
+import { ShortDateFormatter } from "_translate";
+import { TransactionDetail } from "components/TransactionDetail";
+import { TransactionDetailName } from "components/TransactionDetailName";
+import { TransactionDetailValue } from "components/TransactionDetailValue";
 
 interface DetailPaymentDescriptionProps {
-  paymentValue: number
-  receiverName?: string
-  paymentDate?: Date
-  description: string
-  bankName: string
-  tags?: React.ReactNode
+  paymentValue: number;
+  receiverName?: string;
+  paymentDate?: Date;
+  description: string;
+  bankName: string;
+  tags?: React.ReactNode;
 }
 
 export const DetailPaymentDescription: React.FC<
@@ -25,7 +25,7 @@ export const DetailPaymentDescription: React.FC<
   bankName,
   tags,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <React.Fragment>
       <TransactionDetail
@@ -66,5 +66,5 @@ export const DetailPaymentDescription: React.FC<
         )}
       </TransactionDetail>
     </React.Fragment>
-  )
-}
+  );
+};

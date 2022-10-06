@@ -1,25 +1,25 @@
-import { CurrencyFormatter, DateFormatter } from '_translate'
-import React from 'react'
-import { useStyles } from 'features/taxPayment/components/DetailsGareDescription/DetailsGareDescription.style'
-import { maskTaxPayer } from '_utils/masks/taxPayer'
-import { TransactionDetail } from 'components/TransactionDetail'
-import { TransactionDetailName } from 'components/TransactionDetailName'
-import { TransactionDetailValue } from 'components/TransactionDetailValue'
+import { CurrencyFormatter, DateFormatter } from "_translate";
+import React from "react";
+import { useStyles } from "features/taxPayment/components/DetailsGareDescription/DetailsGareDescription.style";
+import { maskTaxPayer } from "_utils/masks/taxPayer";
+import { TransactionDetail } from "components/TransactionDetail";
+import { TransactionDetailName } from "components/TransactionDetailName";
+import { TransactionDetailValue } from "components/TransactionDetailValue";
 
 interface DetailsGareDescriptionProps {
-  type?: string
-  name?: string
-  taxPayer?: string | null
-  paymentDate?: Date
-  codeRevenue: number
-  principalValue: number
-  referenceNumber?: string
-  fineValue: number
-  interestValue: number
-  dueDate?: Date
-  quoteNumberNotification: number
-  totalValue: number
-  description: string
+  type?: string;
+  name?: string;
+  taxPayer?: string | null;
+  paymentDate?: Date;
+  codeRevenue: number;
+  principalValue: number;
+  referenceNumber?: string;
+  fineValue: number;
+  interestValue: number;
+  dueDate?: Date;
+  quoteNumberNotification: number;
+  totalValue: number;
+  description: string;
 }
 
 export const DetailsGareDescription: React.FC<DetailsGareDescriptionProps> = ({
@@ -37,7 +37,7 @@ export const DetailsGareDescription: React.FC<DetailsGareDescriptionProps> = ({
   totalValue,
   description,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <React.Fragment>
@@ -111,5 +111,5 @@ export const DetailsGareDescription: React.FC<DetailsGareDescriptionProps> = ({
         </TransactionDetailValue>
       </TransactionDetail>
     </React.Fragment>
-  )
-}
+  );
+};

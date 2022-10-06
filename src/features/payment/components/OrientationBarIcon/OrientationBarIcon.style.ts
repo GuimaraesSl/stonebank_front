@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
   container: {
-    textAlign: 'center',
+    textAlign: "center",
   },
-  orientationBar: { height: '90%' },
-})
+  orientationBar: { height: "90%" },
+});

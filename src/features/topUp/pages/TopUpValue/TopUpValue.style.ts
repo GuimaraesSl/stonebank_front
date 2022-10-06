@@ -1,12 +1,12 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   description: {
     color: colors.system.light.neutral,
     fontWeight: 500,
     fontSize: 13,
-    lineHeight: '16.9px',
+    lineHeight: "16.9px",
     marginTop: 34,
   },
   listOptions: {
@@ -14,11 +14,11 @@ export const useStyles = makeStyles({
     marginTop: -24,
   },
   contentPage: {
-    '& header': {
+    "& header": {
       backgroundColor: colors.system.light.surface,
     },
-    '& footer': {
+    "& footer": {
       backgroundColor: colors.system.light.surface,
     },
   },
-})
+});

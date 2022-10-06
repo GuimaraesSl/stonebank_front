@@ -1,12 +1,12 @@
-import { makeStyles } from '@material-ui/core'
-import { colors, theme } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors, theme } from "_config/theme";
 
 export const useOnboardingStyles = makeStyles({
   container: {
-    flexDirection: 'column',
-    display: 'flex',
-    overflow: 'hidden',
-    alignItems: 'center',
+    flexDirection: "column",
+    display: "flex",
+    overflow: "hidden",
+    alignItems: "center",
     backgroundColor: colors.system.light.primary,
   },
   content: {
@@ -33,7 +33,7 @@ export const useOnboardingStyles = makeStyles({
     fontSize: 18,
     marginTop: 8,
     fontWeight: 300,
-    textAlign: 'center',
+    textAlign: "center",
   },
   buttonWrapper: {
     marginTop: '30px',
@@ -54,4 +54,4 @@ export const useOnboardingStyles = makeStyles({
       marginTop: '30px',
     },
   },
-})
+});

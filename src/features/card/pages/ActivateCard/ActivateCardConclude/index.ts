@@ -1,1 +1,1 @@
-export { ActivateCardConclude } from './ActivateCardConclude'
+export { ActivateCardConclude } from "./ActivateCardConclude";

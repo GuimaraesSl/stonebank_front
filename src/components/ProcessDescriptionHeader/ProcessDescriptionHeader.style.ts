@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   
@@ -14,8 +14,8 @@ export const useStyles = makeStyles({
   subtitle: {
     marginBottom: 4,
     fontWeight: 500,
-    fontSize: '15px',
-    lineHeight: '16px',
+    fontSize: "15px",
+    lineHeight: "16px",
   },
   description: {
     fontSize: '1.125rem',
@@ -24,4 +24,4 @@ export const useStyles = makeStyles({
     margin: '0 0 20px 0',
     color: colors.readOnly.light.blackLight+"95",
   },
-})
+});

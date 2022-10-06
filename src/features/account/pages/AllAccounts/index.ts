@@ -1,1 +1,1 @@
-export { AllAccounts } from './AllAccounts'
+export { AllAccounts } from "./AllAccounts";

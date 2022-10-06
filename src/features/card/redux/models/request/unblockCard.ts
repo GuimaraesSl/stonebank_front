@@ -1,6 +1,6 @@
-import { ApiRequest } from '_config/api'
+import { ApiRequest } from "_config/api";
 
 export interface unBlockCardRequest extends ApiRequest {
-  identifierCard: string
-  pin: string
+  identifierCard: string;
+  pin: string;
 }

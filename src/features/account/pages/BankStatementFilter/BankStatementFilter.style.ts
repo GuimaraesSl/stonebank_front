@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   grayFilterBand: {
@@ -12,51 +12,51 @@ export const useStyles = makeStyles({
     padding: 16,
   },
   datesSection: {
-    '& .MuiTypography-root': {
+    "& .MuiTypography-root": {
       color: colors.system.light.neutral,
       fontSize: 12,
       fontWeight: 500,
     },
   },
   applyButton: {
-    display: 'flex',
-    justifyContent: 'center',
+    display: "flex",
+    justifyContent: "center",
   },
   clearButton: {
-    display: 'flex',
-    marginTop: '16px',
-    justifyContent: 'flex-end',
+    display: "flex",
+    marginTop: "16px",
+    justifyContent: "flex-end",
   },
   customTagButtonsFilter: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
   },
   textAndDate: {
-    display: 'flex',
-    width: '100%',
+    display: "flex",
+    width: "100%",
     color: colors.system.light.neutral,
   },
   errorMessage: {
-    display: 'flex',
-    width: '100%',
+    display: "flex",
+    width: "100%",
     color: colors.system.light.neutral,
   },
   textFilterDate: {
-    marginTop: '5px',
-    marginRight: '10px',
-    marginLeft: '10px',
+    marginTop: "5px",
+    marginRight: "10px",
+    marginLeft: "10px",
   },
   textFilterDateDay: {
-    marginTop: '5px',
-    marginRight: '6px',
+    marginTop: "5px",
+    marginRight: "6px",
   },
   scheduleButton: {
     marginTop: 64,
-    '& .MuiFormControl-root': {
-      display: 'none',
+    "& .MuiFormControl-root": {
+      display: "none",
     },
   },
   schedulingMessage: {
     marginTop: 64,
   },
-})
+});

@@ -1,11 +1,11 @@
-import { Typography, Box, Grid } from '@material-ui/core'
-import { OtpInput } from 'components/OtpInput/OtpInput'
-import { useStyles } from './PasswordInput.style'
+import { Typography, Box, Grid } from "@material-ui/core";
+import { OtpInput } from "components/OtpInput/OtpInput";
+import { useStyles } from "./PasswordInput.style";
 
 interface PasswordProps {
-  label: string
-  value: string
-  onChange: (value: string) => void
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
 }
 
 export const PasswordInput: React.FC<PasswordProps> = ({
@@ -13,7 +13,7 @@ export const PasswordInput: React.FC<PasswordProps> = ({
   value,
   onChange,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <Box className={style.passwordBody} data-test-id="pwd-input">
@@ -39,5 +39,5 @@ export const PasswordInput: React.FC<PasswordProps> = ({
         </Grid>
       </Box>
     </Box>
-  )
-}
+  );
+};

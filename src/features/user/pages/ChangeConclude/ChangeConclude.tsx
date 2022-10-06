@@ -1,23 +1,23 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { PageContainer } from 'components/PageContainer'
-import { UserRoutes } from 'features/user/constants/routes'
-import { closeLabel } from 'constants/buttons/labels'
-import { useHistory } from 'react-router-dom'
-import { Close } from '@material-ui/icons'
-import { Button } from 'components/Button'
-import { Box, Grid, Typography } from '@material-ui/core'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useStyles } from './ChangeConclude.styles'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { PageContainer } from "components/PageContainer";
+import { UserRoutes } from "features/user/constants/routes";
+import { closeLabel } from "constants/buttons/labels";
+import { useHistory } from "react-router-dom";
+import { Close } from "@material-ui/icons";
+import { Button } from "components/Button";
+import { Box, Grid, Typography } from "@material-ui/core";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useStyles } from "./ChangeConclude.styles";
+import { Icon } from "components/Icon";
 
 export const ChangeConclude: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
+  const history = useHistory();
+  const styles = useStyles();
 
   const onCloseButtonClick = () => {
-    history.replace(UserRoutes.home)
-  }
+    history.replace(UserRoutes.home);
+  };
 
   return (
     <PageContainer className={styles.container}>
@@ -55,5 +55,5 @@ export const ChangeConclude: React.FC = () => {
         </Grid>
       </Box>
     </PageContainer>
-  )
-}
+  );
+};

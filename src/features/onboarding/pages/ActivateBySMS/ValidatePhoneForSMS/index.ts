@@ -1,1 +1,1 @@
-export { ValidatePhone } from './ValidatePhoneForSMS'
+export { ValidatePhone } from "./ValidatePhoneForSMS";

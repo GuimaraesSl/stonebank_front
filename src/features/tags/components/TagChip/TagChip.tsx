@@ -1,12 +1,12 @@
-import React from 'react'
-import { useStyles } from './TagChip.style'
-import { Chip } from '@material-ui/core'
+import React from "react";
+import { useStyles } from "./TagChip.style";
+import { Chip } from "@material-ui/core";
 
 interface TagChipProps {
-  label?: string
-  selected?: boolean
-  disabled?: boolean
-  onClick?: (_: string) => void
+  label?: string;
+  selected?: boolean;
+  disabled?: boolean;
+  onClick?: (_: string) => void;
 }
 
 export const TagChip: React.FC<TagChipProps> = ({
@@ -14,8 +14,8 @@ export const TagChip: React.FC<TagChipProps> = ({
   disabled,
   onClick,
 }) => {
-  const [status, setStatus] = React.useState(disabled)
-  const styles = useStyles()
+  const [status, setStatus] = React.useState(disabled);
+  const styles = useStyles();
 
   return (
     <React.Fragment>
@@ -27,5 +27,5 @@ export const TagChip: React.FC<TagChipProps> = ({
         onClick={() => onClick!(label!)}
       />
     </React.Fragment>
-  )
-}
+  );
+};

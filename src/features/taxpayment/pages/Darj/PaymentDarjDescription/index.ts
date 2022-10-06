@@ -1,1 +1,1 @@
-export { PaymentDarjDescription } from './PaymentDarjDescription'
+export { PaymentDarjDescription } from "./PaymentDarjDescription";

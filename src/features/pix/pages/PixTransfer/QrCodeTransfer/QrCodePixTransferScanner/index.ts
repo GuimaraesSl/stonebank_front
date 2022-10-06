@@ -1,1 +1,1 @@
-export { QrCodePixTransferScanner } from './QrCodePixTransferScanner.controller'
+export { QrCodePixTransferScanner } from "./QrCodePixTransferScanner.controller";

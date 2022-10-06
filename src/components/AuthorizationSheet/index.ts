@@ -1,1 +1,1 @@
-export { AuthorizationSheet } from './AuthorizationSheet'
+export { AuthorizationSheet } from "./AuthorizationSheet";

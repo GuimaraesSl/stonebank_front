@@ -1,1 +1,1 @@
-export { PaymentFgtsBarCode } from './PaymentFgtsBarCode'
+export { PaymentFgtsBarCode } from "./PaymentFgtsBarCode";

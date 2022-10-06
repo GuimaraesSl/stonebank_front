@@ -1,1 +1,1 @@
-export { CreatePassword } from './CreatePasswordForSMS'
+export { CreatePassword } from "./CreatePasswordForSMS";

@@ -1,3 +1,3 @@
 export interface GenerateAuthorizationTokenRequest {
-  phoneNumber: string
+  phoneNumber: string;
 }

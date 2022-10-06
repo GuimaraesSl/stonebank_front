@@ -1,25 +1,25 @@
-import React from 'react'
-import { useStyles } from './InvalidDataForCard.style'
-import { Typography, Box, Grid } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { Button } from '@material-ui/core'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PageContainer } from 'components/PageContainer'
-import { updateValidateCardForm } from 'features/onboarding/redux/actions'
-import { useDispatch } from 'react-redux'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { useStyles } from "./InvalidDataForCard.style";
+import { Typography, Box, Grid } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { Button } from "@material-ui/core";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PageContainer } from "components/PageContainer";
+import { updateValidateCardForm } from "features/onboarding/redux/actions";
+import { useDispatch } from "react-redux";
+import { Icon } from "components/Icon";
 
 export const InvalidDataForCard: React.FC = () => {
-  const styles = useStyles()
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const styles = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const onButtonClick = () => {
-    dispatch(updateValidateCardForm())
-    history.replace(OnboardingRoutes.activateAccount)
-  }
+    dispatch(updateValidateCardForm());
+    history.replace(OnboardingRoutes.activateAccount);
+  };
 
   return (
     <PageContainer>
@@ -66,5 +66,5 @@ export const InvalidDataForCard: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

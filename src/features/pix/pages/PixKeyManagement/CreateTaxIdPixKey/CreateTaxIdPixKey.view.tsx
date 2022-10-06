@@ -1,37 +1,37 @@
-import React from 'react'
-import { PageContainer } from 'components/PageContainer'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { cancelLabel } from 'constants/buttons/labels'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { Box, Typography } from '@material-ui/core'
-import { ProcessPageFooterButton, TextField } from 'components'
-import { useStyles } from './CreateTaxIdPixKey.styles'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { AlertConcluded } from 'components/AlertConcluded'
-import { maskTaxId } from '_utils/masks/taxId'
-import { Account } from 'features/account/redux/models/account'
+import React from "react";
+import { PageContainer } from "components/PageContainer";
+import { AccountRoutes } from "features/account/constants/routes";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { cancelLabel } from "constants/buttons/labels";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { Box, Typography } from "@material-ui/core";
+import { ProcessPageFooterButton, TextField } from "components";
+import { useStyles } from "./CreateTaxIdPixKey.styles";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { AlertConcluded } from "components/AlertConcluded";
+import { maskTaxId } from "_utils/masks/taxId";
+import { Account } from "features/account/redux/models/account";
 
 interface CreateTaxIdPixKeyProps {
-  openAuthorizationSheet: boolean
-  onAlertClose: VoidFunction
-  onAuthorizationSheetClose: (event: any) => void
-  errorMessage?: string
-  loading: boolean
-  onShowAlert: boolean
-  account: Account
-  inputValue: string
-  onTaxIdChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onCloseAlert: VoidFunction
-  onClickAlert: VoidFunction
-  onConfirmButtonClick: VoidFunction
-  onBackButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
+  openAuthorizationSheet: boolean;
+  onAlertClose: VoidFunction;
+  onAuthorizationSheetClose: (event: any) => void;
+  errorMessage?: string;
+  loading: boolean;
+  onShowAlert: boolean;
+  account: Account;
+  inputValue: string;
+  onTaxIdChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onCloseAlert: VoidFunction;
+  onClickAlert: VoidFunction;
+  onConfirmButtonClick: VoidFunction;
+  onBackButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
 }
 export const CreateTaxIdPixKeyView: React.FC<CreateTaxIdPixKeyProps> = ({
   openAuthorizationSheet,
@@ -49,7 +49,7 @@ export const CreateTaxIdPixKeyView: React.FC<CreateTaxIdPixKeyProps> = ({
   onBackButtonClick,
   onCancelButtonClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <PageContainer>
@@ -91,18 +91,31 @@ export const CreateTaxIdPixKeyView: React.FC<CreateTaxIdPixKeyProps> = ({
               onChange={onTaxIdChange}
               disabled={inputValue ? true : false}
             />
-            <Typography variant="subtitle1" className={styles.importantWarning} data-test-id="section-description">
+            <Typography
+              variant="subtitle1"
+              className={styles.importantWarning}
+              data-test-id="section-description"
+            >
               <strong>Aviso importante</strong>
             </Typography>
-            <Typography className={styles.txtalert} data-test-id="alert-description">
+            <Typography
+              className={styles.txtalert}
+              data-test-id="alert-description"
+            >
               Mesmo usando essa chave para realizar uma Transferência para você,
               será possível ver as seguintes informações
             </Typography>
             <Box>
-              <Typography className={styles.componentName} data-test-id="account-name-description">
+              <Typography
+                className={styles.componentName}
+                data-test-id="account-name-description"
+              >
                 {account!.name}
               </Typography>
-              <Typography className={styles.componentCpf_Cnpj} data-test-id="identify-description">
+              <Typography
+                className={styles.componentCpf_Cnpj}
+                data-test-id="identify-description"
+              >
                 CPF/CNPJ:{maskTaxId(account!.taxId)}
               </Typography>
             </Box>
@@ -127,17 +140,17 @@ export const CreateTaxIdPixKeyView: React.FC<CreateTaxIdPixKeyProps> = ({
         open={onShowAlert}
         onClose={onCloseAlert}
         onClick={onClickAlert}
-        title={'Chave Cadastrada'}
+        title={"Chave Cadastrada"}
       />
       <Loader open={loading} />
       {errorMessage && (
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

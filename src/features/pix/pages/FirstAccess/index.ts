@@ -1,1 +1,1 @@
-export { FirstAccess } from './FirstAccess'
+export { FirstAccess } from "./FirstAccess";

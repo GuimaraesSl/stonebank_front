@@ -1,1 +1,1 @@
-export { KeyPixTransfer } from './KeyPixTransfer.controller'
+export { KeyPixTransfer } from "./KeyPixTransfer.controller";

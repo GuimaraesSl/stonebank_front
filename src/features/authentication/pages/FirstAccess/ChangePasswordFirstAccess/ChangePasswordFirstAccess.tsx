@@ -16,73 +16,73 @@ import {
   validateLowerUpperNumber,
   validateLength,
   validateSpecial,
-} from '_utils/validate'
-import { useDispatch, useSelector } from 'react-redux'
-import { updatePassword } from 'features/authentication/redux/actions'
-import { KeyboardArrowLeft } from '@material-ui/icons'
-import { logout } from 'features/authentication/redux/actions'
-import { StoreState } from 'redux/state'
-import { Alert } from 'components/Alert'
+} from "_utils/validate";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePassword } from "features/authentication/redux/actions";
+import { KeyboardArrowLeft } from "@material-ui/icons";
+import { logout } from "features/authentication/redux/actions";
+import { StoreState } from "redux/state";
+import { Alert } from "components/Alert";
 
 export const ChangePasswordFirstAccess: React.FC = () => {
-  const [newPassword, setNewPassword] = React.useState('')
-  const [disableNextButton, setDisableNextButton] = React.useState(false)
+  const [newPassword, setNewPassword] = React.useState("");
+  const [disableNextButton, setDisableNextButton] = React.useState(false);
   const [passwordLengthIsValid, setPasswordLenghtIsValid] = React.useState<
     boolean | undefined
-  >()
+  >();
   const [passwordLowerIsValid, setPasswordLowerIsValid] = React.useState<
     boolean | undefined
-  >()
+  >();
   const [passwordUpperIsValid, setPasswordUpperIsValid] = React.useState<
     boolean | undefined
-  >()
+  >();
   const [passwordSpecialIsValid, setPasswordSpecialIsValid] = React.useState<
     boolean | undefined
-  >()
+  >();
   const [passwordValidateNumber, setPasswordValidateNUmber] = React.useState<
     boolean | undefined
-  >()
+  >();
 
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const styles = useStyles()
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const styles = useStyles();
 
   const condition =
     passwordLengthIsValid &&
     passwordLowerIsValid &&
     passwordUpperIsValid &&
     passwordSpecialIsValid &&
-    passwordValidateNumber
+    passwordValidateNumber;
 
   React.useEffect(() => {
-    setDisableNextButton(!(condition && passwordLengthIsValid))
-  }, [condition, passwordLengthIsValid])
+    setDisableNextButton(!(condition && passwordLengthIsValid));
+  }, [condition, passwordLengthIsValid]);
 
   const onPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setNewPassword(event.target.value)
+    setNewPassword(event.target.value);
 
   const onValidateLength = (value: boolean | undefined) => {
-    setPasswordLenghtIsValid(value)
-  }
+    setPasswordLenghtIsValid(value);
+  };
 
   const onValidateLowerUpperNumber = (value: boolean | undefined) => {
-    setPasswordLowerIsValid(value)
-    setPasswordUpperIsValid(value)
-    setPasswordValidateNUmber(value)
-  }
+    setPasswordLowerIsValid(value);
+    setPasswordUpperIsValid(value);
+    setPasswordValidateNUmber(value);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(logout())
-    history.replace(AuthenticationRoutes.signIn)
-  }
+    dispatch(logout());
+    history.replace(AuthenticationRoutes.signIn);
+  };
 
   const onNextButtonClick = (event: React.FormEvent) => {
-    event.preventDefault()
-    history.push(AuthenticationRoutes.confirmPasswordFirstAccess)
-    dispatch(updatePassword({ newPassword }))
-  }
+    event.preventDefault();
+    history.push(AuthenticationRoutes.confirmPasswordFirstAccess);
+    dispatch(updatePassword({ newPassword }));
+  };
 
-  const authState = useSelector((state: StoreState) => state.auth)
+  const authState = useSelector((state: StoreState) => state.auth);
 
   return (
     <Container maxWidth="xs" className={styles.container}>  

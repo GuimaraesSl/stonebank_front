@@ -1,1 +1,1 @@
-export { KnowMoreDescription } from './KnowMoreDescription'
+export { KnowMoreDescription } from "./KnowMoreDescription";

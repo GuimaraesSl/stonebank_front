@@ -1,1 +1,1 @@
-export { PixButtonConfig } from './PixButtonConfig'
+export { PixButtonConfig } from "./PixButtonConfig";

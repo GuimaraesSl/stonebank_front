@@ -1,1 +1,1 @@
-export { TranscationCard } from './TranscationCard'
+export { TranscationCard } from "./TranscationCard";

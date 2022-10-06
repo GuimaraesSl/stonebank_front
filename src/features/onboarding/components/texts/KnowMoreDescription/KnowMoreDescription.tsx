@@ -1,9 +1,9 @@
-import { Typography } from '@material-ui/core'
-import { useStyles } from './KnowMoreDescription.styles'
-import { Link } from 'react-router-dom'
+import { Typography } from "@material-ui/core";
+import { useStyles } from "./KnowMoreDescription.styles";
+import { Link } from "react-router-dom";
 
 export const KnowMoreDescription: React.FC = () => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Typography
@@ -14,10 +14,10 @@ export const KnowMoreDescription: React.FC = () => {
     >
       <Link to="" className={styles.link}>
         Clique aqui
-      </Link>{' '}
+      </Link>{" "}
       para conhecer
       <br />
       mais sobre o OpenBank
     </Typography>
-  )
-}
+  );
+};

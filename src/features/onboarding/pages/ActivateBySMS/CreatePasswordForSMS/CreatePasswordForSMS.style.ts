@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core'
-import { theme, colors } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { theme, colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   input: {
@@ -9,6 +9,6 @@ export const useStyles = makeStyles({
     color: colors.system.light.neutral,
     fontWeight: 300,
     fontSize: 12,
-    lineHeight: '15.6px',
+    lineHeight: "15.6px",
   },
-})
+});

@@ -1,1 +1,1 @@
-import { GenerateQrCodeTransfer } from './GenerateQrCodeTransfer'
+import { GenerateQrCodeTransfer } from "./GenerateQrCodeTransfer";

@@ -4,10 +4,10 @@ import {
   InitialAccountState,
   LoadingAccountState,
   SuccessAccountState,
-} from './state'
-import { AccountAction, AccountActions } from './actionTypes'
+} from "./state";
+import { AccountAction, AccountActions } from "./actionTypes";
 
-const initialState: AccountState = new InitialAccountState()
+const initialState: AccountState = new InitialAccountState();
 
 export const accountReducer = (state = initialState, action: AccountAction) => {
   switch (action.type) {
@@ -22,19 +22,19 @@ export const accountReducer = (state = initialState, action: AccountAction) => {
         state.account,
         state.dashboard,
         state.bankStatement,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     case AccountActions.GET_ACCOUNT_DASHBOARD_SUCCESS:
-      const { account, dashboard } = action.payload
+      const { account, dashboard } = action.payload;
       return new SuccessAccountState(
         account,
         dashboard,
         state.bankStatement,
         state.transactionDetails,
         state.transactionReceipt,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     case AccountActions.VERIFY_TRANSACTION_SUCCESS:
       return new SuccessAccountState(
@@ -44,8 +44,8 @@ export const accountReducer = (state = initialState, action: AccountAction) => {
         state.transactionDetails,
         state.transactionReceipt,
         state.bankStatementFilters,
-        action.payload,
-      )
+        action.payload
+      );
 
     case AccountActions.GET_BANK_STATEMENT_SUCCESS:
       return new SuccessAccountState(
@@ -54,8 +54,8 @@ export const accountReducer = (state = initialState, action: AccountAction) => {
         action.payload,
         state.transactionDetails,
         state.transactionReceipt,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     case AccountActions.GET_ALL_ACCOUNTS_SUCCESS:
       return new SuccessAccountState(
@@ -64,8 +64,8 @@ export const accountReducer = (state = initialState, action: AccountAction) => {
         state.bankStatement,
         state.transactionDetails,
         state.transactionReceipt,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     case AccountActions.GET_TRANSACTION_DETAILS_SUCCESS:
       return new SuccessAccountState(
@@ -74,8 +74,8 @@ export const accountReducer = (state = initialState, action: AccountAction) => {
         state.bankStatement!,
         action.payload,
         state.transactionReceipt,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     case AccountActions.CHANGE_ACCOUNT_SUCCESS:
       return new SuccessAccountState(
@@ -84,8 +84,8 @@ export const accountReducer = (state = initialState, action: AccountAction) => {
         state.bankStatement!,
         state.transactionDetails,
         state.transactionReceipt,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     case AccountActions.GET_TRANSACTION_RECEIPT_SUCCESS:
       return new SuccessAccountState(
@@ -94,8 +94,8 @@ export const accountReducer = (state = initialState, action: AccountAction) => {
         state.bankStatement!,
         state.transactionDetails,
         action.payload,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     case AccountActions.GET_ACCOUNT_DASHBOARD_FAIL:
     case AccountActions.GET_BANK_STATEMENT_FAIL:
@@ -107,34 +107,34 @@ export const accountReducer = (state = initialState, action: AccountAction) => {
         state.account,
         state.dashboard,
         state.bankStatement,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     case AccountActions.SET_BANK_STATEMENT_FILTERS:
       return new InitialAccountState(
         state.account,
         state.dashboard,
         state.bankStatement,
-        action.payload,
-      )
+        action.payload
+      );
 
     case AccountActions.SELECT_ACCOUNT:
       return new InitialAccountState(
-        state.dashboard!.accounts.find(x => x.accountId === action.payload)!,
+        state.dashboard!.accounts.find((x) => x.accountId === action.payload)!,
         state.dashboard,
         state.bankStatement,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     case AccountActions.CLOSE_ALERT:
       return new InitialAccountState(
         state.account!,
         state.dashboard!,
         state.bankStatement,
-        state.bankStatementFilters,
-      )
+        state.bankStatementFilters
+      );
 
     default:
-      return state
+      return state;
   }
-}
+};

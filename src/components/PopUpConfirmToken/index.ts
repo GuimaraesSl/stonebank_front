@@ -1,1 +1,1 @@
-export { PopUpConfirmToken } from './PopUpConfirmToken'
+export { PopUpConfirmToken } from "./PopUpConfirmToken";

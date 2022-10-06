@@ -1,1 +1,1 @@
-export { BarcodeHeader } from './BarcodeHeader'
+export { BarcodeHeader } from "./BarcodeHeader";

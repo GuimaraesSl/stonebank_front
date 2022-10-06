@@ -1,30 +1,30 @@
-import React from 'react'
+import React from "react";
 import {
   AppBar,
   Button,
   ButtonWithFloatingIcon,
   PageContainer,
   ProcessPageLayout,
-} from 'components'
-import { closeLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useStyles } from './PixTransferProcess.style'
-import { Close } from '@material-ui/icons'
-import { Typography, Box, Grid } from '@material-ui/core'
-import { Icon } from 'components/Icon'
-import { CurrencyFormatter } from '_translate'
-import { PixTransfer } from 'features/pix/redux/models/pixTransfer'
+} from "components";
+import { closeLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useStyles } from "./PixTransferProcess.style";
+import { Close } from "@material-ui/icons";
+import { Typography, Box, Grid } from "@material-ui/core";
+import { Icon } from "components/Icon";
+import { CurrencyFormatter } from "_translate";
+import { PixTransfer } from "features/pix/redux/models/pixTransfer";
 
 interface PixTransferProcessProps {
-  onHomeButtonClick: VoidFunction
-  pixTransfer: PixTransfer
+  onHomeButtonClick: VoidFunction;
+  pixTransfer: PixTransfer;
 }
 
 export const PixTransferProcessView: React.FC<PixTransferProcessProps> = ({
   onHomeButtonClick,
   pixTransfer,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <PageContainer>
@@ -55,7 +55,7 @@ export const PixTransferProcessView: React.FC<PixTransferProcessProps> = ({
               PIX <br /> em processamento
             </Typography>
             <Box display="flex" justifyContent="center">
-              <Icon className={styles.img} name={'transferProcess'} />
+              <Icon className={styles.img} name={"transferProcess"} />
             </Box>
 
             <Typography variant="body1" className={styles.description}>
@@ -102,5 +102,5 @@ export const PixTransferProcessView: React.FC<PixTransferProcessProps> = ({
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

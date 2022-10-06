@@ -1,14 +1,14 @@
-import React from 'react'
-import { Button, Typography, Box } from '@material-ui/core'
-import { useStyles } from './CardPhone.style'
+import React from "react";
+import { Button, Typography, Box } from "@material-ui/core";
+import { useStyles } from "./CardPhone.style";
 
 interface CardPhoneProps {
-  title: string
-  icon: React.ReactNode
-  type: 'standard'
-  description: string
-  phoneNumber: string
-  onClick: React.MouseEventHandler<HTMLElement>
+  title: string;
+  icon: React.ReactNode;
+  type: "standard";
+  description: string;
+  phoneNumber: string;
+  onClick: React.MouseEventHandler<HTMLElement>;
 }
 
 export const CardPhone: React.FC<CardPhoneProps> = ({
@@ -18,7 +18,7 @@ export const CardPhone: React.FC<CardPhoneProps> = ({
   icon,
   onClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <React.Fragment>
       <Button
@@ -53,5 +53,5 @@ export const CardPhone: React.FC<CardPhoneProps> = ({
         </Box>
       </Button>
     </React.Fragment>
-  )
-}
+  );
+};

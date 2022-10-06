@@ -1,24 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { Alert } from 'components/Alert'
-import { Loader } from 'components/Loader'
-import { PageContainer } from 'components/PageContainer'
-import { HomePageHeader } from 'features/account/components/HomePageHeader'
-import { AccountSheet } from 'features/account/components/AccountSheet/AccountSheet'
-import { FeaturesList } from 'features/account/components/FeaturesList'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { Account } from 'features/account/redux/models/account'
-import { useStyles } from './Home.style'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { Alert } from "components/Alert";
+import { Loader } from "components/Loader";
+import { PageContainer } from "components/PageContainer";
+import { HomePageHeader } from "features/account/components/HomePageHeader";
+import { AccountSheet } from "features/account/components/AccountSheet/AccountSheet";
+import { FeaturesList } from "features/account/components/FeaturesList";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { Account } from "features/account/redux/models/account";
+import { useStyles } from "./Home.style";
+import { Icon } from "components/Icon";
 
 interface HomeProps {
-  account?: Account
-  errorMessage?: string
-  loading: boolean
-  showAccountSheet: boolean
-  onAlertClose: VoidFunction
-  toggleAccountSheet: VoidFunction
+  account?: Account;
+  errorMessage?: string;
+  loading: boolean;
+  showAccountSheet: boolean;
+  onAlertClose: VoidFunction;
+  toggleAccountSheet: VoidFunction;
 }
 
 export const HomeView: React.FC<HomeProps> = ({
@@ -29,7 +29,7 @@ export const HomeView: React.FC<HomeProps> = ({
   onAlertClose,
   toggleAccountSheet,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <PageContainer className={styles.pageContainer}>
@@ -37,7 +37,6 @@ export const HomeView: React.FC<HomeProps> = ({
       <Box component="main">
         <FeaturesList className={styles.buttonsRow} />
       </Box>
-
       <Loader open={loading} />
       <Box className={styles.formFooterHome}>
         <React.Fragment>
@@ -62,10 +61,10 @@ export const HomeView: React.FC<HomeProps> = ({
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

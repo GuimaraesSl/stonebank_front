@@ -1,27 +1,27 @@
-import React from 'react'
-import { Box, Grid, Typography } from '@material-ui/core'
-import { PageContainer } from 'components/PageContainer'
-import { useHistory } from 'react-router-dom'
-import { Button } from 'components/Button'
-import { StoreState } from 'redux/state'
-import { useStyles } from './ConfirmRecoverPwd.style'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useSelector } from 'react-redux'
-import { RecoverType } from 'features/authentication/redux/models/recoverType'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box, Grid, Typography } from "@material-ui/core";
+import { PageContainer } from "components/PageContainer";
+import { useHistory } from "react-router-dom";
+import { Button } from "components/Button";
+import { StoreState } from "redux/state";
+import { useStyles } from "./ConfirmRecoverPwd.style";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useSelector } from "react-redux";
+import { RecoverType } from "features/authentication/redux/models/recoverType";
+import { Icon } from "components/Icon";
 
 export const ConfirmRecoverPwd: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
+  const history = useHistory();
+  const styles = useStyles();
 
   const onHomeButtonClick = () => {
-    history.replace(AccountRoutes.home)
-  }
+    history.replace(AccountRoutes.home);
+  };
 
   const resetPasswordForm = useSelector(
-    (store: StoreState) => store.auth.resetPasswordForm,
-  )
+    (store: StoreState) => store.auth.resetPasswordForm
+  );
 
   return (
     <PageContainer>
@@ -63,5 +63,5 @@ export const ConfirmRecoverPwd: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

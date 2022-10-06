@@ -1,5 +1,5 @@
-import { ChangePinCard } from '../changePinCard'
+import { ChangePinCard } from "../changePinCard";
 
 export interface ChangePinCardResponse {
-  changePinCard?: ChangePinCard[]
+  changePinCard?: ChangePinCard[];
 }

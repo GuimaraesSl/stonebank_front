@@ -1,1 +1,1 @@
-export { PaymentDarjType } from './PaymentDarjType'
+export { PaymentDarjType } from "./PaymentDarjType";

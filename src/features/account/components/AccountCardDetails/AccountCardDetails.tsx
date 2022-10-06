@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
-import { useStyles } from './AccountCardDetails.style'
-import { Account } from 'features/account/redux/models/account'
-import { StoreState } from 'redux/state'
-import { useSelector } from 'react-redux'
-import { Clipboard } from 'ts-clipboard'
-import { Alert } from 'components/Alert'
-import { Button } from 'components/Button'
-import { Box, Typography, Drawer } from '@material-ui/core'
-import { closeLabel } from 'constants/buttons/labels'
-import { Close } from '@material-ui/icons'
+import React, { useState } from "react";
+import { useStyles } from "./AccountCardDetails.style";
+import { Account } from "features/account/redux/models/account";
+import { StoreState } from "redux/state";
+import { useSelector } from "react-redux";
+import { Clipboard } from "ts-clipboard";
+import { Alert } from "components/Alert";
+import { Button } from "components/Button";
+import { Box, Typography, Drawer } from "@material-ui/core";
+import { closeLabel } from "constants/buttons/labels";
+import { Close } from "@material-ui/icons";
 
 interface AccountCardDetailsProps {
-  account?: Account
-  open?: boolean
-  onClose: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  account?: Account;
+  open?: boolean;
+  onClose: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export const AccountCardDetails: React.FC<AccountCardDetailsProps> = ({
@@ -23,27 +23,31 @@ export const AccountCardDetails: React.FC<AccountCardDetailsProps> = ({
 }) => {
   useSelector((state: StoreState) => ({
     dashboard: state.account,
-  }))
-  const styles = useStyles()
-  const [alertMessage, setAlertMessage] = useState('')
+  }));
+  const styles = useStyles();
+  const [alertMessage, setAlertMessage] = useState("");
 
   const onCloseAlert = () => {
-    setAlertMessage('')
-  }
+    setAlertMessage("");
+  };
 
   const shareData = () => {
-    let data = account!.taxId ? `CPF ou/ CNPJ: ${account!.taxId}\n` : ''
-    data += account!.name ? `Nome: ${account!.name}\n` : ''
-    data += account!.spbBank ? `Banco: ${account!.spbBank}\n` : ''
-    data += account!.spbBankBranch ? `Agência: ${account!.spbBankBranch}\n` : ''
-    data += account!.spbBankAccount ? `Conta: ${account!.spbBankAccount}\n` : ''
+    let data = account!.taxId ? `CPF ou/ CNPJ: ${account!.taxId}\n` : "";
+    data += account!.name ? `Nome: ${account!.name}\n` : "";
+    data += account!.spbBank ? `Banco: ${account!.spbBank}\n` : "";
+    data += account!.spbBankBranch
+      ? `Agência: ${account!.spbBankBranch}\n`
+      : "";
+    data += account!.spbBankAccount
+      ? `Conta: ${account!.spbBankAccount}\n`
+      : "";
     data += account!.spbBankAccountDigit
       ? `Digito: ${account!.spbBankAccountDigit}\n`
-      : ''
+      : "";
 
-    Clipboard.copy(data)
-    setAlertMessage('Copiado para área de transferência')
-  }
+    Clipboard.copy(data);
+    setAlertMessage("Copiado para área de transferência");
+  };
 
   return (
     <Drawer
@@ -139,5 +143,5 @@ export const AccountCardDetails: React.FC<AccountCardDetailsProps> = ({
         </Box>
       </Box>
     </Drawer>
-  )
-}
+  );
+};

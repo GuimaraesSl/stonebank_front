@@ -1,1 +1,1 @@
-export { PaymentRoutes } from './routes'
+export { PaymentRoutes } from "./routes";

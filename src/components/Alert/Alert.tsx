@@ -1,14 +1,14 @@
-import { Box, Snackbar } from '@material-ui/core'
-import { Alert as MuiAlert, AlertTitle } from '@material-ui/lab'
-import { PopUpErrorMessage } from 'components/PopUpErrorMessage'
-import React from 'react'
+import { Box, Snackbar } from "@material-ui/core";
+import { Alert as MuiAlert, AlertTitle } from "@material-ui/lab";
+import { PopUpErrorMessage } from "components/PopUpErrorMessage";
+import React from "react";
 
 interface AlertProps {
-  title: string
-  message?: string | undefined
-  autoHideDuration?: number
-  severity?: 'success' | 'info' | 'warning' | 'error'
-  onClose?: VoidFunction
+  title: string;
+  message?: string | undefined;
+  autoHideDuration?: number;
+  severity?: "success" | "info" | "warning" | "error";
+  onClose?: VoidFunction;
 }
 
 export const Alert = ({
@@ -19,16 +19,16 @@ export const Alert = ({
   autoHideDuration = 3000,
   ...rest
 }: AlertProps) => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(message !== undefined)
-  const [onMessageError, setMessageError] = React.useState(true)
+  const [isOpen, setIsOpen] = React.useState<boolean>(message !== undefined);
+  const [onMessageError, setMessageError] = React.useState(true);
 
   const onClosePopUp = () => {
-    setMessageError(false)
-  }
+    setMessageError(false);
+  };
 
   return (
     <Box>
-      {severity === 'error' ? (
+      {severity === "error" ? (
         <PopUpErrorMessage
           open={onMessageError}
           title={message}
@@ -39,10 +39,10 @@ export const Alert = ({
           open={isOpen}
           autoHideDuration={autoHideDuration}
           onClose={() => {
-            setIsOpen(false)
-            onClose?.call(this)
+            setIsOpen(false);
+            onClose?.call(this);
           }}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
           <MuiAlert severity={severity}>
             <AlertTitle>{title}</AlertTitle>
@@ -51,5 +51,5 @@ export const Alert = ({
         </Snackbar>
       )}
     </Box>
-  )
-}
+  );
+};

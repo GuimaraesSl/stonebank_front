@@ -1,59 +1,59 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { TextField } from 'components/TextField'
-import { useMask } from 'hooks/useMask'
-import { maskPhone } from '_utils/masks/phone'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PopUpConfirmToken } from 'components/PopUpConfirmToken'
-import { PageContainer } from 'components/PageContainer'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { Box } from '@material-ui/core'
-import { updateOnboardingForm } from 'features/onboarding/redux/actions'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { TextField } from "components/TextField";
+import { useMask } from "hooks/useMask";
+import { maskPhone } from "_utils/masks/phone";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PopUpConfirmToken } from "components/PopUpConfirmToken";
+import { PageContainer } from "components/PageContainer";
+import { AccountRoutes } from "features/account/constants/routes";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { Box } from "@material-ui/core";
+import { updateOnboardingForm } from "features/onboarding/redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
 
 export const EnterPhoneForCard: React.FC = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [phoneNumber, setPhoneNumber] = useMask(maskPhone)
-  const [sentRequest, setSentRequest] = React.useState(false)
-  const [openTokenPopUp, setOpenTokenPopUp] = React.useState(false)
+  const [phoneNumber, setPhoneNumber] = useMask(maskPhone);
+  const [sentRequest, setSentRequest] = React.useState(false);
+  const [openTokenPopUp, setOpenTokenPopUp] = React.useState(false);
   const { onboardingForm } = useSelector(
-    (state: StoreState) => state.onboarding,
-  )
+    (state: StoreState) => state.onboarding
+  );
 
   React.useEffect(() => {
-    if (sentRequest) history.push(OnboardingRoutes.createPasswordForCard)
-  }, [sentRequest])
+    if (sentRequest) history.push(OnboardingRoutes.createPasswordForCard);
+  }, [sentRequest]);
 
   const onCancelButtonClick = () => {
-    history.replace(OnboardingRoutes.activateAccount)
-  }
+    history.replace(OnboardingRoutes.activateAccount);
+  };
 
   const onNextButtonClick = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    dispatch(updateOnboardingForm({ phoneNumber }))
-    setOpenTokenPopUp(true)
-  }
+    dispatch(updateOnboardingForm({ phoneNumber }));
+    setOpenTokenPopUp(true);
+  };
 
   const onTokenCloseButtonClick = (tokenIsValid: boolean) => {
     if (tokenIsValid) {
-      setSentRequest(true)
+      setSentRequest(true);
     }
-    setOpenTokenPopUp(false)
-  }
+    setOpenTokenPopUp(false);
+  };
 
   const onPhoneChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPhoneNumber(event.target.value)
+    setPhoneNumber(event.target.value);
 
   return (
     <PageContainer>
@@ -121,5 +121,5 @@ export const EnterPhoneForCard: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

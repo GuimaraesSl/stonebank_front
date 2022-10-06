@@ -1,69 +1,69 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Box, Grid, Typography } from '@material-ui/core'
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { TransferenceRoutes } from '../../constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { PageContainer } from 'components/PageContainer'
-import { useHistory } from 'react-router-dom'
-import { CurrencyFormatter, parseCurrency } from '_translate'
-import { updateTransferenceData } from 'features/transference/redux/actions'
-import { TransferType } from 'features/transference/redux/models/enum'
-import { useValue } from 'hooks/useValue'
-import { maskMoney } from '_utils/masks/money'
-import { TextField } from 'components/TextField'
-import { Alert } from 'components/Alert'
-import { ErrorMessage } from 'components/ErrorMessage'
+import { Box, Grid, Typography } from "@material-ui/core";
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { TransferenceRoutes } from "../../constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { PageContainer } from "components/PageContainer";
+import { useHistory } from "react-router-dom";
+import { CurrencyFormatter, parseCurrency } from "_translate";
+import { updateTransferenceData } from "features/transference/redux/actions";
+import { TransferType } from "features/transference/redux/models/enum";
+import { useValue } from "hooks/useValue";
+import { maskMoney } from "_utils/masks/money";
+import { TextField } from "components/TextField";
+import { Alert } from "components/Alert";
+import { ErrorMessage } from "components/ErrorMessage";
 
 export const TransferValue: React.FC = () => {
-  const [isValidValue, setIsValidValue] = React.useState(false)
+  const [isValidValue, setIsValidValue] = React.useState(false);
   const { balance, transferType, name } = useSelector((store: StoreState) => ({
     balance: store.account.dashboard!.balance,
     transferType: store.transference.transference?.transferType,
     name: store.transference.transference?.toName,
-  }))
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const [valueInput, setValueInput] = useValue(maskMoney)
+  }));
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [valueInput, setValueInput] = useValue(maskMoney);
   const [balanceIsInvalid, setBalanceIsInvalid] = React.useState<
     boolean | undefined
-  >()
+  >();
 
   React.useEffect(() => {
     const convertedValue = parseCurrency(
       isNaN(parseCurrency(valueInput))
         ? CurrencyFormatter.format(0)
-        : valueInput,
-    )
-    setIsValidValue(convertedValue > 0 && convertedValue <= balance)
-    setBalanceIsInvalid(convertedValue > balance)
-  }, [valueInput])
+        : valueInput
+    );
+    setIsValidValue(convertedValue > 0 && convertedValue <= balance);
+    setBalanceIsInvalid(convertedValue > balance);
+  }, [valueInput]);
 
   const onValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValueInput(event.target.value)
-  }
+    setValueInput(event.target.value);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransferenceData())
-    history.go(transferType === TransferType.InternalTransfer ? -4 : -8)
-  }
+    dispatch(updateTransferenceData());
+    history.go(transferType === TransferType.InternalTransfer ? -4 : -8);
+  };
 
   const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-    if (!isValidValue) return
+    event.preventDefault();
+    if (!isValidValue) return;
 
-    history.push(TransferenceRoutes.schedule)
+    history.push(TransferenceRoutes.schedule);
     dispatch(
-      updateTransferenceData({ transferValue: parseCurrency(valueInput) }),
-    )
-  }
+      updateTransferenceData({ transferValue: parseCurrency(valueInput) })
+    );
+  };
 
   return (
     <PageContainer>
@@ -98,11 +98,7 @@ export const TransferValue: React.FC = () => {
                 <strong>Seu saldo {CurrencyFormatter.format(balance)}</strong>
               </Typography>
             </Grid>
-            <Grid
-              item
-              component="form"
-              onSubmit={onSubmit}
-            >
+            <Grid item component="form" onSubmit={onSubmit}>
               <TextField
                 label="Valor"
                 placeholder="R$ 0,00"
@@ -118,7 +114,7 @@ export const TransferValue: React.FC = () => {
             </Grid>
             <Box>
               {balanceIsInvalid && (
-                <ErrorMessage message={'Saldo insuficiente'} />
+                <ErrorMessage message={"Saldo insuficiente"} />
               )}
             </Box>
           </Grid>
@@ -139,5 +135,5 @@ export const TransferValue: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

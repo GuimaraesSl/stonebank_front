@@ -1,1 +1,1 @@
-export { InsertIdCard } from './InsertIdCard'
+export { InsertIdCard } from "./InsertIdCard";

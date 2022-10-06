@@ -1,26 +1,26 @@
-import React from 'react'
-import { ConfigContext } from '_config'
-import { CurrencyFormatter, DateFormatter } from '_translate'
-import { useStyles } from './DetailTransferDescription.style'
-import { TransactionDetail } from 'components/TransactionDetail'
-import { TransactionDetailName } from 'components/TransactionDetailName'
-import { TransactionDetailValue } from 'components/TransactionDetailValue'
-import { Typography } from '@material-ui/core'
+import React from "react";
+import { ConfigContext } from "_config";
+import { CurrencyFormatter, DateFormatter } from "_translate";
+import { useStyles } from "./DetailTransferDescription.style";
+import { TransactionDetail } from "components/TransactionDetail";
+import { TransactionDetailName } from "components/TransactionDetailName";
+import { TransactionDetailValue } from "components/TransactionDetailValue";
+import { Typography } from "@material-ui/core";
 
 interface DetailTransferDescriptionProps {
-  value: number
-  accountName: string
-  date?: Date
-  description?: string
-  tags?: React.ReactNode
+  value: number;
+  accountName: string;
+  date?: Date;
+  description?: string;
+  tags?: React.ReactNode;
 }
 
 export const DetailTransferDescription: React.FC<
   DetailTransferDescriptionProps
 > = ({ value, accountName, date, description }) => {
-  const { company } = React.useContext(ConfigContext)
+  const { company } = React.useContext(ConfigContext);
 
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <React.Fragment data-test-id="detail-transfer-content">
@@ -49,5 +49,5 @@ export const DetailTransferDescription: React.FC<
         </TransactionDetailValue>
       </TransactionDetail>
     </React.Fragment>
-  )
-}
+  );
+};

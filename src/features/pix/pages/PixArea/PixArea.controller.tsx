@@ -1,9 +1,9 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { PixAreaView } from './PixArea.view'
-import { PixRoutes } from 'features/pix/constants/routes'
-import { AccountRoutes } from 'features/account/constants/routes'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { PixAreaView } from "./PixArea.view";
+import { PixRoutes } from "features/pix/constants/routes";
+import { AccountRoutes } from "features/account/constants/routes";
 import {
   closeAlert,
   createStaticPixQrCodeAction,
@@ -13,15 +13,15 @@ import {
   selectPixKey,
   updatePixTransfer,
   updateState,
-} from 'features/pix/redux/actions'
-import { StoreState } from 'redux/state'
-import { PixTransactionPurpose } from 'features/pix/redux/models/pixTransactionPurposeTest'
-import { PixKeyStatus } from 'features/pix/redux/models/pixKeyStatus'
-import { Favored } from 'features/pix/redux/models/favored'
+} from "features/pix/redux/actions";
+import { StoreState } from "redux/state";
+import { PixTransactionPurpose } from "features/pix/redux/models/pixTransactionPurposeTest";
+import { PixKeyStatus } from "features/pix/redux/models/pixKeyStatus";
+import { Favored } from "features/pix/redux/models/favored";
 
 export const PixArea: React.FC = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const {
     pixKey,
@@ -31,29 +31,29 @@ export const PixArea: React.FC = () => {
     favored,
     loading,
     errorMessage,
-  } = useSelector((state: StoreState) => state.pix)
+  } = useSelector((state: StoreState) => state.pix);
   const [sentFindPixKeyListRequest, setFindPixKeyListRequest] =
-    React.useState(false)
+    React.useState(false);
   const [sentCreateStaticPixQrCode, setSentCreateStaticPixQrCode] =
-    React.useState(false)
+    React.useState(false);
 
   React.useEffect(() => {
-    dispatch(updateState())
-  }, [])
+    dispatch(updateState());
+  }, []);
 
   React.useEffect(() => {
     if (pixKeyList && sentFindPixKeyListRequest)
-      history.push(PixRoutes.pixKeyList)
-  }, [pixKeyList])
+      history.push(PixRoutes.pixKeyList);
+  }, [pixKeyList]);
 
   React.useEffect(() => {
     if (pixKeyList && sentCreateStaticPixQrCode)
       dispatch(
         selectPixKey(
-          pixKeyList.find(x => x.status === PixKeyStatus.Registered),
-        ),
-      )
-  }, [pixKeyList])
+          pixKeyList.find((x) => x.status === PixKeyStatus.Registered)
+        )
+      );
+  }, [pixKeyList]);
 
   React.useEffect(() => {
     if (pixKeyList && pixKey)
@@ -64,59 +64,59 @@ export const PixArea: React.FC = () => {
             pixKey.pixKeyValue,
             pixKey.pixKeyType,
             undefined,
-            PixTransactionPurpose.PurchaseOrTransfer,
-          ),
-        )
-  }, [pixKey])
+            PixTransactionPurpose.PurchaseOrTransfer
+          )
+        );
+  }, [pixKey]);
 
   React.useEffect(() => {
     if (createStaticPixQrCode) {
-      dispatch(findPixQrCode(createStaticPixQrCode))
+      dispatch(findPixQrCode(createStaticPixQrCode));
     }
-  }, [createStaticPixQrCode])
+  }, [createStaticPixQrCode]);
 
   React.useEffect(() => {
     if (staticPixQrCode && sentCreateStaticPixQrCode)
-      history.push(PixRoutes.receivePixTransferQrCode)
-  }, [staticPixQrCode])
+      history.push(PixRoutes.receivePixTransferQrCode);
+  }, [staticPixQrCode]);
 
   React.useEffect(() => {
-    dispatch(findFavoredListByAccountIdAndOperationType())
-  }, [])
+    dispatch(findFavoredListByAccountIdAndOperationType());
+  }, []);
 
   const onCloseAlert = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   const onCancelButton = () => {
-    history.push(AccountRoutes.home)
-  }
+    history.push(AccountRoutes.home);
+  };
 
   const onBackToHome = () => {
-    history.push(AccountRoutes.home)
-  }
+    history.push(AccountRoutes.home);
+  };
 
   const onTransferWithKeyClick = () => {
-    history.push(PixRoutes.pixTransferHome)
-  }
+    history.push(PixRoutes.pixTransferHome);
+  };
 
   const onCopyPasteTransferClick = () => {
-    history.push(PixRoutes.pixTransferHome)
-  }
+    history.push(PixRoutes.pixTransferHome);
+  };
 
   const onQrCodeTransferClick = () => {
-    history.push(PixRoutes.qrCodePixTransferScanner)
-  }
+    history.push(PixRoutes.qrCodePixTransferScanner);
+  };
 
   const onPixKeyListClick = () => {
-    dispatch(findPixKeyList())
-    setFindPixKeyListRequest(true)
-  }
+    dispatch(findPixKeyList());
+    setFindPixKeyListRequest(true);
+  };
 
   const onReceivePixQRCodeClick = () => {
-    dispatch(findPixKeyList())
-    setSentCreateStaticPixQrCode(true)
-  }
+    dispatch(findPixKeyList());
+    setSentCreateStaticPixQrCode(true);
+  };
 
   const onSelectFavored = (favored?: Favored) => {
     dispatch(
@@ -128,10 +128,10 @@ export const PixArea: React.FC = () => {
         toBankAccount: favored?.bankAccount,
         toBankAccountDigit: favored?.bankAccountDigit,
         toName: favored?.name,
-      }),
-    )
-    history.push(PixRoutes.bankPixTransferValue)
-  }
+      })
+    );
+    history.push(PixRoutes.bankPixTransferValue);
+  };
 
   return (
     <PixAreaView
@@ -150,5 +150,5 @@ export const PixArea: React.FC = () => {
       onCancelButton={onCancelButton}
       onBackToHome={onBackToHome}
     />
-  )
-}
+  );
+};

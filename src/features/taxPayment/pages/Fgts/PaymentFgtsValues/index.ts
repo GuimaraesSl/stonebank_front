@@ -1,1 +1,1 @@
-export { PaymentFgtsValues } from './PaymentFgtsValues'
+export { PaymentFgtsValues } from "./PaymentFgtsValues";

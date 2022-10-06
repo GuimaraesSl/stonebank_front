@@ -1,3 +1,3 @@
 export interface CreateInternalTransferResponse {
-  message: string
+  message: string;
 }

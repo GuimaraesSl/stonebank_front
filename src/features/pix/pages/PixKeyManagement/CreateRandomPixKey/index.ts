@@ -1,1 +1,1 @@
-export { CreateRandomPixKey } from './CreateRandomPixKey.controller'
+export { CreateRandomPixKey } from "./CreateRandomPixKey.controller";

@@ -1,93 +1,93 @@
-import React, { useState, useEffect } from 'react'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { InputNumber } from 'features/topUp/components/InputNumber'
-import { nextLabel } from 'constants/buttons/labels'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
-import { Button } from 'components/Button'
-import { useHistory } from 'react-router-dom'
-import { TopUpRoutes } from 'features/topUp/constants/routes'
-import { Box } from '@material-ui/core'
-import { useStyle } from './TopUpNumber.style'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { SuccessTopUpState } from 'features/topUp/redux/state'
+import React, { useState, useEffect } from "react";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { InputNumber } from "features/topUp/components/InputNumber";
+import { nextLabel } from "constants/buttons/labels";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import { Button } from "components/Button";
+import { useHistory } from "react-router-dom";
+import { TopUpRoutes } from "features/topUp/constants/routes";
+import { Box } from "@material-ui/core";
+import { useStyle } from "./TopUpNumber.style";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { SuccessTopUpState } from "features/topUp/redux/state";
 import {
   closeAlert,
   getTopUpProductListByPhoneNumber,
   updateTopUpData,
-} from 'features/topUp/redux/actions'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { PageContainer } from 'components/PageContainer'
-import { ErrorMessage } from 'components/ErrorMessage'
+} from "features/topUp/redux/actions";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { PageContainer } from "components/PageContainer";
+import { ErrorMessage } from "components/ErrorMessage";
 
 export const TopUpNumber: React.FC = () => {
   const numberPhone = useSelector(
-    (state: StoreState) => state.topUp.topUp?.phoneNumber,
-  )
+    (state: StoreState) => state.topUp.topUp?.phoneNumber
+  );
 
-  const topUp = useSelector((state: StoreState) => state.topUp)
-  const [submitted, setSubmitted] = React.useState(false)
+  const topUp = useSelector((state: StoreState) => state.topUp);
+  const [submitted, setSubmitted] = React.useState(false);
   const onBack = () => {
-    history.push(TopUpRoutes.topUp)
-  }
-  const dispatch = useDispatch()
-  const style = useStyle()
-  const history = useHistory()
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [confirmPhoneNumber, setConfirmPhoneNumber] = useState('')
-  const [isValid, setIsValid] = useState(false)
-  const [favoriteInput, setFavoriteInput] = React.useState(false)
-  const [displayState, setDisplayState] = React.useState('none')
-  const isValueNumber = numberPhone
-  const { loading, errorMessage } = topUp
+    history.push(TopUpRoutes.topUp);
+  };
+  const dispatch = useDispatch();
+  const style = useStyle();
+  const history = useHistory();
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [confirmPhoneNumber, setConfirmPhoneNumber] = useState("");
+  const [isValid, setIsValid] = useState(false);
+  const [favoriteInput, setFavoriteInput] = React.useState(false);
+  const [displayState, setDisplayState] = React.useState("none");
+  const isValueNumber = numberPhone;
+  const { loading, errorMessage } = topUp;
 
   React.useEffect(() => {
-    dispatch(updateTopUpData())
-  }, [])
+    dispatch(updateTopUpData());
+  }, []);
 
   React.useEffect(() => {
     if (submitted && topUp instanceof SuccessTopUpState) {
-      history.push(TopUpRoutes.checkDataTopUp)
+      history.push(TopUpRoutes.checkDataTopUp);
 
       dispatch(
         updateTopUpData({
           phoneNumber: phoneNumber,
-        }),
-      )
+        })
+      );
     }
-  }, [submitted, dispatch, history, topUp])
+  }, [submitted, dispatch, history, topUp]);
 
   React.useEffect(() => {
     phoneNumber.length === 16 &&
     confirmPhoneNumber.length === 16 &&
     phoneNumber === confirmPhoneNumber
       ? setIsValid(true)
-      : setIsValid(false)
-  }, [phoneNumber, confirmPhoneNumber])
+      : setIsValid(false);
+  }, [phoneNumber, confirmPhoneNumber]);
 
-  const number = !phoneNumber ? isValueNumber : phoneNumber
+  const number = !phoneNumber ? isValueNumber : phoneNumber;
 
   const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
     if (number === confirmPhoneNumber) {
-      dispatch(getTopUpProductListByPhoneNumber(phoneNumber))
-      setSubmitted(true)
+      dispatch(getTopUpProductListByPhoneNumber(phoneNumber));
+      setSubmitted(true);
     }
-  }
+  };
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   const onFavoriteSwitch = () => {
-    setFavoriteInput(!favoriteInput)
-    !favoriteInput ? setDisplayState('block') : setDisplayState('none')
-  }
+    setFavoriteInput(!favoriteInput);
+    !favoriteInput ? setDisplayState("block") : setDisplayState("none");
+  };
 
   return (
     <PageContainer>
@@ -120,7 +120,7 @@ export const TopUpNumber: React.FC = () => {
 
             <Box className={style.validator}>
               {number !== confirmPhoneNumber && (
-                <ErrorMessage message={'Os números não correspondem!'} />
+                <ErrorMessage message={"Os números não correspondem!"} />
               )}
             </Box>
 
@@ -166,11 +166,11 @@ export const TopUpNumber: React.FC = () => {
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

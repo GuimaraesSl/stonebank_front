@@ -1,1 +1,1 @@
-export { ScanBarcode } from './ScanBarcode'
+export { ScanBarcode } from "./ScanBarcode";

@@ -1,14 +1,14 @@
-import React from 'react'
-import { Box, Card, Typography } from '@material-ui/core'
-import { useStyles } from './PixOptionsButtons.style'
+import React from "react";
+import { Box, Card, Typography } from "@material-ui/core";
+import { useStyles } from "./PixOptionsButtons.style";
 
 interface PixOptionsButtonsProps {
-  id?: string
-  title: string
-  subtitle?: React.ReactNode | string
-  startIcon?: React.ReactNode
-  className?: string
-  onClick?: VoidFunction
+  id?: string;
+  title: string;
+  subtitle?: React.ReactNode | string;
+  startIcon?: React.ReactNode;
+  className?: string;
+  onClick?: VoidFunction;
 }
 
 export const PixOptionsButtons: React.FC<PixOptionsButtonsProps> = ({
@@ -19,11 +19,11 @@ export const PixOptionsButtons: React.FC<PixOptionsButtonsProps> = ({
   className,
   onClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const _className = (() => {
-    return className ? `${styles.card} ${className}` : styles.card
-  })()
+    return className ? `${styles.card} ${className}` : styles.card;
+  })();
 
   return (
     <Card id={id} className={_className} elevation={0} onClick={onClick}>
@@ -34,11 +34,11 @@ export const PixOptionsButtons: React.FC<PixOptionsButtonsProps> = ({
           alignItems="center"
           justifyContent="center"
         >
-          {typeof startIcon === 'string' ? (
+          {typeof startIcon === "string" ? (
             <img
               id="start-icon"
               src={startIcon}
-              alt={title + ' icon'}
+              alt={title + " icon"}
               className={styles.icon}
             />
           ) : (
@@ -55,5 +55,5 @@ export const PixOptionsButtons: React.FC<PixOptionsButtonsProps> = ({
         </Typography>
       </Box>
     </Card>
-  )
-}
+  );
+};

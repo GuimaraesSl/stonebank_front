@@ -1,86 +1,86 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
-import { Box, Typography } from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { Button } from 'components/Button'
-import { nextLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { CardPhone } from 'features/topUp/components/CardPhone'
-import { InputNumber } from 'features/topUp/components/InputNumber'
-import { useStyles } from './TopUp.style'
-import { TopUpRoutes } from 'features/topUp/constants/routes'
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import { Box, Typography } from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { PageContainer } from "components/PageContainer";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { Button } from "components/Button";
+import { nextLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { CardPhone } from "features/topUp/components/CardPhone";
+import { InputNumber } from "features/topUp/components/InputNumber";
+import { useStyles } from "./TopUp.style";
+import { TopUpRoutes } from "features/topUp/constants/routes";
 import {
   closeAlert,
   getTopUpPeriodic,
   getTopUpProductListByPhoneNumber,
   updateTopUpData,
-} from 'features/topUp/redux/actions'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { maskPhone } from '_utils/masks/phone'
-import { SuccessTopUpState } from 'features/topUp/redux/state'
-import { Alert } from 'components/Alert'
-import { Icon } from 'components/Icon'
-import { Loader } from 'components/Loader'
+} from "features/topUp/redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { maskPhone } from "_utils/masks/phone";
+import { SuccessTopUpState } from "features/topUp/redux/state";
+import { Alert } from "components/Alert";
+import { Icon } from "components/Icon";
+import { Loader } from "components/Loader";
 export const TopUp: React.FC = () => {
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const history = useHistory()
-  const styles = useStyles()
-  const dispatch = useDispatch()
-  const userState = useSelector((store: StoreState) => store.auth)
-  const { user } = userState
-  const topUpState = useSelector((state: StoreState) => state.topUp)
-  const { loading, errorMessage } = topUpState
-  const [submitted, setSubmitted] = React.useState(false)
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const history = useHistory();
+  const styles = useStyles();
+  const dispatch = useDispatch();
+  const userState = useSelector((store: StoreState) => store.auth);
+  const { user } = userState;
+  const topUpState = useSelector((state: StoreState) => state.topUp);
+  const { loading, errorMessage } = topUpState;
+  const [submitted, setSubmitted] = React.useState(false);
 
   React.useEffect(() => {
-    dispatch(getTopUpPeriodic())
-  }, [])
+    dispatch(getTopUpPeriodic());
+  }, []);
 
   React.useEffect(() => {
     if (submitted && topUpState instanceof SuccessTopUpState) {
       dispatch(
         updateTopUpData({
           phoneNumber: maskPhone(user?.phoneNumber!),
-        }),
-      )
-      history.push(TopUpRoutes.checkDataTopUp)
+        })
+      );
+      history.push(TopUpRoutes.checkDataTopUp);
     }
-  }, [submitted, history, topUpState])
+  }, [submitted, history, topUpState]);
 
   const onCardPhoneClick = () => {
-    dispatch(getTopUpProductListByPhoneNumber(maskPhone(user?.phoneNumber!)))
+    dispatch(getTopUpProductListByPhoneNumber(maskPhone(user?.phoneNumber!)));
     if (topUpState instanceof SuccessTopUpState) {
-      setSubmitted(true)
+      setSubmitted(true);
     }
-  }
+  };
 
   const onClickPeriodic = () => {
     if (topUpState instanceof SuccessTopUpState)
-      history.push(TopUpRoutes.cancelPeriodicTopUp)
-  }
+      history.push(TopUpRoutes.cancelPeriodicTopUp);
+  };
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   const onNextButtonClick = () => {
-    history.push(TopUpRoutes.topUpNumber)
+    history.push(TopUpRoutes.topUpNumber);
     dispatch(
       updateTopUpData({
         phoneNumber: phoneNumber,
-      }),
-    )
-  }
+      })
+    );
+  };
 
   const onBack = () => {
-    history.push(AccountRoutes.home)
-  }
+    history.push(AccountRoutes.home);
+  };
 
   return (
     <PageContainer>
@@ -98,13 +98,13 @@ export const TopUp: React.FC = () => {
           <Box className={styles.Main}>
             <Box className={styles.ContainerCard}>
               <CardPhone
-                title={'Meu celular'}
-                description={'Cadastrado no seu perfil'}
-                phoneNumber={maskPhone(user?.phoneNumber! ?? '')}
+                title={"Meu celular"}
+                description={"Cadastrado no seu perfil"}
+                phoneNumber={maskPhone(user?.phoneNumber! ?? "")}
                 data-test-id="phone-number"
                 icon={
                   <Icon
-                    name={'phone'}
+                    name={"phone"}
                     className={styles.CardPhoneIconDimension}
                   />
                 }
@@ -117,7 +117,7 @@ export const TopUp: React.FC = () => {
                 Quer recarregar outro celular?
               </Typography>
               <InputNumber
-                description={'Celular com DDD'}
+                description={"Celular com DDD"}
                 setValuePhone={setPhoneNumber}
               ></InputNumber>
               {/* <Box className={styles.FloatingIcons}>
@@ -178,11 +178,11 @@ export const TopUp: React.FC = () => {
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

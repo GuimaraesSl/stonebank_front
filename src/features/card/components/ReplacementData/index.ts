@@ -1,1 +1,1 @@
-export { ReplacementData } from './ReplacementData'
+export { ReplacementData } from "./ReplacementData";

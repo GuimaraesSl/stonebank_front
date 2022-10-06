@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Box,
   List,
@@ -7,17 +7,17 @@ import {
   ListItemSecondaryAction,
   IconButton,
   Typography,
-} from '@material-ui/core'
-import { useStyles } from './SelectCardButton.style'
-import { Card } from 'features/card/redux/models/card'
-import { Icon } from 'components/Icon'
+} from "@material-ui/core";
+import { useStyles } from "./SelectCardButton.style";
+import { Card } from "features/card/redux/models/card";
+import { Icon } from "components/Icon";
 
 interface SelectButtonCardsProps {
-  card?: Card
-  flagCard?: string | React.ReactNode
-  blocked?: boolean
-  flagtype: string
-  onClick?: (card: Card) => void
+  card?: Card;
+  flagCard?: string | React.ReactNode;
+  blocked?: boolean;
+  flagtype: string;
+  onClick?: (card: Card) => void;
 }
 
 export const SelectCardButton: React.FC<SelectButtonCardsProps> = ({
@@ -27,12 +27,12 @@ export const SelectCardButton: React.FC<SelectButtonCardsProps> = ({
   flagtype,
   onClick,
 }) => {
-  const styles = useStyles({ blocked, flagtype })
+  const styles = useStyles({ blocked, flagtype });
   return (
     <List className={styles.list}>
       <Box
         onClick={() => {
-          if (onClick) onClick(card!)
+          if (onClick) onClick(card!);
         }}
       >
         <ListItem
@@ -45,7 +45,7 @@ export const SelectCardButton: React.FC<SelectButtonCardsProps> = ({
             primary={
               <Box className={styles.containerSpan}>
                 <Box className={styles.blockStyle}>
-                  <Icon name={'excludeIconCard'} className={styles.imgBlock} />
+                  <Icon name={"excludeIconCard"} className={styles.imgBlock} />
                 </Box>
                 <Typography className={styles.spanText}>
                   Cartão de crédito pré-pago
@@ -68,7 +68,7 @@ export const SelectCardButton: React.FC<SelectButtonCardsProps> = ({
               data-test-id="content-flag-button"
             >
               <Box className={styles.containerFlag}>
-                {typeof flagCard === 'string' ? (
+                {typeof flagCard === "string" ? (
                   <img
                     src={flagCard}
                     className={styles.flagCard}
@@ -84,5 +84,5 @@ export const SelectCardButton: React.FC<SelectButtonCardsProps> = ({
         </ListItem>
       </Box>
     </List>
-  )
-}
+  );
+};

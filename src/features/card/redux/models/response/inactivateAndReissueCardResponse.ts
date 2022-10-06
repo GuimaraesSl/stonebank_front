@@ -1,3 +1,3 @@
 export interface InactivateAndReissueCardResponse {
-  identifierCard: string
+  identifierCard: string;
 }

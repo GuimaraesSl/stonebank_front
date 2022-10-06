@@ -1,3 +1,3 @@
-import { ValidateCard } from '../validateCard'
+import { ValidateCard } from "../validateCard";
 
 export interface ValidateCardRequest extends ValidateCard {}

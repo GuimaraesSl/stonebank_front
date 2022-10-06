@@ -1,154 +1,155 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { ProtectedRoute } from 'components/ProtectedRoute'
-import { SignIn } from 'features/authentication/pages/SignIn'
-import { Welcome } from 'features/onboarding/pages/Welcome'
-import { Terms } from 'features/onboarding/pages/Terms'
-import { ActivateAccount } from 'features/onboarding/pages/ActivateAccount'
-import { AccountActivationCompleted } from 'features/onboarding/pages/AccountActivationCompleted'
-import { AccountActivationCompletedForCard } from 'features/onboarding/pages/AccountActivationCompletedForCard'
-import { CreatePassword } from 'features/onboarding/pages/ActivateBySMS/CreatePasswordForSMS'
-import { ConfirmPassword } from 'features/onboarding/pages/ActivateBySMS/ConfirmPasswordForSMS'
-import { ActivationToken } from 'features/onboarding/pages/ActivateBySMS/ActivationTokenForSMS'
-import { EnterTaxPayer } from 'features/onboarding/pages/ActivateBySMS/EnterTaxPayerForSMS'
-import { EnterTaxPayerForCard } from 'features/onboarding/pages/ActivateByCard/EnterTaxPayerForCard'
-import { EnterIdentifierForCard } from 'features/onboarding/pages/ActivateByCard/EnterIdentifierForCard'
-import { EnterDigitsForCard } from 'features/onboarding/pages/ActivateByCard/EnterDigitsForCard'
-import { EnterPhoneForCard } from 'features/onboarding/pages/ActivateByCard/EnterPhoneForCard'
-import { CreatePasswordForCard } from 'features/onboarding/pages/ActivateByCard/CreatePasswordForCard'
-import { ConfirmPasswordForCard } from 'features/onboarding/pages/ActivateByCard/ConfirmPasswordForCard'
-import { InvalidDataForCard } from 'features/onboarding/pages/ActivateByCard/InvalidDataForCard'
-import { EnterBirthDateForCard } from 'features/onboarding/pages/ActivateByCard/EnterBirthDateForCard'
-import { AccountEmail } from 'features/onboarding/pages/AccountEmail'
-import { BankStatement } from 'features/account/pages/BankStatement'
-import { Home } from 'features/account/pages/Home'
-import { AllAccounts } from 'features/account/pages/AllAccounts'
-import { SignOut } from 'features/authentication/pages/SignOut'
-import { AccountSettings } from 'features/account/pages/AccountSettings'
-import { BankStatementFilter } from 'features/account/pages/BankStatementFilter'
-import { Details } from 'features/account/pages/Details'
-import { Receipt } from 'features/account/pages/Receipt'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { AuthenticationRoutes } from 'features/authentication/constants/routes'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { AttachDocuments } from 'features/transference/pages/AttachDocuments'
-import { FavoredAccountSelection } from 'features/transference/pages/FavoredAccountSelection'
-import { ScheduleTransfer } from 'features/transference/pages/ScheduleTransfer'
-import { Summary } from 'features/transference/pages/Summary/Summary'
-import { TransferDescription } from 'features/transference/pages/TransferDescription'
-import { Transference } from 'features/transference/pages/Transference/Transference'
-import { TransferReceipt } from 'features/transference/pages/TransferReceipt/'
-import { TransferValue } from 'features/transference/pages/TransferValue'
-import { TransferenceRoutes } from 'features/transference/constants/routes'
-import { FavoredIdentification } from 'features/transference/pages/FavoredIdentification'
-import { UserRoutes } from 'features/user/constants/routes'
-import { UserInformation } from 'features/user/pages/UserInformation'
-import { ChangeEmail } from 'features/user/pages/ChangeEmail'
-import { ChangePhone } from 'features/user/pages/ChangePhone'
-import { ChangeNickname } from 'features/user/pages/ChangeNickname'
-import { ChangePassword } from 'features/user/pages/ChangePassword'
-import { ChooseNewPassword } from 'features/user/pages/ChooseNewPassword'
-import { ConfirmNewPasswordUserInformation } from 'features/user/pages/ConfirmNewPassword'
-import { CurrentAddress } from 'features/user/pages/CurrentAddress'
-import { ChangeAddress } from 'features/user/pages/ChangeAddress'
-import { ChangeConclude } from 'features/user/pages/ChangeConclude'
-import { FavoredName } from 'features/transference/pages/FavoredName'
-import { SelectBank } from 'features/transference/pages/SelectBank'
-import { SelectAccountType } from 'features/transference/pages/SelectAccountType'
-import { BankBranch } from 'features/transference/pages/BankBranch'
-import { AccountNumber } from 'features/transference/pages/AccountNumber'
-import { EditAccount } from 'features/account/pages/EditAccount'
-import { QrCodeTransferRoutes } from 'features/qrCodeTransfer/constants/routes'
-import { QrCodeTransfer } from 'features/qrCodeTransfer/pages/QrCodeTransfer/QrCodeTransfer'
-import { GenerateQrCodeTransfer } from 'features/qrCodeTransfer/pages/GenerateQrCodeTransfer/GenerateQrCodeTransfer'
-import { ShowQrCodeTransfer } from 'features/qrCodeTransfer/pages/ShowQrCodeTransfer'
-import { ReadQrCodeTransfer } from 'features/qrCodeTransfer/pages/ReadQrCodeTransfer'
-import { QrCodeTransferSendingDetails } from 'features/qrCodeTransfer/pages/QrCodeTransferSendingDetails'
-import { ValidatePhone } from 'features/onboarding/pages/ActivateBySMS/ValidatePhoneForSMS/ValidatePhoneForSMS'
-import { BirthDate } from 'features/onboarding/pages/ActivateBySMS/BirthDateForSMS'
-import { CreateName } from 'features/onboarding/pages/ActivateBySMS/CreateNameForSMS'
-import { CardRoutes } from 'features/card/constants/routes'
-import { CardManagement } from 'features/card/pages/CardManagement'
-import { CardOption } from 'features/card/pages/CardOption'
-import { EnterCurrentPassword } from 'features/card/pages/ChangePassword/EnterCurrentPassword'
-import { EnterNewPassword } from 'features/card/pages/ChangePassword/EnterNewPassword'
-import { ConfirmNewPassword } from 'features/card/pages/ChangePassword/ConfirmNewPassword'
-import { CancellationReplacementCard } from 'features/card/pages/CancellationReplacementCard'
-import { CancelReason } from 'features/card/pages/Cancellation/CancelReason'
-import { CancelCardAlert } from 'features/card/pages/Cancellation/CancelCardAlert'
-import { BlockingReason } from 'features/card/pages/RequestDuplicate/BlockingReason'
-import { BlockCardAlert } from 'features/card/pages/RequestDuplicate/BlockCardAlert'
-import { AddressConfirmation } from 'features/card/pages/RequestDuplicate/AddressConfirmation'
-import { ReplacementDetails } from 'features/card/pages/RequestDuplicate/ReplacementDetails'
-import { UpdateAddress } from 'features/card/pages/RequestDuplicate/UpdateAddress'
-import { AssociateNewCard } from 'features/card/pages/AssociateNewCard/AssociateNewCard'
-import { AssociateFourDigits } from 'features/card/pages/AssociateNewCard/AssociateFourDigits'
-import { AssociateNewCardCheckData } from 'features/card/pages/AssociateNewCard/AssociateNewCardCheck'
-import { LandingPage } from 'features/onboarding/pages/LandingPage'
-import { TaxPaymentRoutes } from 'features/taxPayment/constants/routes'
-import { PaymentDarj } from 'features/taxpayment/pages/Darj/PaymentDarj'
-import { PaymentDarjType } from 'features/taxPayment/pages/Darj/PaymentDarjType'
-import { PaymentDarjValues } from 'features/taxPayment/pages/Darj/PaymentDarjValues'
-import { PaymentDarjDueDate } from 'features/taxPayment/pages/Darj/PaymentDarjDueDate'
-import { PaymentDarjDescription } from 'features/taxpayment/pages/Darj/PaymentDarjDescription'
-import { PaymentDarjSummary } from 'features/taxpayment/pages/Darj/PaymentDarjSummary'
-import { PaymentDarjCodeNumber } from 'features/taxpayment/pages/Darj/PaymentDarjCodeNumber'
-import { PaymentGare } from 'features/taxPayment/pages/Gare/PaymentGare'
-import { PaymentGareDateType } from 'features/taxPayment/pages/Gare/PaymentGareDateType'
-import { PaymentGareValues } from 'features/taxPayment/pages/Gare/PaymentGareValues/PaymentGareValues'
-import { PaymentGareDueDate } from 'features/taxPayment/pages/Gare/PaymentGareDueDate'
-import { PaymentGareDescription } from 'features/taxPayment/pages/Gare/PaymentGareDescription'
-import { PaymentGareSummary } from 'features/taxPayment/pages/Gare/PaymentGareSummary'
-import { PaymentGareCodeNumber } from 'features/taxPayment/pages/Gare/PaymentGareCodeNumber'
-import { PaymentFgts } from 'features/taxPayment/pages/Fgts/PaymentFgts'
-import { PaymentFgtsValues } from 'features/taxPayment/pages/Fgts/PaymentFgtsValues'
-import { PaymentFgtsIdentifier } from 'features/taxPayment/pages/Fgts/PaymentFgtsIdentifier'
-import { PaymentFgtsDate } from 'features/taxPayment/pages/Fgts/PaymentFgtsDate'
-import { PaymentFgtsDescription } from 'features/taxPayment/pages/Fgts/PaymentFgtsDescription'
-import { PaymentFgtsSummary } from 'features/taxPayment/pages/Fgts/PaymentFgtsSummary'
-import { PaymentFgtsBarCode } from 'features/taxPayment/pages/Fgts/PaymentFgtsBarCode'
-import { PaymentFgtsCodeRevenue } from 'features/taxPayment/pages/Fgts/PaymentFgtsCodeRevenue'
-import { TopUpSchedule } from 'features/topUp/pages/TopUpSchedule'
-import { TopUpNumber } from 'features/topUp/pages/TopUpNumber'
-import { Help } from 'features/account/pages/Help'
-import { TopUp } from 'features/topUp/pages/TopUp'
-import { PeriodicRepetition } from 'features/topUp/pages/PeriodicRepetition'
-import { TopUpRoutes } from 'features/topUp/constants/routes'
-import { TopUpValue } from 'features/topUp/pages/TopUpValue'
-import { CheckDataTopUp } from 'features/topUp/pages/CheckDataTopUp'
-import { CompleteTopUp } from 'features/topUp/pages/CompleteTopUp'
-import { ActivateCard } from 'features/card/pages/ActivateCard/ActivateCard'
-import { ActivateCardConclude } from 'features/card/pages/ActivateCard/ActivateCardConclude'
-import { PasswordCard } from 'features/card/pages/ActivateCard/PasswordCard'
-import { ConfirmPasswordCard } from 'features/card/pages/ActivateCard/ConfirmPasswordCard'
-import { ConfirmationActivate } from 'features/card/pages/ActivateCard/ConfirmationActivate'
-import { TaxPaymentHome } from 'features/taxPayment/pages/taxPaymentHome'
-import { SmsTransferRoutes } from 'features/smsTransfer/constants/routes'
-import { SmsTransferNumber } from 'features/smsTransfer/pages/SmsTransferNumber'
-import { SmsTransferValue } from 'features/smsTransfer/pages/SmsTransferValue'
-import { SmsTransferSummary } from 'features/smsTransfer/pages/SmsTransferSummary'
-import { TransferProcess } from 'features/transference/pages/TransferProcess'
-import { SchedulePayments } from 'features/schedulePayments/constants/routes'
-import { ScheduleTransactions } from 'features/schedulePayments/pages/ScheduleTransactions'
-import { FutureTransactions } from 'features/schedulePayments/pages/FutureTransactions'
-import { ScheduleTransactionsList } from 'features/schedulePayments/pages/ScheduleTransactionsList'
-import { SheduleTransactionsFilter } from 'features/schedulePayments/pages/SheduleTransactionsFilter'
-import { ChangePasswordFirstAccess } from 'features/authentication/pages/FirstAccess/ChangePasswordFirstAccess'
-import { ConfirmPasswordFirstAccess } from 'features/authentication/pages/FirstAccess/ConfirmPasswordFirstAccess'
-import { ChangePasswordCompleted } from 'features/authentication/pages/FirstAccess/ChangePasswordCompleted'
-import { RecoverPassword } from 'features/authentication/pages/RecoverPassword/RecoverPassword'
-import { ConfirmRecoverPwd } from 'features/authentication/pages/ConfirmRecoverPwd'
-import { TemporaryPassword } from 'features/authentication/pages/TemporaryPassword'
-import { SmsAccountsExibition } from 'features/smsTransfer/pages/SmsAccountsExibition'
-import { SmsTransferName } from 'features/smsTransfer/pages/SmsTransferName'
-import { AssociateNameUserCard } from 'features/card/pages/AssociateNewCard/AssociateNameUserCard'
-import { AssociateNationalityCard } from 'features/card/pages/AssociateNewCard/AssociateNationalityCard'
-import { AssociateMotherNameCard } from 'features/card/pages/AssociateNewCard/AssociateMotherNameCard'
-import { AssociateBirthDateCard } from 'features/card/pages/AssociateNewCard/AssociateBirthDateCard'
-import { AssociateGenderUserCard } from 'features/card/pages/AssociateNewCard/AssociateGenderUserCard/AssociateGenderUserCard'
-import { AssociateMaritalStatusCard } from 'features/card/pages/AssociateNewCard/AssociateMaritalStatusCard/AssociateMaritalStatusCard'
-import { ConcludeAssociateCard } from 'features/card/pages/AssociateNewCard/ConcludeAssociateCard'
-import { InvalidDataForAssociateCard } from 'features/card/pages/AssociateNewCard/InvalidDataForAssociateCard'
-import { ConclusionFlow } from 'components/ConclusionFlow'
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { ProtectedRoute } from "components/ProtectedRoute";
+import { SignIn } from "features/authentication/pages/SignIn";
+import { Welcome } from "features/onboarding/pages/Welcome";
+import { Terms } from "features/onboarding/pages/Terms";
+import { ActivateAccount } from "features/onboarding/pages/ActivateAccount";
+import { AccountActivationCompleted } from "features/onboarding/pages/AccountActivationCompleted";
+import { AccountActivationCompletedForCard } from "features/onboarding/pages/AccountActivationCompletedForCard";
+import { CreatePassword } from "features/onboarding/pages/ActivateBySMS/CreatePasswordForSMS";
+import { ConfirmPassword } from "features/onboarding/pages/ActivateBySMS/ConfirmPasswordForSMS";
+import { ActivationToken } from "features/onboarding/pages/ActivateBySMS/ActivationTokenForSMS";
+import { EnterTaxPayer } from "features/onboarding/pages/ActivateBySMS/EnterTaxPayerForSMS";
+import { EnterTaxPayerForCard } from "features/onboarding/pages/ActivateByCard/EnterTaxPayerForCard";
+import { EnterIdentifierForCard } from "features/onboarding/pages/ActivateByCard/EnterIdentifierForCard";
+import { EnterDigitsForCard } from "features/onboarding/pages/ActivateByCard/EnterDigitsForCard";
+import { EnterPhoneForCard } from "features/onboarding/pages/ActivateByCard/EnterPhoneForCard";
+import { CreatePasswordForCard } from "features/onboarding/pages/ActivateByCard/CreatePasswordForCard";
+import { ConfirmPasswordForCard } from "features/onboarding/pages/ActivateByCard/ConfirmPasswordForCard";
+import { InvalidDataForCard } from "features/onboarding/pages/ActivateByCard/InvalidDataForCard";
+import { EnterBirthDateForCard } from "features/onboarding/pages/ActivateByCard/EnterBirthDateForCard";
+import { AccountEmail } from "features/onboarding/pages/AccountEmail";
+import { BankStatement } from "features/account/pages/BankStatement";
+import { Home } from "features/account/pages/Home";
+import { StoneBankHome } from "features/account/pages/StoneBankHome";
+import { AllAccounts } from "features/account/pages/AllAccounts";
+import { SignOut } from "features/authentication/pages/SignOut";
+import { AccountSettings } from "features/account/pages/AccountSettings";
+import { BankStatementFilter } from "features/account/pages/BankStatementFilter";
+import { Details } from "features/account/pages/Details";
+import { Receipt } from "features/account/pages/Receipt";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { AuthenticationRoutes } from "features/authentication/constants/routes";
+import { AccountRoutes } from "features/account/constants/routes";
+import { AttachDocuments } from "features/transference/pages/AttachDocuments";
+import { FavoredAccountSelection } from "features/transference/pages/FavoredAccountSelection";
+import { ScheduleTransfer } from "features/transference/pages/ScheduleTransfer";
+import { Summary } from "features/transference/pages/Summary/Summary";
+import { TransferDescription } from "features/transference/pages/TransferDescription";
+import { Transference } from "features/transference/pages/Transference/Transference";
+import { TransferReceipt } from "features/transference/pages/TransferReceipt/";
+import { TransferValue } from "features/transference/pages/TransferValue";
+import { TransferenceRoutes } from "features/transference/constants/routes";
+import { FavoredIdentification } from "features/transference/pages/FavoredIdentification";
+import { UserRoutes } from "features/user/constants/routes";
+import { UserInformation } from "features/user/pages/UserInformation";
+import { ChangeEmail } from "features/user/pages/ChangeEmail";
+import { ChangePhone } from "features/user/pages/ChangePhone";
+import { ChangeNickname } from "features/user/pages/ChangeNickname";
+import { ChangePassword } from "features/user/pages/ChangePassword";
+import { ChooseNewPassword } from "features/user/pages/ChooseNewPassword";
+import { ConfirmNewPasswordUserInformation } from "features/user/pages/ConfirmNewPassword";
+import { CurrentAddress } from "features/user/pages/CurrentAddress";
+import { ChangeAddress } from "features/user/pages/ChangeAddress";
+import { ChangeConclude } from "features/user/pages/ChangeConclude";
+import { FavoredName } from "features/transference/pages/FavoredName";
+import { SelectBank } from "features/transference/pages/SelectBank";
+import { SelectAccountType } from "features/transference/pages/SelectAccountType";
+import { BankBranch } from "features/transference/pages/BankBranch";
+import { AccountNumber } from "features/transference/pages/AccountNumber";
+import { EditAccount } from "features/account/pages/EditAccount";
+import { QrCodeTransferRoutes } from "features/qrCodeTransfer/constants/routes";
+import { QrCodeTransfer } from "features/qrCodeTransfer/pages/QrCodeTransfer/QrCodeTransfer";
+import { GenerateQrCodeTransfer } from "features/qrCodeTransfer/pages/GenerateQrCodeTransfer/GenerateQrCodeTransfer";
+import { ShowQrCodeTransfer } from "features/qrCodeTransfer/pages/ShowQrCodeTransfer";
+import { ReadQrCodeTransfer } from "features/qrCodeTransfer/pages/ReadQrCodeTransfer";
+import { QrCodeTransferSendingDetails } from "features/qrCodeTransfer/pages/QrCodeTransferSendingDetails";
+import { ValidatePhone } from "features/onboarding/pages/ActivateBySMS/ValidatePhoneForSMS/ValidatePhoneForSMS";
+import { BirthDate } from "features/onboarding/pages/ActivateBySMS/BirthDateForSMS";
+import { CreateName } from "features/onboarding/pages/ActivateBySMS/CreateNameForSMS";
+import { CardRoutes } from "features/card/constants/routes";
+import { CardManagement } from "features/card/pages/CardManagement";
+import { CardOption } from "features/card/pages/CardOption";
+import { EnterCurrentPassword } from "features/card/pages/ChangePassword/EnterCurrentPassword";
+import { EnterNewPassword } from "features/card/pages/ChangePassword/EnterNewPassword";
+import { ConfirmNewPassword } from "features/card/pages/ChangePassword/ConfirmNewPassword";
+import { CancellationReplacementCard } from "features/card/pages/CancellationReplacementCard";
+import { CancelReason } from "features/card/pages/Cancellation/CancelReason";
+import { CancelCardAlert } from "features/card/pages/Cancellation/CancelCardAlert";
+import { BlockingReason } from "features/card/pages/RequestDuplicate/BlockingReason";
+import { BlockCardAlert } from "features/card/pages/RequestDuplicate/BlockCardAlert";
+import { AddressConfirmation } from "features/card/pages/RequestDuplicate/AddressConfirmation";
+import { ReplacementDetails } from "features/card/pages/RequestDuplicate/ReplacementDetails";
+import { UpdateAddress } from "features/card/pages/RequestDuplicate/UpdateAddress";
+import { AssociateNewCard } from "features/card/pages/AssociateNewCard/AssociateNewCard";
+import { AssociateFourDigits } from "features/card/pages/AssociateNewCard/AssociateFourDigits";
+import { AssociateNewCardCheckData } from "features/card/pages/AssociateNewCard/AssociateNewCardCheck";
+import { LandingPage } from "features/onboarding/pages/LandingPage";
+import { TaxPaymentRoutes } from "features/taxPayment/constants/routes";
+import { PaymentDarj } from "features/taxpayment/pages/Darj/PaymentDarj";
+import { PaymentDarjType } from "features/taxPayment/pages/Darj/PaymentDarjType";
+import { PaymentDarjValues } from "features/taxPayment/pages/Darj/PaymentDarjValues";
+import { PaymentDarjDueDate } from "features/taxPayment/pages/Darj/PaymentDarjDueDate";
+import { PaymentDarjDescription } from "features/taxpayment/pages/Darj/PaymentDarjDescription";
+import { PaymentDarjSummary } from "features/taxpayment/pages/Darj/PaymentDarjSummary";
+import { PaymentDarjCodeNumber } from "features/taxpayment/pages/Darj/PaymentDarjCodeNumber";
+import { PaymentGare } from "features/taxPayment/pages/Gare/PaymentGare";
+import { PaymentGareDateType } from "features/taxPayment/pages/Gare/PaymentGareDateType";
+import { PaymentGareValues } from "features/taxPayment/pages/Gare/PaymentGareValues/PaymentGareValues";
+import { PaymentGareDueDate } from "features/taxPayment/pages/Gare/PaymentGareDueDate";
+import { PaymentGareDescription } from "features/taxPayment/pages/Gare/PaymentGareDescription";
+import { PaymentGareSummary } from "features/taxPayment/pages/Gare/PaymentGareSummary";
+import { PaymentGareCodeNumber } from "features/taxPayment/pages/Gare/PaymentGareCodeNumber";
+import { PaymentFgts } from "features/taxPayment/pages/Fgts/PaymentFgts";
+import { PaymentFgtsValues } from "features/taxPayment/pages/Fgts/PaymentFgtsValues";
+import { PaymentFgtsIdentifier } from "features/taxPayment/pages/Fgts/PaymentFgtsIdentifier";
+import { PaymentFgtsDate } from "features/taxPayment/pages/Fgts/PaymentFgtsDate";
+import { PaymentFgtsDescription } from "features/taxPayment/pages/Fgts/PaymentFgtsDescription";
+import { PaymentFgtsSummary } from "features/taxPayment/pages/Fgts/PaymentFgtsSummary";
+import { PaymentFgtsBarCode } from "features/taxPayment/pages/Fgts/PaymentFgtsBarCode";
+import { PaymentFgtsCodeRevenue } from "features/taxPayment/pages/Fgts/PaymentFgtsCodeRevenue";
+import { TopUpSchedule } from "features/topUp/pages/TopUpSchedule";
+import { TopUpNumber } from "features/topUp/pages/TopUpNumber";
+import { Help } from "features/account/pages/Help";
+import { TopUp } from "features/topUp/pages/TopUp";
+import { PeriodicRepetition } from "features/topUp/pages/PeriodicRepetition";
+import { TopUpRoutes } from "features/topUp/constants/routes";
+import { TopUpValue } from "features/topUp/pages/TopUpValue";
+import { CheckDataTopUp } from "features/topUp/pages/CheckDataTopUp";
+import { CompleteTopUp } from "features/topUp/pages/CompleteTopUp";
+import { ActivateCard } from "features/card/pages/ActivateCard/ActivateCard";
+import { ActivateCardConclude } from "features/card/pages/ActivateCard/ActivateCardConclude";
+import { PasswordCard } from "features/card/pages/ActivateCard/PasswordCard";
+import { ConfirmPasswordCard } from "features/card/pages/ActivateCard/ConfirmPasswordCard";
+import { ConfirmationActivate } from "features/card/pages/ActivateCard/ConfirmationActivate";
+import { TaxPaymentHome } from "features/taxPayment/pages/taxPaymentHome";
+import { SmsTransferRoutes } from "features/smsTransfer/constants/routes";
+import { SmsTransferNumber } from "features/smsTransfer/pages/SmsTransferNumber";
+import { SmsTransferValue } from "features/smsTransfer/pages/SmsTransferValue";
+import { SmsTransferSummary } from "features/smsTransfer/pages/SmsTransferSummary";
+import { TransferProcess } from "features/transference/pages/TransferProcess";
+import { SchedulePayments } from "features/schedulePayments/constants/routes";
+import { ScheduleTransactions } from "features/schedulePayments/pages/ScheduleTransactions";
+import { FutureTransactions } from "features/schedulePayments/pages/FutureTransactions";
+import { ScheduleTransactionsList } from "features/schedulePayments/pages/ScheduleTransactionsList";
+import { SheduleTransactionsFilter } from "features/schedulePayments/pages/SheduleTransactionsFilter";
+import { ChangePasswordFirstAccess } from "features/authentication/pages/FirstAccess/ChangePasswordFirstAccess";
+import { ConfirmPasswordFirstAccess } from "features/authentication/pages/FirstAccess/ConfirmPasswordFirstAccess";
+import { ChangePasswordCompleted } from "features/authentication/pages/FirstAccess/ChangePasswordCompleted";
+import { RecoverPassword } from "features/authentication/pages/RecoverPassword/RecoverPassword";
+import { ConfirmRecoverPwd } from "features/authentication/pages/ConfirmRecoverPwd";
+import { TemporaryPassword } from "features/authentication/pages/TemporaryPassword";
+import { SmsAccountsExibition } from "features/smsTransfer/pages/SmsAccountsExibition";
+import { SmsTransferName } from "features/smsTransfer/pages/SmsTransferName";
+import { AssociateNameUserCard } from "features/card/pages/AssociateNewCard/AssociateNameUserCard";
+import { AssociateNationalityCard } from "features/card/pages/AssociateNewCard/AssociateNationalityCard";
+import { AssociateMotherNameCard } from "features/card/pages/AssociateNewCard/AssociateMotherNameCard";
+import { AssociateBirthDateCard } from "features/card/pages/AssociateNewCard/AssociateBirthDateCard";
+import { AssociateGenderUserCard } from "features/card/pages/AssociateNewCard/AssociateGenderUserCard/AssociateGenderUserCard";
+import { AssociateMaritalStatusCard } from "features/card/pages/AssociateNewCard/AssociateMaritalStatusCard/AssociateMaritalStatusCard";
+import { ConcludeAssociateCard } from "features/card/pages/AssociateNewCard/ConcludeAssociateCard";
+import { InvalidDataForAssociateCard } from "features/card/pages/AssociateNewCard/InvalidDataForAssociateCard";
+import { ConclusionFlow } from "components/ConclusionFlow";
 import {
   ChangeValue,
   PaymentAttach,
@@ -160,8 +161,8 @@ import {
   PaymentSummary,
   ScanBarcode,
   PaymentProcess,
-} from 'features/payment'
-import { EnterMailForSms } from 'features/onboarding/pages/ActivateBySMS/EnterMailForSms'
+} from "features/payment";
+import { EnterMailForSms } from "features/onboarding/pages/ActivateBySMS/EnterMailForSms";
 import {
   DigitalWithdrawalStart,
   DigitalWithdrawalSuccess,
@@ -171,12 +172,12 @@ import {
   SelectValue,
   ReadQrCodeDigitalWithdrawal,
   DigitalWithdrawalSummary,
-} from 'features/digitalWithdrawal'
-import { WithFirstAccessControl } from 'components/WithFirstAccessControl'
-import { CancelPeriodicRepetition } from 'features/topUp/pages/CancelPeriodicTopUp'
+} from "features/digitalWithdrawal";
+import { WithFirstAccessControl } from "components/WithFirstAccessControl";
+import { CancelPeriodicRepetition } from "features/topUp/pages/CancelPeriodicTopUp";
 
 //------------------------------------------
-import { PixRoutes } from 'features/pix/constants/routes'
+import { PixRoutes } from "features/pix/constants/routes";
 import {
   PixArea,
   PixKeyList,
@@ -211,7 +212,7 @@ import {
   ReceivePixTransferQrCode,
   ReceivePixTransferQrCodeValue,
   ReceivePixTransferQrCodeCheck,
-} from 'features/pix/pages'
+} from "features/pix/pages";
 //------------------------------------------
 
 export const Router: React.FC = () => {
@@ -395,31 +396,15 @@ export const Router: React.FC = () => {
           path={SmsTransferRoutes.SmsTransferName}
           component={SmsTransferName}
         />
-        <Route
-          exact
-          path={UserRoutes.home}
-          component={UserInformation}
-        />
-        <Route
-          exact
-          path={UserRoutes.changeEmail}
-          component={ChangeEmail}
-        />
-        <Route
-          exact
-          path={UserRoutes.changePhone}
-          component={ChangePhone}
-        />
+        <Route exact path={UserRoutes.home} component={UserInformation} />
+        <Route exact path={UserRoutes.changeEmail} component={ChangeEmail} />
+        <Route exact path={UserRoutes.changePhone} component={ChangePhone} />
         <Route
           exact
           path={UserRoutes.changeChangeNickname}
           component={ChangeNickname}
         />
-        <Route
-          exact
-          path={UserRoutes.changeEmail}
-          component={ChangeEmail}
-        />
+        <Route exact path={UserRoutes.changeEmail} component={ChangeEmail} />
         <Route
           exact
           path={UserRoutes.changePassword}
@@ -480,7 +465,13 @@ export const Router: React.FC = () => {
         <Route exact path={AccountRoutes.detail} component={Details} />
 
         <Route exact path={AccountRoutes.home} component={Home} />
-        
+
+        <Route
+          exact
+          path={AccountRoutes.stoneBankHome}
+          component={StoneBankHome}
+        />
+
         <Route
           exact
           path={AccountRoutes.bankStatement}
@@ -497,16 +488,8 @@ export const Router: React.FC = () => {
           path={PaymentRoutes.barcodeScanner}
           component={ScanBarcode}
         />
-        <Route
-          exact
-          path={PaymentRoutes.details}
-          component={PaymentData}
-        />
-        <Route
-          exact
-          path={PaymentRoutes.changeValue}
-          component={ChangeValue}
-        />
+        <Route exact path={PaymentRoutes.details} component={PaymentData} />
+        <Route exact path={PaymentRoutes.changeValue} component={ChangeValue} />
         <Route
           exact
           path={PaymentRoutes.paymentProcess}
@@ -533,27 +516,11 @@ export const Router: React.FC = () => {
           component={PaymentAttach}
         />
 
-        <Route
-          exact
-          path={PaymentRoutes.summary}
-          component={PaymentSummary}
-        />
-        <Route
-          exact
-          path={AccountRoutes.allAccounts}
-          component={AllAccounts}
-        />
-        <Route
-          exact
-          path={AccountRoutes.receipt}
-          component={Receipt}
-        />
+        <Route exact path={PaymentRoutes.summary} component={PaymentSummary} />
+        <Route exact path={AccountRoutes.allAccounts} component={AllAccounts} />
+        <Route exact path={AccountRoutes.receipt} component={Receipt} />
         <Route exact path={AccountRoutes.detail} component={Details} />
-        <Route
-          exact
-          path={AccountRoutes.editAccount}
-          component={EditAccount}
-        />
+        <Route exact path={AccountRoutes.editAccount} component={EditAccount} />
         <Route
           exact
           path={PaymentRoutes.barcodePayment}
@@ -610,11 +577,7 @@ export const Router: React.FC = () => {
           path={TransferenceRoutes.schedule}
           component={ScheduleTransfer}
         />
-        <Route
-          exact
-          path={TransferenceRoutes.summary}
-          component={Summary}
-        />
+        <Route exact path={TransferenceRoutes.summary} component={Summary} />
         <Route
           exact
           path={TransferenceRoutes.description}
@@ -640,11 +603,7 @@ export const Router: React.FC = () => {
           path={CardRoutes.cardManagement}
           component={CardManagement}
         />
-        <Route
-          exact
-          path={CardRoutes.cardOption}
-          component={CardOption}
-        />
+        <Route exact path={CardRoutes.cardOption} component={CardOption} />
         <Route
           exact
           path={CardRoutes.enterCurrentPassword}
@@ -665,11 +624,7 @@ export const Router: React.FC = () => {
           path={CardRoutes.cancel}
           component={CancellationReplacementCard}
         />
-        <Route
-          exact
-          path={CardRoutes.cancelReason}
-          component={CancelReason}
-        />
+        <Route exact path={CardRoutes.cancelReason} component={CancelReason} />
         <Route
           exact
           path={CardRoutes.cancelWarning}
@@ -892,11 +847,7 @@ export const Router: React.FC = () => {
           path={TopUpRoutes.topUpSchedule}
           component={TopUpSchedule}
         />
-        <Route
-          exact
-          path={TopUpRoutes.topUpNumber}
-          component={TopUpNumber}
-        />
+        <Route exact path={TopUpRoutes.topUpNumber} component={TopUpNumber} />
         <Route exact path={TopUpRoutes.topUp} component={TopUp} />
         <Route
           exact
@@ -913,31 +864,19 @@ export const Router: React.FC = () => {
           path={TopUpRoutes.checkDataTopUp}
           component={CheckDataTopUp}
         />
-        <Route
-          exact
-          path={TopUpRoutes.topUpValue}
-          component={TopUpValue}
-        />
+        <Route exact path={TopUpRoutes.topUpValue} component={TopUpValue} />
         <Route
           exact
           path={TopUpRoutes.concludeTopUp}
           component={ConclusionFlow}
         />
-        <Route
-          exact
-          path={CardRoutes.activateCard}
-          component={ActivateCard}
-        />
+        <Route exact path={CardRoutes.activateCard} component={ActivateCard} />
         <Route
           exact
           path={CardRoutes.activateCardConclude}
           component={ActivateCardConclude}
         />
-        <Route
-          exact
-          path={CardRoutes.passwordCard}
-          component={PasswordCard}
-        />
+        <Route exact path={CardRoutes.passwordCard} component={PasswordCard} />
         <Route
           exact
           path={CardRoutes.confirmPasswordCard}
@@ -987,11 +926,7 @@ export const Router: React.FC = () => {
           path={TopUpRoutes.cancelPeriodicTopUp}
           component={CancelPeriodicRepetition}
         />
-        <Route
-          exact
-          path={PixRoutes.firstAccess}
-          component={FirstAccess}
-        />
+        <Route exact path={PixRoutes.firstAccess} component={FirstAccess} />
         <Route
           exact
           path={PixRoutes.pixArea}
@@ -1007,7 +942,7 @@ export const Router: React.FC = () => {
           path={PixRoutes.pixKeyList}
           component={WithFirstAccessControl(
             PixKeyList,
-            PixRoutes.firstAccessMyKeys,
+            PixRoutes.firstAccessMyKeys
           )}
         />
         <Route
@@ -1157,5 +1092,5 @@ export const Router: React.FC = () => {
         />
       </Switch>
     </BrowserRouter>
-  )
-}
+  );
+};

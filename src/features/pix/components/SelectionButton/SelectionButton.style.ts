@@ -1,17 +1,17 @@
-import { alpha, makeStyles } from '@material-ui/core'
-import { colors } from '_config/theme'
+import { alpha, makeStyles } from "@material-ui/core";
+import { colors } from "_config/theme";
 
 export const useStyles = makeStyles({
   Button: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
     padding: 16,
     borderRadius: 0,
     boxShadow: `0px 2px 2px 0px ${alpha(
       colors.readOnly.light.black,
-      0.24,
+      0.24
     )}, 0px 0px 2px 0px ${alpha(colors.readOnly.light.black, 0.12)}`,
-    cursor: 'pointer',
+    cursor: "pointer",
   },
   endIcon: {
     height: 36,
@@ -30,7 +30,7 @@ export const useStyles = makeStyles({
     fontWeight: 400,
     marginTop: 4,
 
-    '& > *': {
+    "& > *": {
       fontSize: 12,
       fontWeight: 400,
     },
@@ -40,12 +40,12 @@ export const useStyles = makeStyles({
     width: 32,
     marginRight: 5,
 
-    '& *': {
-      height: '100%',
+    "& *": {
+      height: "100%",
     },
   },
   qrCodeButton: {
     fontSize: 20,
     marginTop: -23,
   },
-})
+});

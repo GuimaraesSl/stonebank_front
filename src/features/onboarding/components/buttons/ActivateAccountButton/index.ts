@@ -1,1 +1,1 @@
-export { ActivateAccountButton } from './ActivateAccountButton'
+export { ActivateAccountButton } from "./ActivateAccountButton";

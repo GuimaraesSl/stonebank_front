@@ -1,9 +1,9 @@
-import { Link, Typography } from '@material-ui/core'
-import React from 'react'
-import { useStyle } from './ClickHereLink.style'
+import { Link, Typography } from "@material-ui/core";
+import React from "react";
+import { useStyle } from "./ClickHereLink.style";
 
 export const ClickHereLink = () => {
-  const style = useStyle()
+  const style = useStyle();
   return (
     <Typography className={style.clickHereLink} variant="caption" align="left">
       <Link data-test-id="click-here" className={style.clickHere}>
@@ -11,5 +11,5 @@ export const ClickHereLink = () => {
       </Link>
       &nbsp;para conhecer mais sobre o OpenBank
     </Typography>
-  )
-}
+  );
+};

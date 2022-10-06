@@ -1,3 +1,3 @@
 export interface CreatePaymentResponse {
-  message: string
+  message: string;
 }

@@ -1,23 +1,23 @@
-import React from 'react'
-import { useStyles } from './InvalidDataForAssociateCard.style'
-import { Typography, Box, Grid } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PageContainer } from 'components/PageContainer'
-import { useDispatch } from 'react-redux'
-import { CardRoutes } from 'features/card/constants/routes'
-import { Icon } from 'components/Icon'
-import { Button } from 'components/Button'
+import React from "react";
+import { useStyles } from "./InvalidDataForAssociateCard.style";
+import { Typography, Box, Grid } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PageContainer } from "components/PageContainer";
+import { useDispatch } from "react-redux";
+import { CardRoutes } from "features/card/constants/routes";
+import { Icon } from "components/Icon";
+import { Button } from "components/Button";
 
 export const InvalidDataForAssociateCard: React.FC = () => {
-  const styles = useStyles()
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const styles = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const onButtonClick = () => {
-    history.replace(CardRoutes.cardManagement)
-  }
+    history.replace(CardRoutes.cardManagement);
+  };
 
   return (
     <PageContainer>
@@ -58,5 +58,5 @@ export const InvalidDataForAssociateCard: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

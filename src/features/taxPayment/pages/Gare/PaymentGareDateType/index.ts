@@ -1,1 +1,1 @@
-export { PaymentGareDateType } from './PaymentGareDateType'
+export { PaymentGareDateType } from "./PaymentGareDateType";

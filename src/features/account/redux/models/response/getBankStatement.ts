@@ -1,5 +1,5 @@
-import { DayTransactions } from '../dayTransactions'
+import { DayTransactions } from "../dayTransactions";
 
 export interface GetBankStatementResponse {
-  transactions?: DayTransactions[]
+  transactions?: DayTransactions[];
 }

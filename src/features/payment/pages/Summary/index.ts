@@ -1,1 +1,1 @@
-export { Summary as PaymentSummary } from './Summary'
+export { Summary as PaymentSummary } from "./Summary";

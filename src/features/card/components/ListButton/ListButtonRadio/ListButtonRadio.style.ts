@@ -1,15 +1,15 @@
-import { makeStyles } from '@material-ui/core'
-import { theme } from '_config/theme'
+import { makeStyles } from "@material-ui/core";
+import { theme } from "_config/theme";
 
 export const useStyles = makeStyles({
   listItemText: {
-    textAlign: 'center',
-    '& .MuiListItemText-primary': {
+    textAlign: "center",
+    "& .MuiListItemText-primary": {
       fontSize: 12,
       fontWeight: 400,
-      color: '#000000',
+      color: "#000000",
     },
-    '& .MuiList-root': {
+    "& .MuiList-root": {
       paddingBottom: 0,
     },
   },
@@ -19,28 +19,28 @@ export const useStyles = makeStyles({
     paddingRight: 16,
   },
   radio: {
-    position: 'relative',
-    '& .MuiSvgIcon-root': {
-      borderRadius: '50%',
+    position: "relative",
+    "& .MuiSvgIcon-root": {
+      borderRadius: "50%",
       width: 13,
       height: 13,
-      border: '1px solid #c0c0c0',
+      border: "1px solid #c0c0c0",
     },
-    color: 'transparent',
-    '&.Mui-checked': {
-      '&:after': {
+    color: "transparent",
+    "&.Mui-checked": {
+      "&:after": {
         content: "''",
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        margin: 'auto',
+        margin: "auto",
         width: 9,
         height: 9,
         backgroundColor: theme.palette.primary.main,
-        borderRadius: '50%',
+        borderRadius: "50%",
       },
     },
   },
-})
+});

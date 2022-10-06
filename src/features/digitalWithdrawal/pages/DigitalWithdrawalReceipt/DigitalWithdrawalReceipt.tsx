@@ -1,27 +1,27 @@
-import React from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { useHistory } from 'react-router-dom'
-import { Close } from '@material-ui/icons'
-import { AppBar } from 'components/AppBar'
-import { useStyles } from './DigitalWithdrawalReceipt.style'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { cancelLabel, saveLabel, shareLabel } from 'constants/buttons/labels'
-import { DigitalWithdrawalRoutes } from 'features/digitalWithdrawal/constants/routes'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { CurrencyFormatter } from '_translate'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { useHistory } from "react-router-dom";
+import { Close } from "@material-ui/icons";
+import { AppBar } from "components/AppBar";
+import { useStyles } from "./DigitalWithdrawalReceipt.style";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { cancelLabel, saveLabel, shareLabel } from "constants/buttons/labels";
+import { DigitalWithdrawalRoutes } from "features/digitalWithdrawal/constants/routes";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { CurrencyFormatter } from "_translate";
+import { Icon } from "components/Icon";
 
 export const DigitalWithdrawalReceipt: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
+  const history = useHistory();
+  const styles = useStyles();
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-  }
+    history.replace(AccountRoutes.home);
+  };
 
   return (
     <PageContainer>
@@ -95,5 +95,5 @@ export const DigitalWithdrawalReceipt: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

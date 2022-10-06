@@ -1,1 +1,1 @@
-export { AccountActivationCompletedForCard } from './AccountActivationCompleted'
+export { AccountActivationCompletedForCard } from "./AccountActivationCompleted";

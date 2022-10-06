@@ -1,11 +1,11 @@
-import React from 'react'
-import { AntSwitch } from './SwitchIOS.style'
-import { Switch } from '@material-ui/core'
+import React from "react";
+import { AntSwitch } from "./SwitchIOS.style";
+import { Switch } from "@material-ui/core";
 
-const SwitchButton = AntSwitch(Switch)
+const SwitchButton = AntSwitch(Switch);
 interface SwitchIOSProps {
-  checked?: boolean
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  checked?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const SwitchIOS: React.FC<SwitchIOSProps> = ({ checked, onClick }) => {
@@ -15,5 +15,5 @@ export const SwitchIOS: React.FC<SwitchIOSProps> = ({ checked, onClick }) => {
       onClick={onClick}
       checked={checked}
     />
-  )
-}
+  );
+};

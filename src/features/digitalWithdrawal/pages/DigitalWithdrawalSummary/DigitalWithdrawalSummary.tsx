@@ -1,31 +1,31 @@
-import React, { useState } from 'react'
-import { AppBar } from 'components/AppBar'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { ButtonReadQRCode } from '../../components/ButtonReadQRCode'
-import { cancelLabel } from 'constants/buttons/labels'
-import { Close } from '@material-ui/icons'
-import { useStyles } from './DigitalWithdrawalSummary.style'
-import { useHistory } from 'react-router'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { Box, Typography } from '@material-ui/core'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { CurrencyFormatter } from '_translate'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { DigitalWithdrawalRoutes } from 'features/digitalWithdrawal/constants'
+import React, { useState } from "react";
+import { AppBar } from "components/AppBar";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { ButtonReadQRCode } from "../../components/ButtonReadQRCode";
+import { cancelLabel } from "constants/buttons/labels";
+import { Close } from "@material-ui/icons";
+import { useStyles } from "./DigitalWithdrawalSummary.style";
+import { useHistory } from "react-router";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { Box, Typography } from "@material-ui/core";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { CurrencyFormatter } from "_translate";
+import { AccountRoutes } from "features/account/constants/routes";
+import { DigitalWithdrawalRoutes } from "features/digitalWithdrawal/constants";
 
 export const DigitalWithdrawalSummary: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
+  const history = useHistory();
+  const styles = useStyles();
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-  }
+    history.replace(AccountRoutes.home);
+  };
 
   const onReadQRCodeButtonClick = () => {
-    history.push(DigitalWithdrawalRoutes.readQrCodeDigitalWithdrawal)
-  }
+    history.push(DigitalWithdrawalRoutes.readQrCodeDigitalWithdrawal);
+  };
 
   return (
     <PageContainer>
@@ -95,5 +95,5 @@ export const DigitalWithdrawalSummary: React.FC = () => {
         footer={<ProcessPageFooter />}
       />
     </PageContainer>
-  )
-}
+  );
+};

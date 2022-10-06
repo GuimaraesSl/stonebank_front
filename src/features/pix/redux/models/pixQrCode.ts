@@ -1,4 +1,4 @@
 export interface PixQrCode {
-  qrCode?: string
-  hashCode?: string
+  qrCode?: string;
+  hashCode?: string;
 }

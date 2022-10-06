@@ -1,29 +1,29 @@
-import React from 'react'
-import { Box, Grid, Typography } from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { useHistory } from 'react-router-dom'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { useStyles } from './UpdateAddress.style'
-import { CardRoutes } from 'features/card/constants/routes'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { UserRoutes } from 'features/user/constants/routes'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box, Grid, Typography } from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { useHistory } from "react-router-dom";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { useStyles } from "./UpdateAddress.style";
+import { CardRoutes } from "features/card/constants/routes";
+import { AccountRoutes } from "features/account/constants/routes";
+import { UserRoutes } from "features/user/constants/routes";
+import { Icon } from "components/Icon";
 
 export const UpdateAddress: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
+  const history = useHistory();
+  const styles = useStyles();
   const onCancelButtonClick = () => {
-    history.push(CardRoutes.cardOption)
-  }
+    history.push(CardRoutes.cardOption);
+  };
   const onNextButtonClick = () => {
-    history.push(UserRoutes.currentAddress)
-  }
+    history.push(UserRoutes.currentAddress);
+  };
 
   return (
     <PageContainer>
@@ -63,7 +63,7 @@ export const UpdateAddress: React.FC = () => {
               </Grid>
               <Box className={styles.contentTexts}>
                 <Typography className={styles.txtaddress}>
-                  {' '}
+                  {" "}
                   Atualize seu endereço
                 </Typography>
               </Box>
@@ -99,5 +99,5 @@ export const UpdateAddress: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

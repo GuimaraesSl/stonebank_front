@@ -1,1 +1,1 @@
-export { ConfirmSchedulingDialog } from './ConfirmSchedulingDialog'
+export { ConfirmSchedulingDialog } from "./ConfirmSchedulingDialog";

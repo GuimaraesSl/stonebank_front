@@ -1,16 +1,16 @@
-import React from 'react'
-import { useStyles } from './ReturnTransactionAuthentication.style'
+import React from "react";
+import { useStyles } from "./ReturnTransactionAuthentication.style";
 
 interface ReturnTransactionAuthenticationProps {
-  payment: string
-  transactionID: string
-  internalProtocol: string
+  payment: string;
+  transactionID: string;
+  internalProtocol: string;
 }
 
 export const ReturnTransactionAuthentication: React.FC<
   ReturnTransactionAuthenticationProps
-> = ({ payment, transactionID, internalProtocol}) => {
-  const styleAuthentication = useStyles()
+> = ({ payment, transactionID, internalProtocol }) => {
+  const styleAuthentication = useStyles();
 
   return (
     <div className={styleAuthentication.autenticationContent}>
@@ -22,5 +22,5 @@ export const ReturnTransactionAuthentication: React.FC<
       <div> ID da transação: {transactionID} </div>
       <div> Protocolo Interno: {internalProtocol} </div>
     </div>
-  )
-}
+  );
+};

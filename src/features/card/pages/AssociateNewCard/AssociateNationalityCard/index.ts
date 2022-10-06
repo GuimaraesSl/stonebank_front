@@ -1,1 +1,1 @@
-export { AssociateNationalityCard } from './AssociateNationalityCard'
+export { AssociateNationalityCard } from "./AssociateNationalityCard";

@@ -1,1 +1,1 @@
-export { BadgeChangeProfileButton } from './BadgeChangeProfileButton'
+export { BadgeChangeProfileButton } from "./BadgeChangeProfileButton";

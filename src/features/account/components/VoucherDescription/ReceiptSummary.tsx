@@ -1,12 +1,12 @@
-import React from 'react'
-import { ConfigContext } from '_config'
+import React from "react";
+import { ConfigContext } from "_config";
 
 interface ReceiptSummaryProps {
-  value: string
-  account: string
-  cpf: string
-  data: string
-  description: string
+  value: string;
+  account: string;
+  cpf: string;
+  data: string;
+  description: string;
 }
 
 export const ReceiptSummary: React.FC<ReceiptSummaryProps> = ({
@@ -16,7 +16,7 @@ export const ReceiptSummary: React.FC<ReceiptSummaryProps> = ({
   data,
   description,
 }) => {
-  const { company } = React.useContext(ConfigContext)
+  const { company } = React.useContext(ConfigContext);
 
   return (
     <div className="voucher-content" data-test-id="voucher-content">
@@ -31,5 +31,5 @@ export const ReceiptSummary: React.FC<ReceiptSummaryProps> = ({
       <div> descrição da transferência </div>
       <strong> {description} </strong>
     </div>
-  )
-}
+  );
+};

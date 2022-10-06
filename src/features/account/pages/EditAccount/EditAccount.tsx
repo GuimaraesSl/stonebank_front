@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react";
 
-import { BadgeChangeProfileButton } from 'features/account/components/BadgeChangeProfileButton'
-import { EditPageHeader } from 'features/account/components/EditPageHeader'
-import { Container, TextField } from '@material-ui/core'
-import { useStyle } from '_assets/makeStyles/container/container.style'
-import { BadgeButton } from 'components/BadgeButton'
-import { useStyles } from './EditAccount.style'
-import '_assets/css/forms/mainform.scss'
-import { Icon } from 'components/Icon'
+import { BadgeChangeProfileButton } from "features/account/components/BadgeChangeProfileButton";
+import { EditPageHeader } from "features/account/components/EditPageHeader";
+import { Container, TextField } from "@material-ui/core";
+import { useStyle } from "_assets/makeStyles/container/container.style";
+import { BadgeButton } from "components/BadgeButton";
+import { useStyles } from "./EditAccount.style";
+import "_assets/css/forms/mainform.scss";
+import { Icon } from "components/Icon";
 
 export const EditAccount: React.FC = () => {
-  const styles = useStyles()
-  const style = useStyle()
+  const styles = useStyles();
+  const style = useStyle();
 
   return (
     <Container maxWidth="xs" className={style.container}>
@@ -19,7 +19,7 @@ export const EditAccount: React.FC = () => {
         <div className="form-body">
           <EditPageHeader />
           <div className={styles.contentEdit}>
-            <Icon className={styles.imageUser} name={'imageUserMasMax'} />
+            <Icon className={styles.imageUser} name={"imageUserMasMax"} />
           </div>
           <div className={styles.contentEdit}>
             <BadgeChangeProfileButton
@@ -46,5 +46,5 @@ export const EditAccount: React.FC = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};

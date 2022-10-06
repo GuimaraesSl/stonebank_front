@@ -1,1 +1,1 @@
-import { CheckData } from './CheckData'
+import { CheckData } from "./CheckData";

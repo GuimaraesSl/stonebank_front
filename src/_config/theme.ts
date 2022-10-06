@@ -1,20 +1,20 @@
-import { createTheme, lighten } from '@material-ui/core'
+import { createTheme, lighten } from "@material-ui/core";
 
 type Color = {
-  shade100: string
-  shade99: string
-  shade95: string
-  shade90: string
-  shade80: string
-  shade70: string
-  shade60: string
-  shade50: string
-  shade40: string
-  shade30: string
-  shade20: string
-  shade10: string
-  shade0: string
-}
+  shade100: string;
+  shade99: string;
+  shade95: string;
+  shade90: string;
+  shade80: string;
+  shade70: string;
+  shade60: string;
+  shade50: string;
+  shade40: string;
+  shade30: string;
+  shade20: string;
+  shade10: string;
+  shade0: string;
+};
 
 type SystemColors = {
   primary: string
@@ -60,37 +60,35 @@ type ReadOnlyColors = {
 }
 
 type Palette = {
-  
   system: {
-    light: SystemColors
-    dark: SystemColors
-  }
+    light: SystemColors;
+    dark: SystemColors;
+  };
 
   readOnly: {
-    light: ReadOnlyColors
-    dark: ReadOnlyColors
-  }
+    light: ReadOnlyColors;
+    dark: ReadOnlyColors;
+  };
 
-  primary: Color
-  secondary: Color
-  tertiary: Color
-  neutral: Color
-  neutralVariant: Color
-  error: Color
+  primary: Color;
+  secondary: Color;
+  tertiary: Color;
+  neutral: Color;
+  neutralVariant: Color;
+  error: Color;
   source: {
-    seed: string
-    primary: string
-    secondary: string
-    terciary: string
-    neutral: string
-    neutralVariant: string
-    error: string
-  }
-}
+    seed: string;
+    primary: string;
+    secondary: string;
+    terciary: string;
+    neutral: string;
+    neutralVariant: string;
+    error: string;
+  };
+};
 
 export const colors: Palette = {
   system: {
-
     light: {
       primary: '#117E9B',
       onPrimary: '#FFFFFF',
@@ -179,110 +177,110 @@ export const colors: Palette = {
   },
 
   primary: {
-    shade100: '',
-    shade99: '',
-    shade95: '',
-    shade90: '',
-    shade80: '',
-    shade70: '',
-    shade60: '',
-    shade50: '',
-    shade40: '',
-    shade30: '',
-    shade20: '',
-    shade10: '',
-    shade0: '#656982',
+    shade100: "",
+    shade99: "",
+    shade95: "",
+    shade90: "",
+    shade80: "",
+    shade70: "",
+    shade60: "",
+    shade50: "",
+    shade40: "",
+    shade30: "",
+    shade20: "",
+    shade10: "",
+    shade0: "#656982",
   },
 
   secondary: {
-    shade100: '',
-    shade99: '',
-    shade95: '',
-    shade90: '',
-    shade80: '',
-    shade70: '',
-    shade60: '',
-    shade50: '',
-    shade40: '',
-    shade30: '',
-    shade20: '',
-    shade10: '',
-    shade0: '',
+    shade100: "",
+    shade99: "",
+    shade95: "",
+    shade90: "",
+    shade80: "",
+    shade70: "",
+    shade60: "",
+    shade50: "",
+    shade40: "",
+    shade30: "",
+    shade20: "",
+    shade10: "",
+    shade0: "",
   },
 
   tertiary: {
-    shade100: '',
-    shade99: '',
-    shade95: '',
-    shade90: '',
-    shade80: '',
-    shade70: '',
-    shade60: '',
-    shade50: '',
-    shade40: '',
-    shade30: '',
-    shade20: '',
-    shade10: '',
-    shade0: '',
+    shade100: "",
+    shade99: "",
+    shade95: "",
+    shade90: "",
+    shade80: "",
+    shade70: "",
+    shade60: "",
+    shade50: "",
+    shade40: "",
+    shade30: "",
+    shade20: "",
+    shade10: "",
+    shade0: "",
   },
 
   neutral: {
-    shade100: '',
-    shade99: '',
-    shade95: '',
-    shade90: '',
-    shade80: '',
-    shade70: '#ECECEC',
-    shade60: '#EFEFEF',
-    shade50: '#333333',
-    shade40: '#555555',
-    shade30: '#C4C4C4',
-    shade20: '#CECECE',
-    shade10: '#F9F9F9',
-    shade0: '#FFFFFF',
+    shade100: "",
+    shade99: "",
+    shade95: "",
+    shade90: "",
+    shade80: "",
+    shade70: "#ECECEC",
+    shade60: "#EFEFEF",
+    shade50: "#333333",
+    shade40: "#555555",
+    shade30: "#C4C4C4",
+    shade20: "#CECECE",
+    shade10: "#F9F9F9",
+    shade0: "#FFFFFF",
   },
-  
+
   neutralVariant: {
-    shade100: '',
-    shade99: '',
-    shade95: '',
-    shade90: '',
-    shade80: '',
-    shade70: '',
-    shade60: '',
-    shade50: '',
-    shade40: '',
-    shade30: '',
-    shade20: '',
-    shade10: '',
-    shade0: '',
+    shade100: "",
+    shade99: "",
+    shade95: "",
+    shade90: "",
+    shade80: "",
+    shade70: "",
+    shade60: "",
+    shade50: "",
+    shade40: "",
+    shade30: "",
+    shade20: "",
+    shade10: "",
+    shade0: "",
   },
   error: {
-    shade100: '',
-    shade99: '',
-    shade95: '',
-    shade90: '',
-    shade80: '',
-    shade70: '',
-    shade60: '',
-    shade50: '',
-    shade40: '',
-    shade30: '',
-    shade20: '',
-    shade10: '',
-    shade0: '',
+    shade100: "",
+    shade99: "",
+    shade95: "",
+    shade90: "",
+    shade80: "",
+    shade70: "",
+    shade60: "",
+    shade50: "",
+    shade40: "",
+    shade30: "",
+    shade20: "",
+    shade10: "",
+    shade0: "",
   },
   
   source: {
-    seed: '#323751',
-    primary: '',
-    secondary: '#5F81A6',
-    terciary: '',
-    error: '#BA1B1B',
-    neutral: '#555555',
-    neutralVariant: '#40455F',
+    seed: "#323751",
+    primary: "",
+    secondary: "#5F81A6",
+    terciary: "",
+    error: "#BA1B1B",
+    neutral: "#555555",
+    neutralVariant: "#40455F",
   },
-}
+};
 
 export const theme = createTheme({
   palette: {
@@ -291,7 +289,7 @@ export const theme = createTheme({
       white: colors.readOnly.light.white,
     },
     success: {
-      main: '#0CC260',
+      main: "#0CC260",
     },
     action: {
       disabledBackground: lighten(colors.system.light.neutral, 0.12),
@@ -310,18 +308,18 @@ export const theme = createTheme({
   overrides: {
     MuiContainer: {
       root: {
-        height: '100%',
+        height: "100%",
       },
     },
     MuiButton: {
       root: {
-        borderRadius: '6px',
-        transition: 'all 120ms linear',
+        borderRadius: "6px",
+        transition: "all 120ms linear",
       },
       contained: {
         backgroundColor: colors.system.light.primary,
         color: colors.system.light.onPrimary,
-        '&:hover': {
+        "&:hover": {
           backgroundColor: colors.system.light.primary,
           color: colors.system.light.onPrimary,
         },
@@ -329,7 +327,7 @@ export const theme = createTheme({
       containedPrimary: {
         backgroundColor: colors.system.light.primary,
         color: colors.system.light.onPrimary,
-        '&:hover': {
+        "&:hover": {
           backgroundColor: colors.system.light.primary,
           color: colors.system.light.onPrimary,
         },
@@ -337,28 +335,28 @@ export const theme = createTheme({
       containedSecondary: {
         backgroundColor: colors.readOnly.light.white,
         color: colors.system.light.primary,
-        '&:hover': {
+        "&:hover": {
           backgroundColor: colors.readOnly.light.surface,
         },
       },
     },
     MuiOutlinedInput: {
       root: {
-        borderRadius: '6px',
-        borderWidth: '1.5px',
+        borderRadius: "6px",
+        borderWidth: "1.5px",
       },
     },
     MuiInputBase: {
       root: {
-        borderRadius: '6px',
+        borderRadius: "6px",
       },
     },
     MuiLink: {
       root: {
-        '&:hover': {
-          cursor: 'pointer',
+        "&:hover": {
+          cursor: "pointer",
         },
       },
     },
   },
-})
+});

@@ -1,25 +1,25 @@
-import { makeStyles } from '@material-ui/core'
-import { colors } from '_config'
+import { makeStyles } from "@material-ui/core";
+import { colors } from "_config";
 
 export const useStyles = makeStyles({
   MuiSvgIcon: {
-    '& .stroke': {
+    "& .stroke": {
       stroke: colors.system.light.primary,
     },
-    '& .strokeSecondary': {
+    "& .strokeSecondary": {
       stroke: colors.system.light.secondary,
     },
-    '& .primary': {
+    "& .primary": {
       fill: colors.system.light.primary,
     },
-    '& .secondary': {
+    "& .secondary": {
       fill: colors.system.light.secondary,
     },
-    '& .readOnly.light.white': {
+    "& .readOnly.light.white": {
       fill: colors.readOnly.light.white,
     },
-    '& .tertiary': {
+    "& .tertiary": {
       fill: colors.system.light.tertiary,
     },
   },
-})
+});

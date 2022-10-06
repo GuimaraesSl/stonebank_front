@@ -1,14 +1,14 @@
-import { Box, Grid, Typography } from '@material-ui/core'
-import React from 'react'
-import { useStyles } from './Validator.styles'
-import { OtpInput } from 'components/OtpInput/OtpInput'
+import { Box, Grid, Typography } from "@material-ui/core";
+import React from "react";
+import { useStyles } from "./Validator.styles";
+import { OtpInput } from "components/OtpInput/OtpInput";
 
 interface ValidatorProps {
-  description?: string
-  strictValidation?: boolean
-  value: string
-  label: string
-  setValue: (value: string) => void
+  description?: string;
+  strictValidation?: boolean;
+  value: string;
+  label: string;
+  setValue: (value: string) => void;
 }
 
 export const Validator: React.FC<ValidatorProps> = ({
@@ -18,20 +18,20 @@ export const Validator: React.FC<ValidatorProps> = ({
   label,
   setValue,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const _getClassName = () => {
-    let className = `${styles.passwordInput} `
+    let className = `${styles.passwordInput} `;
 
     if (value.length < 4) {
-      className += styles.passwordInput
-      strictValidation = true
+      className += styles.passwordInput;
+      strictValidation = true;
     }
     strictValidation
       ? (className += styles.passwordInput)
-      : (className += styles.inputInvalid)
-    return className
-  }
+      : (className += styles.inputInvalid);
+    return className;
+  };
 
   return (
     <Box>
@@ -58,10 +58,10 @@ export const Validator: React.FC<ValidatorProps> = ({
             />
           }
           {strictValidation
-            ? (description = '')
-            : (description = 'As senhas não conferem')}
+            ? (description = "")
+            : (description = "As senhas não conferem")}
         </Typography>
       </Grid>
     </Box>
-  )
-}
+  );
+};

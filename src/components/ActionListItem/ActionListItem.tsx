@@ -1,10 +1,10 @@
-import React from 'react'
-import { ListItem } from '@material-ui/core'
-import { useStyles } from './ActionListItem.style'
+import React from "react";
+import { ListItem } from "@material-ui/core";
+import { useStyles } from "./ActionListItem.style";
 
 interface ActionListItemProps {
-  className?: string
-  onClick?: VoidFunction
+  className?: string;
+  onClick?: VoidFunction;
 }
 
 export const ActionListItem: React.FC<ActionListItemProps> = ({
@@ -13,12 +13,18 @@ export const ActionListItem: React.FC<ActionListItemProps> = ({
   children,
   ...rest
 }) => {
-  const styles = useStyles()
-  className = `${styles.actionListItem} ${className}`
+  const styles = useStyles();
+  className = `${styles.actionListItem} ${className}`;
 
   return (
-    <ListItem button component="li" className={className} onClick={onClick} {...rest}>
+    <ListItem
+      button
+      component="li"
+      className={className}
+      onClick={onClick}
+      {...rest}
+    >
       {children}
     </ListItem>
-  )
-}
+  );
+};

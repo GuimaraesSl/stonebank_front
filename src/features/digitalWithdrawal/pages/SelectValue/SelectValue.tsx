@@ -1,53 +1,53 @@
-import { Box, Typography, TextField, InputLabel } from '@material-ui/core'
-import { ChevronRight, Close } from '@material-ui/icons'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import React from 'react'
-import { useStyles } from './SelectValue.style'
-import { useHistory } from 'react-router-dom'
-import { DigitalWithdrawalRoutes } from 'features/digitalWithdrawal/constants/routes'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { StoreState } from 'redux/state'
-import { useSelector } from 'react-redux'
-import { CurrencyFormatter } from '_translate'
+import { Box, Typography, TextField, InputLabel } from "@material-ui/core";
+import { ChevronRight, Close } from "@material-ui/icons";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { PageContainer } from "components/PageContainer";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import React from "react";
+import { useStyles } from "./SelectValue.style";
+import { useHistory } from "react-router-dom";
+import { DigitalWithdrawalRoutes } from "features/digitalWithdrawal/constants/routes";
+import { AccountRoutes } from "features/account/constants/routes";
+import { StoreState } from "redux/state";
+import { useSelector } from "react-redux";
+import { CurrencyFormatter } from "_translate";
 
 export const SelectValue: React.FC = () => {
-  const [valueWithdrawal, setValueWithdrawal] = React.useState(0)
-  const styles = useStyles({ valueWithdrawal })
-  const history = useHistory()
+  const [valueWithdrawal, setValueWithdrawal] = React.useState(0);
+  const styles = useStyles({ valueWithdrawal });
+  const history = useHistory();
   const { balance } = useSelector((store: StoreState) => ({
     balance: store.account.dashboard!.balance,
-  }))
-  const [disableNextButton, setDisableNextButton] = React.useState(false)
+  }));
+  const [disableNextButton, setDisableNextButton] = React.useState(false);
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-  }
+    history.replace(AccountRoutes.home);
+  };
   const onNextButtonClick = () => {
-    history.push(DigitalWithdrawalRoutes.digitalWithdrawalSummary)
-  }
+    history.push(DigitalWithdrawalRoutes.digitalWithdrawalSummary);
+  };
 
   const onCleanValueButtonClick = () => {
-    setValueWithdrawal(0)
-  }
+    setValueWithdrawal(0);
+  };
 
   React.useEffect(() => {
     valueWithdrawal !== 0
       ? setDisableNextButton(false)
-      : setDisableNextButton(true)
-  }, [valueWithdrawal])
+      : setDisableNextButton(true);
+  }, [valueWithdrawal]);
 
   const onAddValueButtonClick = (addValue: number) => {
-    const newValue = valueWithdrawal + addValue
-    if (newValue > balance || newValue > 1200) return
-    setValueWithdrawal(valueWithdrawal + addValue)
-  }
+    const newValue = valueWithdrawal + addValue;
+    if (newValue > balance || newValue > 1200) return;
+    setValueWithdrawal(valueWithdrawal + addValue);
+  };
 
   return (
     <PageContainer>
@@ -84,7 +84,7 @@ export const SelectValue: React.FC = () => {
               <Typography className={styles.valueInput}>
                 {valueWithdrawal
                   ? `${CurrencyFormatter.format(valueWithdrawal)}`
-                  : 'R$ 0,00'}
+                  : "R$ 0,00"}
               </Typography>
             </Box>
           </Box>
@@ -146,5 +146,5 @@ export const SelectValue: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

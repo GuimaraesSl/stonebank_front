@@ -1,1 +1,1 @@
-export { SmsTransferNumber } from './SmsTransferNumber'
+export { SmsTransferNumber } from "./SmsTransferNumber";

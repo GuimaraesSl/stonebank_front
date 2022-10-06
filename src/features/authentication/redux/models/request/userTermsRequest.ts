@@ -1,4 +1,4 @@
 export interface UserTermsRequest {
-  login: string
-  userId?: number
+  login: string;
+  userId?: number;
 }

@@ -1,45 +1,47 @@
-import React from 'react'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
+import React from "react";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
 import {
   Box,
   FormControlLabel,
   Radio,
   Typography,
   RadioGroup,
-} from '@material-ui/core'
-import { AppBar } from 'components/AppBar'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { useStyles } from './AddressConfirmation.style'
-import { useHistory } from 'react-router'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { CardRoutes } from 'features/card/constants/routes'
-import { StoreState } from 'redux/state'
-import { useSelector } from 'react-redux'
+} from "@material-ui/core";
+import { AppBar } from "components/AppBar";
+import { PageContainer } from "components/PageContainer";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { useStyles } from "./AddressConfirmation.style";
+import { useHistory } from "react-router";
+import { AccountRoutes } from "features/account/constants/routes";
+import { CardRoutes } from "features/card/constants/routes";
+import { StoreState } from "redux/state";
+import { useSelector } from "react-redux";
 
 export const AddressConfirmation: React.FC = () => {
-  const history = useHistory()
-  const styles = useStyles()
-  const { user } = useSelector((store: StoreState) => store.auth)
-  const address = `${user?.street ?? ''}, nª ${user?.number ?? ''} - ${user?.district ?? ''}`
-  const city = `${user?.city ?? ''}-${user?.state ?? ''}`
-  const [value, setValue] = React.useState('yes')
+  const history = useHistory();
+  const styles = useStyles();
+  const { user } = useSelector((store: StoreState) => store.auth);
+  const address = `${user?.street ?? ""}, nª ${user?.number ?? ""} - ${
+    user?.district ?? ""
+  }`;
+  const city = `${user?.city ?? ""}-${user?.state ?? ""}`;
+  const [value, setValue] = React.useState("yes");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value)
-  }
+    setValue((event.target as HTMLInputElement).value);
+  };
   const onNextButtonClick = () => {
-    value === 'yes'
+    value === "yes"
       ? history.push(CardRoutes.reissueDetails)
-      : history.push(CardRoutes.updateAddress)
-  }
+      : history.push(CardRoutes.updateAddress);
+  };
   const onCancelButtonClick = () => {
-    history.push(CardRoutes.cardOption)
-  }
+    history.push(CardRoutes.cardOption);
+  };
 
   return (
     <PageContainer>
@@ -75,7 +77,7 @@ export const AddressConfirmation: React.FC = () => {
               {city}
             </Typography>
             <Typography className={styles.questionIsCorrect}>
-              {'Endereço está correto?'}
+              {"Endereço está correto?"}
             </Typography>
             <RadioGroup
               className={styles.radioGroup}
@@ -118,5 +120,5 @@ export const AddressConfirmation: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

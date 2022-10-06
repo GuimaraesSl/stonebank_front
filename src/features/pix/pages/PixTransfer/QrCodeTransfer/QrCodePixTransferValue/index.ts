@@ -1,1 +1,1 @@
-export { QrCodePixTransferValue } from './QrCodePixTransferValue.controller'
+export { QrCodePixTransferValue } from "./QrCodePixTransferValue.controller";

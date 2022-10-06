@@ -1,3 +1,3 @@
 export interface GenerateTopUpResponse {
-  success: boolean
+  success: boolean;
 }

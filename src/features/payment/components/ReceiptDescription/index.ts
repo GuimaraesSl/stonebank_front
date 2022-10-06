@@ -1,1 +1,1 @@
-export { ReceiptDescription } from './ReceiptDescription'
+export { ReceiptDescription } from "./ReceiptDescription";

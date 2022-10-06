@@ -1,1 +1,1 @@
-export { TermsText } from './TermsText'
+export { TermsText } from "./TermsText";

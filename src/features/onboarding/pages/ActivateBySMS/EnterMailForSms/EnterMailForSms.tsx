@@ -1,56 +1,56 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { TextField } from 'components/TextField'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PageContainer } from 'components/PageContainer'
-import { Box, Grid } from '@material-ui/core'
-import { updateOnboardingForm } from 'features/onboarding/redux/actions'
-import { useDispatch, useSelector } from 'react-redux'
-import { useStyles } from './EnterMailForSms.style'
-import { validateEmail } from '_utils/validate'
-import { StoreState } from 'redux/state'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { TextField } from "components/TextField";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PageContainer } from "components/PageContainer";
+import { Box, Grid } from "@material-ui/core";
+import { updateOnboardingForm } from "features/onboarding/redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useStyles } from "./EnterMailForSms.style";
+import { validateEmail } from "_utils/validate";
+import { StoreState } from "redux/state";
 
 export const EnterMailForSms: React.FC = () => {
-  const style = useStyles()
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const style = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [mail, setMail] = React.useState('')
-  const [invalidMail, setInvalidMail] = React.useState(false)
+  const [mail, setMail] = React.useState("");
+  const [invalidMail, setInvalidMail] = React.useState(false);
 
   const onboardingSms = useSelector(
-    (state: StoreState) => state.onboarding.onboardingForm,
-  )
+    (state: StoreState) => state.onboarding.onboardingForm
+  );
 
   React.useEffect(() => {
-    validateError()
-  }, [mail])
+    validateError();
+  }, [mail]);
 
   const onTaxIdChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setMail(event.target.value)
+    setMail(event.target.value);
 
   const onCancelButtonClick = () => {
-    history.replace(OnboardingRoutes.activateAccount)
-  }
+    history.replace(OnboardingRoutes.activateAccount);
+  };
 
   const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    dispatch(updateOnboardingForm({ mail }))
+    dispatch(updateOnboardingForm({ mail }));
 
-    history.push(OnboardingRoutes.birthDateForSMS)
-  }
+    history.push(OnboardingRoutes.birthDateForSMS);
+  };
 
   const validateError = () => {
-    validateEmail(mail) ? setInvalidMail(false) : setInvalidMail(true)
-  }
+    validateEmail(mail) ? setInvalidMail(false) : setInvalidMail(true);
+  };
 
   return (
     <PageContainer>
@@ -112,5 +112,5 @@ export const EnterMailForSms: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

@@ -1,3 +1,3 @@
 export interface ValidateActivationTokenResponse {
-  phoneNumber: string
+  phoneNumber: string;
 }

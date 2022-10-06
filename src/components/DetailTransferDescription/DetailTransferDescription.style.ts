@@ -9,12 +9,12 @@ export const useStyles = makeStyles({
   },
 
   transferDetail: {
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '17px',
-    marginRight: '25px',
-    lineHeight: '110%',
+    fontSize: "1rem",
+    fontWeight: "bold",
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "17px",
+    marginRight: "25px",
+    lineHeight: "110%",
   },
-})
+});

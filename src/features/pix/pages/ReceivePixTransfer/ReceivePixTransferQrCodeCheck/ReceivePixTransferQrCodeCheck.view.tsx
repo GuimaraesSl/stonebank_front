@@ -1,30 +1,30 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { cancelLabel } from 'constants/buttons/labels'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { Box, Grid, Typography } from '@material-ui/core'
-import { CurrencyFormatter } from '_translate'
-import { ProcessPageFooterButton } from 'components'
-import { useStyles } from './ReceivePixTransferQrCodeCheck.style'
-import { SharePixQrCode } from '../ReceivePixTransferQrCode/components/SharePixQrCode'
-import { PixKey } from 'features/pix/redux/models/pixKey'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AccountRoutes } from "features/account/constants/routes";
+import { cancelLabel } from "constants/buttons/labels";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { Box, Grid, Typography } from "@material-ui/core";
+import { CurrencyFormatter } from "_translate";
+import { ProcessPageFooterButton } from "components";
+import { useStyles } from "./ReceivePixTransferQrCodeCheck.style";
+import { SharePixQrCode } from "../ReceivePixTransferQrCode/components/SharePixQrCode";
+import { PixKey } from "features/pix/redux/models/pixKey";
 
 interface ReceivePixTransferQrCodeCheckViewProps {
-  onBackButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
-  onConfirmButtonClick: VoidFunction
-  onSharePixQrCodeClick: VoidFunction
-  onSharePixQrCode: boolean
-  onSharePixQrCodeClose: Function | ((onPixKeySelectionValid: boolean) => void)
-  qrCodeBase64: string | undefined
-  value: number
-  pixKey: PixKey
-  pixKeyType: string
+  onBackButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  onConfirmButtonClick: VoidFunction;
+  onSharePixQrCodeClick: VoidFunction;
+  onSharePixQrCode: boolean;
+  onSharePixQrCodeClose: Function | ((onPixKeySelectionValid: boolean) => void);
+  qrCodeBase64: string | undefined;
+  value: number;
+  pixKey: PixKey;
+  pixKeyType: string;
 }
 
 export const ReceivePixTransferQrCodeCheckView: React.FC<
@@ -41,7 +41,7 @@ export const ReceivePixTransferQrCodeCheckView: React.FC<
   pixKey,
   pixKeyType,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <PageContainer>
@@ -133,5 +133,5 @@ export const ReceivePixTransferQrCodeCheckView: React.FC<
       />
       <SharePixQrCode open={onSharePixQrCode} onClose={onSharePixQrCodeClose} />
     </PageContainer>
-  )
-}
+  );
+};

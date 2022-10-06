@@ -1,12 +1,12 @@
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { TextField } from '@material-ui/core'
-import { useStyle } from './InputText.style'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { useStyle } from "./InputText.style";
 
 interface DescriptionProps {
-  description: string
-  placeholder?: string
-  isVisible?: string
+  description: string;
+  placeholder?: string;
+  isVisible?: string;
 }
 
 export const InputText: React.FC<DescriptionProps> = ({
@@ -14,7 +14,7 @@ export const InputText: React.FC<DescriptionProps> = ({
   placeholder,
   isVisible,
 }) => {
-  const style = useStyle({ isVisible })
+  const style = useStyle({ isVisible });
 
   return (
     <Box className={style.container}>
@@ -29,5 +29,5 @@ export const InputText: React.FC<DescriptionProps> = ({
         />
       </Box>
     </Box>
-  )
-}
+  );
+};

@@ -1,8 +1,8 @@
-import { Dispatch } from 'redux'
-import { GetState } from 'redux/state'
-import { ApiResponse } from '_config'
-import { HttpClient } from '_config/http'
-import { getBaseRequestData } from '_utils/http'
+import { Dispatch } from "redux";
+import { GetState } from "redux/state";
+import { ApiResponse } from "_config";
+import { HttpClient } from "_config/http";
+import { getBaseRequestData } from "_utils/http";
 import {
   CloseAlertAction,
   CreateDarjPaymentFailAction,
@@ -18,36 +18,36 @@ import {
   UpdateDarjPaymentDataAction,
   UpdateFgtsPaymentDataAction,
   UpdateGarePaymentDataAction,
-} from './actionTypes'
-import { Darj } from './models/darj'
-import { Fgts } from './models/fgts'
-import { Gare } from './models/gare'
-import { createDarjPaymentRequest } from './models/request/createDarjPaymentRequest'
-import { CreateFgtsPaymentRequest } from './models/request/createFgtsPaymentRequest'
-import { CreateGarePaymentRequest } from './models/request/createGarePaymentRequest'
-import { createDarjPaymentResponse } from './models/response/createDarjPaymentResponse'
-import { CreateFgtsPaymentResponse } from './models/response/createFgtsPaymentResponse'
-import { CreateGarePaymentResponse } from './models/response/createGarePaymentResponse'
+} from "./actionTypes";
+import { Darj } from "./models/darj";
+import { Fgts } from "./models/fgts";
+import { Gare } from "./models/gare";
+import { createDarjPaymentRequest } from "./models/request/createDarjPaymentRequest";
+import { CreateFgtsPaymentRequest } from "./models/request/createFgtsPaymentRequest";
+import { CreateGarePaymentRequest } from "./models/request/createGarePaymentRequest";
+import { createDarjPaymentResponse } from "./models/response/createDarjPaymentResponse";
+import { CreateFgtsPaymentResponse } from "./models/response/createFgtsPaymentResponse";
+import { CreateGarePaymentResponse } from "./models/response/createGarePaymentResponse";
 
 export const updateGarePaymentData = (gare?: Gare) => (dispatch: Dispatch) => {
   dispatch<UpdateGarePaymentDataAction>({
     type: TaxPaymentActions.UPDATE_GARE_PAYMENT_DATA,
     payload: gare,
-  })
-}
+  });
+};
 
 export const createGarePayment =
   () => async (dispatch: Dispatch, getState: GetState) => {
     try {
       dispatch<CreateGarePaymentStartAction>({
         type: TaxPaymentActions.CREATE_GARE_PAYMENT_START,
-      })
+      });
 
-      const state = getState()
-      const garePaymentData = state.taxPayment.gare!
+      const state = getState();
+      const garePaymentData = state.taxPayment.gare!;
 
       const { url, defaultHeaders, token, accountId, userId } =
-        await getBaseRequestData('/TaxPayment/CreateGAREPayment', state)
+        await getBaseRequestData("/TaxPayment/CreateGAREPayment", state);
 
       const data: CreateGarePaymentRequest = {
         accountId: accountId!,
@@ -70,47 +70,47 @@ export const createGarePayment =
         totalValue: garePaymentData?.totalValue!,
         userId: userId!,
         GAREType: garePaymentData?.GAREType!,
-      }
+      };
 
       await HttpClient.post<CreateGarePaymentResponse>(url, data, {
         headers: {
           ...defaultHeaders,
           Authorization: `Bearer ${token}`,
         },
-      })
+      });
 
       dispatch<CreateGarePaymentSuccessAction>({
         type: TaxPaymentActions.CREATE_GARE_PAYMENT_SUCCESS,
-      })
+      });
     } catch (error: any) {
-      let response: ApiResponse | undefined
-      if (error.response) response = error.response?.data
+      let response: ApiResponse | undefined;
+      if (error.response) response = error.response?.data;
 
       dispatch<CreateGarePaymentFailAction>({
         type: TaxPaymentActions.CREATE_GARE_PAYMENT_FAIL,
         payload: response?.message ?? error.message,
-      })
+      });
     }
-  }
+  };
 
 export const updateFgtsPaymentData = (fgts?: Fgts) => (dispatch: Dispatch) => {
   dispatch<UpdateFgtsPaymentDataAction>({
     type: TaxPaymentActions.UPDATE_FGTS_PAYMENT_DATA,
     payload: fgts,
-  })
-}
+  });
+};
 
 export const createFgtsPayment =
   () => async (dispatch: Dispatch, getState: GetState) => {
     try {
       dispatch<CreateFgtsPaymentStartAction>({
         type: TaxPaymentActions.CREATE_FGTS_PAYMENT_START,
-      })
+      });
 
-      const state = getState()
+      const state = getState();
 
       const { url, defaultHeaders, token, accountId, userId } =
-        await getBaseRequestData('/TaxPayment/CreateFGTSPayment', state)
+        await getBaseRequestData("/TaxPayment/CreateFGTSPayment", state);
 
       const data: CreateFgtsPaymentRequest = {
         accountId: accountId!,
@@ -128,48 +128,48 @@ export const createFgtsPayment =
         tags: state.taxPayment.fgts?.tags!,
         taxId: state.auth.user?.taxId!,
         userId: userId!,
-      }
+      };
 
       await HttpClient.post<CreateFgtsPaymentResponse>(url, data, {
         headers: {
           ...defaultHeaders,
           Authorization: `Bearer ${token}`,
         },
-      })
+      });
 
       dispatch<CreateFgtsPaymentSuccessAction>({
         type: TaxPaymentActions.CREATE_FGTS_PAYMENT_SUCCESS,
-      })
+      });
     } catch (error: any) {
-      let response: ApiResponse | undefined
-      if (error.response) response = error.response?.data
+      let response: ApiResponse | undefined;
+      if (error.response) response = error.response?.data;
 
       dispatch<CreateFgtsPaymentFailAction>({
         type: TaxPaymentActions.CREATE_FGTS_PAYMENT_FAIL,
         payload: response?.message ?? error.message,
-      })
+      });
     }
-  }
+  };
 
 export const updateDarjPaymentData = (darj?: Darj) => (dispatch: Dispatch) => {
   dispatch<UpdateDarjPaymentDataAction>({
     type: TaxPaymentActions.UPDATE_DARJ_PAYMENT_DATA,
     payload: darj,
-  })
-}
+  });
+};
 
 export const createDarjPayment =
   () => async (dispatch: Dispatch, getState: GetState) => {
     try {
       dispatch<CreateDarjPaymentStartAction>({
         type: TaxPaymentActions.CREATE_DARJ_PAYMENT_START,
-      })
+      });
 
-      const state = getState()
-      const darj = state.taxPayment.darj!
+      const state = getState();
+      const darj = state.taxPayment.darj!;
 
       const { url, defaultHeaders, token, accountId, userId } =
-        await getBaseRequestData('/TaxPayment/CreateDARJPayment', state)
+        await getBaseRequestData("/TaxPayment/CreateDARJPayment", state);
 
       const data: createDarjPaymentRequest = {
         accountId: accountId!,
@@ -191,31 +191,31 @@ export const createDarjPayment =
         rateValueType: darj.rateValueType!,
         description: darj.description!,
         taxId: state.auth.user?.taxId,
-      }
+      };
 
       await HttpClient.post<createDarjPaymentResponse>(url, data, {
         headers: {
           ...defaultHeaders,
           Authorization: `Bearer ${token}`,
         },
-      })
+      });
 
       dispatch<CreateDarjPaymentSuccessAction>({
         type: TaxPaymentActions.CREATE_DARJ_PAYMENT_SUCCESS,
-      })
+      });
     } catch (error: any) {
-      let response: ApiResponse | undefined
-      if (error.response) response = error.response?.data
+      let response: ApiResponse | undefined;
+      if (error.response) response = error.response?.data;
 
       dispatch<CreateDarjPaymentFailAction>({
         type: TaxPaymentActions.CREATE_DARJ_PAYMENT_FAIL,
         payload: response?.message ?? error.message,
-      })
+      });
     }
-  }
+  };
 
 export const closeAlert = (dispatch: Dispatch) => {
   dispatch<CloseAlertAction>({
     type: TaxPaymentActions.CLOSE_ALERT,
-  })
-}
+  });
+};

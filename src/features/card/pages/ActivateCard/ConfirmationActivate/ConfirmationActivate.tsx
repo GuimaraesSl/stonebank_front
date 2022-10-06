@@ -1,21 +1,21 @@
-import React from 'react'
-import { useStyles } from './ConfirmationActivate.style'
-import { PageContainer } from 'components/PageContainer'
-import { useHistory } from 'react-router-dom'
-import { AddBoxOutlined, KeyboardArrowRight } from '@material-ui/icons'
-import { Button } from 'components/Button'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { CardRoutes } from 'features/card/constants/routes'
-import { Typography, Box, Grid } from '@material-ui/core'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { useStyles } from "./ConfirmationActivate.style";
+import { PageContainer } from "components/PageContainer";
+import { useHistory } from "react-router-dom";
+import { AddBoxOutlined, KeyboardArrowRight } from "@material-ui/icons";
+import { Button } from "components/Button";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { CardRoutes } from "features/card/constants/routes";
+import { Typography, Box, Grid } from "@material-ui/core";
+import { Icon } from "components/Icon";
 
 export const ConfirmationActivate: React.FC = () => {
-  const styles = useStyles()
-  const history = useHistory()
+  const styles = useStyles();
+  const history = useHistory();
 
   const onNextButtonClick = () => {
-    history.push(CardRoutes.passwordCard)
-  }
+    history.push(CardRoutes.passwordCard);
+  };
 
   return (
     <PageContainer>
@@ -51,5 +51,5 @@ export const ConfirmationActivate: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

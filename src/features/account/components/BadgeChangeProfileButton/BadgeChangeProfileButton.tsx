@@ -1,17 +1,17 @@
-import React from 'react'
-import { useStyle } from './BadgeChangeProfileButton.style'
-import { Button } from '@material-ui/core'
+import React from "react";
+import { useStyle } from "./BadgeChangeProfileButton.style";
+import { Button } from "@material-ui/core";
 
 interface BadgeChangeProfileButtonProps {
-  imagePath: string | React.ReactNode
-  title: string
+  imagePath: string | React.ReactNode;
+  title: string;
   //  onClick?:(evento: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export const BadgeChangeProfileButton: React.FC<
   BadgeChangeProfileButtonProps
 > = ({ title, imagePath }: BadgeChangeProfileButtonProps) => {
-  const style = useStyle()
+  const style = useStyle();
 
   return (
     <Button
@@ -21,7 +21,7 @@ export const BadgeChangeProfileButton: React.FC<
       data-test-id="change-profile-button"
     >
       <div className={style.propButton}>
-        {typeof imagePath === 'string' ? (
+        {typeof imagePath === "string" ? (
           <img src={imagePath} className={style.iconBgButton} alt="bgButton" />
         ) : (
           imagePath
@@ -29,5 +29,5 @@ export const BadgeChangeProfileButton: React.FC<
         <div className={style.label}>{title}</div>
       </div>
     </Button>
-  )
-}
+  );
+};

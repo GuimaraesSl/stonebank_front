@@ -1,1 +1,1 @@
-export { BankBranch } from './BankBranch'
+export { BankBranch } from "./BankBranch";

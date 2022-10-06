@@ -1,1 +1,1 @@
-export { DigitalWithdrawalSummary } from './DigitalWithdrawalSummary'
+export { DigitalWithdrawalSummary } from "./DigitalWithdrawalSummary";

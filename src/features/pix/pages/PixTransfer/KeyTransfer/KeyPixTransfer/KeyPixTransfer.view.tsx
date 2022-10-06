@@ -1,5 +1,5 @@
 /* eslint-disable no-control-regex */
-import React from 'react'
+import React from "react";
 import {
   AppBar,
   Button,
@@ -8,29 +8,29 @@ import {
   ProcessPageFooterButton,
   ProcessPageLayout,
   TextField,
-} from 'components'
-import { PixKeyTypeButtonList } from './components'
-import { Box } from '@material-ui/core'
-import { cancelLabel } from 'constants/buttons/labels'
-import { Close } from '@material-ui/icons'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { Loader } from 'components/Loader'
-import { KeyType } from 'features/pix/redux/models/keyType'
-import { useStyles } from './KeyPixTransfer.style'
-import { Alert } from 'components/Alert'
+} from "components";
+import { PixKeyTypeButtonList } from "./components";
+import { Box } from "@material-ui/core";
+import { cancelLabel } from "constants/buttons/labels";
+import { Close } from "@material-ui/icons";
+import { AccountRoutes } from "features/account/constants/routes";
+import { Loader } from "components/Loader";
+import { KeyType } from "features/pix/redux/models/keyType";
+import { useStyles } from "./KeyPixTransfer.style";
+import { Alert } from "components/Alert";
 
 interface KeyPixTransferViewProps {
-  pixKeyValue: string
-  onKeyValueChange: React.ChangeEventHandler<HTMLInputElement>
-  selectedKeyType: KeyType
-  onKeyTypeChange: (_: KeyType) => void
-  keyIsValid?: boolean
-  loading: boolean
-  errorMessage?: string
+  pixKeyValue: string;
+  onKeyValueChange: React.ChangeEventHandler<HTMLInputElement>;
+  selectedKeyType: KeyType;
+  onKeyTypeChange: (_: KeyType) => void;
+  keyIsValid?: boolean;
+  loading: boolean;
+  errorMessage?: string;
   // onSubmit: React.FormEventHandler
-  onAlertClose: VoidFunction
-  onCancelButtonClick: VoidFunction
-  onConfirmButtonClick: VoidFunction
+  onAlertClose: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  onConfirmButtonClick: VoidFunction;
 }
 
 export const KeyPixTransferView: React.FC<KeyPixTransferViewProps> = ({
@@ -46,38 +46,38 @@ export const KeyPixTransferView: React.FC<KeyPixTransferViewProps> = ({
   onCancelButtonClick,
   onConfirmButtonClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   const placeholder = React.useMemo(() => {
     switch (selectedKeyType) {
       case KeyType.phone:
-        return 'Celular do destinatário'
+        return "Celular do destinatário";
 
       case KeyType.taxId:
-        return 'CPF/CNPJ do destinatário'
+        return "CPF/CNPJ do destinatário";
 
       case KeyType.email:
-        return 'E-mail do destinatário'
+        return "E-mail do destinatário";
 
       case KeyType.random:
-        return 'Chave aleatória do destinatário'
+        return "Chave aleatória do destinatário";
     }
-  }, [selectedKeyType])
+  }, [selectedKeyType]);
 
   const inputMode = React.useMemo(() => {
     switch (selectedKeyType) {
       case KeyType.phone:
-        return 'tel'
+        return "tel";
 
       case KeyType.taxId:
-        return 'numeric'
+        return "numeric";
 
       case KeyType.email:
-        return 'email'
+        return "email";
 
       case KeyType.random:
-        return 'text'
+        return "text";
     }
-  }, [selectedKeyType])
+  }, [selectedKeyType]);
 
   return (
     <PageContainer>
@@ -90,8 +90,8 @@ export const KeyPixTransferView: React.FC<KeyPixTransferViewProps> = ({
                 palette="secondary"
                 size="small"
                 startIcon={<Close color="primary" />}
-                onClick={onCancelButtonClick}                
-                data-test-id="cancel-button" 
+                onClick={onCancelButtonClick}
+                data-test-id="cancel-button"
               >
                 {cancelLabel}
               </Button>
@@ -114,7 +114,7 @@ export const KeyPixTransferView: React.FC<KeyPixTransferViewProps> = ({
           >
             <PixKeyTypeButtonList onKeyTypeChange={onKeyTypeChange} />
             <TextField
-              label={''}
+              label={""}
               inputMode={inputMode}
               placeholder={placeholder}
               value={pixKeyValue}
@@ -138,10 +138,10 @@ export const KeyPixTransferView: React.FC<KeyPixTransferViewProps> = ({
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
     </PageContainer>
-  )
-}
+  );
+};

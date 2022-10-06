@@ -1,25 +1,25 @@
-import { CurrencyFormatter, DateFormatter } from '_translate'
-import { useStyles } from 'features/taxPayment/components/DetailsFgtsDescription/DetailsFgtsDescription.style'
-import React from 'react'
-import { MaskBarCodeFgts } from '_utils/masks/barCode'
+import { CurrencyFormatter, DateFormatter } from "_translate";
+import { useStyles } from "features/taxPayment/components/DetailsFgtsDescription/DetailsFgtsDescription.style";
+import React from "react";
+import { MaskBarCodeFgts } from "_utils/masks/barCode";
 
-import { maskTaxPayer } from '_utils/masks/taxPayer'
-import { TransactionDetail } from 'components/TransactionDetail'
-import { TransactionDetailName } from 'components/TransactionDetailName'
-import { TransactionDetailValue } from 'components/TransactionDetailValue'
+import { maskTaxPayer } from "_utils/masks/taxPayer";
+import { TransactionDetail } from "components/TransactionDetail";
+import { TransactionDetailName } from "components/TransactionDetailName";
+import { TransactionDetailValue } from "components/TransactionDetailValue";
 
 interface DetailsFgtsDescriptionProps {
-  type?: string
-  name?: string
-  taxPayer?: string | null
-  paymentDate?: Date
-  codeRevenue: string
-  principalValue: number
-  fgtsIdentifier: string
-  socialConnectivityCode: number
-  socialConnectivityDigit: number
-  description: string
-  barCode: string
+  type?: string;
+  name?: string;
+  taxPayer?: string | null;
+  paymentDate?: Date;
+  codeRevenue: string;
+  principalValue: number;
+  fgtsIdentifier: string;
+  socialConnectivityCode: number;
+  socialConnectivityDigit: number;
+  description: string;
+  barCode: string;
 }
 
 export const DetailsFgtsDescription: React.FC<DetailsFgtsDescriptionProps> = ({
@@ -33,7 +33,7 @@ export const DetailsFgtsDescription: React.FC<DetailsFgtsDescriptionProps> = ({
   description,
   barCode,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <React.Fragment>
       <TransactionDetail
@@ -78,5 +78,5 @@ export const DetailsFgtsDescription: React.FC<DetailsFgtsDescriptionProps> = ({
         </TransactionDetailValue>
       </TransactionDetail>
     </React.Fragment>
-  )
-}
+  );
+};

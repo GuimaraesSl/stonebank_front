@@ -1,27 +1,27 @@
-import { PixRoutes } from 'features/pix/constants/routes'
+import { PixRoutes } from "features/pix/constants/routes";
 import {
   createPixTransferAction,
   updatePixTransfer,
   updateState,
-} from 'features/pix/redux/actions'
-import { AccountType } from 'features/pix/redux/models/accountType'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { StoreState } from 'redux/state'
-import { QrCodePixTransferSummaryView } from './QrCodePixTransferSummary.view'
+} from "features/pix/redux/actions";
+import { AccountType } from "features/pix/redux/models/accountType";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { StoreState } from "redux/state";
+import { QrCodePixTransferSummaryView } from "./QrCodePixTransferSummary.view";
 
 export const QrCodePixTransferSummary: React.FC = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [pixDate, setPixDate] = React.useState<Date>(new Date())
-  const [value, setValue] = React.useState(Number)
-  const [validatedToken, setValidatedToken] = React.useState(false)
+  const [pixDate, setPixDate] = React.useState<Date>(new Date());
+  const [value, setValue] = React.useState(Number);
+  const [validatedToken, setValidatedToken] = React.useState(false);
   const [openAuthorizationSheet, setOpenAuthorizationSheet] =
-    React.useState(false)
+    React.useState(false);
 
-  const pixState = useSelector((store: StoreState) => store.pix)
+  const pixState = useSelector((store: StoreState) => store.pix);
 
   const {
     pixQrCodeInfo,
@@ -29,43 +29,43 @@ export const QrCodePixTransferSummary: React.FC = () => {
     createPixTransfer,
     loading,
     errorMessage,
-  } = pixState
+  } = pixState;
 
   React.useEffect(() => {
     if (validatedToken && createPixTransfer)
-      history.replace(PixRoutes.pixTransferProcess)
-  }, [createPixTransfer])
+      history.replace(PixRoutes.pixTransferProcess);
+  }, [createPixTransfer]);
 
   React.useEffect(() => {
-    setPixDate(pixQrCodeInfo?.paymentDate ?? new Date())
-    setValue(parseFloat(pixQrCodeInfo?.originalValue!))
-  }, [pixQrCodeInfo])
+    setPixDate(pixQrCodeInfo?.paymentDate ?? new Date());
+    setValue(parseFloat(pixQrCodeInfo?.originalValue!));
+  }, [pixQrCodeInfo]);
 
   const onCancelButtonClick = React.useCallback(() => {
-    dispatch(updateState())
-    history.push(PixRoutes.pixTransferHome)
-  }, [pixState])
+    dispatch(updateState());
+    history.push(PixRoutes.pixTransferHome);
+  }, [pixState]);
 
   const onConfirmButtonClick = () => {
-    setOpenAuthorizationSheet(true)
-  }
+    setOpenAuthorizationSheet(true);
+  };
 
   const convertAccountType = (accountType?: string) => {
     switch (accountType) {
-      case '0':
-        return AccountType.normal
-      case '1':
-        return AccountType.savings
+      case "0":
+        return AccountType.normal;
+      case "1":
+        return AccountType.savings;
     }
-  }
+  };
 
   const onAuthorizationClose = (tokenIsValid: boolean) => {
     if (tokenIsValid) {
-      setValidatedToken(true)
-      dispatch(createPixTransferAction())
+      setValidatedToken(true);
+      dispatch(createPixTransferAction());
     }
-    setOpenAuthorizationSheet(false)
-  }
+    setOpenAuthorizationSheet(false);
+  };
 
   return (
     <QrCodePixTransferSummaryView
@@ -77,5 +77,5 @@ export const QrCodePixTransferSummary: React.FC = () => {
       onAuthorizationClose={onAuthorizationClose}
       onConfirmButtonClick={onConfirmButtonClick}
     />
-  )
-}
+  );
+};

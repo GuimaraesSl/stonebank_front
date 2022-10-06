@@ -56,4 +56,4 @@ export const useStyles = makeStyles({
       marginTop: '30px',
     },
   },
-})
+});

@@ -1,1 +1,1 @@
-export { EnterNameForCard } from './EnterNameForCard'
+export { EnterNameForCard } from "./EnterNameForCard";

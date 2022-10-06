@@ -1,1 +1,1 @@
-export { ChangeNickname } from './ChangeNickname'
+export { ChangeNickname } from "./ChangeNickname";

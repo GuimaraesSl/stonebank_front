@@ -1,1 +1,1 @@
-export { EnterBirthDateForCard } from './EnterBirthDateForCard'
+export { EnterBirthDateForCard } from "./EnterBirthDateForCard";

@@ -1,50 +1,52 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Box } from '@material-ui/core'
-import { TextField } from 'components/TextField'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { KeyboardArrowLeft } from '@material-ui/icons'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PageContainer } from 'components/PageContainer'
-import { useDispatch } from 'react-redux'
-import { useMask } from 'hooks/useMask'
-import { lettersOnly } from '_utils/masks/generics'
-import { updateOnboardingForm } from 'features/onboarding/redux/actions'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Box } from "@material-ui/core";
+import { TextField } from "components/TextField";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { KeyboardArrowLeft } from "@material-ui/icons";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PageContainer } from "components/PageContainer";
+import { useDispatch } from "react-redux";
+import { useMask } from "hooks/useMask";
+import { lettersOnly } from "_utils/masks/generics";
+import { updateOnboardingForm } from "features/onboarding/redux/actions";
 
 export const EnterNameForCard: React.FC = () => {
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const [name, setName] = useMask(lettersOnly)
-  const [disableNextButton, setDisableNextButton] = React.useState(false)
+  const [name, setName] = useMask(lettersOnly);
+  const [disableNextButton, setDisableNextButton] = React.useState(false);
 
   React.useEffect(() => {
-    name.length === 0 ? setDisableNextButton(true) : setDisableNextButton(false)
-  }, [name.length])
+    name.length === 0
+      ? setDisableNextButton(true)
+      : setDisableNextButton(false);
+  }, [name.length]);
 
   const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setName(event.target.value)
+    setName(event.target.value);
 
   const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    dispatch(updateOnboardingForm({ name }))
-    history.push(OnboardingRoutes.enterMailForCard)
-  }
+    dispatch(updateOnboardingForm({ name }));
+    history.push(OnboardingRoutes.enterMailForCard);
+  };
 
   const onCancelButtonClick = () => {
-    history.replace(OnboardingRoutes.activateAccount)
-  }
+    history.replace(OnboardingRoutes.activateAccount);
+  };
 
   const onBackToCardForm = () => {
-    history.push(OnboardingRoutes.enterDigitsForCard)
-  }
+    history.push(OnboardingRoutes.enterDigitsForCard);
+  };
 
   return (
     <PageContainer>
@@ -109,5 +111,5 @@ export const EnterNameForCard: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

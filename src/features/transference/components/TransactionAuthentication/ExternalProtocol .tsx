@@ -1,10 +1,10 @@
-import { Box } from '@material-ui/core'
-import React from 'react'
+import { Box } from "@material-ui/core";
+import React from "react";
 interface ExternalProtocolProps {
-  controlProtocol?: string
+  controlProtocol?: string;
 }
 export const ExternalProtocol: React.FC<ExternalProtocolProps> = ({
   controlProtocol,
 }) => {
-  return <Box>Controle/Protocolo: {controlProtocol}</Box>
-}
+  return <Box>Controle/Protocolo: {controlProtocol}</Box>;
+};

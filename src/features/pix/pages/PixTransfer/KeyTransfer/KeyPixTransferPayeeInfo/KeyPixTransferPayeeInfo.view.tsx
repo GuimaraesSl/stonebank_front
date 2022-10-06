@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -9,19 +9,19 @@ import {
   ProcessDescriptionHeader,
   ProcessPageFooterButton,
   ProcessPageLayout,
-} from 'components'
-import { cancelLabel } from 'constants/buttons/labels'
-import { useStyles } from './KeyPixTransferPayeeInfo.style'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
+} from "components";
+import { cancelLabel } from "constants/buttons/labels";
+import { useStyles } from "./KeyPixTransferPayeeInfo.style";
+import { AccountRoutes } from "features/account/constants/routes";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
 interface KeyPixTransferPayeeInfoViewProps {
-  onCancelButtonClick: VoidFunction
-  payeeName?: string
-  payeePixKeyValueText?: string
-  loading: boolean
-  errorMessage?: string
-  onConfirmButtonClick: VoidFunction
+  onCancelButtonClick: VoidFunction;
+  payeeName?: string;
+  payeePixKeyValueText?: string;
+  loading: boolean;
+  errorMessage?: string;
+  onConfirmButtonClick: VoidFunction;
 }
 export const KeyPixTransferPayeeInfoView: React.FC<
   KeyPixTransferPayeeInfoViewProps
@@ -33,7 +33,7 @@ export const KeyPixTransferPayeeInfoView: React.FC<
   errorMessage,
   onConfirmButtonClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <PageContainer className={styles.page}>
       <ProcessPageLayout
@@ -81,5 +81,5 @@ export const KeyPixTransferPayeeInfoView: React.FC<
         <Alert title="Erro" message={errorMessage} severity="error" />
       )}
     </PageContainer>
-  )
-}
+  );
+};

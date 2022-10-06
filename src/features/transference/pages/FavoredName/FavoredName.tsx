@@ -1,58 +1,58 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { PageContainer } from 'components/PageContainer'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { TextField } from 'components/TextField'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Button } from 'components/Button'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { useHistory } from 'react-router-dom'
-import { TransferenceRoutes } from 'features/transference/constants/routes'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { useDispatch } from 'react-redux'
-import { updateTransferenceData } from 'features/transference/redux/actions'
-import { Box } from '@material-ui/core'
-import { TransferType } from 'features/transference/redux/models/enum'
-import { useMask } from 'hooks/useMask'
-import { lettersOnly } from '_utils/masks/generics'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { PageContainer } from "components/PageContainer";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { TextField } from "components/TextField";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Button } from "components/Button";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { useHistory } from "react-router-dom";
+import { TransferenceRoutes } from "features/transference/constants/routes";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { useDispatch } from "react-redux";
+import { updateTransferenceData } from "features/transference/redux/actions";
+import { Box } from "@material-ui/core";
+import { TransferType } from "features/transference/redux/models/enum";
+import { useMask } from "hooks/useMask";
+import { lettersOnly } from "_utils/masks/generics";
 
 export const FavoredName: React.FC = () => {
-  const [toName, setToName] = useMask(lettersOnly)
-  const [disableNextButton, setDisableNextButton] = React.useState(false)
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const [toName, setToName] = useMask(lettersOnly);
+  const [disableNextButton, setDisableNextButton] = React.useState(false);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(
       updateTransferenceData({
         transferType: TransferType.MoneyTransfer,
-      }),
-    )
-  }, [])
+      })
+    );
+  }, []);
 
   React.useEffect(() => {
-    if (toName.length === 0) setDisableNextButton(true)
-    else setDisableNextButton(false)
-  }, [toName.length])
+    if (toName.length === 0) setDisableNextButton(true);
+    else setDisableNextButton(false);
+  }, [toName.length]);
 
   const onToNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setToName(event.target.value)
-  }
+    setToName(event.target.value);
+  };
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransferenceData())
-    history.go(-3)
-  }
+    dispatch(updateTransferenceData());
+    history.go(-3);
+  };
 
   const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-    if (disableNextButton) return
+    event.preventDefault();
+    if (disableNextButton) return;
 
-    dispatch(updateTransferenceData({ toName }))
-    history.push(TransferenceRoutes.selectBank)
-  }
+    dispatch(updateTransferenceData({ toName }));
+    history.push(TransferenceRoutes.selectBank);
+  };
 
   return (
     <PageContainer>
@@ -107,5 +107,5 @@ export const FavoredName: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

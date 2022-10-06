@@ -1,1 +1,1 @@
-export { ChangePasswordFirstAccess } from './ChangePasswordFirstAccess'
+export { ChangePasswordFirstAccess } from "./ChangePasswordFirstAccess";

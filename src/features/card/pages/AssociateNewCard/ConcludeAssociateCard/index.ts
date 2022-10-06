@@ -1,1 +1,1 @@
-export { ConcludeAssociateCard } from './ConcludeAssociateCard'
+export { ConcludeAssociateCard } from "./ConcludeAssociateCard";

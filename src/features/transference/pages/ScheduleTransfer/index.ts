@@ -1,1 +1,1 @@
-export { ScheduleTransfer } from './ScheduleTransfer'
+export { ScheduleTransfer } from "./ScheduleTransfer";

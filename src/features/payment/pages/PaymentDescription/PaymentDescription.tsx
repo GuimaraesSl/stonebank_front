@@ -1,79 +1,81 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { useHistory } from 'react-router-dom'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { cancelLabel, nextLabel, skipLabel } from 'constants/buttons/labels'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { Box, Grid } from '@material-ui/core'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { TextField } from 'components/TextField'
-import { useStyles } from './PaymentDescription.style'
-import { updatePaymentData } from 'features/payment/redux/actions'
-import { useDispatch } from 'react-redux'
-import { PaymentRoutes } from 'features/payment/constants/routes'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { PageContainer } from 'components/PageContainer'
-import { Loader } from 'components/Loader'
-import { TagChip } from 'features/tags/components/TagChip'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { TagEditPopUp } from 'components/TagEditPopUp'
+import React from "react";
+import { useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { useHistory } from "react-router-dom";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { cancelLabel, nextLabel, skipLabel } from "constants/buttons/labels";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { Box, Grid } from "@material-ui/core";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { TextField } from "components/TextField";
+import { useStyles } from "./PaymentDescription.style";
+import { updatePaymentData } from "features/payment/redux/actions";
+import { useDispatch } from "react-redux";
+import { PaymentRoutes } from "features/payment/constants/routes";
+import { AccountRoutes } from "features/account/constants/routes";
+import { PageContainer } from "components/PageContainer";
+import { Loader } from "components/Loader";
+import { TagChip } from "features/tags/components/TagChip";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { TagEditPopUp } from "components/TagEditPopUp";
 
 export const PaymentDescription: React.FC = () => {
-  const styles = useStyles()
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const [openTagEditPopUp, setOpenTagEditPopUp] = React.useState(false)
-  const [inputText, setInputText] = React.useState('')
+  const styles = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [openTagEditPopUp, setOpenTagEditPopUp] = React.useState(false);
+  const [inputText, setInputText] = React.useState("");
 
   const [originalPaymentValue, payementTags] = useSelector<
     StoreState,
     [number, string[] | undefined]
-  >(state => [
+  >((state) => [
     state.payment.paymentData?.originalPaymentValue!,
     state.payment.paymentData?.tags,
-  ])
-  const loading = useSelector((state: StoreState) => state.tags.loading)
+  ]);
+  const loading = useSelector((state: StoreState) => state.tags.loading);
 
-  const payment = useSelector((store: StoreState) => store.payment)
-  const { paymentData } = payment
+  const payment = useSelector((store: StoreState) => store.payment);
+  const { paymentData } = payment;
 
-  const onCancelButtonClick = () => dispatch(updatePaymentData())
+  const onCancelButtonClick = () => dispatch(updatePaymentData());
 
   const onSkipLabelButtonClick = async (description: string) => {
-    dispatch(updatePaymentData({ description: description }))
-    history.push(PaymentRoutes.summary)
-  }
+    dispatch(updatePaymentData({ description: description }));
+    history.push(PaymentRoutes.summary);
+  };
 
   const handleChange = (event: any) => {
-    setInputText(event.target.value)
-  }
+    setInputText(event.target.value);
+  };
 
   const onBackButtonClick = () => {
-    dispatch(updatePaymentData({ paymentValue: paymentData?.paymentValue }))
-  }
+    dispatch(updatePaymentData({ paymentValue: paymentData?.paymentValue }));
+  };
 
   const onEditTagsButtonClick = () => {
-    setOpenTagEditPopUp(true)
-  }
+    setOpenTagEditPopUp(true);
+  };
 
   const onEditTagsClose = () => {
-    setOpenTagEditPopUp(false)
-  }
+    setOpenTagEditPopUp(false);
+  };
 
   const onTagClick = (tag: string) => {
-    dispatch(updatePaymentData({ tags: payementTags!.filter(t => t !== tag) }))
-  }
+    dispatch(
+      updatePaymentData({ tags: payementTags!.filter((t) => t !== tag) })
+    );
+  };
 
   return (
     <PageContainer>
       <ProcessPageLayout
         appBar={
           <AppBar
-            homeRoute={'/'}
+            homeRoute={"/"}
             action={
               <Button
                 palette="secondary"
@@ -114,7 +116,7 @@ export const PaymentDescription: React.FC = () => {
 
             <Box marginTop={1}>
               <Grid container spacing={1}>
-                {payementTags?.map(tag => (
+                {payementTags?.map((tag) => (
                   <Grid item key={tag}>
                     <TagChip label={tag} onClick={onTagClick} />
                   </Grid>
@@ -131,7 +133,7 @@ export const PaymentDescription: React.FC = () => {
               </ButtonWithFloatingIcon>
             </Box>
             <TagEditPopUp
-              onSaveTags={tags => dispatch(updatePaymentData({ tags }))}
+              onSaveTags={(tags) => dispatch(updatePaymentData({ tags }))}
               open={openTagEditPopUp}
               onClose={onEditTagsClose}
             />
@@ -155,5 +157,5 @@ export const PaymentDescription: React.FC = () => {
       />
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

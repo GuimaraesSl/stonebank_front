@@ -1,1 +1,1 @@
-export { EnterMailForCard } from './EnterMailForCard'
+export { EnterMailForCard } from "./EnterMailForCard";

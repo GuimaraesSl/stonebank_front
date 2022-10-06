@@ -1,5 +1,5 @@
-import { FindFuturePaymentsList } from '../futureTransactions'
+import { FindFuturePaymentsList } from "../futureTransactions";
 
 export interface FutureTransactionsListResponse {
-  transactions: FindFuturePaymentsList[]
+  transactions: FindFuturePaymentsList[];
 }

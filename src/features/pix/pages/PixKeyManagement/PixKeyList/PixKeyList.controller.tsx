@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { PixKeyListView } from './PixKeyList.view'
-import { PixRoutes } from 'features/pix/constants/routes'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { PixKeyListView } from "./PixKeyList.view";
+import { PixRoutes } from "features/pix/constants/routes";
+import { useDispatch, useSelector } from "react-redux";
 import {
   cancelPixKeyAction,
   closeAlert,
   resendPixKeyTokenAction,
   selectPixKey,
   updateState,
-} from 'features/pix/redux/actions'
-import { StoreState } from 'redux/state'
-import { PixKey } from 'features/pix/redux/models/pixKey'
-import { PixKeyStatus } from 'features/pix/redux/models/pixKeyStatus'
-import { PixKeyType } from 'features/pix/redux/models/pixKeyType'
+} from "features/pix/redux/actions";
+import { StoreState } from "redux/state";
+import { PixKey } from "features/pix/redux/models/pixKey";
+import { PixKeyStatus } from "features/pix/redux/models/pixKeyStatus";
+import { PixKeyType } from "features/pix/redux/models/pixKeyType";
 
 export const PixKeyList: React.FC = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('') 
-  const [taxId, setTaxId] = useState('')
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [taxId, setTaxId] = useState("");
 
-  const { user } = useSelector((store: StoreState) => store.auth)
-  const pixState = useSelector((state: StoreState) => state.pix)
+  const { user } = useSelector((store: StoreState) => store.auth);
+  const pixState = useSelector((state: StoreState) => state.pix);
   const {
     pixKey,
     pixKeyList,
@@ -32,22 +32,22 @@ export const PixKeyList: React.FC = () => {
     errorMessage,
     resendPixKeyToken,
     cancelPixKey,
-  } = pixState
+  } = pixState;
 
   const [popUpPixKeyDeletionConfirmation, setPopUpPixKeyDeletionConfirmation] =
-    React.useState(false)
+    React.useState(false);
 
   const [openAuthorizationSheet, setOpenAuthorizationSheet] =
-    React.useState(false)
+    React.useState(false);
 
-  const [sentRequest, setSentRequest] = React.useState(false)
+  const [sentRequest, setSentRequest] = React.useState(false);
 
   const onSelectPixKeyAction = (pixKey: PixKey) => {
-    dispatch(selectPixKey(pixKey))
+    dispatch(selectPixKey(pixKey));
 
     if (pixKey.status !== PixKeyStatus.Registering)
-      setPopUpPixKeyDeletionConfirmation(true)
-  }
+      setPopUpPixKeyDeletionConfirmation(true);
+  };
 
   //------------------------------------------------------
 
@@ -57,26 +57,26 @@ export const PixKeyList: React.FC = () => {
       pixKey.pixKeyType === PixKeyType.Email &&
       pixKey.status === PixKeyStatus.Registering
     ) {
-      dispatch(resendPixKeyTokenAction(pixState.pixKey))
+      dispatch(resendPixKeyTokenAction(pixState.pixKey));
     }
-  }, [pixKey])
+  }, [pixKey]);
 
   React.useEffect(() => {
     if (
       pixState.pixKey &&
       pixState.pixKey.pixKeyType === PixKeyType.PhoneNumber
     ) {
-      dispatch(resendPixKeyTokenAction(pixState.pixKey))
-      setSentRequest(true)
+      dispatch(resendPixKeyTokenAction(pixState.pixKey));
+      setSentRequest(true);
     }
-  }, [pixState.pixKey])
+  }, [pixState.pixKey]);
 
   React.useEffect(() => {
     if (resendPixKeyToken && pixKey!.pixKeyType === PixKeyType.Email)
       history.push(PixRoutes.confirmEmailPixKeyToken, {
         pixKeyValue: pixState.pixKey?.pixKeyValue,
-      })
-  }, [resendPixKeyToken])
+      });
+  }, [resendPixKeyToken]);
 
   React.useEffect(() => {
     if (
@@ -86,68 +86,68 @@ export const PixKeyList: React.FC = () => {
     )
       history.push(PixRoutes.confirmPhoneNumberPixKeyToken, {
         pixKeyValue: pixState.pixKey?.pixKeyValue,
-      })
-  }, [resendPixKeyToken])
+      });
+  }, [resendPixKeyToken]);
 
   React.useEffect(() => {
-    if (user?.mail) setEmail(user!.mail)
-    if (user?.phoneNumber) setPhone(user!.phoneNumber)
-    if (user?.taxId) setTaxId(user!.taxId)
-  }, [])
+    if (user?.mail) setEmail(user!.mail);
+    if (user?.phoneNumber) setPhone(user!.phoneNumber);
+    if (user?.taxId) setTaxId(user!.taxId);
+  }, []);
 
   //------------------------------------------------------
 
   React.useEffect(() => {
     if (cancelPixKey) {
-      dispatch(updateState())
-      history.push(PixRoutes.pixArea)
+      dispatch(updateState());
+      history.push(PixRoutes.pixArea);
     }
-  }, [cancelPixKey])
+  }, [cancelPixKey]);
 
   const closetPixKeyDeletionConfirmationPopUp = () => {
-    setPopUpPixKeyDeletionConfirmation(false)
-  }
+    setPopUpPixKeyDeletionConfirmation(false);
+  };
 
   const onConfirmPixKeyDeletion = React.useCallback(() => {
-    closetPixKeyDeletionConfirmationPopUp()
-    setOpenAuthorizationSheet(true)
-  }, [])
+    closetPixKeyDeletionConfirmationPopUp();
+    setOpenAuthorizationSheet(true);
+  }, []);
 
   const onTaxIdPixKeyClick = React.useCallback(() => {
-    dispatch(updateState())
-    history.push(PixRoutes.createTaxIdPixKey)
-  }, [])
+    dispatch(updateState());
+    history.push(PixRoutes.createTaxIdPixKey);
+  }, []);
 
   const onRandomPixKeyClick = React.useCallback(() => {
-    dispatch(updateState())
-    history.push(PixRoutes.createRandomPixKey)
-  }, [])
+    dispatch(updateState());
+    history.push(PixRoutes.createRandomPixKey);
+  }, []);
 
   const onEmailPixKeyClick = React.useCallback(() => {
-    dispatch(updateState())
-    history.push(PixRoutes.createEmailPixKey)
-  }, [])
+    dispatch(updateState());
+    history.push(PixRoutes.createEmailPixKey);
+  }, []);
 
   const onPhoneNumberPixKeyClick = React.useCallback(() => {
-    dispatch(updateState())
-    history.push(PixRoutes.createPhoneNumberPixKey)
-  }, [])
+    dispatch(updateState());
+    history.push(PixRoutes.createPhoneNumberPixKey);
+  }, []);
 
   const onAuthorizationSheetClose = (tokenIsValid: boolean) => {
-    if (tokenIsValid) dispatch(cancelPixKeyAction(pixState.pixKey!))
+    if (tokenIsValid) dispatch(cancelPixKeyAction(pixState.pixKey!));
 
-    setSentRequest(true)
-    setOpenAuthorizationSheet(false)
-  }
+    setSentRequest(true);
+    setOpenAuthorizationSheet(false);
+  };
 
   const onCancelButtonClick = React.useCallback(() => {
-    dispatch(updateState())
-    history.push(PixRoutes.pixArea)
-  }, [])
+    dispatch(updateState());
+    history.push(PixRoutes.pixArea);
+  }, []);
 
   const onCloseAlert = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   return (
     <PixKeyListView
@@ -177,5 +177,5 @@ export const PixKeyList: React.FC = () => {
       toRegisterPhone={phone}
       toRegisterTaxId={taxId}
     />
-  )
-}
+  );
+};

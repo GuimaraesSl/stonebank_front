@@ -1,3 +1,3 @@
 export interface GetExpectedTransferDateResponse {
-  expectedTransferDate: string
+  expectedTransferDate: string;
 }

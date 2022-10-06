@@ -1,52 +1,52 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { Grid, Typography } from '@material-ui/core'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AppBar } from 'components/AppBar'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel, skipLabel } from 'constants/buttons/labels'
-import { ButtonAttachDocuments } from 'components/ButtonAttachDocuments'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { TransferenceRoutes } from 'features/transference/constants/routes'
-import { useDispatch } from 'react-redux'
-import { updateTransferenceData } from 'features/transference/redux/actions'
-import { Attachment } from 'features/transference/redux/models/attachment'
-import { Icon } from 'components/Icon'
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Grid, Typography } from "@material-ui/core";
+import { PageContainer } from "components/PageContainer";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AppBar } from "components/AppBar";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel, skipLabel } from "constants/buttons/labels";
+import { ButtonAttachDocuments } from "components/ButtonAttachDocuments";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { TransferenceRoutes } from "features/transference/constants/routes";
+import { useDispatch } from "react-redux";
+import { updateTransferenceData } from "features/transference/redux/actions";
+import { Attachment } from "features/transference/redux/models/attachment";
+import { Icon } from "components/Icon";
 
 export const AttachDocuments: React.FC = () => {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const [validation, setValidation] = React.useState(false)
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [validation, setValidation] = React.useState(false);
 
   const [attachments, setAttachments] = useState<Attachment[]>([
     {
-      content: '',
-      extension: '',
+      content: "",
+      extension: "",
     },
-  ])
+  ]);
 
   const onCancelButtonClick = () => {
-    dispatch(updateTransferenceData())
-    history.replace(AccountRoutes.home)
-  }
+    dispatch(updateTransferenceData());
+    history.replace(AccountRoutes.home);
+  };
 
   const onNextButtonClick = () => {
-    attachments.splice(0, 1)
+    attachments.splice(0, 1);
     dispatch(
       updateTransferenceData({
         attachments: attachments,
-      }),
-    )
-    history.push(TransferenceRoutes.summary)
-  }
+      })
+    );
+    history.push(TransferenceRoutes.summary);
+  };
 
   React.useEffect(() => {
-    if (attachments.length > 1) setValidation(true)
-  }, [attachments, setValidation])
+    if (attachments.length > 1) setValidation(true);
+  }, [attachments, setValidation]);
 
   return (
     <PageContainer>
@@ -89,7 +89,7 @@ export const AttachDocuments: React.FC = () => {
                 <Grid item>
                   <ButtonAttachDocuments
                     title="Foto ou vídeo"
-                    imagePath={<Icon name={'media'} />}
+                    imagePath={<Icon name={"media"} />}
                     attachments={attachments}
                     setAttachments={setAttachments}
                   />
@@ -97,7 +97,7 @@ export const AttachDocuments: React.FC = () => {
                 <Grid item>
                   <ButtonAttachDocuments
                     title="Documento"
-                    imagePath={<Icon name={'document'} />}
+                    imagePath={<Icon name={"document"} />}
                     attachments={attachments}
                     setAttachments={setAttachments}
                   />
@@ -121,5 +121,5 @@ export const AttachDocuments: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

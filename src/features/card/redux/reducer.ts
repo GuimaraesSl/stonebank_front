@@ -6,10 +6,10 @@ import {
   SuccessCardState,
   SelectedReasonCode,
   InactivateCardAndReissueState,
-} from './state'
-import { CardsAction, CardsActions } from './actionTypes'
+} from "./state";
+import { CardsAction, CardsActions } from "./actionTypes";
 
-const initialState: CardState = new InitialCardState()
+const initialState: CardState = new InitialCardState();
 
 export const cardReducer = (state = initialState, action: CardsAction) => {
   switch (action.type) {
@@ -27,64 +27,64 @@ export const cardReducer = (state = initialState, action: CardsAction) => {
         state.card,
         state.cards,
         undefined,
-        state.activateCard,
-      )
+        state.activateCard
+      );
 
     case CardsActions.FIND_CARD_LIST_SUCCESS:
-      return new SuccessCardState(action.payload)
+      return new SuccessCardState(action.payload);
 
     case CardsActions.CHANGE_PIN_CARD_SUCCESS:
-      return new SuccessCardState(state.cards!)
+      return new SuccessCardState(state.cards!);
 
     case CardsActions.CANCEL_CARD_SUCCESS:
-      return new SuccessCardState(state.cards!)
+      return new SuccessCardState(state.cards!);
 
     case CardsActions.ACTIVATE_CARD_SUCCESS:
       return new SuccessCardState(
         state.cards!,
         state.card!,
         state.changePinCard!,
-        state.activateCard!,
-      )
+        state.activateCard!
+      );
 
     case CardsActions.VALIDATE_CARD_SUCCESS:
     case CardsActions.BIND_UNNAMED_CARD_SUCCESS:
-      return new SuccessCardState(state.cards!, state.card!)
+      return new SuccessCardState(state.cards!, state.card!);
 
     case CardsActions.UPDATE_PIN_CARD_DATA:
-      return new InitialCardState({ ...state.card!, ...action.payload })
+      return new InitialCardState({ ...state.card!, ...action.payload });
 
     case CardsActions.BLOCK_SUCCESS:
       return new SuccessCardState(
         state.cards!,
         { ...state.card!, isBlocked: true },
-        state.changePinCard,
-      )
+        state.changePinCard
+      );
 
     case CardsActions.UNBLOCK_SUCCESS:
       return new SuccessCardState(
         state.cards!,
         { ...state.card!, isBlocked: false },
-        state.changePinCard,
-      )
+        state.changePinCard
+      );
 
     case CardsActions.SELECT_CARD:
       return new InitialCardState(
         action.payload,
         state.cards,
-        state.changePinCard,
-      )
+        state.changePinCard
+      );
 
     case CardsActions.SELECTED_REASON:
       return new SelectedReasonCode({
         ...state.card!,
         reasonCode: action.payload,
-      })
+      });
 
     case CardsActions.INACTIVATE_AND_REISSUE_CARD_SUCCESS:
       return new InactivateCardAndReissueState({
         ...state.card!,
-      })
+      });
 
     case CardsActions.UPDATE_CARD:
       return new InitialCardState(
@@ -93,11 +93,11 @@ export const cardReducer = (state = initialState, action: CardsAction) => {
           ...action.payload!,
         },
         state.cards,
-        state.changePinCard,
-      )
+        state.changePinCard
+      );
 
     case CardsActions.CLOSE_ALERT:
-      return new InitialCardState(state.card, state.cards, state.changePinCard)
+      return new InitialCardState(state.card, state.cards, state.changePinCard);
 
     case CardsActions.INACTIVATE_AND_REISSUE_CARD_FAIL:
     case CardsActions.CHANGE_PIN_CARD_FAIL:
@@ -114,10 +114,10 @@ export const cardReducer = (state = initialState, action: CardsAction) => {
         state.cards,
         { ...state.card!, confirmationPin: undefined },
         state.changePinCard,
-        state.card!,
-      )
+        state.card!
+      );
 
     default:
-      return state
+      return state;
   }
-}
+};

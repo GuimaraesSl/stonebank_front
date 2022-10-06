@@ -1,1 +1,1 @@
-export { PaymentGareCodeNumber } from './PaymentGareCodeNumber'
+export { PaymentGareCodeNumber } from "./PaymentGareCodeNumber";

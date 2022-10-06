@@ -1,1 +1,1 @@
-export { FeaturesCard } from './FeaturesCard'
+export { FeaturesCard } from "./FeaturesCard";

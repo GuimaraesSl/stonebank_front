@@ -1,1 +1,1 @@
-export { PaymentDarj } from './PaymentDarj'
+export { PaymentDarj } from "./PaymentDarj";

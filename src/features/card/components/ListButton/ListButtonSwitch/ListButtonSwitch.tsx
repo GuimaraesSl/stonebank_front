@@ -1,19 +1,19 @@
-import React from 'react'
+import React from "react";
 import {
   Box,
   List,
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-} from '@material-ui/core'
-import { useStyles } from './ListButtonSwitch.style'
-import { Card } from 'features/card/redux/models/card'
+} from "@material-ui/core";
+import { useStyles } from "./ListButtonSwitch.style";
+import { Card } from "features/card/redux/models/card";
 
 interface ListButtonProps {
-  card?: Card
-  title: string
-  right?: React.ReactNode
-  onClick?: (card: Card) => void
+  card?: Card;
+  title: string;
+  right?: React.ReactNode;
+  onClick?: (card: Card) => void;
 }
 
 export const ListButtonSwitch: React.FC<ListButtonProps> = ({
@@ -23,12 +23,12 @@ export const ListButtonSwitch: React.FC<ListButtonProps> = ({
   onClick,
   ...rest
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <List disablePadding={true}>
       <Box
         onClick={() => {
-          if (onClick) onClick(card!)
+          if (onClick) onClick(card!);
         }}
       >
         <ListItem
@@ -45,5 +45,5 @@ export const ListButtonSwitch: React.FC<ListButtonProps> = ({
         </ListItem>
       </Box>
     </List>
-  )
-}
+  );
+};

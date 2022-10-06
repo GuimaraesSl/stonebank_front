@@ -1,1 +1,1 @@
-export { PaymentGareSummary } from './PaymentGareSummary'
+export { PaymentGareSummary } from "./PaymentGareSummary";

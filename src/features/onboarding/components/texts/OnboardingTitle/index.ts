@@ -1,1 +1,1 @@
-export { OnboardingTitle } from './OnboardingTitle'
+export { OnboardingTitle } from "./OnboardingTitle";

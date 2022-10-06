@@ -1,3 +1,3 @@
 export interface ActivateCardResponse {
-  message?: string
+  message?: string;
 }

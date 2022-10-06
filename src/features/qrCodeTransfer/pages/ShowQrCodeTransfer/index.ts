@@ -1,1 +1,1 @@
-export { ShowQrCodeTransfer } from './ShowQrCodeTransfer'
+export { ShowQrCodeTransfer } from "./ShowQrCodeTransfer";

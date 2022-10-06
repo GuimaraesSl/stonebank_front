@@ -1,71 +1,71 @@
-import React from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { AppBar } from 'components/AppBar'
-import { CardData } from 'features/card/components/CardData'
-import { useStyles } from './CardOption.style'
-import { ListButtonSwitch } from 'features/card/components/ListButton/ListButtonSwitch'
-import { PopUpTempBlock } from 'features/card/components/PopUp/PopUpTempBlock'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { useHistory } from 'react-router-dom'
-import { CardRoutes } from 'features/card/constants/routes'
-import { useDispatch, useSelector } from 'react-redux'
-import { SwitchIOS } from 'components/SwitchIOS'
-import { StoreState } from 'redux/state'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { block, closeAlert, unblock } from 'features/card/redux/actions'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { AppBar } from "components/AppBar";
+import { CardData } from "features/card/components/CardData";
+import { useStyles } from "./CardOption.style";
+import { ListButtonSwitch } from "features/card/components/ListButton/ListButtonSwitch";
+import { PopUpTempBlock } from "features/card/components/PopUp/PopUpTempBlock";
+import { AccountRoutes } from "features/account/constants/routes";
+import { useHistory } from "react-router-dom";
+import { CardRoutes } from "features/card/constants/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { SwitchIOS } from "components/SwitchIOS";
+import { StoreState } from "redux/state";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { block, closeAlert, unblock } from "features/card/redux/actions";
+import { Icon } from "components/Icon";
 
 export const CardOption: React.FC = () => {
   const { card, loading, errorMessage } = useSelector(
-    (state: StoreState) => state.card,
-  )
+    (state: StoreState) => state.card
+  );
 
-  const [openCardPopup, setOpenCardPopup] = React.useState(Boolean)
-  const [displayCard, setDisplayCard] = React.useState(card)
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const styles = useStyles()
+  const [openCardPopup, setOpenCardPopup] = React.useState(Boolean);
+  const [displayCard, setDisplayCard] = React.useState(card);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const styles = useStyles();
 
   React.useEffect(() => {
-    setDisplayCard(card)
-  }, [card])
+    setDisplayCard(card);
+  }, [card]);
 
   const imageFlagCard = (flag: string) => {
     switch (flag) {
-      case 'ELO':
-        return <Icon name="eloImage" />
+      case "ELO":
+        return <Icon name="eloImage" />;
 
-      case 'VISA':
-        return <Icon name="visaImage" />
+      case "VISA":
+        return <Icon name="visaImage" />;
 
-      case 'MasterCard':
-        return <Icon name="visaImage" />
+      case "MasterCard":
+        return <Icon name="visaImage" />;
     }
-  }
+  };
 
   const onChangePasswordClick = () =>
-    history.push(CardRoutes.enterCurrentPassword)
+    history.push(CardRoutes.enterCurrentPassword);
 
-  const onCancelCard = () => history.push(CardRoutes.cancel)
+  const onCancelCard = () => history.push(CardRoutes.cancel);
 
   const onCardPopupClose = (password?: string) => {
-    setOpenCardPopup(false)
-    if (!password) return
+    setOpenCardPopup(false);
+    if (!password) return;
 
     card!.isBlocked
       ? dispatch(unblock(card!.identifierCard, password))
-      : dispatch(block(card!.identifierCard, password))
-  }
+      : dispatch(block(card!.identifierCard, password));
+  };
 
   const onActiveButtonState = () => {
-    setOpenCardPopup(true)
-  }
+    setOpenCardPopup(true);
+  };
 
   React.useEffect(() => {
-    dispatch(closeAlert())
-  }, [errorMessage])
+    dispatch(closeAlert());
+  }, [errorMessage]);
 
   return (
     <PageContainer>
@@ -76,7 +76,7 @@ export const CardOption: React.FC = () => {
             <CardData
               fullName={displayCard?.fullName}
               panLastDigits={displayCard?.panLastDigits}
-              flagCard={imageFlagCard('ELO')}
+              flagCard={imageFlagCard("ELO")}
             />
             <Typography className={styles.idCard} data-test-id="id-card">
               IDCARD: {displayCard?.identifierCard}
@@ -139,5 +139,5 @@ export const CardOption: React.FC = () => {
         />
       )} */}
     </PageContainer>
-  )
-}
+  );
+};

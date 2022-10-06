@@ -1,3 +1,3 @@
 export interface GetTransactionByOperationResponse {
-  externalIdentifier?: string
+  externalIdentifier?: string;
 }

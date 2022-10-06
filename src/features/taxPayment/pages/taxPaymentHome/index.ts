@@ -1,1 +1,1 @@
-export { TaxPaymentHome } from './TaxPaymentHome'
+export { TaxPaymentHome } from "./TaxPaymentHome";

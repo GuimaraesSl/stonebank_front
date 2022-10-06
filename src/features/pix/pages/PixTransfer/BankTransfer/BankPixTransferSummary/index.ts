@@ -1,1 +1,1 @@
-export { BankPixTransferSummary } from './BankPixTransferSummary.controller'
+export { BankPixTransferSummary } from "./BankPixTransferSummary.controller";

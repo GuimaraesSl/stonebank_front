@@ -1,1 +1,1 @@
-export { ButtonAttachDocuments } from './ButtonAttachDocuments'
+export { ButtonAttachDocuments } from "./ButtonAttachDocuments";

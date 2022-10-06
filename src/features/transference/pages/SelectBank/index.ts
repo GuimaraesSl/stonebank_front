@@ -1,1 +1,1 @@
-export { SelectBank } from './SelectBank'
+export { SelectBank } from "./SelectBank";

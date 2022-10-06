@@ -1,1 +1,1 @@
-export { SwitchIOS } from './SwitchIOS'
+export { SwitchIOS } from "./SwitchIOS";

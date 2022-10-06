@@ -1,1 +1,1 @@
-export { CardManagement } from './CardManagement'
+export { CardManagement } from "./CardManagement";

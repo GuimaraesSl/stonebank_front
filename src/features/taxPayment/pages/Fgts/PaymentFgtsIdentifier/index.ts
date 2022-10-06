@@ -1,1 +1,1 @@
-export { PaymentFgtsIdentifier } from './PaymentFgtsIdentifier'
+export { PaymentFgtsIdentifier } from "./PaymentFgtsIdentifier";

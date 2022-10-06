@@ -1,28 +1,28 @@
-import React, { useState } from 'react'
-import { OtpInput } from 'components/OtpInput/OtpInput'
-import { Box, Drawer, Grid, Typography } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
-import { Button } from 'components/Button'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { PageContainer } from 'components/PageContainer'
-import { useStyles } from './PopUpConfirmPassword.style'
-import { AlertConcluded } from 'components/AlertConcluded'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { Card } from 'features/card/redux/models/card'
-import { useLocation } from 'react-router-dom'
-import { CardRoutes } from 'features/card/constants/routes'
-import { inactivateAndReissueCard } from 'features/card/redux/actions'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { InactivateCardAndReissueState } from 'features/card/redux/state'
-import { Icon } from 'components/Icon'
+import React, { useState } from "react";
+import { OtpInput } from "components/OtpInput/OtpInput";
+import { Box, Drawer, Grid, Typography } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { Button } from "components/Button";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { PageContainer } from "components/PageContainer";
+import { useStyles } from "./PopUpConfirmPassword.style";
+import { AlertConcluded } from "components/AlertConcluded";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { Card } from "features/card/redux/models/card";
+import { useLocation } from "react-router-dom";
+import { CardRoutes } from "features/card/constants/routes";
+import { inactivateAndReissueCard } from "features/card/redux/actions";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { InactivateCardAndReissueState } from "features/card/redux/state";
+import { Icon } from "components/Icon";
 
 interface PopUpProps {
-  open: boolean
-  onClose?: (args?: boolean) => void
-  onClickAlert?: React.MouseEventHandler<HTMLElement>
-  alertTitle: string
+  open: boolean;
+  onClose?: (args?: boolean) => void;
+  onClickAlert?: React.MouseEventHandler<HTMLElement>;
+  alertTitle: string;
 }
 
 export const PopUpConfirmPassword: React.FC<PopUpProps> = ({
@@ -31,53 +31,53 @@ export const PopUpConfirmPassword: React.FC<PopUpProps> = ({
   onClickAlert,
   alertTitle,
 }) => {
-  const [password, setPassword] = React.useState<string>()
-  const styles = useStyles()
-  const dispatch = useDispatch()
-  const cardState = useSelector((state: StoreState) => state.card)
+  const [password, setPassword] = React.useState<string>();
+  const styles = useStyles();
+  const dispatch = useDispatch();
+  const cardState = useSelector((state: StoreState) => state.card);
   const [card, loading, errorMessage] = useSelector<
     StoreState,
     [Card | undefined, boolean, string | undefined]
-  >(state => [state.card.card, state.card.loading, state.card.errorMessage])
-  const [isDisable, setIsDisable] = React.useState<boolean>(true)
+  >((state) => [state.card.card, state.card.loading, state.card.errorMessage]);
+  const [isDisable, setIsDisable] = React.useState<boolean>(true);
 
-  const location = useLocation()
+  const location = useLocation();
 
   const handlePassword = (value: string) => {
-    setPassword(value)
-  }
+    setPassword(value);
+  };
   const closePopUp = () => {
-    onClose()
-  }
-  const [onShowAlert, setShowAlert] = useState(false)
+    onClose();
+  };
+  const [onShowAlert, setShowAlert] = useState(false);
   const controllerAlert = () => {
     if (location.pathname === CardRoutes.reissueDetails)
       dispatch(
         inactivateAndReissueCard(
           card?.identifierCard!,
           password!,
-          card?.reasonCode!,
-        ),
-      )
-  }
+          card?.reasonCode!
+        )
+      );
+  };
 
   const onCloseAlert = () => {
-    setShowAlert(false)
-  }
+    setShowAlert(false);
+  };
 
   const onEnableButton = () => {
-    password?.length === 4 ? setIsDisable(false) : setIsDisable(true)
-  }
+    password?.length === 4 ? setIsDisable(false) : setIsDisable(true);
+  };
 
   React.useEffect(() => {
-    onEnableButton()
-  }, [password])
+    onEnableButton();
+  }, [password]);
 
   React.useEffect(() => {
     if (cardState instanceof InactivateCardAndReissueState) {
-      setShowAlert(true)
+      setShowAlert(true);
     }
-  }, [cardState])
+  }, [cardState]);
 
   return (
     <React.Fragment>
@@ -122,7 +122,7 @@ export const PopUpConfirmPassword: React.FC<PopUpProps> = ({
               <Grid item>
                 <Box className={styles.confirm}>
                   <ButtonWithFloatingIcon
-                    icon={<Icon name={'confirm'} />}
+                    icon={<Icon name={"confirm"} />}
                     onClick={controllerAlert}
                     disabled={isDisable}
                     data-test-id="controller-alert"
@@ -146,5 +146,5 @@ export const PopUpConfirmPassword: React.FC<PopUpProps> = ({
         </PageContainer>
       </Drawer>
     </React.Fragment>
-  )
-}
+  );
+};

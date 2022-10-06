@@ -1,110 +1,110 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { Box, Grid, Typography } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
-import { DayTransactions } from 'features/account/components/DayTransactions'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { StoreState } from 'redux/state'
-import { Alert } from 'components/Alert'
-import { Loader } from 'components/Loader'
-import { SearchField } from 'components/SearchField/SearchField'
-import { AppBar } from 'components/AppBar'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { closeAlert, getBankStatement } from 'features/account/redux/actions'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AccountBalance } from 'features/account/components/AccountBalance'
-import { useStyles } from './BankStatement.style'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PageContainer } from 'components/PageContainer'
-import { TransactionTypeFilterButton } from 'features/account/components/TransactionTypeFilterButton'
-import { TransactionType } from 'features/account/redux/models/transactionType'
-import { EmptyList } from 'components/EmptyList'
-import { Icon } from 'components/Icon'
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Box, Grid, Typography } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { DayTransactions } from "features/account/components/DayTransactions";
+import { AccountRoutes } from "features/account/constants/routes";
+import { StoreState } from "redux/state";
+import { Alert } from "components/Alert";
+import { Loader } from "components/Loader";
+import { SearchField } from "components/SearchField/SearchField";
+import { AppBar } from "components/AppBar";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { closeAlert, getBankStatement } from "features/account/redux/actions";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AccountBalance } from "features/account/components/AccountBalance";
+import { useStyles } from "./BankStatement.style";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PageContainer } from "components/PageContainer";
+import { TransactionTypeFilterButton } from "features/account/components/TransactionTypeFilterButton";
+import { TransactionType } from "features/account/redux/models/transactionType";
+import { EmptyList } from "components/EmptyList";
+import { Icon } from "components/Icon";
 
 export const BankStatement: React.FC = () => {
-  const accountState = useSelector((store: StoreState) => store.account)
-  const { loading, bankStatement, errorMessage } = accountState
-  const [searchValue, setSearchValue] = React.useState('')
-  const [dateFilter, setDateFilter] = React.useState(0)
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const styles = useStyles()
+  const accountState = useSelector((store: StoreState) => store.account);
+  const { loading, bankStatement, errorMessage } = accountState;
+  const [searchValue, setSearchValue] = React.useState("");
+  const [dateFilter, setDateFilter] = React.useState(0);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const styles = useStyles();
 
   React.useEffect(() => {
-    dispatch(getBankStatement(dateFilter))
-  }, [dateFilter])
+    dispatch(getBankStatement(dateFilter));
+  }, [dateFilter]);
 
   React.useEffect(() => {
     const intersectionObserver = new IntersectionObserver(
-      entries => {
-        if (entries.some(entry => entry.isIntersecting)) {
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
           if (!loading) {
-            setDateFilter(dateFilter + 30)
-            window.scroll(0, window.pageYOffset - 110)
+            setDateFilter(dateFilter + 30);
+            window.scroll(0, window.pageYOffset - 110);
           }
         }
       },
-      { threshold: 1 },
-    )
+      { threshold: 1 }
+    );
 
-    intersectionObserver.observe(document.querySelector('#observer')!)
+    intersectionObserver.observe(document.querySelector("#observer")!);
 
-    return () => intersectionObserver.disconnect()
-  }, [bankStatement])
+    return () => intersectionObserver.disconnect();
+  }, [bankStatement]);
 
   const displayBankStatement = React.useMemo(() => {
     const normalize = (text: string) => {
       return text
-        .replace(/[àáâãäå]/, 'a')
-        .replace(/[èéêë]/, 'e')
-        .replace(/[íìïî]/, 'i')
-        .replace(/[òóôö]/, 'o')
-        .replace(/[úùûü]/, 'u')
-        .replace(/[ç]/, 'c')
-        .toLowerCase()
-    }
+        .replace(/[àáâãäå]/, "a")
+        .replace(/[èéêë]/, "e")
+        .replace(/[íìïî]/, "i")
+        .replace(/[òóôö]/, "o")
+        .replace(/[úùûü]/, "u")
+        .replace(/[ç]/, "c")
+        .toLowerCase();
+    };
 
-    const lowerSearchValue = normalize(searchValue)
+    const lowerSearchValue = normalize(searchValue);
 
     const filteredBankStatement = bankStatement
-      ?.map(bankStatement => {
+      ?.map((bankStatement) => {
         const filteredTransactions = bankStatement.transactions?.filter(
-          transaction => {
+          (transaction) => {
             return (
               transaction.title.toLowerCase().includes(lowerSearchValue) ||
               normalize(transaction.title).includes(lowerSearchValue) ||
-              transaction.tags?.forEach(tag =>
-                tag.toLowerCase().includes(lowerSearchValue),
+              transaction.tags?.forEach((tag) =>
+                tag.toLowerCase().includes(lowerSearchValue)
               )
-            )
-          },
-        )
+            );
+          }
+        );
         return {
           ...bankStatement,
           transactions: filteredTransactions,
-        }
+        };
       })
-      .filter(bankStatement => bankStatement.transactions?.length)
+      .filter((bankStatement) => bankStatement.transactions?.length);
 
-    return filteredBankStatement
-  }, [bankStatement, searchValue])
+    return filteredBankStatement;
+  }, [bankStatement, searchValue]);
 
   const onSearchValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value)
-  }
+    setSearchValue(e.target.value);
+  };
 
   const onMoreFiltersButtonClick = () => {
-    history.push(AccountRoutes.filter)
-  }
+    history.push(AccountRoutes.filter);
+  };
 
   const onAlertClose = () => {
-    dispatch(closeAlert())
-  }
+    dispatch(closeAlert());
+  };
 
   const isEmptyList = () => {
-    return !displayBankStatement?.length!
-  }
+    return !displayBankStatement?.length!;
+  };
 
   return (
     <PageContainer>
@@ -188,11 +188,11 @@ export const BankStatement: React.FC = () => {
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onAlertClose}
         />
       )}
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

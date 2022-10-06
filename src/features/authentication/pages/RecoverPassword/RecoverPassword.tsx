@@ -7,7 +7,7 @@ import {
   logout,
   resetPassword,
   updateAuthData,
-} from 'features/authentication/redux/actions'
+} from "features/authentication/redux/actions";
 import {
   ErrorAuthState,
   SuccessResetPasswordState,
@@ -36,31 +36,31 @@ export const RecoverPassword: React.FC = () => {
   const dispatch = useDispatch()
   const [taxIdInput, setCpfInput] = useMask(maskCpf)
   const [openAuthorizationSheet, setOpenAuthorizationSheet] =
-    React.useState(false)
+    React.useState(false);
 
-  const authState = useSelector((state: StoreState) => state.auth)
-  const { resetPasswordForm, loading } = authState
+  const authState = useSelector((state: StoreState) => state.auth);
+  const { resetPasswordForm, loading } = authState;
 
-  const isValid = taxIdInput.length === 14 || taxIdInput.length === 18
+  const isValid = taxIdInput.length === 14 || taxIdInput.length === 18;
 
   React.useEffect(() => {
-    if (authState instanceof ErrorAuthState) dispatch(updateAuthData({}))
-  }, [])
+    if (authState instanceof ErrorAuthState) dispatch(updateAuthData({}));
+  }, []);
 
   React.useEffect(() => {
     if (authState instanceof SuccessResetPasswordState)
-      history.push(AuthenticationRoutes.confirmRecoverPwd)
-  }, [authState])
+      history.push(AuthenticationRoutes.confirmRecoverPwd);
+  }, [authState]);
 
-  const _resetState = () => dispatch(logout())
+  const _resetState = () => dispatch(logout());
 
   const onCpfChange = (event: any) => {
-    setCpfInput(event.target.value)
-  }
+    setCpfInput(event.target.value);
+  };
 
   const onSubmit = () => {
-    setOpenAuthorizationSheet(true)
-  }
+    setOpenAuthorizationSheet(true);
+  };
 
   const onAuthorizationClose = (tokenIsValid: boolean) => {
     if (tokenIsValid) {
@@ -68,11 +68,11 @@ export const RecoverPassword: React.FC = () => {
         resetPassword({
           ...resetPasswordForm,
           taxId: taxIdInput,
-        }),
-      )
+        })
+      );
     }
-    setOpenAuthorizationSheet(false)
-  }
+    setOpenAuthorizationSheet(false);
+  };
 
   return (
     <Container maxWidth="xs" className={styles.container}>
@@ -80,7 +80,7 @@ export const RecoverPassword: React.FC = () => {
         <Alert
           title="Erro"
           message={authState.errorMessage}
-          severity={'error'}
+          severity={"error"}
         />
       )}
       

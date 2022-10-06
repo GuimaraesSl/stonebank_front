@@ -1,1 +1,1 @@
-export { ChangeConclude } from './ChangeConclude'
+export { ChangeConclude } from "./ChangeConclude";

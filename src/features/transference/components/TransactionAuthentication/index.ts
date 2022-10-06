@@ -1,1 +1,1 @@
-export { TransactionAuthentication } from './TransactionAuthentication'
+export { TransactionAuthentication } from "./TransactionAuthentication";

@@ -1,1 +1,1 @@
-export { EnterTaxPayer } from './EnterTaxPayerForSMS'
+export { EnterTaxPayer } from "./EnterTaxPayerForSMS";

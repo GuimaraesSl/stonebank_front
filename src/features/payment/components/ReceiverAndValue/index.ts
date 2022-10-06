@@ -1,1 +1,1 @@
-export { ReceiverAndValue } from './ReceiverAndValue'
+export { ReceiverAndValue } from "./ReceiverAndValue";

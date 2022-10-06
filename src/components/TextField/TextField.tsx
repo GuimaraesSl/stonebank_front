@@ -1,34 +1,35 @@
-import React from 'react'
-import { TextField as MuiTextField } from '@material-ui/core'
-import { useStyles } from './TextField.style'
+import React from "react";
+import { TextField as MuiTextField } from "@material-ui/core";
+import { useStyles } from "./TextField.style";
 
 interface TextFieldProps {
-  type?: 'number' | 'email' | 'password' | 'date'
-  variant?: 'outlined' | 'filled'
-  multiline?: boolean
-  error?: boolean
-  rows?: string
-  helperText?: string
-  placeholder?: string
-  label: string
-  value: string
-  select?: boolean
+  type?: "number" | "email" | "password" | "date";
+  variant?: "outlined" | "filled";
+  multiline?: boolean;
+  error?: boolean;
+  rows?: string;
+  helperText?: string;
+  placeholder?: string;
+  label: string;
+  value: string;
+  select?: boolean;
   inputMode?:
-    | 'none'
-    | 'text'
-    | 'tel'
-    | 'url'
-    | 'email'
-    | 'numeric'
-    | 'decimal'
-    | 'search'
-  startAdornment?: React.ReactNode
-  endAdornment?: React.ReactNode
-  minValue?: number | Date
-  maxValue?: number
-  disabled?: boolean
-  required?: boolean
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    | "none"
+    | "text"
+    | "tel"
+    | "url"
+    | "email"
+    | "numeric"
+    | "decimal"
+    | "search";
+  startAdornment?: React.ReactNode;
+  endAdornment?: React.ReactNode;
+  minValue?: number | Date;
+  maxValue?: number;
+  disabled?: boolean;
+  required?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  color?: string;
 }
 
 export const TextField: React.FC<TextFieldProps> = ({
@@ -51,9 +52,10 @@ export const TextField: React.FC<TextFieldProps> = ({
   required,
   children,
   onChange,
+  color,
   ...rest
 }) => {
-  const styles = useStyles({ variant: variant ?? 'outlined' })
+  const styles = useStyles({ variant: variant ?? "outlined" });
 
   return (
     <MuiTextField
@@ -80,7 +82,7 @@ export const TextField: React.FC<TextFieldProps> = ({
         shrink: true,
       }}
       inputProps={{
-        step: type === 'number' ? 0.1 : undefined,
+        step: type === "number" ? 0.1 : undefined,
         min: minValue,
         max: maxValue,
         inputMode,
@@ -92,5 +94,5 @@ export const TextField: React.FC<TextFieldProps> = ({
     >
       {children}
     </MuiTextField>
-  )
-}
+  );
+};

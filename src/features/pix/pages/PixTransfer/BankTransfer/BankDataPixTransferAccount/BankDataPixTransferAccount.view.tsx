@@ -1,6 +1,6 @@
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import {
   AppBar,
   Button,
@@ -9,17 +9,17 @@ import {
   ProcessPageFooterButton,
   ProcessPageLayout,
   TextField,
-} from 'components'
-import { cancelLabel } from 'constants/buttons/labels'
-import { useStyles } from './BankDataPixTransferAccount.style'
-import { AccountRoutes } from 'features/account/constants/routes'
+} from "components";
+import { cancelLabel } from "constants/buttons/labels";
+import { useStyles } from "./BankDataPixTransferAccount.style";
+import { AccountRoutes } from "features/account/constants/routes";
 
 interface BankDataPixTransferAccountViewProps {
-  toBankAccount: string
-  isValidValue: boolean
-  onConfirmButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
-  onToBankAccountChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  toBankAccount: string;
+  isValidValue: boolean;
+  onConfirmButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  onToBankAccountChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const BankDataPixTransferAccountView: React.FC<
   BankDataPixTransferAccountViewProps
@@ -30,7 +30,7 @@ export const BankDataPixTransferAccountView: React.FC<
   onToBankAccountChange,
   onCancelButtonClick,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <PageContainer>
@@ -81,5 +81,5 @@ export const BankDataPixTransferAccountView: React.FC<
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

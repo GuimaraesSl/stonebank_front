@@ -1,27 +1,27 @@
-import { colors } from '_config/theme'
-import { makeStyles } from '@material-ui/core'
+import { colors } from "_config/theme";
+import { makeStyles } from "@material-ui/core";
 export const useStyles = makeStyles({
   tokenInput: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    '& input': {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    "& input": {
       marginRight: 5,
       marginLeft: 4,
       fontSize: 40,
-      border: '0.8px solid #c4c4c4',
-      boxSizing: 'border-box',
+      border: "0.8px solid #c4c4c4",
+      boxSizing: "border-box",
       borderRadius: 3,
-      width: '41.95px',
+      width: "41.95px",
       height: 51,
     },
-    minWidth: '40px',
-    maxWidth: '45px',
-    height: '60px',
-    fontSize: '36px',
+    minWidth: "40px",
+    maxWidth: "45px",
+    height: "60px",
+    fontSize: "36px",
     color: colors.readOnly.light.white,
-    border: 'none',
+    border: "none",
   },
   label: {
     fontSize: 12,
@@ -29,9 +29,9 @@ export const useStyles = makeStyles({
     color: colors.neutral.shade40,
   },
   boxContent: {
-    display: 'grid',
-    justifyContent: 'center',
+    display: "grid",
+    justifyContent: "center",
   },
-  buttonWithFloatingIcon: { marginTop: '70px' },
-  footer: { display: 'flex', justifyContent: 'space-between' },
-})
+  buttonWithFloatingIcon: { marginTop: "70px" },
+  footer: { display: "flex", justifyContent: "space-between" },
+});

@@ -1,17 +1,17 @@
-import React from 'react'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { scheduleLabel } from 'constants/buttons/labels'
-import { DatePicker } from '@material-ui/pickers'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { scheduleLabel } from "constants/buttons/labels";
+import { DatePicker } from "@material-ui/pickers";
+import { Icon } from "components/Icon";
 
 interface SchedulingButtonProps {
-  open?: boolean
-  value: Date | null
-  minDate: Date
-  onClick?: VoidFunction
-  onDateSelection?: (date: Date | null) => void
-  onClose?: VoidFunction
-  disabled?: boolean
+  open?: boolean;
+  value: Date | null;
+  minDate: Date;
+  onClick?: VoidFunction;
+  onDateSelection?: (date: Date | null) => void;
+  onClose?: VoidFunction;
+  disabled?: boolean;
 }
 
 export const SchedulingButton: React.FC<SchedulingButtonProps> = ({
@@ -26,7 +26,7 @@ export const SchedulingButton: React.FC<SchedulingButtonProps> = ({
   return (
     <React.Fragment>
       <ButtonWithFloatingIcon
-        icon={<Icon name={'schedule'} />}
+        icon={<Icon name={"schedule"} />}
         onClick={onClick}
         disabled={disabled}
         data-test-id="schedule-button"
@@ -45,5 +45,5 @@ export const SchedulingButton: React.FC<SchedulingButtonProps> = ({
         />
       )}
     </React.Fragment>
-  )
-}
+  );
+};

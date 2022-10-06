@@ -1,3 +1,3 @@
 export interface CreatePixTransferResponse {
-  operationId?: number
+  operationId?: number;
 }

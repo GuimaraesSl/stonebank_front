@@ -1,27 +1,27 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { Close } from '@material-ui/icons'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { QrCodeReader } from 'components/QrCodeReader'
-import { Button } from 'components/Button'
-import { cancelLabel } from 'constants/buttons/labels'
-import { PageContainer } from 'components/PageContainer'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Box, Typography } from '@material-ui/core'
-import { useStyles } from './QrCodePixTransferScanner.style'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
-import { ProcessPageFooterButton } from 'components'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { Close } from "@material-ui/icons";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { AccountRoutes } from "features/account/constants/routes";
+import { QrCodeReader } from "components/QrCodeReader";
+import { Button } from "components/Button";
+import { cancelLabel } from "constants/buttons/labels";
+import { PageContainer } from "components/PageContainer";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Box, Typography } from "@material-ui/core";
+import { useStyles } from "./QrCodePixTransferScanner.style";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
+import { ProcessPageFooterButton } from "components";
 
 interface QrCodePixTransferScannerViewProps {
-  loading: boolean
-  errorMessage?: string
-  onAlertClose: VoidFunction
-  onCancelButtonClick: VoidFunction
-  onScanFail: (e: any) => void
-  onBackButtonClick: VoidFunction
-  onScanComplete: (hash: string | null) => void
+  loading: boolean;
+  errorMessage?: string;
+  onAlertClose: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  onScanFail: (e: any) => void;
+  onBackButtonClick: VoidFunction;
+  onScanComplete: (hash: string | null) => void;
 }
 
 export const QrCodePixTransferScannerView: React.FC<
@@ -35,7 +35,7 @@ export const QrCodePixTransferScannerView: React.FC<
   onCancelButtonClick,
   onBackButtonClick,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <PageContainer className={style.container}>
@@ -70,7 +70,7 @@ export const QrCodePixTransferScannerView: React.FC<
               <Alert
                 title="Erro"
                 message={errorMessage}
-                severity={'error'}
+                severity={"error"}
                 onClose={onAlertClose}
               />
             )}
@@ -88,5 +88,5 @@ export const QrCodePixTransferScannerView: React.FC<
       />
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

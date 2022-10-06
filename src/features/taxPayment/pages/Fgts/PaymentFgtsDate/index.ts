@@ -1,1 +1,1 @@
-export { PaymentFgtsDate } from './PaymentFgtsDate'
+export { PaymentFgtsDate } from "./PaymentFgtsDate";

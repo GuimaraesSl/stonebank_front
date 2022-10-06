@@ -1,1 +1,1 @@
-export { ReadQrCodeTransfer } from './ReadQrCodeTransfer'
+export { ReadQrCodeTransfer } from "./ReadQrCodeTransfer";

@@ -1,1 +1,1 @@
-export { InvalidDataForAssociateCard } from './InvalidDataForAssociateCard'
+export { InvalidDataForAssociateCard } from "./InvalidDataForAssociateCard";

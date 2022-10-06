@@ -1,1 +1,1 @@
-export { ConfirmPixKeyDeletionSheet } from './ConfirmPixKeyDeletionSheet'
+export { ConfirmPixKeyDeletionSheet } from "./ConfirmPixKeyDeletionSheet";

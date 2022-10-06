@@ -1,4 +1,4 @@
-import { Box, Typography } from '@material-ui/core'
+import { Box, Typography } from "@material-ui/core";
 import {
   AppBar,
   Button,
@@ -7,43 +7,43 @@ import {
   ProcessPageFooterButton,
   ProcessPageLayout,
   SelectionCard,
-} from 'components'
-import React from 'react'
-import { maskPhone } from '_utils/masks/phone'
-import { maskCnpj, maskCpf } from '_utils/masks/taxPayer'
-import { EmptyListMessage } from './components/EmptyListMessage'
-import { useStyles } from './Keys.styles'
-import { PixKeyType } from 'features/pix/redux/models/pixKeyType'
-import { KeyType } from 'features/pix/redux/models/keyType'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { Close } from '@material-ui/icons'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
-import { PixKeyStatus } from 'features/pix/redux/models/pixKeyStatus'
-import { PixKey } from 'features/pix/redux/models/pixKey'
-import { ConfirmPixKeyDeletionSheet } from 'features/pix/components/ConfirmPixKeyDeletionSheet'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
+} from "components";
+import React from "react";
+import { maskPhone } from "_utils/masks/phone";
+import { maskCnpj, maskCpf } from "_utils/masks/taxPayer";
+import { EmptyListMessage } from "./components/EmptyListMessage";
+import { useStyles } from "./Keys.styles";
+import { PixKeyType } from "features/pix/redux/models/pixKeyType";
+import { KeyType } from "features/pix/redux/models/keyType";
+import { AccountRoutes } from "features/account/constants/routes";
+import { Close } from "@material-ui/icons";
+import { cancelLabel } from "constants/buttons/labels";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
+import { PixKeyStatus } from "features/pix/redux/models/pixKeyStatus";
+import { PixKey } from "features/pix/redux/models/pixKey";
+import { ConfirmPixKeyDeletionSheet } from "features/pix/components/ConfirmPixKeyDeletionSheet";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
 
 interface PixKeyListViewProps {
-  pixKeyList?: PixKey[]
-  onSelectPixKeyAction: (pixKey: PixKey) => void
-  openPopUpPixKeyDeletionConfirmation: boolean
-  closetPixKeyDeletionConfirmationPopUp: VoidFunction
-  onConfirmPixKeyDeletion: any
-  onTaxIdPixKeyClick: VoidFunction
-  onEmailPixKeyClick: VoidFunction
-  onPhoneNumberPixKeyClick: VoidFunction
-  onRandomPixKeyClick: VoidFunction
-  openAuthorizationSheet: boolean
-  onAuthorizationSheetClose: (event: any) => void
-  loading: boolean
-  errorMessage?: string
-  onCloseAlert: VoidFunction
-  onCancelButtonClick: VoidFunction
-  toRegisterEmail: string
-  toRegisterPhone: string
-  toRegisterTaxId: string
+  pixKeyList?: PixKey[];
+  onSelectPixKeyAction: (pixKey: PixKey) => void;
+  openPopUpPixKeyDeletionConfirmation: boolean;
+  closetPixKeyDeletionConfirmationPopUp: VoidFunction;
+  onConfirmPixKeyDeletion: any;
+  onTaxIdPixKeyClick: VoidFunction;
+  onEmailPixKeyClick: VoidFunction;
+  onPhoneNumberPixKeyClick: VoidFunction;
+  onRandomPixKeyClick: VoidFunction;
+  openAuthorizationSheet: boolean;
+  onAuthorizationSheetClose: (event: any) => void;
+  loading: boolean;
+  errorMessage?: string;
+  onCloseAlert: VoidFunction;
+  onCancelButtonClick: VoidFunction;
+  toRegisterEmail: string;
+  toRegisterPhone: string;
+  toRegisterTaxId: string;
 }
 export const PixKeyListView: React.FC<PixKeyListViewProps> = ({
   pixKeyList,
@@ -65,32 +65,32 @@ export const PixKeyListView: React.FC<PixKeyListViewProps> = ({
   toRegisterPhone,
   toRegisterTaxId,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   const applyMaskPixKey = (keyType: number, keyValue: string) =>
     keyType === PixKeyType.CPF
       ? maskCpf(keyValue)
       : keyType === PixKeyType.CNPJ
       ? maskCnpj(keyValue)
-      : maskPhone(keyValue.substring(3))
+      : maskPhone(keyValue.substring(3));
 
   const mapPixKeyTypeToIcon = (keyType: number) =>
     PixKeyType.CPF === keyType || PixKeyType.CNPJ === keyType
-      ? 'pixTaxId'
+      ? "pixTaxId"
       : PixKeyType.Email === keyType
-      ? 'pixMail'
+      ? "pixMail"
       : PixKeyType.PhoneNumber === keyType
-      ? 'pixPhone'
-      : 'pixKey'
+      ? "pixPhone"
+      : "pixKey";
 
   const isRegistered = (keyType?: number) => {
-    const verifyIfKeyExist = pixKeyList?.some(pixKey => {
-      if (keyType === 0 && pixKey.pixKeyType === 1) return true
+    const verifyIfKeyExist = pixKeyList?.some((pixKey) => {
+      if (keyType === 0 && pixKey.pixKeyType === 1) return true;
 
-      return pixKey.pixKeyType === keyType
-    })
-    return verifyIfKeyExist
-  }
+      return pixKey.pixKeyType === keyType;
+    });
+    return verifyIfKeyExist;
+  };
 
   return (
     <PageContainer className={styles.page}>
@@ -137,14 +137,14 @@ export const PixKeyListView: React.FC<PixKeyListViewProps> = ({
                         title={
                           pixKey.pixKeyType! === PixKeyType.CPF ||
                           pixKey.pixKeyType! === PixKeyType.CNPJ
-                            ? 'CPF/CNPJ'
+                            ? "CPF/CNPJ"
                             : pixKey.pixKeyType! === PixKeyType.Email
-                            ? 'E-mail'
+                            ? "E-mail"
                             : pixKey.pixKeyType! === PixKeyType.PhoneNumber
-                            ? 'Telefone'
+                            ? "Telefone"
                             : pixKey.pixKeyType! === PixKeyType.RandomKeyCode
-                            ? 'Chave Randômica'
-                            : ''
+                            ? "Chave Randômica"
+                            : ""
                         }
                         key={key}
                         subtitle={
@@ -153,7 +153,7 @@ export const PixKeyListView: React.FC<PixKeyListViewProps> = ({
                           pixKey.pixKeyType! === PixKeyType.PhoneNumber
                             ? applyMaskPixKey(
                                 pixKey.pixKeyType!,
-                                pixKey.pixKeyValue!,
+                                pixKey.pixKeyValue!
                               )
                             : pixKey.pixKeyValue
                         }
@@ -161,13 +161,13 @@ export const PixKeyListView: React.FC<PixKeyListViewProps> = ({
                         endLabel={
                           pixKey.status === PixKeyStatus.Registering
                             ? pixKey.pixKeyType === 2 || pixKey.pixKeyType === 3
-                              ? 'Confirmar'
-                              : 'Aguardando confirmação'
-                            : 'Excluir'
+                              ? "Confirmar"
+                              : "Aguardando confirmação"
+                            : "Excluir"
                         }
                         onClick={() => onSelectPixKeyAction(pixKey)}
                       />
-                    )
+                    );
                   })}
                 </>
               ) : (
@@ -188,33 +188,33 @@ export const PixKeyListView: React.FC<PixKeyListViewProps> = ({
                 variant="pix"
                 title={KeyType.taxId.displayString}
                 subtitle={toRegisterTaxId}
-                startIcon={'pixTaxId'}
+                startIcon={"pixTaxId"}
                 onClick={onTaxIdPixKeyClick}
-                className={isRegistered(0) ? 'displayNone' : ''}
+                className={isRegistered(0) ? "displayNone" : ""}
               />
               <SelectionCard
                 variant="pix"
                 title={KeyType.email.displayString}
                 subtitle={toRegisterEmail}
-                startIcon={'pixMail'}
+                startIcon={"pixMail"}
                 onClick={onEmailPixKeyClick}
-                className={isRegistered(2) ? 'displayNone' : ''}
+                className={isRegistered(2) ? "displayNone" : ""}
               />
               <SelectionCard
                 variant="pix"
                 title={KeyType.phone.displayString}
                 subtitle={toRegisterPhone}
-                startIcon={'pixPhone'}
+                startIcon={"pixPhone"}
                 onClick={onPhoneNumberPixKeyClick}
-                className={isRegistered(3) ? 'displayNone' : ''}
+                className={isRegistered(3) ? "displayNone" : ""}
               />
               <SelectionCard
                 variant="pix"
                 title={KeyType.random.displayString}
                 subtitle="Cadastrar"
-                startIcon={'pixKey'}
+                startIcon={"pixKey"}
                 onClick={onRandomPixKeyClick}
-                className={isRegistered(4) ? 'displayNone' : ''}
+                className={isRegistered(4) ? "displayNone" : ""}
               />
             </Box>
           </>
@@ -226,7 +226,7 @@ export const PixKeyListView: React.FC<PixKeyListViewProps> = ({
         <Alert
           title="Erro"
           message={errorMessage}
-          severity={'error'}
+          severity={"error"}
           onClose={onCloseAlert}
         />
       )}
@@ -240,5 +240,5 @@ export const PixKeyListView: React.FC<PixKeyListViewProps> = ({
         onClose={onAuthorizationSheetClose}
       />
     </PageContainer>
-  )
-}
+  );
+};

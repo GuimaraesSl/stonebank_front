@@ -1,1 +1,1 @@
-export { ConfirmPhoneNumberPixKey } from './ConfirmPhoneNumberPixKey.controller'
+export { ConfirmPhoneNumberPixKey } from "./ConfirmPhoneNumberPixKey.controller";

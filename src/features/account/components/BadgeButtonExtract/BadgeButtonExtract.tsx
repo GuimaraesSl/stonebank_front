@@ -1,10 +1,10 @@
-import React from 'react'
-import { Button } from '@material-ui/core'
-import { Redirect } from 'react-router-dom'
+import React from "react";
+import { Button } from "@material-ui/core";
+import { Redirect } from "react-router-dom";
 interface BadgeButtonExtractProps {
-  imagePath: string
-  title: string
-  redirectRoute: string
+  imagePath: string;
+  title: string;
+  redirectRoute: string;
 }
 
 export const BadgeButtonExtract: React.FC<BadgeButtonExtractProps> = ({
@@ -12,11 +12,11 @@ export const BadgeButtonExtract: React.FC<BadgeButtonExtractProps> = ({
   imagePath,
   redirectRoute,
 }: BadgeButtonExtractProps) => {
-  const [redirect, setRedirect] = React.useState(false)
+  const [redirect, setRedirect] = React.useState(false);
 
   const handleOnClick = () => {
-    setRedirect(true)
-  }
+    setRedirect(true);
+  };
 
   return (
     <>
@@ -35,5 +35,5 @@ export const BadgeButtonExtract: React.FC<BadgeButtonExtractProps> = ({
         </div>
       </Button>
     </>
-  )
-}
+  );
+};

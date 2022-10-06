@@ -1,1 +1,1 @@
-export { ActivationToken } from './ActivationTokenForSMS'
+export { ActivationToken } from "./ActivationTokenForSMS";

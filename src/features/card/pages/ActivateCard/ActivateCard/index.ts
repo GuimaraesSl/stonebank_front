@@ -1,1 +1,1 @@
-export { ActivateCard } from './ActivateCard'
+export { ActivateCard } from "./ActivateCard";

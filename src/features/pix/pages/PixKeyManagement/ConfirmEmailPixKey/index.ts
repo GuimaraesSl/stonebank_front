@@ -1,1 +1,1 @@
-export { ConfirmEmailPixKey } from './ConfirmEmailPixKey.controller'
+export { ConfirmEmailPixKey } from "./ConfirmEmailPixKey.controller";

@@ -1,1 +1,1 @@
-export { SquareButtonWithIcon } from './SquareButtonWithIcon'
+export { SquareButtonWithIcon } from "./SquareButtonWithIcon";

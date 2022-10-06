@@ -1,88 +1,88 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PasswordField } from 'components/PasswordField'
-import { Grid, Typography } from '@material-ui/core'
-import { useStyles } from './CreatePasswordForSMS.style'
-import { Validator } from 'components/Validator'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PasswordField } from "components/PasswordField";
+import { Grid, Typography } from "@material-ui/core";
+import { useStyles } from "./CreatePasswordForSMS.style";
+import { Validator } from "components/Validator";
 import {
   validateLowerUpperNumber,
   validateLength,
   validateSpecial,
-} from '_utils/validate'
-import { useDispatch } from 'react-redux'
-import { updateOnboardingForm } from 'features/onboarding/redux/actions'
+} from "_utils/validate";
+import { useDispatch } from "react-redux";
+import { updateOnboardingForm } from "features/onboarding/redux/actions";
 
 export const CreatePassword: React.FC = () => {
-  const [password, setPassword] = React.useState('')
-  const [disableNextButton, setDisableNextButton] = React.useState(false)
+  const [password, setPassword] = React.useState("");
+  const [disableNextButton, setDisableNextButton] = React.useState(false);
   const [passwordLengthIsValid, setPasswordLenghtIsValid] = React.useState<
     boolean | undefined
-  >()
+  >();
   const [passwordLowerIsValid, setPasswordLowerIsValid] = React.useState<
     boolean | undefined
-  >()
+  >();
   const [passwordUpperIsValid, setPasswordUpperIsValid] = React.useState<
     boolean | undefined
-  >()
+  >();
   const [passwordSpecialIsValid, setPasswordSpecialIsValid] = React.useState<
     boolean | undefined
-  >()
+  >();
   const [passwordValidateNumber, setPasswordValidateNUmber] = React.useState<
     boolean | undefined
-  >()
+  >();
   // const [passwordValidateSequence, setPasswordValidateSequence] =
   //   React.useState<boolean | undefined>();
 
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const styles = useStyles()
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const styles = useStyles();
 
   const condition =
     passwordLengthIsValid &&
     passwordLowerIsValid &&
     passwordUpperIsValid &&
     passwordSpecialIsValid &&
-    passwordValidateNumber
+    passwordValidateNumber;
 
   React.useEffect(() => {
-    setDisableNextButton(!(condition && passwordLengthIsValid))
-  }, [condition, passwordLengthIsValid])
+    setDisableNextButton(!(condition && passwordLengthIsValid));
+  }, [condition, passwordLengthIsValid]);
 
   const onPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPassword(event.target.value)
+    setPassword(event.target.value);
 
   const onValidateLength = (value: boolean | undefined) => {
-    setPasswordLenghtIsValid(value)
-  }
+    setPasswordLenghtIsValid(value);
+  };
 
   const onValidateLowerUpperNumber = (value: boolean | undefined) => {
-    setPasswordLowerIsValid(value)
-    setPasswordUpperIsValid(value)
-    setPasswordValidateNUmber(value)
-  }
+    setPasswordLowerIsValid(value);
+    setPasswordUpperIsValid(value);
+    setPasswordValidateNUmber(value);
+  };
 
   const onCancelButtonClick = () => {
-    history.go(-8)
-  }
+    history.go(-8);
+  };
 
   const onNextButtonClick = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     dispatch(
       updateOnboardingForm({
         password,
-      }),
-    )
-    history.push(OnboardingRoutes.confirmPasswordForSMS)
-  }
+      })
+    );
+    history.push(OnboardingRoutes.confirmPasswordForSMS);
+  };
 
   return (
     <ProcessPageLayout
@@ -137,7 +137,7 @@ export const CreatePassword: React.FC = () => {
               <Grid item>
                 <Validator
                   value={password}
-                  description={'Ao menos um caractere especial'}
+                  description={"Ao menos um caractere especial"}
                   isValid={passwordSpecialIsValid}
                   validation={validateSpecial}
                   onValidate={setPasswordSpecialIsValid}
@@ -147,7 +147,7 @@ export const CreatePassword: React.FC = () => {
               <Grid item>
                 <Validator
                   value={password}
-                  description={'No mínimo 8 caracteres e no máximo 16'}
+                  description={"No mínimo 8 caracteres e no máximo 16"}
                   isValid={passwordLengthIsValid}
                   validation={validateLength}
                   onValidate={onValidateLength}
@@ -157,7 +157,7 @@ export const CreatePassword: React.FC = () => {
               <Grid item>
                 <Validator
                   value={password}
-                  description={'Letras maiúsculas, minúsculas e números'}
+                  description={"Letras maiúsculas, minúsculas e números"}
                   isValid={
                     passwordUpperIsValid &&
                     passwordLowerIsValid &&
@@ -187,5 +187,5 @@ export const CreatePassword: React.FC = () => {
         />
       }
     />
-  )
-}
+  );
+};

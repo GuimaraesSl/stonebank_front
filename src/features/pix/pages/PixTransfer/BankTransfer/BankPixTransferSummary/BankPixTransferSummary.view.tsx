@@ -1,14 +1,14 @@
-import React from 'react'
-import { Box } from '@material-ui/core'
-import { Close } from '@material-ui/icons'
-import { LabelWithValueKeyPix } from 'components/LabelWithValueKeyPix'
-import { cancelLabel } from 'constants/buttons/labels'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { PixTransfer } from 'features/pix/redux/models/pixTransfer'
-import { useStyles } from './BankPixTransferSummary.style'
-import { AuthorizationSheet } from 'components/AuthorizationSheet'
-import { Loader } from 'components/Loader'
-import { Alert } from 'components/Alert'
+import React from "react";
+import { Box } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { LabelWithValueKeyPix } from "components/LabelWithValueKeyPix";
+import { cancelLabel } from "constants/buttons/labels";
+import { AccountRoutes } from "features/account/constants/routes";
+import { PixTransfer } from "features/pix/redux/models/pixTransfer";
+import { useStyles } from "./BankPixTransferSummary.style";
+import { AuthorizationSheet } from "components/AuthorizationSheet";
+import { Loader } from "components/Loader";
+import { Alert } from "components/Alert";
 import {
   AppBar,
   Button,
@@ -16,16 +16,16 @@ import {
   ProcessDescriptionHeader,
   ProcessPageFooterButton,
   ProcessPageLayout,
-} from 'components'
+} from "components";
 
 interface BankPixTransferSummaryViewProps {
-  pixTransfer?: PixTransfer
-  openAuthorizationSheet?: any
-  onAuthorizationClose?: Function
-  errorMessage?: string
-  loading: boolean
-  onConfirmButtonClick: VoidFunction
-  onCancelButtonClick: VoidFunction
+  pixTransfer?: PixTransfer;
+  openAuthorizationSheet?: any;
+  onAuthorizationClose?: Function;
+  errorMessage?: string;
+  loading: boolean;
+  onConfirmButtonClick: VoidFunction;
+  onCancelButtonClick: VoidFunction;
 }
 
 export const BankPixTransferSummaryView: React.FC<
@@ -39,7 +39,7 @@ export const BankPixTransferSummaryView: React.FC<
   onConfirmButtonClick,
   onCancelButtonClick,
 }) => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   // const tagsView = React.useMemo(() => {
   //   return tags?.map(t => <TagChip label={t} key={t} />)
@@ -109,5 +109,5 @@ export const BankPixTransferSummaryView: React.FC<
         <Alert title="Error" message={errorMessage} severity="error" />
       )}
     </PageContainer>
-  )
-}
+  );
+};

@@ -1,1 +1,1 @@
-export { Transference } from './Transference'
+export { Transference } from "./Transference";

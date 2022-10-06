@@ -1,13 +1,13 @@
-import React from 'react'
-import { Box, Container } from '@material-ui/core'
-import { useStyles } from './ProcessPageLayout.style'
+import React from "react";
+import { Box, Container } from "@material-ui/core";
+import { useStyles } from "./ProcessPageLayout.style";
 
 interface ProcessPageLayoutProps {
-  appBar?: React.ReactNode
-  header?: React.ReactNode
-  main?: React.ReactNode
-  footer?: React.ReactNode
-  footerPosition?: 'relative' | 'fixed'
+  appBar?: React.ReactNode;
+  header?: React.ReactNode;
+  main?: React.ReactNode;
+  footer?: React.ReactNode;
+  footerPosition?: "relative" | "fixed";
 }
 
 export const ProcessPageLayout: React.FC<ProcessPageLayoutProps> = ({
@@ -17,23 +17,17 @@ export const ProcessPageLayout: React.FC<ProcessPageLayoutProps> = ({
   footer,
   footerPosition,
 }) => {
-  const pageStyles = useStyles({ footerPosition })
+  const pageStyles = useStyles({ footerPosition });
 
   return (
     <Container className={pageStyles.container}>
       {appBar}
       {header && (
-        <Box
-          component="header"
-          className={pageStyles.header}
-        >
+        <Box component="header" className={pageStyles.header}>
           {header}
         </Box>
       )}
-      <Box
-        component="main"
-        className={pageStyles.main}
-      >
+      <Box component="main" className={pageStyles.main}>
         {main}
       </Box>
       {footer && (
@@ -46,5 +40,5 @@ export const ProcessPageLayout: React.FC<ProcessPageLayoutProps> = ({
         </Box>
       )}
     </Container>
-  )
-}
+  );
+};

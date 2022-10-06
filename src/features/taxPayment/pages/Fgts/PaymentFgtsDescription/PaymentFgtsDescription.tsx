@@ -1,76 +1,78 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { TaxPaymentRoutes } from '../../../constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { Button } from 'components/Button'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { PageContainer } from 'components/PageContainer'
-import { useDispatch, useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { useHistory } from 'react-router-dom'
-import { TextField } from 'components/TextField'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { TaxPaymentRoutes } from "../../../constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { Button } from "components/Button";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { PageContainer } from "components/PageContainer";
+import { useDispatch, useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { useHistory } from "react-router-dom";
+import { TextField } from "components/TextField";
 
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon/ButtonWithFloatingIcon'
-import { TagChip } from 'features/tags/components/TagChip'
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon/ButtonWithFloatingIcon";
+import { TagChip } from "features/tags/components/TagChip";
 
-import { useStyles } from './PaymentFgtsDescription.style'
-import { Box, Grid } from '@material-ui/core'
-import { Loader } from 'components/Loader'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { updateFgtsPaymentData } from 'features/taxPayment/redux/actions'
-import { TagEditPopUp } from 'components/TagEditPopUp'
+import { useStyles } from "./PaymentFgtsDescription.style";
+import { Box, Grid } from "@material-ui/core";
+import { Loader } from "components/Loader";
+import { AccountRoutes } from "features/account/constants/routes";
+import { updateFgtsPaymentData } from "features/taxPayment/redux/actions";
+import { TagEditPopUp } from "components/TagEditPopUp";
 
 export const PaymentFgtsDescription: React.FC = () => {
-  const [description, setDescription] = React.useState('')
-  const [openTagEditPopUp, setOpenTagEditPopUp] = React.useState(false)
+  const [description, setDescription] = React.useState("");
+  const [openTagEditPopUp, setOpenTagEditPopUp] = React.useState(false);
 
-  const loading = useSelector((state: StoreState) => state.tags.loading)
+  const loading = useSelector((state: StoreState) => state.tags.loading);
 
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const styles = useStyles()
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const styles = useStyles();
 
   const { pageTags } = useSelector((state: StoreState) => ({
     pageTags: state.taxPayment.fgts?.tags,
-  }))
+  }));
 
   const onTagClick = (tag: string) => {
-    dispatch(updateFgtsPaymentData({ tags: pageTags!.filter(t => t !== tag) }))
-  }
+    dispatch(
+      updateFgtsPaymentData({ tags: pageTags!.filter((t) => t !== tag) })
+    );
+  };
   const onEditTagsButtonClick = () => {
-    setOpenTagEditPopUp(true)
-  }
+    setOpenTagEditPopUp(true);
+  };
 
   const onEditTagsClose = () => {
-    setOpenTagEditPopUp(false)
-  }
+    setOpenTagEditPopUp(false);
+  };
 
   const onDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setDescription(event.target.value)
+    setDescription(event.target.value);
 
   const onCancelButtonClick = () => {
-    dispatch(updateFgtsPaymentData())
-    history.replace(AccountRoutes.home)
-  }
+    dispatch(updateFgtsPaymentData());
+    history.replace(AccountRoutes.home);
+  };
 
   const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
 
     if (openTagEditPopUp) {
-      event.preventDefault()
-      history.replace(TaxPaymentRoutes.paymentFgtsDescription)
-    } else history.push(TaxPaymentRoutes.paymentFgtsSummary)
+      event.preventDefault();
+      history.replace(TaxPaymentRoutes.paymentFgtsDescription);
+    } else history.push(TaxPaymentRoutes.paymentFgtsSummary);
 
     dispatch(
       updateFgtsPaymentData({
         description: description,
-      }),
-    )
-    history.push(TaxPaymentRoutes.paymentFgtsSummary)
-  }
+      })
+    );
+    history.push(TaxPaymentRoutes.paymentFgtsSummary);
+  };
 
   return (
     <PageContainer>
@@ -116,7 +118,7 @@ export const PaymentFgtsDescription: React.FC = () => {
                 />
               </Box>
               <Grid container spacing={1}>
-                {pageTags?.map(tag => (
+                {pageTags?.map((tag) => (
                   <Grid item key={tag}>
                     <TagChip label={tag} onClick={onTagClick} />
                   </Grid>
@@ -132,7 +134,9 @@ export const PaymentFgtsDescription: React.FC = () => {
                 </ButtonWithFloatingIcon>
 
                 <TagEditPopUp
-                  onSaveTags={tags => dispatch(updateFgtsPaymentData({ tags }))}
+                  onSaveTags={(tags) =>
+                    dispatch(updateFgtsPaymentData({ tags }))
+                  }
                   open={openTagEditPopUp}
                   onClose={onEditTagsClose}
                 />
@@ -156,5 +160,5 @@ export const PaymentFgtsDescription: React.FC = () => {
       />
       <Loader open={loading} />
     </PageContainer>
-  )
-}
+  );
+};

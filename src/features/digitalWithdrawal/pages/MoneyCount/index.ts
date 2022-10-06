@@ -1,1 +1,1 @@
-export { MoneyCount } from './moneyCount'
+export { MoneyCount } from "./moneyCount";

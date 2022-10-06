@@ -1,1 +1,1 @@
-export { SharePixQrCode } from './SharePixQrCode'
+export { SharePixQrCode } from "./SharePixQrCode";

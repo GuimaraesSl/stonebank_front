@@ -1,1 +1,1 @@
-export { SchedulingButton } from './SchedulingButton'
+export { SchedulingButton } from "./SchedulingButton";

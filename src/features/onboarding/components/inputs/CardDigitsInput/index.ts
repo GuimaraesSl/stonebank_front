@@ -1,1 +1,1 @@
-export { DigitsCardProps } from './CardDigitsInput'
+export { DigitsCardProps } from "./CardDigitsInput";

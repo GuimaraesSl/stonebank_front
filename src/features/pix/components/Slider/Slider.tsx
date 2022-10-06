@@ -57,7 +57,7 @@ export const Slider: React.FC<SliderProps> = ({
             step={step}
             value={value}
             onChange={(event) => {
-              onValueChange(String((Number(event.currentTarget.value)*100)))
+              onValueChange(String(Number(event.currentTarget.value) * 100));
             }}
           />
         </Box>

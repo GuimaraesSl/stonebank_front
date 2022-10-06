@@ -1,1 +1,1 @@
-export { PaymentError } from './PaymentError'
+export { PaymentError } from "./PaymentError";

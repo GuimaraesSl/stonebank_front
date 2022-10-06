@@ -1,17 +1,17 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
 
-    '& > main': {
+    "& > main": {
       flexGrow: 1,
-      display: 'flex',
-      alignItems: 'center',
+      display: "flex",
+      alignItems: "center",
     },
   },
   image: {
     height: 128,
   },
-})
+});

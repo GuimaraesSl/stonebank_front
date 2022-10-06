@@ -1,55 +1,55 @@
-import React from 'react'
-import { AppBar } from 'components/AppBar'
-import { PageContainer } from 'components/PageContainer'
-import { AccountRoutes } from 'features/account/constants/routes'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { TextField } from 'components/TextField'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { Button } from 'components/Button'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { useHistory } from 'react-router-dom'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { useDispatch, useSelector } from 'react-redux'
-import { Box } from '@material-ui/core'
-import { useMask } from 'hooks/useMask'
-import { lettersOnly } from '_utils/masks/generics'
-import { updateCard } from 'features/card/redux/actions'
-import { StoreState } from 'redux/state'
-import { CardRoutes } from 'features/card/constants/routes'
+import React from "react";
+import { AppBar } from "components/AppBar";
+import { PageContainer } from "components/PageContainer";
+import { AccountRoutes } from "features/account/constants/routes";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { TextField } from "components/TextField";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { Button } from "components/Button";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { useHistory } from "react-router-dom";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { Box } from "@material-ui/core";
+import { useMask } from "hooks/useMask";
+import { lettersOnly } from "_utils/masks/generics";
+import { updateCard } from "features/card/redux/actions";
+import { StoreState } from "redux/state";
+import { CardRoutes } from "features/card/constants/routes";
 
 export const AssociateNameUserCard: React.FC = () => {
-  const [fullName, setFullName] = useMask(lettersOnly)
-  const [disableNextButton, setDisableNextButton] = React.useState(false)
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const card = useSelector((store: StoreState) => store.card.card)
+  const [fullName, setFullName] = useMask(lettersOnly);
+  const [disableNextButton, setDisableNextButton] = React.useState(false);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const card = useSelector((store: StoreState) => store.card.card);
 
   React.useEffect(() => {
-    if (fullName.length === 0) setDisableNextButton(true)
-    else setDisableNextButton(false)
-  }, [fullName.length])
+    if (fullName.length === 0) setDisableNextButton(true);
+    else setDisableNextButton(false);
+  }, [fullName.length]);
 
   const onToNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFullName(event.target.value)
-  }
+    setFullName(event.target.value);
+  };
 
   const onCancelButtonClick = () => {
-    history.replace(AccountRoutes.home)
-    dispatch(updateCard())
-  }
+    history.replace(AccountRoutes.home);
+    dispatch(updateCard());
+  };
 
   const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
     dispatch(
       updateCard({
         ...card!,
         fullName: fullName,
-      }),
-    )
-    if (disableNextButton) return
-    history.push(CardRoutes.associateMotherNameCard)
-  }
+      })
+    );
+    if (disableNextButton) return;
+    history.push(CardRoutes.associateMotherNameCard);
+  };
 
   return (
     <PageContainer>
@@ -102,5 +102,5 @@ export const AssociateNameUserCard: React.FC = () => {
         }
       />
     </PageContainer>
-  )
-}
+  );
+};

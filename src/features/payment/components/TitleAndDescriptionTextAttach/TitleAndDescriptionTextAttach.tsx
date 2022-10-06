@@ -1,17 +1,17 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { useStyles } from './TitleAndDescriptionTextAttach.style'
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { useStyles } from "./TitleAndDescriptionTextAttach.style";
 
 interface TitleAndDescriptionTextAttachProps {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
 export const TitleAndDescriptionTextAttach = ({
   title,
   description,
 }: TitleAndDescriptionTextAttachProps) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
     <div className={styles.contentTitleDescriptionAttach}>
       <Typography
@@ -31,5 +31,5 @@ export const TitleAndDescriptionTextAttach = ({
         {description}
       </Typography>
     </div>
-  )
-}
+  );
+};

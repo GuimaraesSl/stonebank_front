@@ -1,51 +1,51 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { Close, KeyboardArrowRight } from '@material-ui/icons'
-import { ProcessDescriptionHeader } from 'components/ProcessDescriptionHeader'
-import { ProcessPageFooter } from 'components/ProcessPageFooter'
-import { AppBar } from 'components/AppBar'
-import { Button } from 'components/Button'
-import { cancelLabel, nextLabel } from 'constants/buttons/labels'
-import { OnboardingRoutes } from 'features/onboarding/constants/routes'
-import { ProcessPageLayout } from 'components/ProcessPageLayout'
-import { PasswordField } from 'components/PasswordField'
-import { useSelector } from 'react-redux'
-import { Grid } from '@material-ui/core'
-import { useStyles } from './ConfirmPasswordForCard.style'
-import { StoreState } from 'redux/state'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Close, KeyboardArrowRight } from "@material-ui/icons";
+import { ProcessDescriptionHeader } from "components/ProcessDescriptionHeader";
+import { ProcessPageFooter } from "components/ProcessPageFooter";
+import { AppBar } from "components/AppBar";
+import { Button } from "components/Button";
+import { cancelLabel, nextLabel } from "constants/buttons/labels";
+import { OnboardingRoutes } from "features/onboarding/constants/routes";
+import { ProcessPageLayout } from "components/ProcessPageLayout";
+import { PasswordField } from "components/PasswordField";
+import { useSelector } from "react-redux";
+import { Grid } from "@material-ui/core";
+import { useStyles } from "./ConfirmPasswordForCard.style";
+import { StoreState } from "redux/state";
 
 export const ConfirmPasswordForCard: React.FC = () => {
-  const history = useHistory()
-  const style = useStyles()
+  const history = useHistory();
+  const style = useStyles();
 
-  const [passwordInput, setPasswordInput] = React.useState('')
-  const [rePasswordInput, setRePasswordInput] = React.useState('')
+  const [passwordInput, setPasswordInput] = React.useState("");
+  const [rePasswordInput, setRePasswordInput] = React.useState("");
   const { onboardingForm } = useSelector(
-    (state: StoreState) => state.onboarding,
-  )
+    (state: StoreState) => state.onboarding
+  );
 
   const onCancelButtonClick = () => {
-    history.replace(OnboardingRoutes.activateAccount)
-  }
+    history.replace(OnboardingRoutes.activateAccount);
+  };
 
   const onNextButtonClick = (e: React.FormEvent) => {
-    e.preventDefault()
-    history.push(OnboardingRoutes.accountActivationCompletedForCard)
-  }
+    e.preventDefault();
+    history.push(OnboardingRoutes.accountActivationCompletedForCard);
+  };
 
   const onPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPasswordInput(event.target.value)
+    setPasswordInput(event.target.value);
 
   const onRePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setRePasswordInput(event.target.value)
+    setRePasswordInput(event.target.value);
 
   const onSamePassword = (password: string, rePassoword: string) => {
-    if (password !== onboardingForm?.password) return true
-    if (password === '' || rePassoword === '') return true
-    else if (!(password === rePassoword)) return true
-  }
+    if (password !== onboardingForm?.password) return true;
+    if (password === "" || rePassoword === "") return true;
+    else if (!(password === rePassoword)) return true;
+  };
 
-  const condition = onSamePassword(passwordInput, rePasswordInput)
+  const condition = onSamePassword(passwordInput, rePasswordInput);
 
   return (
     <ProcessPageLayout
@@ -111,5 +111,5 @@ export const ConfirmPasswordForCard: React.FC = () => {
         />
       }
     />
-  )
-}
+  );
+};

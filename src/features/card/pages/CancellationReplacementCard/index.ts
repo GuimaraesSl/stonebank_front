@@ -1,1 +1,1 @@
-export { CancellationReplacementCard } from './CancellationReplacementCard'
+export { CancellationReplacementCard } from "./CancellationReplacementCard";

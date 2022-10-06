@@ -1,18 +1,18 @@
-import React from 'react'
-import { InputAdornment, TextField } from '@material-ui/core'
-import { useStyles } from './SearchField.styles'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { InputAdornment, TextField } from "@material-ui/core";
+import { useStyles } from "./SearchField.styles";
+import { Icon } from "components/Icon";
 
 interface SearchFieldProps {
-  placeholder: string
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  placeholder: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const SearchField: React.FC<SearchFieldProps> = ({
   placeholder,
   onChange,
 }) => {
-  const style = useStyles()
+  const style = useStyles();
 
   return (
     <TextField
@@ -31,5 +31,5 @@ export const SearchField: React.FC<SearchFieldProps> = ({
         ),
       }}
     />
-  )
-}
+  );
+};

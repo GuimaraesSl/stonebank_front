@@ -1,29 +1,29 @@
-import { getApplicationToken } from 'features/authentication/utils'
-import { StoreState } from 'redux/state'
-import { ConfigProvider } from '_config/configProvider'
+import { getApplicationToken } from "features/authentication/utils";
+import { StoreState } from "redux/state";
+import { ConfigProvider } from "_config/configProvider";
 
 interface BaseRequestData {
-  url: string
+  url: string;
   defaultHeaders: {
-    'x-api-version': number
-    'x-application-key': string
-    'x-application-token': string
-  }
-  accountKey?: string
-  taxId?: string
-  userTaxId?: string
-  userId?: number
-  accountTaxId?: string
-  accountId?: number
-  token?: string
-  phoneNumber?: string
+    "x-api-version": number;
+    "x-application-key": string;
+    "x-application-token": string;
+  };
+  accountKey?: string;
+  taxId?: string;
+  userTaxId?: string;
+  userId?: number;
+  accountTaxId?: string;
+  accountId?: number;
+  token?: string;
+  phoneNumber?: string;
 }
 
 export const getBaseRequestData = async (
   endpoint: string,
-  state?: StoreState,
+  state?: StoreState
 ): Promise<BaseRequestData> => {
-  const appToken = await getApplicationToken()
+  const appToken = await getApplicationToken();
 
   return {
     url: `${ConfigProvider.config.api.baseUrl}${endpoint}`,
@@ -38,5 +38,5 @@ export const getBaseRequestData = async (
     accountId: state?.account.account?.accountId,
     token: state?.auth.token,
     phoneNumber: state?.auth.user?.phoneNumber,
-  }
-}
+  };
+};

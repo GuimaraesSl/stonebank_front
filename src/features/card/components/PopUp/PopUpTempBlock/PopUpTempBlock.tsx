@@ -1,34 +1,34 @@
-import React from 'react'
-import { Box, Typography } from '@material-ui/core'
-import { useStyle } from './PopUpTempBlock.style'
-import { Button } from 'components/Button'
-import { Close } from '@material-ui/icons'
-import { ButtonWithFloatingIcon } from 'components/ButtonWithFloatingIcon'
-import { Drawer, Grid } from '@material-ui/core'
-import { Alert } from 'components/Alert'
-import { PageContainer } from 'components/PageContainer'
-import { Loader } from 'components/Loader'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
-import { StoreState } from 'redux/state'
-import { Card } from 'features/card/redux/models/card'
-import { OtpInput } from 'components/OtpInput/OtpInput'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { useStyle } from "./PopUpTempBlock.style";
+import { Button } from "components/Button";
+import { Close } from "@material-ui/icons";
+import { ButtonWithFloatingIcon } from "components/ButtonWithFloatingIcon";
+import { Drawer, Grid } from "@material-ui/core";
+import { Alert } from "components/Alert";
+import { PageContainer } from "components/PageContainer";
+import { Loader } from "components/Loader";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { StoreState } from "redux/state";
+import { Card } from "features/card/redux/models/card";
+import { OtpInput } from "components/OtpInput/OtpInput";
+import { Icon } from "components/Icon";
 
 interface PopUpBlockPropsState {
-  loading: boolean
-  message?: string
-  success?: boolean
-  switchisBlocked?: boolean
+  loading: boolean;
+  message?: string;
+  success?: boolean;
+  switchisBlocked?: boolean;
 }
 
 interface PopUpBlockProps {
-  open: boolean
-  panLastDigits?: number
-  identifier?: string
-  isBlocked?: boolean
-  flagName: string
-  onClose: (_?: string) => void
+  open: boolean;
+  panLastDigits?: number;
+  identifier?: string;
+  isBlocked?: boolean;
+  flagName: string;
+  onClose: (_?: string) => void;
 }
 
 export const PopUpTempBlock: React.FC<PopUpBlockProps> = ({
@@ -41,38 +41,39 @@ export const PopUpTempBlock: React.FC<PopUpBlockProps> = ({
   const [{ loading, success, message }, setState] =
     React.useState<PopUpBlockPropsState>({
       loading: false,
-    })
+    });
 
-  const [cards] = useSelector<StoreState, [Card | undefined]>(state => [
+  const [cards] = useSelector<StoreState, [Card | undefined]>((state) => [
     state.card.card,
-  ])
-  const [inputValue, setInputValue] = React.useState('')
-  const [displayCards, setDisplayCards] = React.useState(cards)
-  const [disableConcludeButton, setDisableConcludeButton] = React.useState(true)
+  ]);
+  const [inputValue, setInputValue] = React.useState("");
+  const [displayCards, setDisplayCards] = React.useState(cards);
+  const [disableConcludeButton, setDisableConcludeButton] =
+    React.useState(true);
 
-  const styles = useStyle()
-  const dispatch = useDispatch()
-
-  React.useEffect(() => {
-    setDisplayCards(cards)
-  }, [cards])
+  const styles = useStyle();
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (inputValue.length < 4) setDisableConcludeButton(true)
-    else setDisableConcludeButton(false)
-  }, [inputValue.length])
+    setDisplayCards(cards);
+  }, [cards]);
+
+  React.useEffect(() => {
+    if (inputValue.length < 4) setDisableConcludeButton(true);
+    else setDisableConcludeButton(false);
+  }, [inputValue.length]);
 
   const onCloseButtonClick = () => {
-    onClose()
-  }
+    onClose();
+  };
 
   const handlePassword = (value: string) => {
-    setInputValue(value)
-  }
+    setInputValue(value);
+  };
 
   const onConfirmButtonClick = () => {
-    onClose(inputValue)
-  }
+    onClose(inputValue);
+  };
 
   const blockrUnBlockDescription = !displayCards?.isBlocked ? (
     <Grid item data-test-id="temporary-block">
@@ -81,7 +82,7 @@ export const PopUpTempBlock: React.FC<PopUpBlockProps> = ({
         <br /> temporariamente seu cartão?
       </Typography>
       <Typography className={styles.subtextBlock}>
-        Seu cartão de crédito pré-pago{': '}
+        Seu cartão de crédito pré-pago{": "}
         <strong>
           {flagName} final {panLastDigits}
         </strong>
@@ -95,7 +96,7 @@ export const PopUpTempBlock: React.FC<PopUpBlockProps> = ({
         Deseja realmente desbloquear seu cartão?
       </Typography>
       <Typography className={styles.subtextBlock}>
-        Seu cartão de crédito pré-pago{': '}
+        Seu cartão de crédito pré-pago{": "}
         <strong>
           {flagName} final {panLastDigits}
         </strong>
@@ -103,7 +104,7 @@ export const PopUpTempBlock: React.FC<PopUpBlockProps> = ({
       </Typography>
       <Typography className={styles.text}>Digite sua senha</Typography>
     </Grid>
-  )
+  );
 
   return (
     <React.Fragment>
@@ -149,7 +150,7 @@ export const PopUpTempBlock: React.FC<PopUpBlockProps> = ({
               <Grid item>
                 <Box className={styles.confirm}>
                   <ButtonWithFloatingIcon
-                    icon={<Icon name={'confirm'} />}
+                    icon={<Icon name={"confirm"} />}
                     disabled={disableConcludeButton}
                     onClick={onConfirmButtonClick}
                     data-test-id="confirm-button"
@@ -165,11 +166,11 @@ export const PopUpTempBlock: React.FC<PopUpBlockProps> = ({
       <Loader open={loading} />
       {message && (
         <Alert
-          title={success ? 'Sucesso' : 'Erro'}
+          title={success ? "Sucesso" : "Erro"}
           message={message}
-          severity={success ? 'success' : 'error'}
+          severity={success ? "success" : "error"}
         />
       )}
     </React.Fragment>
-  )
-}
+  );
+};

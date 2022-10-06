@@ -1,1 +1,1 @@
-export { SelectAccountType } from './SelectAccountType'
+export { SelectAccountType } from "./SelectAccountType";

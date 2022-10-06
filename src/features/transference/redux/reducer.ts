@@ -4,14 +4,14 @@ import {
   LoadingTransferenceState,
   SuccessTransferenceState,
   FailTransferenceState,
-} from './state'
-import { TransferenceAction, TransferenceActions } from './actionTypes'
+} from "./state";
+import { TransferenceAction, TransferenceActions } from "./actionTypes";
 
-const initialState: TransferenceState = new InitialTransferenceState()
+const initialState: TransferenceState = new InitialTransferenceState();
 
 export const transferenceReducer = (
   state = initialState,
-  action: TransferenceAction,
+  action: TransferenceAction
 ) => {
   switch (action.type) {
     case TransferenceActions.CREATE_INTERNAL_TRANSFER_START:
@@ -21,20 +21,20 @@ export const transferenceReducer = (
       return new LoadingTransferenceState(
         state.transference,
         state.banks,
-        state.favoredAccounts,
-      )
+        state.favoredAccounts
+      );
 
     case TransferenceActions.GET_EXPECTED_TRANSFER_DATE_START:
       return new LoadingTransferenceState({
         ...state.transference,
         expectedTransferDate: undefined,
-      })
+      });
 
     case TransferenceActions.CREATE_INTERNAL_TRANSFER_SUCCESS:
-      return new SuccessTransferenceState(state.transference)
+      return new SuccessTransferenceState(state.transference);
 
     case TransferenceActions.CREATE_MONEY_TRANSFER_SUCCESS:
-      return new SuccessTransferenceState(state.transference)
+      return new SuccessTransferenceState(state.transference);
 
     case TransferenceActions.GET_ACCOUNTS_BY_TAX_ID_SUCCESS:
       return new SuccessTransferenceState(
@@ -43,8 +43,8 @@ export const transferenceReducer = (
           toTaxId: action.payload.toTaxId,
         },
         state.banks,
-        action.payload.accounts,
-      )
+        action.payload.accounts
+      );
 
     case TransferenceActions.GET_EXPECTED_TRANSFER_DATE_SUCCESS:
       return new InitialTransferenceState(
@@ -52,11 +52,11 @@ export const transferenceReducer = (
           ...state.transference,
           expectedTransferDate: action.payload,
         },
-        state.banks,
-      )
+        state.banks
+      );
 
     case TransferenceActions.LIST_BANKS_SUCCESS:
-      return new SuccessTransferenceState(state.transference, action.payload)
+      return new SuccessTransferenceState(state.transference, action.payload);
 
     case TransferenceActions.CREATE_INTERNAL_TRANSFER_FAIL:
     case TransferenceActions.CREATE_MONEY_TRANSFER_FAIL:
@@ -67,12 +67,12 @@ export const transferenceReducer = (
         action.payload,
         state.transference,
         state.banks,
-        state.favoredAccounts,
-      )
+        state.favoredAccounts
+      );
 
     case TransferenceActions.UPDATE_TRANSFERENCE_DATA:
       if (!action.payload)
-        return new InitialTransferenceState(undefined, state.banks)
+        return new InitialTransferenceState(undefined, state.banks);
       else
         return new InitialTransferenceState(
           {
@@ -80,10 +80,10 @@ export const transferenceReducer = (
             ...action.payload!,
           },
           state.banks,
-          state.favoredAccounts,
-        )
+          state.favoredAccounts
+        );
 
     default:
-      return state
+      return state;
   }
-}
+};

@@ -1,1 +1,1 @@
-export { ConfirmationActivate } from './ConfirmationActivate'
+export { ConfirmationActivate } from "./ConfirmationActivate";

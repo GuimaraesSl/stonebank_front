@@ -1,11 +1,11 @@
-import { Button } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-import { StylesProps, useStyles } from './ActivateAccountButton.style'
+import { StylesProps, useStyles } from "./ActivateAccountButton.style";
 
 interface ActivateAccountButtonProps extends StylesProps {
-  route: string
-  disabled?: boolean
+  route: string;
+  disabled?: boolean;
 }
 
 export const ActivateAccountButton: React.FC<ActivateAccountButtonProps> = ({
@@ -16,7 +16,7 @@ export const ActivateAccountButton: React.FC<ActivateAccountButtonProps> = ({
   disabled,
   children,
 }) => {
-  const styles = useStyles({ borderWidth, size, palette })
+  const styles = useStyles({ borderWidth, size, palette });
 
   return (
     <Button
@@ -30,5 +30,5 @@ export const ActivateAccountButton: React.FC<ActivateAccountButtonProps> = ({
     >
       {children}
     </Button>
-  )
-}
+  );
+};

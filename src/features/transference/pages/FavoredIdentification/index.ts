@@ -1,1 +1,1 @@
-export { FavoredIdentification } from './FavoredIdentification'
+export { FavoredIdentification } from "./FavoredIdentification";

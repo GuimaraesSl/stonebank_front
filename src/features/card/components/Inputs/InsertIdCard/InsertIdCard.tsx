@@ -1,31 +1,31 @@
-import React from 'react'
-import { useStyles, CardIdInput } from './InsertIdCard.style'
-import { FormControl, InputLabel } from '@material-ui/core'
+import React from "react";
+import { useStyles, CardIdInput } from "./InsertIdCard.style";
+import { FormControl, InputLabel } from "@material-ui/core";
 
 interface InsertIdCardsProps {
-  value: string
-  setValue: (value: string) => void
+  value: string;
+  setValue: (value: string) => void;
 }
 
 export const InsertIdCard: React.FC<InsertIdCardsProps> = ({
   value,
   setValue,
 }: InsertIdCardsProps) => {
-  const [valueIdCard, setValueIdCard] = React.useState('')
+  const [valueIdCard, setValueIdCard] = React.useState("");
   const handleValueIdCard = (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
-    const lengthInputValue = event.currentTarget.value.length
+    const lengthInputValue = event.currentTarget.value.length;
     if (lengthInputValue > 9) {
-      return
+      return;
     }
-    const numberFilter = /^[0-9\b]+$/
-    const inputContent = event.currentTarget.value
-    if (inputContent === '' || numberFilter.test(inputContent)) {
-      setValue(inputContent)
+    const numberFilter = /^[0-9\b]+$/;
+    const inputContent = event.currentTarget.value;
+    if (inputContent === "" || numberFilter.test(inputContent)) {
+      setValue(inputContent);
     }
-  }
-  const styles = useStyles()
+  };
+  const styles = useStyles();
   return (
     <React.Fragment>
       <FormControl className={styles.formControl}>
@@ -46,5 +46,5 @@ export const InsertIdCard: React.FC<InsertIdCardsProps> = ({
         />
       </FormControl>
     </React.Fragment>
-  )
-}
+  );
+};

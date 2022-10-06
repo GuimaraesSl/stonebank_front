@@ -8,32 +8,32 @@ export const useStyles = makeStyles({
   },
 
   detailPaymentContent: {
-    fontSize: '1rem',
+    fontSize: "1rem",
   },
 
   paymentDetail: {
-    fontWeight: 'bold',
-    fontSize: '16px',
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '17px',
-    marginRight: '25px',
-    lineHeight: '110%',
+    fontWeight: "bold",
+    fontSize: "16px",
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "17px",
+    marginRight: "25px",
+    lineHeight: "110%",
   },
 
   paymentDetailDate: {
-    fontWeight: 'bold',
-    fontSize: '16px',
-    display: 'flex',
-    alignItems: 'center',
-    marginRight: '25px',
-    lineHeight: '110%',
+    fontWeight: "bold",
+    fontSize: "16px",
+    display: "flex",
+    alignItems: "center",
+    marginRight: "25px",
+    lineHeight: "110%",
   },
 
   capitalized: {
-    fontWeight: 'bold',
-    fontSize: '16px',
-    textTransform: 'capitalize',
-    marginBottom: '17px',
+    fontWeight: "bold",
+    fontSize: "16px",
+    textTransform: "capitalize",
+    marginBottom: "17px",
   },
-})
+});

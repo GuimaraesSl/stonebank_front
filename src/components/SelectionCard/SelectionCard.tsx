@@ -1,24 +1,24 @@
-import React from 'react'
-import { Box, Card, Typography } from '@material-ui/core'
-import { useStyles } from './SelectionCard.style'
-import { IconTypes } from 'components/Icon/Icon'
-import { Icon } from 'components/Icon'
+import React from "react";
+import { Box, Card, Typography } from "@material-ui/core";
+import { useStyles } from "./SelectionCard.style";
+import { IconTypes } from "components/Icon/Icon";
+import { Icon } from "components/Icon";
 
 interface SelectionCardProps {
-  id?: string
-  title: string
-  subtitle?: React.ReactNode | string
-  subsubtitle?: React.ReactNode | string
-  bank?: React.ReactNode | string
-  bankAccount?: React.ReactNode | string
-  bankAccountDigit?: React.ReactNode | string
-  bankBranch?: React.ReactNode | string
-  startIcon?: React.ReactNode | string | keyof typeof IconTypes
-  endIcon?: React.ReactNode | string | keyof typeof IconTypes
-  className?: string
-  onClick?: VoidFunction
-  endLabel?: string
-  variant?: string
+  id?: string;
+  title: string;
+  subtitle?: React.ReactNode | string;
+  subsubtitle?: React.ReactNode | string;
+  bank?: React.ReactNode | string;
+  bankAccount?: React.ReactNode | string;
+  bankAccountDigit?: React.ReactNode | string;
+  bankBranch?: React.ReactNode | string;
+  startIcon?: React.ReactNode | string | keyof typeof IconTypes;
+  endIcon?: React.ReactNode | string | keyof typeof IconTypes;
+  className?: string;
+  onClick?: VoidFunction;
+  endLabel?: string;
+  variant?: string;
 }
 
 export const SelectionCard: React.FC<SelectionCardProps> = ({
@@ -38,13 +38,13 @@ export const SelectionCard: React.FC<SelectionCardProps> = ({
   variant,
   ...rest
 }: SelectionCardProps) => {
-  const styles = useStyles({ variant })
-  let start = startIcon as keyof typeof IconTypes
-  let end = endIcon as keyof typeof IconTypes
+  const styles = useStyles({ variant });
+  let start = startIcon as keyof typeof IconTypes;
+  let end = endIcon as keyof typeof IconTypes;
 
   const _className = (() => {
-    return className ? `${styles.card} ${className}` : styles.card
-  })()
+    return className ? `${styles.card} ${className}` : styles.card;
+  })();
 
   return (
     <Card
@@ -104,5 +104,5 @@ export const SelectionCard: React.FC<SelectionCardProps> = ({
         <Typography className={styles.endLabel}>{endLabel}</Typography>
       )}
     </Card>
-  )
-}
+  );
+};
