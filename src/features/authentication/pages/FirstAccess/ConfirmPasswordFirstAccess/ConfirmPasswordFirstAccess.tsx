@@ -10,7 +10,7 @@ import { AuthenticationRoutes } from 'features/authentication/constants/routes'
 import { OnboardingRoutes } from 'features/onboarding/constants/routes'
 import { ProcessPageLayout } from 'components/ProcessPageLayout'
 import { PasswordField } from 'components/PasswordField'
-import { Grid } from '@material-ui/core'
+import { Container, Grid } from '@material-ui/core'
 import { useStyles } from './ConfirmPasswordFirstAccess.style'
 import { useDispatch, useSelector } from 'react-redux'
 import { StoreState } from 'redux/state'
@@ -25,6 +25,7 @@ import {
   ChangePasswordErrorState,
 } from 'features/authentication/redux/state'
 import { ErrorMessage } from 'components/ErrorMessage'
+import { GreatButton } from 'components/GreatButton'
 
 export const ConfirmPasswordFirstAccess: React.FC = () => {
   const dispatch = useDispatch()
@@ -72,71 +73,52 @@ export const ConfirmPasswordFirstAccess: React.FC = () => {
   }, [authState, history])
 
   return (
-    <ProcessPageLayout
-      appBar={
-        <AppBar
-          homeRoute={AuthenticationRoutes.changePasswordFirstAccess}
-          action={
-            <Button
-              palette="secondary"
-              size="small"
-              startIcon={<Close color="primary" />}
-              onClick={onCancelButtonClick}
-              data-test-id="cancel-button"
-            >
-              {cancelLabel}
-            </Button>
-          }
-        />
-      }
-      header={
-        <ProcessDescriptionHeader
-          title="Criar senha"
-          subtitle="Crie uma senha para sua conta"
-          description="Essa é sua senha de acesso ao APLICATIVO e deve seguir os critérios abaixo."
-        />
-      }
-      main={
-        <Grid
-          container
-          direction="column"
-          component="form"
-          onSubmit={onNextButtonClick}
-        >
-          <Grid item>
-            <PasswordField
-              value={userFirstAccessForm?.newPassword!}
-              placeholder="Digite a senha..."
-            />
-          </Grid>
-          <Grid item className={style.gridItem}>
-            <PasswordField
-              label="Digite novamente a nova senha"
-              value={rePasswordInput}
-              placeholder="Digite a senha..."
-              onChange={onRePasswordChange}
-            />
-          </Grid>
-          {condition && (
-            <ErrorMessage message="A senha não corresponde à senha anterior" />
-          )}
-          <Loader open={authState instanceof ChangePasswordLoadingState} />
+    <Container maxWidth="xs" className={style.container}>
+  
+      <ProcessDescriptionHeader
+        title="Criar senha"
+        description="Para utilizar  nossos serviços , você deve estar de acordo com os termos de uso"
+      />
+
+      <Grid
+        container
+        direction="column"
+        component="form"
+        onSubmit={onNextButtonClick}
+      >
+        <Grid item>
+          <PasswordField
+            label="Nova Senha"
+            value={userFirstAccessForm?.newPassword!}
+            placeholder="Digite sua nova senha"
+          />
         </Grid>
-      }
-      footer={
-        <ProcessPageFooter
-          primaryButton={
-            <Button
-              disabled={condition}
-              endIcon={<KeyboardArrowRight color="secondary" />}
-              onClick={onNextButtonClick}
-              data-test-id="next-button"
-            >
-              {nextLabel}
-            </Button>
-          }
-        />
-      }
-    />
+
+        <Grid item className={style.gridItem}>
+          <PasswordField
+            label="Confirmar Senha"
+            value={rePasswordInput}
+            placeholder="Digite novamente sua nova senha"
+            onChange={onRePasswordChange}
+          />
+        </Grid>
+        {condition && (
+          <ErrorMessage message="A senha não corresponde à senha anterior" />
+        )}
+        <Loader open={authState instanceof ChangePasswordLoadingState} />
+      </Grid>
+
+      <Grid item className={style.ButtonWrapper}>
+        <GreatButton
+          palette="primary"
+          size="large"
+          route={AuthenticationRoutes.signIn}
+          id="confirm-pasword-button"
+        >
+          Salvar
+        </GreatButton>
+      </Grid>
+
+    </Container>
   )
 }
