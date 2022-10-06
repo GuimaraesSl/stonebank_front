@@ -26,5 +26,14 @@ Adicionando recursos de acessibilidade para pessoas com deficiência visual no A
     - Modificado o ícone Exclude.svg para confirmação de senha;
     - Modificado o componente `<ProcessDescriptionHeader/>` para seu reaproveitamento;
     - **Rota:** '/first-access/change-password'
+5. Front-end da tela de "ConfirmPasswordFirstAcess", para a confirmação da nova senha;
+    - Feito todo o front-end da tela;
+    - Retirado o uso do componente `<ProcessPageLayout/>` para criação de um Layout Próprio;
+    - Trocado o uso do Button de confirmação para o `<GreatButton/>`;
+6. Front-end da tela de "ChangePasswordCompleted";
+    - Feito todo o front-end da tela;
+    - Aproveitada a configuração de Layout da tela de "TeporaryPassword";
+    - Retirado o padrão de contrução da tela por `<Box\>`
+    - Modificado o componente `<AccessAccountButton\>` para receber o padrão de design `<GreatButton/>`
 
 
