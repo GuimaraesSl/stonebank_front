@@ -57,7 +57,7 @@ export const SignIn: React.FC = () => {
       if (!acceptedTerms) history.push(OnboardingRoutes.terms);
       else if (firstAccess)
         history.push(AuthenticationRoutes.temporaryPassword);
-      else history.push(AccountRoutes.home);
+      else history.push(AccountRoutes.stoneBankHome);
     }
   }, [token, authState]);
 
