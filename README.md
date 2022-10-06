@@ -1,5 +1,5 @@
 # StoneBank
-Front-End da aplicação StoneBank baseada no OSB Mobile by FitBank.
+Front-end da aplicação StoneBank baseada no OSB Mobile by FitBank.
 Aplicação desenvolvida pela equipe NoSignal participante do CyberCamp 2022 by FitBank.
 
 ## Sobre o Projeto
